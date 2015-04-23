@@ -36,3 +36,11 @@ From Latin
       - Superscript / Subscript
       - Fractions
       - Denominator
+      
+
+
+Level 1 fonts | Level 2 fonts | Level 3 fonts
+----|------|----
+These fonts commonly used vowels, consonants and consonants with modifiers and they are intended to be used in mobile devices. This level supports special characters such as yansaya,rakaransaya and repaya and “ක්ෂh” | foo  | foo
+bar | bar  | bar
+baz | baz  | baz
