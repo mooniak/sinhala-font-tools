@@ -41,6 +41,5 @@ From Latin
 
 Level 1 fonts | Level 2 fonts | Level 3 fonts
 ----|------|----
-These fonts commonly used vowels, consonants and consonants with modifiers and they are intended to be used in mobile devices. This level supports special characters such as yansaya,rakaransaya and repaya and “ක්ෂh” | foo  | foo
-bar | bar  | bar
-baz | baz  | baz
+These fonts commonly used vowels, consonants and consonants with modifiers and they are intended to be used in mobile devices. This level supports special characters such as yansaya,rakaransaya and repaya and “ක්ෂh” |These fonts shall have all the features of level one font and additionally support existing combination of Sinhala consonants with repaya. These fonts are intended for general applications such as documents and books.  | These fonts support special characters such as ඏ and ඐ and also support all combinations of strokes with conjuncts including “repaya+ispilla” combinations. Touching letters are also supported. These are intended for advanced publications and printing applications which supports pali and Sanskrit scripts and historic documents.
+
