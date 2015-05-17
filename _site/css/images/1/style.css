@@ -1,0 +1,16 @@
+th {
+	font-size: large;
+}
+
+td.c {
+	font-size: xx-large;
+	text-align: center;
+	vertical-align: center;
+}
+
+td.u {
+	font-size: large;
+	text-align: left;
+	vertical-align: center;
+}
+

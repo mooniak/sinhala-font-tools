@@ -1,0 +1,18 @@
+safe: false
+lsi: false
+permalink: "/:categories/:title"
+baseurl:               /libre-design-tools
+
+# About/contact
+author:
+  name:              Pathum Egodawatta
+  url:               https://twitter.com/pathumego
+  email:             pathum@mooniak.com
+
+# Custom vars
+version:             0.0.1
+
+paginate: 10
+
+exclude:
+  - README.md

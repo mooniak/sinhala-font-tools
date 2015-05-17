@@ -1,0 +1,524 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body {
+    background: white;
+    color: black;
+    width: 980px;
+    margin: 0 auto;
+}
+section {
+    display: block;
+    float: left;
+    margin: 0;
+    width: 100%;
+}
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+    font-weight: normal;
+}
+#dropcontainer {
+    width: 920px;
+    margin: 0 20px;
+    padding: 0px;
+}
+header {
+    background: #fff;
+}
+[contenteditable="true"] {
+    border: 1px solid #fff;
+}
+[contenteditable="true"]:active {
+    border: 1px dotted #eee;
+}
+[contenteditable="true"]:focus {
+    border: 1px dotted #e6e6e6;
+}
+.label{font-family: 'Noto Sans Sinhala', Lucida Console, Monaco, monospace !important;font-family; line-height: 1.5;-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
+  -moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;}
+h1.label{font-size:22px;color: #666;}
+h2.label{font-size:18px;color: #666;font-weight: 800;}
+/* Top Panel
+-----------------------------------------*/
+
+#toggleotfeatures,
+#helptoggle {
+    float: left;
+    width: 880px;
+    margin: 0 20px;
+    padding: 8px 20px;
+    background-color: #bababa;
+}
+#otfeatures {
+    float: left;
+    width: 920px;
+    margin: 0px 20px 10px;
+    padding: 0px 0px 8px;
+    background: #bababa;
+}
+#help {
+    float: left;
+    width: 880px;
+    margin: 0px 20px 10px;
+    background: #bababa;
+    padding: 20px;
+}
+#otfeatures table td {
+    padding: 4px 20px;
+}
+#toggleotfeatures,
+#otfeatures,
+#help,
+#helptoggle {
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+    font-size: small
+}
+.buttons a {
+    color: #fff;
+    background: #a5a5a5;
+    text-decoration: none;
+    padding: 2px;
+}
+.buttons a:hover {
+    color: #fff;
+    background: #6a6a6a;
+    text-decoration: none;
+}
+.buttons a:active {
+    color: red;
+    background: #6a6a6a;
+    text-decoration: none;
+}
+p#generatedcode {
+    margin: 0;
+    padding: 0;
+    font: normal 10px/1'Inconsolata', Lucida Console, Monaco, monospace !important;
+}
+p#csscode {
+    margin: 0;
+    padding: 0;
+    font: normal 10px/1'Inconsolata', Lucida Console, Monaco, monospace !important;
+}
+/* Fonts Panel
+-----------------------------------------*/
+
+header h1 {
+    font-size: 30px;
+    margin: 0;
+    padding: 80px 16px;
+    background: #F8F8F8;
+}
+#fonts {
+    margin: 0 auto;
+    background: #F8F8F8;
+    position: fixed;
+    top: 0px;
+    padding: 2px 0 4px 0px;
+    width: 920px;
+    border-bottom: 1px dotted #A3A3A3;
+}
+#fonts li {
+    display: inline;
+    list-style: none;
+    cursor: pointer;
+    margin: 2px 5px;
+    float: left;
+    font-size: 12px;
+    background: #969696;
+    color: #fff;
+    padding: 5px;
+}
+#fonts li:hover {
+    background: #848484;
+}
+}
+#fonts li span {
+    margin: 2em 0.2em 0 0.2em;
+}
+#fonts li.active {
+    background: #525252;
+}
+#custom {
+    margin: 0;
+    padding: 0;
+}
+#custom p {
+    margin: 0;
+    padding: 0;
+}
+#custom p.sizelabel {
+    color: #666;
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+    font-size: 10px;
+    line-height: 10px;
+    font-style: normal;
+    padding-bottom: 10px;
+}
+UL.tabNavigation {
+    list-style: none;
+    margin: 16px 0 20px 20px;
+    padding: 0 0 2px;
+    width: 920px;
+}
+UL.tabNavigation LI {
+    display: inline;
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+}
+UL.tabNavigation LI A {
+    padding: 4px 6px;
+    color: #000;
+    text-decoration: none;
+    border: 1px dotted;
+}
+UL.tabNavigation LI A.selected,
+UL.tabNavigation LI A:hover {
+    background-color: #333;
+    color: #fff;
+    padding-top: 8px;
+}
+UL.tabNavigation LI A:focus {
+    outline: 0;
+}
+div.tabs > div {
+    padding: 20px;
+}
+div.tabs > div h2 {
+    margin-top: 0;
+}
+.textsettingCol1 {
+    width: 450px;
+    float: left;
+}
+.textsettingCol2 {
+    width: 450px;
+    float: right;
+}
+#ruder td {
+    font-size: 32px;
+    line-height: 1;
+    margin: 0;
+    padding: 4px;
+}
+#pie {
+    padding: 20px;
+    width: 920px;
+}
+#pie p {
+    color: #666;
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+    font-size: 13px;
+    line-height: 18px;
+    font-style: normal;
+    margin: 0;
+}
+#pie p a {
+    color: #666;
+}
+.multicolumn3 {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+/* Grid
+-----------------------------------------*/
+
+.griddisplay {
+    overflow: hidden;
+    background: #fff url(images/grid.gif) -5px 9px repeat;
+}
+.griddisplay table {
+    width: 100%;
+    font-size: 90px;
+    line-height: 140px;
+}
+.griddisplay table th {
+    padding: 0 0 6px 12px;
+    border-bottom: 1px #eeeee2 solid;
+    font: normal 13px Verdana, sans-serif;
+    text-align: left;
+    color: #333;
+    background-color: #fff;
+}
+.griddisplay table td {
+    xbackground-color: #e2e2d9;
+    xborder: 3px #fff solid;
+    padding: 6px;
+    color: #ff2f2f;
+    opacity: 0.5;
+}
+.griddisplay table td span {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: transparent;
+}
+/* Unicode Table
+-----------------------------------------*/
+
+div.row {
+    clear: both;
+    float: none;
+    width: 960px;
+    overflow: hidden;
+    border-top: 1px solid #e0e0e0;
+    padding: 0;
+    white-space: nowrap;
+    margin: auto;
+}
+div.u {
+    float: left;
+    text-align: center;
+    width: 60px;
+    padding: 16px 0px 4px 0px;
+}
+div.u tt {
+    display: block;
+    text-transform: uppercase;
+    color: #666;
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+    font-size: 11px;
+    line-height: 10px;
+    font-style: normal;
+    padding-bottom: 10px;
+}
+div.u span {
+    font-size: 25pt;
+    height: 44px;
+    display: block;
+}
+table.unicode {
+    font-size: 9pt;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+table.unicode td {
+    vertical-align: middle;
+    padding: 1px 0px 1px 0px;
+}
+table.unicode td.space {
+    padding: 1px 60px 1px 60px;
+}
+div.utop form {
+    padding-top: 12px;
+    float: right;
+}
+div.utop h1 {
+    padding: 6px 0px 6px 0px;
+}
+div.ubottom {
+    border-top: 1px solid #e0e0e0;
+}
+div.ubottom form {
+    padding-top: 7px;
+    float: right;
+}
+/* Anuradha Unicode Tests
+-----------------------------------------*/
+
+th {
+    font-size: large;
+    background: #eee;
+padding: 10px;
+border-left: 1px #D8D8D8 solid;
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+}
+td.c {
+    font-size: 48px;
+    padding: 28px 0px;
+    text-align: center;
+    vertical-align: center;
+}
+td.u {
+    font-size: large;
+    font-family: 'Inconsolata', Lucida Console, Monaco, monospace !important;
+    text-align: left;
+    background: #F7F7F7;
+    padding-left: 20px;
+    vertical-align: center;
+}
+.unitest_set {
+    width: 100%;
+}
+.unitest_tb {
+    text-align: center;
+    float: left;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+}
+.unitest_tb tr {
+    clear: both;
+    float: none;
+    width: 960px;
+    overflow: hidden;
+    border-top: 1px solid #e0e0e0;
+    padding: 0;
+    white-space: nowrap;
+    margin: auto;
+}
+ul.uninav{
+    list-style: circle;
+    line-height: 1.5;
+} 
+ul.uninav li{
+    padding-top: 30px;
+}
+
+ul.uninav li a {
+    padding-top: 30px;
+    font-weight: bold;
+}
+
+ul.uninavbox{
+    list-style: none;
+    position: fixed;
+bottom: 0;
+} 
+ul.uninavbox li{
+   padding: 10px;
+float: left;
+    
+}
+
+
+ul.uninavbox li a {
+    font-size: 14px;
+    padding: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    text-decoration: none;
+background: #eee;
+margin-left: 10px;
+    
+}
