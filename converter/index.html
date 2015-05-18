@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://www.branah.com/unicode-converter -->
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" lang="en" style="display: block;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta charset="UTF-8">
+
+
+    <title>Unicode Converter</title>
+    
+    <script async="" src="analytics.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4450461-3', 'branah.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+    <div id="page">
+
+
+        <div class="main_content">
+
+            <h1>Unicode Converter</h1>
+
+            <p><input type="button" id="btntext" value="Convert" style="width:100px"> Unicode text<br>
+<textarea id="text" rows="4" cols="75" value="දැරණියගල පියදාස මාරියාවේ උපන්දා"></textarea><br><input type="button" id="separate" value="Add spaces" style="width:100px"><input type="button" id="combine" value="Remove spaces" style="margin-left:1em;width:100px"><label style="margin-left:1em"><input type="checkbox" id="whitespace"> Convert whitespace characters</label></p>
+
+<p><input type="button" id="btnunicode" value="Convert" style="width:100px"> Unicode (Example: \u0061 \u4e2d \u042f)<label style="margin-left:1em"><input type="checkbox" id="uplus"> Remove \u</label><br>
+<textarea id="unicode" rows="4" cols="75" value="\u0daf\u0dd0\u0dbb\u0dab\u0dd2\u0dba\u0d9c\u0dbd \u0db4\u0dd2\u0dba\u0daf\u0dcf\u0dc3 \u0db8\u0dcf\u0dbb\u0dd2\u0dba\u0dcf\u0dc0\u0dda \u0d8b\u0db4\u0db1\u0dca\u0daf\u0dcf"></textarea></p>
+
+
+
+           
+           
+            
+          
+        </div>
+        
+    </div>
+
+    <script src="jquery.min.js"></script>
+
+    <script>!window.jQuery && document.write('<script src="jquery.min.js"><\/script>');</script>
+
+    <script>
+var branah={};branah.util={keyCode:function(b){if(!b){var b=window.event}if($.browser.mozilla){var a=b.keyCode;switch(a){case 59:a=186;break;case 107:a=187;break;case 109:a=189;break}return a}if($.browser.opera){var a=b.keyCode;switch(a){case 59:a=186;break;case 61:a=187;break;case 109:a=189;break}return a}return b.keyCode},isCtrl:function(a){if(!a){var a=window.event}return a.ctrlKey},isAlt:function(a){if(!a){var a=window.event}return a.altKey},isShift:function(a){if(!a){var a=window.event}return a.shiftKey},isCaps:function(a){var b=this.keyCode(a);var c=this.isShift(a);if((b>=65&&b<=90&&!c)||(b>=97&&b<=122&&c)){return true}if((b>=65&&b<=90&&c)||(b>=97&&b<=122&&!c)){return false}return false},padLeft:function(b,a){if(!a||b.length>=a){return b}return Math.pow(10,a-b.length).toString().slice(1)+b},indexOf:function(a,d){var c=a.length;for(var b=0;b<c;b++){if(a[b]==d){return b}}return -1},keyOf:function(a,c){for(var b in a){if(b==="length"||!a.hasOwnProperty(b)){continue}if(a[b]==c){return b}}return null},insertAtCaret:function(a,f){var d=this.getSelectionStart(a);var b=this.getSelectionEnd(a);var c=a.value.length;a.value=a.value.substring(0,d)+f+a.value.substring(b,c);this.setCaretPosition(a,d+f.length,0)},deleteAtCaret:function(c,b,a){var g=this.getSelectionStart(c);var d=this.getSelectionEnd(c);var f=c.value.length;if(b>g){b=g}if(d+a>f){a=f-d}var h=c.value.substring(g-b,d+a);c.value=c.value.substring(0,g-b)+c.value.substring(d+a);this.setCaretPosition(c,g-b,0);return h},getSelectionStart:function(a){a.focus();if(a.selectionStart!==undefined){return a.selectionStart}else{if(document.selection){var b=document.selection.createRange();if(b==null){return 0}var d=a.createTextRange();var c=d.duplicate();d.moveToBookmark(b.getBookmark());c.setEndPoint("EndToStart",d);return c.text.length}}return 0},getSelectionEnd:function(a){a.focus();if(a.selectionEnd!==undefined){return a.selectionEnd}else{if(document.selection){var b=document.selection.createRange();if(b==null){return 0}var d=a.createTextRange();var c=d.duplicate();d.moveToBookmark(b.getBookmark());c.setEndPoint("EndToStart",d);return c.text.length+b.text.length}}return a.value.length},setCaretPosition:function(b,d,a){var c=b.value.length;if(d>c){d=c}if(d+a>c){a=c-a}b.focus();if(b.setSelectionRange){b.setSelectionRange(d,d+a)}else{if(b.createTextRange){var f=b.createTextRange();f.collapse(true);f.moveEnd("character",d+a);f.moveStart("character",d);f.select()}}b.focus()},selectAll:function(a){this.setCaretPosition(a,0,a.value.length)}};String.fromCharCodeS=function(){var d=arguments.length;var e="";var a,c,f;for(var b=0;b<d;b++){f=arguments[b];if(f<1114112&&65535<f){a=Math.floor((f-65536)/1024)+55296;c=((f-65536)%1024)+56320;e=e+String.fromCharCode(a,c)}else{if(f<65536){e=e+String.fromCharCode(f)}}}return e};$(document).ready(function(){$("#text").bind("keyup",function(a){convert(1)});$("#unicode").bind("keyup",function(a){convert(2)});$("#dec").bind("keyup",function(a){convert(3)});$("#btntext").bind("click",function(a){convert(1)});$("#btnunicode").bind("click",function(a){convert(2)});$("#btndec").bind("click",function(a){convert(3)});$("#whitespace").bind("click",function(a){convert(1)});$("#uplus").bind("click",function(a){convert(1)});$("#separate").bind("click",function(a){separate();convert(1)});$("#combine").bind("click",function(a){combine();convert(1)})});function convert(b){switch(b){case 1:var a=$("#text").attr("value");$("#unicode").attr("value",textToUnicode(a));$("#dec").attr("value",textToDec(a));break;case 2:var a=$("#unicode").attr("value");$("#text").attr("value",unicodeToText(a));$("#dec").attr("value",unicodeToDec(a));break;case 3:var a=$("#dec").attr("value");$("#text").attr("value",decToText(a));$("#unicode").attr("value",decToUnicode(a));break;default:break}}function isWhitespace(a){if(a==9||a==10||a==13||a==32){return true}return false}function separate(){var c=$("#text").attr("value");var f=c.length;if(f<2){return}var e=c.charCodeAt(0);var g=c.charAt(0);var a,d;for(var b=1;b<f;b++){if(isWhitespace(e)==false&&isWhitespace(c.charCodeAt(b))==false){a=c.charCodeAt(b-1);d=c.charCodeAt(b);if(a<56320&&55295<a&&d<57344&&56319<d){}else{g+=" "}}e=c.charCodeAt(b);g+=c.charAt(b)}$("#text").attr("value",g)}function combine(){var a=$("#text").attr("value");$("#text").attr("value",a.replace(/\u0020/g,""))}function textToUnicode(b){var d="";var c=b.length;for(var a=0;a<c;a++){if($("#whitespace").is(":checked")==false&&isWhitespace(b.charCodeAt(a))==true){d+=b.charAt(a)}else{if($("#uplus").is(":checked")==false){d+="\\u"}d+=branah.util.padLeft(b.charCodeAt(a).toString(16),4)}}return d}function textToDec(c){var f="";var e=c.length;var a,d;for(var b=0;b<e;b++){if($("#whitespace").is(":checked")==false&&isWhitespace(c.charCodeAt(b))==true){f+=c.charAt(b)}else{a=c.charCodeAt(b);if(a<56320&&55295<a&&(b+1)<e){d=c.charCodeAt(b+1);if(d<57344&&56319<d){a=((a-55296)*1024)+(d-56320)+65536;b++}}f+=branah.util.padLeft(a.toString(),"5")}}return f}function decToText(a){return a.replace(new RegExp("([0-6][0-4][0-9][0-9][0-9]|[0-6]5[0-4][0-9][0-9]|[0-6]55[0-2][0-9]|[0-6]553[0-5]|[0-9]{1,4})","g"),function(b,c){return String.fromCharCode(parseInt(c))})}function decToUnicode(a){return textToUnicode(decToText(a))}function unicodeToText(a){var b="";if($("#uplus").is(":checked")==false){b="\\\\u"}return a.replace(new RegExp(b+"([0-9a-fA-F]{4})","g"),function(c,d){return String.fromCharCode(parseInt(d,16))})}function unicodeToDec(a){return textToDec(unicodeToText(a))};
+        $(document).ready(function () {
+
+           
+
+          
+
+        });
+    </script>
