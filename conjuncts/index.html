@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd HTML 4.0 transitional//EN">
+<!-- saved from url=(0058)http://pathnirvana.org/custom/unicode_tools/pali_bandi.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  <title>Pali bandi Akuru Generator</title>
+
+	  <link rel="Stylesheet" href="http://pathnirvana.org/custom/unicode_tools/main.css">
+	  	<style type="text/css">
+
+		</style>
+	</head>
+
+	<body onload="javascript:loadFunc()">
+
+	<script language="javascript" type="text/javascript">
+	var text;
+	// the pairs currently supported by the iskoola potha font
+	var bandi = [
+		['ක', 'ක'],
+		['ක', 'ඛ'],
+		['ඛ', 'ව'],
+		['ග', 'ග'],
+		['ග', 'ඝ'],
+		['ඞ', 'ක'],
+		['ඞ', 'ඛ'],
+		['ඞ', 'ග'],
+		['ඞ', 'ඝ'],
+		['ච', 'ච'],
+		['ච', 'ඡ'],
+		['ජ', 'ජ'],
+		['ජ', 'ඣ'],
+		['ඤ', 'ච'],
+		['ඤ', 'ඡ'],
+		['ඤ', 'ජ'],
+		['ඤ', 'ඣ'],
+		['ඤ', 'ඤ'],
+		['ට', 'ට'],
+		['ට', 'ඨ'],
+		['ඩ', 'ඩ'],
+		['ඩ', 'ඪ'],
+		['ණ', 'ට'],
+		['ණ', 'ඨ'],
+		['ණ', 'ඩ'],
+		['ණ', 'ණ'],
+		['ණ', 'හ'],
+		['ත', 'ත'],
+		['ත', 'ව'],
+		['ද', 'ද'],
+		['ද', 'ධ'],
+		['ද', 'ව'],
+		['ධ', 'ව'],
+		['න', 'ත'],
+		['න', 'න'],
+		['න', 'හ'],
+		['ප', 'ප'],
+		['ප', 'ඵ'],
+		['බ', 'බ'],
+		['බ', 'භ'],
+		['ම', 'ප'],
+		['ම', 'ඵ'],
+		['ම', 'බ'],
+		['ම', 'භ'],
+		['ම', 'ම'],
+		['ම', 'හ'],
+		['ය', 'ය'],
+		['ය', 'හ'],
+		['ල', 'ල'],
+		['ල', 'හ'],
+		['ව', 'හ'],
+		['ස', 'ම'],
+		['ස', 'ව'],
+		['ස', 'ස'],
+		['හ', 'ම'],
+		['හ', 'ව'],
+		['ළ', 'හ']
+	];
+
+	function loadFunc() {
+		var testText = "නමෝතස්ස භගවතෝ අරහතෝ සම්මා සම්බුද්ධස්ස \n";
+		for (key in bandi.slice(5, 15)) {
+			var chars = bandi[key];
+			testText = testText + chars[0] + "\u0DCA" + chars[1] + "\u0DDD ";
+		}
+		document.txtBox.box1.value = testText;
+		startText();
+	}
+
+	function escapeRE(str) {
+	  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+	}
+
+	function startText() {
+		text = document.txtBox.box1.value;
+		for (key in bandi) {
+			var chars = bandi[key];
+			var re = new RegExp(escapeRE(chars[0] + "\u0DCA" + chars[1]), "g");
+			text = text.replace(re, chars[0] + "\u200D\u0DCA" + chars[1]);
+		}
+		// remove hal
+		if (document.txtBox.removeHal.checked) {
+			text = text.replace(new RegExp(escapeRE("\u0DDA"), 'g'), "\u0DD9");
+			text = text.replace(new RegExp(escapeRE("\u0DDD"), 'g'), "\u0DDC");
+		}
+		document.txtBox.box2.value=text;
+	}
+
+	function copyit(theField) {
+		var tempval=eval("document."+theField)
+		tempval.focus()
+		tempval.select()
+		therange=tempval.createTextrange()
+		therange.execCommand("Copy")
+	}
+	</script>
+
+	<center>
+	<table width="800">
+	  <tbody>
+		<tr>
+		  <td>
+			<br>
+			<table width="800" style="font-size: 16pt;" bgcolor="#EFEFE0">
+
+			</tbody></table>
+			<br>
+			<form name="txtBox">
+				<span class="TableText">
+				  Regular Typed in Unicode Input (<font face="Potha">ඔබ ඇතුල් කල අකුරු</font>)
+				</span>
+				<br>
+				<textarea onkeyup="startText();" style="font-size: 14pt; width: 800px; font-family:Potha" onclick="startText();" name="box1" rows="7" onselect="startText();"></textarea>
+				<input style="left: 700px; width: 100px; position: relative" type="reset" value="Reset">
+				<br>
+				<span class="TableText">
+					Conjunts (<font face="Potha">බැඳී අකුරු සහිතව</font>)
+				</span>
+				<br>
+				<label><input type="checkbox" name="removeHal" onclick="startText();" value="1" checked="">හල් කිරීම් ද ඉවත් කරන්න</label>
+				<br>
+				<textarea style="font-size: 14pt; width: 800px; font-family:UN-Abhaya" name="box2" rows="7"></textarea>
+				<input style="left: 700px; width: 100px; position: relative" onclick="copyit(&#39;txtBox.box2&#39;)" type="button" value="Copy">
+			</form>
+			<hr>
+			<center>
+			  <span class="p">
+				Published under GPL V3 with permission from © 2014 නිවන් මග - Path Nirvana (<a href="https://www.facebook.com/path.nirvana">www.facebook.com/path.nirvana</a>)
+			  </span>
+			  <br>
+			  <span class="p" style="color: red">
+				Report any conversion errors <a href="github.com/mooniak/sinhala-font-tools">on GitHub</a>			  </span>
+			</center>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+	</center>
