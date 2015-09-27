@@ -1,7 +1,7 @@
 safe: false
 lsi: false
 permalink: "/:categories/:title"
-baseurl:               /sinhala-font-tools
+baseurl:   /sinhala-font-tools
 
 # About/contact
 author:
