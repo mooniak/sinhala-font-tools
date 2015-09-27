@@ -1,4 +1,9 @@
-Copyright (C) 2015 Mooniak Pvt Ltd
+# sinhala-font-tools
+
+Simple html tools for various tasks around Sinhala fonts and unicode texts.
+
+
+    Copyright (C) 2015 Mooniak Pvt Ltd
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
