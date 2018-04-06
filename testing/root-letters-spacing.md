@@ -1,9 +1,10 @@
-**Root Letters - Groups - Testing Documents **
+**Root Letters - Groups - Testing Documents**
 
 Intro: This document is a collaborative effort to develop a standard
 workflow for Sinhala Font Development with good typographic practices.
 
 []{#anchor}1. Testing Words
+
 
 To develop a set of testing words we will have to look at different
 things to check on a font. Following the normal latin font development
@@ -13,6 +14,7 @@ we have to look in Sinhala font.
 (I Please Refer
 [*https://www.commarts.com/Columns.aspx?pub=10080&pageid=2224*](https://www.commarts.com/Columns.aspx?pub=10080&pageid=2224)
 for terms.)
+
 
 +-----------------+-----------------+-----------------+-----------------+
 | **Reason**      | **Letter**      | **Notes**       | **Reference**   |
