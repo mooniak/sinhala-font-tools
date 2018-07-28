@@ -1,11 +1,10 @@
-##Sinhala Font Glyph List and Classification
+## Sinhala Glyph List
 
-###Glyph Types
+### Glyph Types
 
-Sinhala font contain these different types of glyphs:
+Sinhala font may contain following types of glyphs.
 
-Unicode block
-
+**Sinhala Unicode block** 
   - Consonants 41
   - Independent vowels 16
   - Semi Consonants  2
@@ -14,7 +13,7 @@ Unicode block
   - Sinhala Astrological Numbers - 10
   - Kundaliya (Sinhala period sign)
 
-Other Glyphs
+**Other Glyphs** 
   - Rakar forms
   - Bandi Akuru (Conjunct consonant clusters)
   - Touching Consonant clusters (Touching conjuncts)
@@ -23,19 +22,14 @@ Other Glyphs
   - Conjunct consonants + modifiers
   - Touching consonants + modifiers
 
-Stylistic Alternates (Optional)
-
+**Stylistic Alternates(Optional)** 
   - Alternate Da forms
   - Horoscope Symbols
 
+**Extra glyphs**
+ - Stylistic swash sets
 
-Extra glyph ideas
-
- - Stylistic Swash Set
-
-
-From Latin
-
+**Basic Latin glyphs support* 
   - Punctuation, marks, and symbols
   - Mathematical symbols
   - Letters (for roman numbering)
@@ -47,8 +41,8 @@ From Latin
       - Superscript / Subscript
       - Fractions
       - Denominator
-
-
+      
+**Basic Latin glyphs support* 
 
 
 ### Sinhala fonts level definition by ICTA
@@ -56,6 +50,13 @@ From Latin
 Sinhala fonts are standardized into three different levels by ICTA, but this definition is only based on the functionality and it does not provide a clear identification of number of glyphs or coverage. We will try to define these here.			
 
 
-Level 1 fonts | Level 2 fonts | Level 3 fonts
-----|------|----
-These fonts commonly used vowels, consonants and consonants with modifiers and they are intended to be used in mobile devices. This level supports special characters such as yansaya,rakaransaya and repaya and “ක්ෂh” |These fonts shall have all the features of level one font and additionally support existing combination of Sinhala consonants with repaya. These fonts are intended for general applications such as documents and books.  | These fonts support special characters such as ඏ and ඐ and also support all combinations of strokes with conjuncts including “repaya+ispilla” combinations. Touching letters are also supported. These are intended for advanced publications and printing applications which supports pali and Sanskrit scripts and historic documents.
+**Level 1 fonts**
+
+These fonts commonly used vowels, consonants and consonants with modifiers and they are intended to be used in mobile devices. This level supports special characters such as yansaya,rakaransaya and repaya and “ක්ෂ”**
+
+**Level 2 fonts** 
+These fonts shall have all the features of level one font and additionally support existing combination of Sinhala consonants with repaya. These fonts are intended for general applications such as documents and books.  
+
+**Level 3 fonts**
+
+These fonts support special characters and all combinations of strokes with conjuncts including “repaya+ispilla” combinations and touching conjuncts. These fonts fully support Pali and Sanskrit langauges and are intended for historic or classical Sinhala documents.
