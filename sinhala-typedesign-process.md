@@ -11,7 +11,9 @@ This document is an effort to document effective workflows for Sinhala font deve
 [Sinhala Types](https://github.com/textualworks/sinhala-types)
 
 
-### Sinhala letterforms
+### Groups
+
+#### Groups
 
 ග - ග ඟ හ ශ භ න ක ත ණ ඣ ඤ ඥ
 
@@ -21,7 +23,7 @@ This document is an effort to document effective workflows for Sinhala font deve
 
 බ - බ ඛ
 
-ය - ජ ඡ ප ස ෂ ය ඦ ෆ ඍ ඎ ඏ ඐ
+ප - ජ ඡ ය ස ෂ ය ඦ ෆ ඍ ඎ ඏ ඐ
 
 උ - අ ඉ ද ඳ ල ළ උ
 
@@ -29,6 +31,16 @@ This document is an effort to document effective workflows for Sinhala font deve
 
 ග්‍රි - ක්‍රී ප්‍රී ච්‍රී දු ශ්‍රී
 
+#### Features
+
+ක ත න
+ග ඟ හ ශ භ ඦ ඤ ඥ ඬ ඳ ඏ 
+භ ස ඝ එ ච ඩ ඪ
+ට ධ ඛ බ ම ඹ ඔ 
+ඕ
+එ - එ ඒ ඵ ඪ ඵ ඨ
+ ය ෆ ර ඊ ල ඉ ළ
+අ ප ඵ ෂ හ ව ද ඡ ජ උ
 
 ## Root letters and derived
 
