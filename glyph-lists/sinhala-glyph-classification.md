@@ -29,7 +29,7 @@ Sinhala font may contain following types of glyphs.
 **Extra glyphs**
  - Stylistic swash sets
 
-**Basic Latin glyphs support* 
+**Basic Latin glyphs support** 
   - Punctuation, marks, and symbols
   - Mathematical symbols
   - Letters (for roman numbering)
@@ -53,6 +53,7 @@ Sinhala fonts are standardized into three different levels by ICTA, but this def
 **Level 1 fonts**
 
 These fonts commonly used vowels, consonants and consonants with modifiers and they are intended to be used in mobile devices. This level supports special characters such as yansaya,rakaransaya and repaya and “ක්ෂ”**
+
 
 **Level 2 fonts** 
 These fonts shall have all the features of level one font and additionally support existing combination of Sinhala consonants with repaya. These fonts are intended for general applications such as documents and books.  
