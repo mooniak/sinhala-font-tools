@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>Unicode Regex Finder (Sinhala)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    input, select, textarea, button {
+      padding: 0.5rem;
+      margin: 0.3rem 0;
+      font-size: 1rem;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+    .results {
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      background: #f9f9f9;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .btn-group button {
+      margin-right: 0.5rem;
+    }
+    .info {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sinhala Unicode Regex Tool</h1>
+
+  <label>Load .txt file (one word per line or paragraphs):</label>
+  <input type="file" id="fileInput"><br>
+
+  <label>Regex pattern (type or select):</label><br>
+  <select id="presetSelect">
+    <option value="">-- Choose a Unicode sequence --</option>
+    <option value="\u0dca\u200d">කන්‍යා යෝජනාව (ZWJ + ්)</option>
+    <option value="\u0dbb\u0dca\u200d\u0dbb">ර්‍ර</option>
+    <option value="\u0dbb\u0dca">ර්</option>
+  </select><br>
+  <input type="text" id="regexInput" placeholder="Enter Unicode regex" size="50">
+
+  <div>
+    <label><input type="checkbox" id="wholeWord"> Match whole word only</label>
+  </div>
+
+  <div class="info">Final regex: <code id="regexPreview">/ /</code></div>
+
+  <button onclick="runSearch()">Search</button>
+
+  <h3>Matched Results (<span id="matchCount">0</span>)</h3>
+  <div class="results" id="resultsBox"></div>
+
+  <div class="btn-group">
+    <button onclick="copyResults()">Copy Results</button>
+    <button onclick="exportResults()">Export .txt</button>
+  </div>
+
+  <script>
+    let fileContent = "";
+
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        fileContent = e.target.result;
+        alert("File loaded: " + file.name);
+      };
+      reader.readAsText(file, "UTF-8");
+    });
+
+    const preset = document.getElementById('presetSelect');
+    const input = document.getElementById('regexInput');
+    preset.addEventListener('change', () => {
+      if (preset.value) {
+        input.value = preset.value;
+        updateRegexPreview();
+      }
+    });
+
+    input.addEventListener('input', updateRegexPreview);
+    document.getElementById('wholeWord').addEventListener('change', updateRegexPreview);
+
+    function updateRegexPreview() {
+      let pattern = input.value.trim();
+      const wholeWord = document.getElementById('wholeWord').checked;
+      if (wholeWord) {
+        pattern = `\\b${pattern}\\b`;
+      }
+      try {
+        new RegExp(pattern, 'gu'); // test regex
+        document.getElementById('regexPreview').textContent = `/${pattern}/gu`;
+      } catch (e) {
+        document.getElementById('regexPreview').textContent = 'Invalid regex';
+      }
+    }
+
+    function runSearch() {
+      if (!fileContent) {
+        alert("Please load a .txt file first.");
+        return;
+      }
+
+      let pattern = input.value.trim();
+      const wholeWord = document.getElementById('wholeWord').checked;
+      if (!pattern) {
+        alert("Enter a regex pattern.");
+        return;
+      }
+      if (wholeWord) {
+        pattern = `\\b${pattern}\\b`;
+      }
+
+      let regex;
+      try {
+        regex = new RegExp(pattern, 'gu');
+      } catch (e) {
+        alert("Invalid regex.");
+        return;
+      }
+
+      const lines = fileContent.split(/\r?\n/);
+      const matches = lines.filter(line => regex.test(line));
+      document.getElementById('resultsBox').textContent = matches.join('\n');
+      document.getElementById('matchCount').textContent = matches.length;
+    }
+
+    function copyResults() {
+      const text = document.getElementById('resultsBox').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Results copied to clipboard.");
+      });
+    }
+
+    function exportResults() {
+      const text = document.getElementById('resultsBox').textContent;
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'regex_results.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize preview on load
+    updateRegexPreview();
+  </script>
+</body>
+</html>

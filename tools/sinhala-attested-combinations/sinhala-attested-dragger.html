@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>Sinhala Compound Letter Chart</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; overflow: visible; }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    th { background-color: #f0f0f0; position: relative; }
+    td:hover { background-color: #f0f8ff; }
+
+    .combo {
+      position: relative;
+      display: inline-block;
+      font-size: 1em;
+      transition: transform 0.2s, background-color 0.2s;
+      transform-origin: center;
+    }
+
+    .combo:hover {
+      transform: scale(2);
+      z-index: 1;
+    }
+
+    .tooltip-box {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: left;
+      padding: 6px 10px;
+      border-radius: 4px;
+      position: absolute;
+      z-index: 1000;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: pre-wrap;
+      font-size: 0.3em;
+      max-width: 3982px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .combo:hover .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .tooltip-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #333 transparent transparent transparent;
+    }
+
+    .tooltip-char { color: #8be9fd; }
+    .tooltip-equal { color: #f1fa8c; }
+    .tooltip-unicode { color: #ffb86c; }
+    .tooltip-type { color: #bd93f9; font-weight: bold; display: block; margin-bottom: 4px; }
+    .copy-btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 2px 6px;
+      font-size: 0.7em;
+      cursor: pointer;
+      background: #ddd;
+      border: none;
+      border-radius: 0 0 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Sinhala Compound Letter Combinations Generator</h2>
+<p>Hover over each cell to see Unicode info and type. Click a cell to copy the letter combination.</p>
+<p><strong>Drag and drop a Sinhala font file (.ttf, .otf, .woff) anywhere on this page to test it.</strong></p>
+
+<table id="chart"></table>
+
+<script>
+  const consonants = "කඛගඝඞඟචඡජඣඤඥඦටඨඩඪණඬතථදධනඳපඵබභමඹයරලවශෂසහළෆ".split('');
+  const conjunctPairs = [
+    ["ක", "ව"], ["ක", "ෂ"], ["ත", "ථ"], ["ත", "ව"], ["න", "ථ"], ["න", "ද"], ["න", "ධ"],
+    ["ග", "ධ"], ["ට", "ඨ"], ["ද", "ධ"], ["ද", "ව"], ["න", "ව"], ["ඞ", "ග"], ["ච", "ච"],
+    ["ඤ", "ච"], ["ඤ", "ඡ"], ["ඤ", "ජ"], ["ණ", "ඩ"], ["බ", "බ"], ["ම", "බ"]
+  ];
+  const conjuncts = conjunctPairs.map(([c1, c2]) => c1 + "්\u200D" + c2);
+
+  const baseLetters = [...consonants, ...conjuncts];
+  const vowelMarks = ["", "ා", "ැ", "ෑ", "ි", "ී", "ු", "ූ", "ෘ", "ෙ", "ේ", "ෛ", "ො", "ෝ", "ෞ", "ෟ"];
+  const compoundSigns = ["්‍ර", "ර්‍", "්‍ය"];
+
+  const rakaransayaExceptions = new Set(["ඞ", "ඳ", "ඞ්‍ග"]);
+  const repayaExceptions = new Set(["ඤ", "ඬ", "ක්‍ෂ", "ඞ්‍ග"]);
+  const yansayaExceptions = new Set(["ඥ", "ඹ", "ඤ්‍ජ"]);
+
+  const chart = document.getElementById("chart");
+
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+  headRow.appendChild(document.createElement("th"));
+  [...vowelMarks, ...compoundSigns].forEach((mark, i) => {
+    const th = document.createElement("th");
+    th.textContent = mark || "(none)";
+    const btn = document.createElement("button");
+    btn.textContent = "📋";
+    btn.className = "copy-btn";
+    btn.onclick = () => copyColumn(i);
+    th.appendChild(btn);
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  chart.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+
+  baseLetters.forEach((base, rowIndex) => {
+    const row = document.createElement("tr");
+    const th = document.createElement("th");
+    th.textContent = base;
+    const btn = document.createElement("button");
+    btn.textContent = "📋";
+    btn.className = "copy-btn";
+    btn.onclick = () => copyRow(rowIndex);
+    th.appendChild(btn);
+    row.appendChild(th);
+
+    [...vowelMarks, ...compoundSigns].forEach(mark => {
+      const td = document.createElement("td");
+      let combo = "", skip = false, type = "";
+
+      if (mark === "්‍ර") {
+        if (rakaransayaExceptions.has(base)) {
+          td.textContent = "×";
+          td.style.color = "red";
+          skip = true;
+        } else {
+          combo = base + mark;
+          type = "Compound (Rakaransaya)";
+        }
+      } else if (mark === "ර්‍") {
+        if (repayaExceptions.has(base)) {
+          td.textContent = "×";
+          td.style.color = "red";
+          skip = true;
+        } else {
+          combo = mark + base;
+          type = "Compound (Repaya)";
+        }
+      } else if (mark === "්‍ය") {
+        if (yansayaExceptions.has(base)) {
+          td.textContent = "×";
+          td.style.color = "red";
+          skip = true;
+        } else {
+          combo = base + mark;
+          type = "Compound (Yansaya)";
+        }
+      } else {
+        combo = base + mark;
+        type = conjuncts.includes(base) ? "Ligated Conjunct + Vowel" : "Consonant + Vowel";
+      }
+
+      if (!skip) {
+        const div = document.createElement("div");
+        div.className = "combo";
+
+        const span = document.createElement("span");
+        span.textContent = combo;
+        span.className = "combo-text";
+
+        const tooltip = document.createElement("div");
+        tooltip.className = "tooltip-box";
+
+        const chars = combo.split("").map(c => `<span class='tooltip-char'>${c}</span>`);
+        const unicodeParts = combo.split("").map(c => `<span class='tooltip-unicode'>U+${c.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0')}</span>`);
+
+        tooltip.innerHTML =
+          `<span class='tooltip-type'>${type}</span>` +
+          `${chars.join(' + ')} <span class='tooltip-equal'>=</span> <span class='tooltip-char'>${combo}</span><br>` +
+          `${unicodeParts.join(' + ')}`;
+
+        div.appendChild(span);
+        div.appendChild(tooltip);
+        td.appendChild(div);
+      }
+
+      row.appendChild(td);
+    });
+
+    tbody.appendChild(row);
+  });
+
+  chart.appendChild(tbody);
+
+  chart.addEventListener('click', function (e) {
+    const target = e.target.closest('td');
+    if (!target) return;
+    const comboSpan = target.querySelector('.combo-text');
+    if (comboSpan) {
+      const text = comboSpan.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        comboSpan.style.backgroundColor = '#c6f6d5';
+        setTimeout(() => {
+          comboSpan.style.backgroundColor = '';
+        }, 500);
+      });
+    }
+  });
+
+  function copyRow(index) {
+    const row = chart.rows[index + 1];
+    const combos = Array.from(row.cells).slice(1).map(td => {
+      const span = td.querySelector('.combo-text');
+      return span ? span.textContent : "";
+    }).filter(Boolean);
+    navigator.clipboard.writeText(combos.join(" "));
+  }
+
+  function copyColumn(index) {
+    const combos = Array.from(chart.rows).slice(1).map(row => {
+      const td = row.cells[index + 1];
+      const span = td.querySelector('.combo-text');
+      return span ? span.textContent : "";
+    }).filter(Boolean);
+    navigator.clipboard.writeText(combos.join(" "));
+  }
+
+  // Font drag-and-drop
+  document.body.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "copy";
+  });
+
+  document.body.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.name.match(/\.(ttf|otf|woff2?)$/i)) {
+      alert("Please drop a valid font file (.ttf, .otf, .woff)");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const font = new FontFace("CustomFont", event.target.result);
+      font.load().then(function(loadedFont) {
+        document.fonts.add(loadedFont);
+        document.body.style.fontFamily = "CustomFont, sans-serif";
+        alert("Custom font applied!");
+      }).catch(() => alert("Failed to load font."));
+    };
+    reader.readAsArrayBuffer(file);
+  });
+</script>
+
+</body>
+</html>
