@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinhala Compound Letter Chart</title>
+  <style>
+    /* Base styles and typography */
+    :root {
+      --primary-color: #6366f1;
+      --primary-light: #e0e7ff;
+      --secondary-color: #f97316;
+      --secondary-light: #ffedd5;
+      --neutral-50: #f8fafc;
+      --neutral-100: #f1f5f9;
+      --neutral-200: #e2e8f0;
+      --neutral-300: #cbd5e1;
+      --neutral-600: #475569;
+      --neutral-700: #334155;
+      --neutral-800: #1e293b;
+      --neutral-900: #0f172a;
+      --success-light: #dcfce7;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --radius-sm: 0.25rem;
+      --radius-md: 0.375rem;
+      --transition-all: all 0.2s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      font-family: var(--font-sans);
+      background-color: var(--neutral-50);
+      color: var(--neutral-800);
+      line-height: 1.5;
+      padding: 0;
+      margin: 0;
+      transition: margin-left 0.3s;
+    }
+    
+    h2 {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
+      color: var(--neutral-900);
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      color: var(--neutral-700);
+    }
+    
+    /* Layout */
+    #main {
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    body.sidebar-open {
+      margin-left: 320px;
+    }
+    
+    /* Table styles */
+    table { 
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      margin-top: 1.5rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      background-color: white;
+      table-layout: fixed; /* Fixed table layout for consistent cell sizing */
+    }
+    
+    th, td {
+      padding: 0.75rem 0.25rem; /* Reduced horizontal padding */
+      text-align: center;
+      position: relative;
+      vertical-align: middle;
+      min-width: 2.5rem; /* Minimum width for cells */
+      height: 3.5rem; /* Fixed height for all cells */
+    }
+    
+    th {
+      background-color: var(--neutral-100);
+      color: var(--neutral-700);
+      font-weight: 600;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    
+    td {
+      border-bottom: 1px solid var(--neutral-200);
+      transition: var(--transition-all);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr {
+      transition: var(--transition-all);
+    }
+    
+    tr:hover {
+      background-color: var(--neutral-100);
+    }
+    
+    /* Different row types */
+    .consonant-row th {
+      color: var(--neutral-700);
+    }
+    
+    .ligated-conjunct-row th {
+      color: var(--primary-color);
+      background-color: var(--primary-light);
+    }
+    
+    .touching-cluster-row th {
+      color: var(--secondary-color);
+      background-color: var(--secondary-light);
+    }
+    
+    /* Character display */
+    .combo {
+      position: relative;
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-all);
+      cursor: pointer;
+      font-size: 1.5rem; /* Increase font size for all letters */
+    }
+    
+    .combo:hover {
+      transform: scale(1.5);
+      z-index: 10;
+      background-color: var(--neutral-100);
+    }
+    
+    /* Exception styling */
+    td[style*="color: #ef4444"] {
+      color: #ef4444 !important;
+      font-weight: 700;
+      font-size: 1.75rem; /* Make exception X larger */
+    }
+    
+    .exception-cell {
+      color: #ef4444 !important;
+    }
+    
+    .exception-cell .combo {
+      color: #ef4444;
+      font-weight: 600;
+    }
+    
+    /* Tooltips */
+    .tooltip-box {
+      visibility: hidden;
+      background-color: var(--neutral-800);
+      color: white;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      position: absolute;
+      z-index: 1000;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      white-space: pre-wrap;
+      font-size: 0.8125rem;
+      opacity: 0;
+      transition: opacity 0.2s, visibility 0.2s;
+      pointer-events: none;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .combo:hover .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .tooltip-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -0.375rem;
+      border-width: 0.375rem;
+      border-style: solid;
+      border-color: var(--neutral-800) transparent transparent transparent;
+    }
+    
+    .tooltip-char { color: #93c5fd; }
+    .tooltip-equal { color: #fef08a; }
+    .tooltip-unicode { color: #fdba74; }
+    .tooltip-type { 
+      color: #c4b5fd; 
+      font-weight: 500; 
+      display: block; 
+      margin-bottom: 0.25rem;
+      font-size: 0.875rem;
+    }
+    
+    /* Buttons */
+    .button {
+      padding: 0.5rem 0.875rem;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: var(--transition-all);
+      background-color: var(--primary-color);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+    
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
+    .button:active {
+      transform: translateY(0);
+    }
+    
+    .copy-btn {
+      position: absolute;
+      top: 0.25rem;
+      right: 0.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50%;
+      background-color: var(--neutral-200);
+      color: var(--neutral-600);
+      font-size: 0.75rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: var(--transition-all);
+    }
+    
+    .copy-btn:hover {
+      opacity: 1;
+      background-color: var(--neutral-300);
+    }
+    
+    /* Controls panel */
+    .controls-panel {
+      background-color: white;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .sort-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    
+    .sort-controls select {
+      padding: 0.5rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--neutral-300);
+      background-color: white;
+      color: var(--neutral-700);
+      font-size: 0.875rem;
+    }
+    
+    .sort-controls select:focus {
+      outline: 2px solid var(--primary-light);
+      border-color: var(--primary-color);
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: white;
+      overflow-x: hidden;
+      overflow-y: auto;
+      transition: 0.3s;
+      box-shadow: var(--shadow-md);
+      padding-top: 3.5rem;
+    }
+    
+    .sidebar.open {
+      width: 320px;
+    }
+    
+    .sidebar-content {
+      padding: 0 1.5rem 2rem 1.5rem;
+    }
+    
+    .sidebar-section {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    
+    .sidebar-section:last-child {
+      border-bottom: none;
+    }
+    
+    .sidebar-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .sidebar .closebtn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--neutral-600);
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition-all);
+    }
+    
+    .sidebar .closebtn:hover {
+      background-color: var(--neutral-100);
+      color: var(--neutral-900);
+    }
+    
+    .openbtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background-color: white;
+      color: var(--neutral-700);
+      padding: 0.625rem 1rem;
+      border: 1px solid var(--neutral-300);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition-all);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .openbtn:hover {
+      background-color: var(--neutral-100);
+      color: var(--neutral-900);
+    }
+    
+    /* Copy options */
+    .copy-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      margin: 1rem 0;
+    }
+    
+    .copy-option {
+      display: flex;
+      align-items: center;
+    }
+    
+    .copy-option label {
+      margin-left: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--neutral-700);
+    }
+    
+    .copy-option input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+    
+    .sidebar-button {
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      margin: 0.25rem 0;
+      background-color: var(--neutral-100);
+      color: var(--neutral-700);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: var(--transition-all);
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+    
+    .sidebar-button:hover {
+      background-color: var(--primary-light);
+      color: var(--primary-color);
+    }
+    
+    /* Collapsible sections */
+    .collapsible {
+      background-color: var(--neutral-100);
+      color: var(--neutral-700);
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 0.875rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      transition: var(--transition-all);
+    }
+    
+    .active, .collapsible:hover {
+      background-color: var(--primary-light);
+      color: var(--primary-color);
+    }
+    
+    .collapsible:after {
+      content: '+';
+      color: inherit;
+      font-weight: bold;
+      float: right;
+      margin-left: 0.5rem;
+      transition: var(--transition-all);
+    }
+    
+    .active:after {
+      content: "−";
+    }
+    
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      margin-bottom: 0.75rem;
+      padding: 0 0.5rem;
+    }
+    
+    .collapsible-content p {
+      margin: 0.5rem 0;
+      font-size: 0.875rem;
+      color: var(--neutral-600);
+    }
+    
+    .collapsible-content p strong {
+      color: var(--neutral-800);
+    }
+  </style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+  <button class="closebtn" onclick="closeNav()">×</button>
+  <div class="sidebar-content">
+    <div class="sidebar-section">
+      <h3>About This Tool</h3>
+      <p>This tool helps visualize and explore Sinhala compound letter combinations. It shows how consonants combine with vowel marks and special conjunct forms.</p>
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>Copy Options</h3>
+      <div class="copy-options">
+        <div class="copy-option">
+          <input type="checkbox" id="copy-consonants-checkbox" checked>
+          <label for="copy-consonants-checkbox">Include Consonant Combinations</label>
+        </div>
+        <div class="copy-option">
+          <input type="checkbox" id="copy-ligated-checkbox" checked>
+          <label for="copy-ligated-checkbox">Include Ligated Conjunct Combinations</label>
+        </div>
+        <div class="copy-option">
+          <input type="checkbox" id="copy-touching-checkbox" checked>
+          <label for="copy-touching-checkbox">Include Touching Cluster Combinations</label>
+        </div>
+        <div class="copy-option">
+          <input type="checkbox" id="show-exceptions-checkbox" checked>
+          <label for="show-exceptions-checkbox">Show Exceptions as "×"</label>
+        </div>
+      </div>
+      
+      <button class="sidebar-button" id="copy-selected">Copy Selected Combinations</button>
+      <button class="sidebar-button" id="copy-consonants-btn">Copy Consonant Combinations Only</button>
+      <button class="sidebar-button" id="copy-ligated-btn">Copy Ligated Conjunct Combinations Only</button>
+      <button class="sidebar-button" id="copy-touching-btn">Copy Touching Cluster Combinations Only</button>
+      <button class="sidebar-button" id="copy-all-btn">Copy All Combinations</button>
+    </div>
+    
+    <button class="collapsible">How to Use</button>
+    <div class="collapsible-content">
+      <p>• <strong>Hover</strong> over any cell to see detailed Unicode information</p>
+      <p>• <strong>Click</strong> on any cell to copy that character combination</p>
+      <p>• Use the <strong>sorting options</strong> to reorganize the chart</p>
+      <p>• Use the <strong>copy buttons</strong> to copy different categories of combinations</p>
+      <p>• <strong>Drag and drop</strong> a Sinhala font file onto the page to test it</p>
+    </div>
+    
+    <button class="collapsible">Letter Types</button>
+    <div class="collapsible-content">
+      <p><strong>Regular Consonants</strong> - White background rows</p>
+      <p><strong>Ligated Conjuncts</strong> - Light blue background rows (with ZWJ)</p>
+      <p><strong>Touching Consonant Clusters</strong> - Light red background rows (common combinations)</p>
+      <p>The chart displays various ways these can combine with vowel marks.</p>
+    </div>
+    
+    <button class="collapsible">Special Forms</button>
+    <div class="collapsible-content">
+      <p><strong>Rakaransaya (්‍ර)</strong> - Compound form with a following "ra"</p>
+      <p><strong>Repaya (ර්‍)</strong> - Compound form with a preceding "ra"</p>
+      <p><strong>Yansaya (්‍ය)</strong> - Compound form with a following "ya"</p>
+      <p>Some combinations are not possible (marked with × in red)</p>
+    </div>
+    
+    <button class="collapsible">Credits</button>
+    <div class="collapsible-content">
+      <p>Created by: [Your Name]</p>
+      <p>Enhanced with additional features: [Date]</p>
+      <p>Font rendering: Browser's native Sinhala support</p>
+      <p>Special thanks to Sinhala typography experts and the Unicode Consortium.</p>
+    </div>
+  </div>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ Settings</button>
+  
+  <h2>Sinhala Compound Letter Chart</h2>
+  <p>Hover over any letter to see details. Click to copy.</p>
+
+  <div class="controls-panel">
+    <div class="sort-controls">
+      <label for="sort-order">Sort by:</label>
+      <select id="sort-order">
+        <option value="default">Default Order</option>
+        <option value="alphabetical">Alphabetical Order</option>
+        <option value="frequency">Frequency of Use</option>
+        <option value="phonetic">Phonetic Groups</option>
+        <option value="uMatra">u Matra</option>
+      </select>
+      <button class="button" id="apply-sort">Apply</button>
+    </div>
+  </div>
+
+  <table id="chart"></table>
+</div>
+
+<!-- Include the JavaScript files -->
+<script src="sinhala-definitions.js"></script>
+<script src="sinhala-sorting.js"></script>
+
+</body>
+</html>
