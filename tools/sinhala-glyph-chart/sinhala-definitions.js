@@ -7,16 +7,16 @@ const originalConsonants = "කඛගඝඞඟචඡජඣඤඥඦටඨඩඪ�
 // Current consonants - will be updated when sort order changes
 let consonants = [...originalConsonants];
 
-// Vowel marks and compound signs
+// Vowel signs and compound signs
 const vowelMarks = ["", "ා", "ැ", "ෑ", "ි", "ී", "ු", "ූ", "ෘ", "ෙ", "ේ", "ෛ", "ො", "ෝ", "ෞ", "ෟ", "්"];
 const compoundSigns = ["්‍ර", "ර්‍", "්‍ය"];
 
 // Define exceptions for special compound forms
 const rakaransayaExceptions = new Set(["ඞ", "ඟ", "ඡ", "ජ", "ඤ", "ඥ", "ඨ", "ඪ", "ණ", "ඬ", "ථ", "න", "ඳ", "ඵ", "ඹ", "ය", "ර", "ල", "ළ", "ඞ්‍ග"]);
-const repayaExceptions = new Set(["ඤ", "ඬ", "ක්‍ෂ", "ඞ්‍ග"]);
+const repayaExceptions = new Set(["ඤ", "ඬ", "ර", "ක්‍ෂ", "ඞ්‍ග"]);
 const yansayaExceptions = new Set(["ඥ", "ඹ", "ඤ්‍ජ"]);
 
-// Ligated conjunct pairs with optimized definition
+// Ligated conjunct pairs
 const conjunctMap = {
   'ක': ['ව', 'ෂ'],
   'ත': ['ථ', 'ව'],
@@ -40,12 +40,12 @@ Object.entries(conjunctMap).forEach(([first, seconds]) => {
   });
 });
 
-// New touching consonant clusters with optimized definition and sorted by codepoint order
+// Touching consonant clusters
 const touchingClusterMap = {
   'ක': ['ක', 'ඛ', 'ත', 'ම', 'න'],
   'ග': ['ග', 'ඝ'],
-  'ඞ': ['ඞ','ක', 'ග', 'ඝ'],
-  'ච': ['ච','ඡ'],
+  'ඞ': ['ඞ', 'ක', 'ග', 'ඝ'],
+  'ච': ['ච', 'ඡ'],
   'ජ': ['ජ', 'ඣ'],
   'ඤ': ['ච', 'ඤ'],
   'ට': ['ට', 'ඨ'],
@@ -54,10 +54,10 @@ const touchingClusterMap = {
   'ත': ['ත', 'ථ', 'ම', 'ව'],
   'ද': ['ද', 'ධ', 'ව'],
   'න': ['න', 'ට', 'ත', 'ද', 'ධ', 'ථ', 'ව', 'හ'],
-  'ප': ['ප','ත', 'ඵ', 'බ', 'ද', 'හ'],
-  'බ': ['බ', 'ද','භ'],
+  'ප': ['ප', 'ත', 'ඵ', 'බ', 'ද', 'හ'],
+  'බ': ['බ', 'ද', 'භ'],
   'ම': ['ම', 'හ', 'ඵ', 'බ', 'ව', 'ප', 'ද', 'භ'],
-  'ල': ['ල','ව'],
+  'ල': ['ල', 'ව'],
   'ව': ['හ'],
   'ශ': ['ට'],
   'ස': ['ස', 'ත', 'ව'],
@@ -93,15 +93,15 @@ let baseLetters = [...consonants, ...conjuncts, ...touchingClusters];
 function renderChart() {
   const chart = document.getElementById("chart");
   chart.innerHTML = ''; // Clear existing table
-  
+
   const thead = document.createElement("thead");
   const headRow = document.createElement("tr");
-  
+
   // Create the first header cell with "Base Letter" text
   const baseLetterHeader = document.createElement("th");
   baseLetterHeader.textContent = "Base Letter";
   headRow.appendChild(baseLetterHeader);
-  
+
   // Add the rest of the header cells for vowel marks and compound signs
   [...vowelMarks, ...compoundSigns].forEach((mark, i) => {
     const th = document.createElement("th");
@@ -131,7 +131,7 @@ function renderChart() {
   baseLetters.forEach((base, rowIndex) => {
     const row = document.createElement("tr");
     row.className = getRowType(base);
-    
+
     const th = document.createElement("th");
     th.textContent = base;
     const btn = document.createElement("button");
@@ -212,29 +212,29 @@ function renderChart() {
         const span = document.createElement("span");
         span.textContent = combo;
         span.className = "combo-text";
-        
+
         // Apply direct styling for exceptions when showing the actual characters
-        if (!showExceptions && 
-            ((mark === "්‍ර" && rakaransayaExceptions.has(base)) || 
-             (mark === "ර්‍" && repayaExceptions.has(base)) || 
-             (mark === "්‍ය" && yansayaExceptions.has(base)))) {
+        if (!showExceptions &&
+          ((mark === "්‍ර" && rakaransayaExceptions.has(base)) ||
+            (mark === "ර්‍" && repayaExceptions.has(base)) ||
+            (mark === "්‍ය" && yansayaExceptions.has(base)))) {
           span.style.color = "#ef4444";
           span.style.fontWeight = "bold";
         }
 
         const tooltip = document.createElement("div");
         tooltip.className = "tooltip-box";
-        
+
         // Format characters for display, add ZWJ label if present
         const chars = [];
         const unicodeParts = [];
-        
+
         for (const c of combo.split("")) {
           chars.push(`<span class='tooltip-char'>${c}</span>`);
-          
+
           // Check if character is ZWJ (U+200D)
           if (c === '\u200D') {
-            chars[chars.length-1] = `<span class='tooltip-char'>ZWJ</span>`;
+            chars[chars.length - 1] = `<span class='tooltip-char'>ZWJ</span>`;
             unicodeParts.push(`<span class='tooltip-unicode'>200D</span>`);
           } else {
             unicodeParts.push(`<span class='tooltip-unicode'>${c.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0')}</span>`);
@@ -266,23 +266,23 @@ function copyRow(index) {
   const row = chart.rows[index + 1];
   const rowType = row.className;
   const combos = [];
-  
+
   // Get checked options status
   const includeConsonants = document.getElementById('copy-consonants-checkbox').checked;
   const includeLigated = document.getElementById('copy-ligated-checkbox').checked;
   const includeTouching = document.getElementById('copy-touching-checkbox').checked;
-  
+
   // Only add to combos if the row type matches checked options
-  if ((rowType === 'consonant-row' && includeConsonants) || 
-      (rowType === 'ligated-conjunct-row' && includeLigated) || 
-      (rowType === 'touching-cluster-row' && includeTouching)) {
-    
+  if ((rowType === 'consonant-row' && includeConsonants) ||
+    (rowType === 'ligated-conjunct-row' && includeLigated) ||
+    (rowType === 'touching-cluster-row' && includeTouching)) {
+
     Array.from(row.cells).slice(1).forEach(td => {
       const span = td.querySelector('.combo-text');
       if (span) combos.push(span.textContent);
     });
   }
-  
+
   if (combos.length > 0) {
     navigator.clipboard.writeText(combos.join(" "));
     alert(`Copied ${combos.length} combinations from this row to clipboard!`);
@@ -294,24 +294,24 @@ function copyRow(index) {
 function copyColumn(index) {
   const chart = document.getElementById("chart");
   const combos = [];
-  
+
   // Get checked options status
   const includeConsonants = document.getElementById('copy-consonants-checkbox').checked;
   const includeLigated = document.getElementById('copy-ligated-checkbox').checked;
   const includeTouching = document.getElementById('copy-touching-checkbox').checked;
-  
+
   Array.from(chart.rows).slice(1).forEach(row => {
     // Only add to combos if the row type matches checked options
-    if ((row.className === 'consonant-row' && includeConsonants) || 
-        (row.className === 'ligated-conjunct-row' && includeLigated) || 
-        (row.className === 'touching-cluster-row' && includeTouching)) {
-      
+    if ((row.className === 'consonant-row' && includeConsonants) ||
+      (row.className === 'ligated-conjunct-row' && includeLigated) ||
+      (row.className === 'touching-cluster-row' && includeTouching)) {
+
       const td = row.cells[index + 1];
       const span = td.querySelector('.combo-text');
       if (span) combos.push(span.textContent);
     }
   });
-  
+
   if (combos.length > 0) {
     navigator.clipboard.writeText(combos.join(" "));
     alert(`Copied ${combos.length} combinations from this column to clipboard!`);
@@ -324,12 +324,12 @@ function copyColumn(index) {
 function copySelectedCombinations() {
   const chart = document.getElementById("chart");
   const combos = [];
-  
+
   // Get checked options status
   const includeConsonants = document.getElementById('copy-consonants-checkbox').checked;
   const includeLigated = document.getElementById('copy-ligated-checkbox').checked;
   const includeTouching = document.getElementById('copy-touching-checkbox').checked;
-  
+
   // Add combinations based on checked options
   if (includeConsonants) {
     Array.from(chart.querySelectorAll('.consonant-row')).forEach(row => {
@@ -339,7 +339,7 @@ function copySelectedCombinations() {
       });
     });
   }
-  
+
   if (includeLigated) {
     Array.from(chart.querySelectorAll('.ligated-conjunct-row')).forEach(row => {
       Array.from(row.cells).slice(1).forEach(td => {
@@ -348,7 +348,7 @@ function copySelectedCombinations() {
       });
     });
   }
-  
+
   if (includeTouching) {
     Array.from(chart.querySelectorAll('.touching-cluster-row')).forEach(row => {
       Array.from(row.cells).slice(1).forEach(td => {
@@ -357,7 +357,7 @@ function copySelectedCombinations() {
       });
     });
   }
-  
+
   if (combos.length > 0) {
     navigator.clipboard.writeText(combos.join(" "));
     alert(`Copied ${combos.length} selected combinations to clipboard!`);
@@ -370,14 +370,14 @@ function copySelectedCombinations() {
 function copyConsonantCombinations() {
   const chart = document.getElementById("chart");
   const combos = [];
-  
+
   Array.from(chart.querySelectorAll('.consonant-row')).forEach(row => {
     Array.from(row.cells).slice(1).forEach(td => {
       const span = td.querySelector('.combo-text');
       if (span) combos.push(span.textContent);
     });
   });
-  
+
   navigator.clipboard.writeText(combos.join(" "));
   alert(`Copied ${combos.length} consonant combinations to clipboard!`);
 }
@@ -385,14 +385,14 @@ function copyConsonantCombinations() {
 function copyLigatedCombinations() {
   const chart = document.getElementById("chart");
   const combos = [];
-  
+
   Array.from(chart.querySelectorAll('.ligated-conjunct-row')).forEach(row => {
     Array.from(row.cells).slice(1).forEach(td => {
       const span = td.querySelector('.combo-text');
       if (span) combos.push(span.textContent);
     });
   });
-  
+
   navigator.clipboard.writeText(combos.join(" "));
   alert(`Copied ${combos.length} ligated conjunct combinations to clipboard!`);
 }
@@ -400,14 +400,14 @@ function copyLigatedCombinations() {
 function copyTouchingCombinations() {
   const chart = document.getElementById("chart");
   const combos = [];
-  
+
   Array.from(chart.querySelectorAll('.touching-cluster-row')).forEach(row => {
     Array.from(row.cells).slice(1).forEach(td => {
       const span = td.querySelector('.combo-text');
       if (span) combos.push(span.textContent);
     });
   });
-  
+
   navigator.clipboard.writeText(combos.join(" "));
   alert(`Copied ${combos.length} touching cluster combinations to clipboard!`);
 }
@@ -415,14 +415,14 @@ function copyTouchingCombinations() {
 function copyAllCombinations() {
   const chart = document.getElementById("chart");
   const combos = [];
-  
+
   Array.from(chart.rows).slice(1).forEach(row => {
     Array.from(row.cells).slice(1).forEach(td => {
       const span = td.querySelector('.combo-text');
       if (span) combos.push(span.textContent);
     });
   });
-  
+
   navigator.clipboard.writeText(combos.join(" "));
   alert(`Copied ${combos.length} total combinations to clipboard!`);
 }
@@ -442,7 +442,7 @@ function closeNav() {
 function setupCollapsibles() {
   const collapsibles = document.getElementsByClassName("collapsible");
   for (let i = 0; i < collapsibles.length; i++) {
-    collapsibles[i].addEventListener("click", function() {
+    collapsibles[i].addEventListener("click", function () {
       this.classList.toggle("active");
       const content = this.nextElementSibling;
       if (content.style.maxHeight) {
@@ -485,9 +485,9 @@ document.body.addEventListener("drop", (e) => {
   }
 
   const reader = new FileReader();
-  reader.onload = function(event) {
+  reader.onload = function (event) {
     const font = new FontFace("CustomFont", event.target.result);
-    font.load().then(function(loadedFont) {
+    font.load().then(function (loadedFont) {
       document.fonts.add(loadedFont);
       document.body.style.fontFamily = "CustomFont, sans-serif";
       alert("Custom font applied!");
@@ -497,16 +497,16 @@ document.body.addEventListener("drop", (e) => {
 });
 
 // Initialize event listeners for copy buttons
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('copy-selected').addEventListener('click', copySelectedCombinations);
   document.getElementById('copy-consonants-btn').addEventListener('click', copyConsonantCombinations);
   document.getElementById('copy-ligated-btn').addEventListener('click', copyLigatedCombinations);
   document.getElementById('copy-touching-btn').addEventListener('click', copyTouchingCombinations);
   document.getElementById('copy-all-btn').addEventListener('click', copyAllCombinations);
-  
+
   // Add event listener for the show exceptions checkbox
   document.getElementById('show-exceptions-checkbox').addEventListener('change', renderChart);
-  
+
   // Initialize the chart and collapsible sections
   renderChart();
   setupCollapsibles();
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize immediately in case DOMContentLoaded already fired
 if (document.readyState === "complete" || document.readyState === "interactive") {
-  setTimeout(function() {
+  setTimeout(function () {
     renderChart();
     setupCollapsibles();
   }, 1);
