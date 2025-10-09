@@ -1,41 +1,135 @@
-# Sinhala font development
-
-This document is an effort to document effective workflows for Sinhala font development.
-
-### Understanding Sinhala
-
-## Research
-
-[Ceylon Display](http://ceylondisplay.com/): A Collection of Sri Lankan graphic design material from 50's-60's.
-[Found Type Lanka](http://foundtypelanka.tumblr.com/): A Collection of photos of Street Typography from Sri Lanka.
-[Sinhala Types](https://github.com/textualworks/sinhala-types)
+## Sinhala type design process
 
 
-### Groups
 
-#### Groups
 
-ග - ග ඟ හ ශ භ න ක ත ණ ඣ ඤ ඥ
-ට - ඔ ඕ ච ව ට ඩ ඞ ධ ඩ ඬ ම ඹ ඞ
-එ - එ ඒ ඵ ඪ ඵ ඨ
-බ - බ ඛ
-ප - ජ ඡ ය ස ෂ ය ඦ ෆ ඍ ඎ ඏ ඐ
-උ - අ ඉ ද ඳ ල ළ උ
-ර - ර ඊ රි ර් රැ රූ රී
-ග්‍රි - ක්‍රී ප්‍රී ච්‍රී දු ශ්‍රී
+Glyph development stages 
+ට ඩ ඪ ස ඩි ඪි
+එ ච ප ය ව
+අ ක ග ද න
 
-#### Features
+් ා ැ ි ු
 
-ka-eye: ක ත න
-ka-eye: ග ඟ හ ශ භ ඦ ඤ ඥ ඬ ඳ ඏ 
-line-eye:  භ ස ඝ එ ච ඩ ඪ
-ට ධ ඛ බ ම ඹ ඔ 
-ඕ
-එ - එ ඒ ඵ ඪ ඵ ඨ
- ය ෆ ර ඊ ල ඉ ළ
-අ ප ඵ ෂ හ ව ද ඡ ජ උ
 
-## Root letters and derived
+Stage 0— sketch design space 
+
+
+Stage 1— concept and digital 
+
+
+ට ඩ ඪ ස ඩි ඪි
+
+සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට සට
+ඩසට ඪඩිස ස ටඪඩඩි සඩඪ ඩටඪිස
+
+
+
+දැරණියගල
+
+ප
+
+දැරණියගල 
+ගුණරත්න 
+පුලතිසිපුර
+ප්‍රියදර්ශි මහා ස්ථවිර 
+
+
+
+
+
+
+Stage 2— sketching and design space
+
+
+එ ච ප ය ව
+
+එට සපඩච ටසඩි ඪිපස ඩයඩිව වපචසට සයට ස
+ඩයසට ඪඩිස එඩිපය සඩිය වයසට ය
+් ා ි ු 
+
+
+එවිට සාපයට ටුස්ඩි ඪිපසි ඩයඪඩි සායුට සව ඩසට ඪඩිස ස ටඪඩඩි සඩඪ ඩඪිස
+
+
+වි ටුස්ඩි ඪිසි ඩියු ඩි ඩි ඪිස
+
+
+
+
+ක න ම
+
+ත
+
+
+
+Stage 3— text texture
+
+
+අ ක ග ද න
+අ උ එ ක ග ච ට ඩ ඪ ද න ප ය ව ස
+
+අද වයස් දනවන විට සිනාවන්න එන ගඪිසු සවස් වන එකට අවවාද දුන්නා. විසකටුව කඩන්න එපා නිසා අවටු විරඪයා ගමනාගමනය නුවන්ට විට.
+
+උ ඉ ණ ම ල
+
+
+
+
+
+
+ක්‍රි ර ප ඵ
+ 
+ක් කි කී කු
+ස් සි සු ග්
+ගි ගී ගු
+ල් ලි ලී
+ම් මි මී මු
+ට් ටි ටී ටු
+න් නි නී නු
+
+
+
+
+
+
+
+
+ම - ඹ ඔ 
+න - ක ත 
+ග - ඟ ශ හ භ 
+ප - ජ ඡ  ෂ ය ඝ ඏ ඝ 
+ට - ථ ව ඵ ච එ ධ ඩ ඨ ඪ ඞ ඬ
+
+
+Stage 4— text texture
+
+
+UDHR glyph list
+
+**Sinhala Unicode block** - Consonants 41 
+- Independent vowels 
+16 - Semi Consonants  
+2 - Sinhala Pillam (Consonants modifier signs) 
+13 - 
+
+
+
+
+
+
+ම - ඹ ඔ 
+න - ක ත 
+ග - ඟ ශ හ භ 
+ප - ජ ඡ  ෂ ය ඝ ඏ ඝ 
+ට - ථ ව ඵ ච එ ධ ඩ ඨ ඪ ඞ ඬ
+
+
+
+Stage 5— Extension
+
+
+
+
 
 ### STAGE 1 - Exploration
  
@@ -92,52 +186,4 @@ Spacing process
 ඹු ටු
 
 තම්මැට්ටම්නුල
-
-#### Left groups
-ක ඣ ත ණ න
-ග ඟ ශ ඦ ඤ ඥ ඬ ඳ ඏ ෙ
-භ ස ඝ එ ච ඩ ඪ
-ට ධ ඛ බ 
-ම ඹ ඔ ඕ
-ඨ ථ ය ෆ ර ඊ ල ඉ ළ
-අ ප ඵ ෂ හ ව ද ඡ ජ උ
-
-ඓඔඕඖ
-
-#### Right groups
-ට ධ ච ව ඩ ඣ 
-ම ඹ ඔ ඕ ඬ ඛ බ 
-ඨ ථ එ ඪ ඵ
-ෘ ා ෟ ක ත ග ඟ ශ භ හ න ර ඊ ෆ ණ ඉ 
-ඦ ජ
-ස ඝ ප ය ෂ
-අ ළ ල
-උ ද ඤ ඥ ඳ  ැ ෑ
-
-#### Density
-ධ ච ඩ ඣ 
-ම ඹ ඔ ඕ ණ ඉ ෂ ඝ ඬ ඛ බ 
-ඨ ට ථ ව එ ඪ ඵ
-
-ෘ ා ෟ ක ත ග ඟ ශ භ හ න ර ඊ ෆ  
-ඦ ජ
-ස ප ය 
-අ ළ ල
-උ ද ඤ ඥ ඳ  ැ ෑ
-
-
-# Opentype features  
-
-### Ligated conjuncts (සංයෝග අකුරු sanyoga akuru)  
- <TODO>
-
-### Touching consonant clusters (බැඳි අකුරු bandi akuru)
-
-න ක ත ණ
-
-ඤ ඥ ඬ
-
-ච ඩ ස
-
-ඔ ඕ ව ට ඞ ධ ම ඹ ඞ ඵ ඪ ඵ ඨ බ ඛ
 
