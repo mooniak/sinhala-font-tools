@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinhala Font Tester</title>
+  <style>
+    :root {
+      --primary-color: #000000;
+      --primary-light: #f5f5f5;
+      --secondary-color: #333333;
+      --secondary-light: #f9f9f9;
+      --neutral-50: #ffffff;
+      --neutral-100: #f5f5f5;
+      --neutral-200: #e5e5e5;
+      --neutral-300: #d4d4d4;
+      --neutral-600: #525252;
+      --neutral-700: #404040;
+      --neutral-800: #262626;
+      --neutral-900: #171717;
+      --success-light: #f5f5f5;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--neutral-50);
+      color: var(--neutral-800);
+      padding-bottom: 120px; /* Space for bottom bar */
+    }
+
+    /* Header Controls */
+    .header {
+      background-color: white;
+      border-bottom: 1px solid var(--neutral-200);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .controls {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .collapsible-section {
+      max-width: 1400px;
+      margin: 0.5rem auto 0;
+      background-color: var(--neutral-100);
+      border-radius: 0.375rem;
+      overflow: hidden;
+    }
+
+    .collapsible-header {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--neutral-700);
+    }
+
+    .collapsible-header:hover {
+      background-color: var(--neutral-200);
+    }
+
+    .collapsible-toggle {
+      font-size: 0.875rem;
+      transition: transform 0.3s;
+    }
+
+    .collapsible-section.collapsed .collapsible-toggle {
+      transform: rotate(-90deg);
+    }
+
+    .collapsible-content {
+      padding: 1rem;
+      border-top: 1px solid var(--neutral-200);
+      max-height: 500px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .collapsible-section.collapsed .collapsible-content {
+      max-height: 0;
+      padding: 0 1rem;
+      overflow: hidden;
+      border-top: none;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .control-group label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--neutral-700);
+    }
+
+    select, input[type="number"] {
+      padding: 0.5rem;
+      border: 1px solid var(--neutral-300);
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      background-color: white;
+    }
+
+    select:focus, input[type="number"]:focus {
+      outline: 2px solid var(--primary-light);
+      border-color: var(--primary-color);
+    }
+
+    .button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    .button-secondary {
+      background-color: var(--neutral-200);
+      color: var(--neutral-700);
+    }
+
+    .button-danger {
+      background-color: #000000;
+      color: white;
+      border: 1px solid var(--neutral-900);
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--neutral-300);
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    /* Drop Zone */
+    .drop-zone {
+      padding: 1.5rem;
+      border: 2px dashed var(--neutral-300);
+      border-radius: 0.375rem;
+      text-align: center;
+      background-color: white;
+      transition: all 0.2s;
+    }
+
+    .drop-zone.drag-over {
+      border-color: var(--primary-color);
+      background-color: var(--primary-light);
+    }
+
+    .drop-zone p {
+      color: var(--neutral-600);
+      font-size: 0.875rem;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .section {
+      background-color: white;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 0.5rem 1rem;
+      background-color: var(--neutral-100);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .section-header:hover {
+      background-color: var(--neutral-200);
+    }
+
+    .section-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--neutral-900);
+    }
+
+    .section-toggle {
+      font-size: 1rem;
+      color: var(--neutral-600);
+      transition: transform 0.3s;
+    }
+
+    .section.collapsed .section-toggle {
+      transform: rotate(-90deg);
+    }
+
+    .section-content {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 0.5rem;
+      max-height: 600px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .section.collapsed .section-content {
+      max-height: 0;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+
+    .glyph-cell {
+      padding: 0.5rem;
+      text-align: center;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glyph-cell:hover {
+      background-color: var(--primary-light);
+      z-index: 10;
+    }
+
+    .glyph-text {
+      font-size: 20pt;
+      line-height: 1;
+      overflow: visible;
+    }
+
+    /* Bottom Comparison Bar */
+    .comparison-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      border-top: 2px solid var(--neutral-300);
+      padding: 1rem 1.5rem;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      z-index: 200;
+      display: none;
+    }
+
+    .comparison-bar.active {
+      display: block;
+    }
+
+    .comparison-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .comparison-item {
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .comparison-font-name {
+      font-size: 0.75rem;
+      color: var(--neutral-600);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .comparison-glyph {
+      font-size: 48pt;
+      line-height: 1;
+      padding: 0.5rem;
+      border: 1px solid var(--neutral-200);
+      border-radius: 0.375rem;
+      background-color: var(--neutral-50);
+    }
+
+    .comparison-item.active {
+      background-color: var(--primary-light);
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+    }
+
+    /* Font List */
+    .font-list {
+      margin-top: 0.5rem;
+    }
+
+    .font-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      background-color: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: 0.375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .font-item.active {
+      border-color: var(--primary-color);
+      background-color: var(--primary-light);
+    }
+
+    .font-name {
+      flex: 1;
+      font-weight: 500;
+    }
+
+    .font-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .control-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .section-content {
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      }
+
+      .comparison-content {
+        gap: 1rem;
+      }
+
+      .comparison-item {
+        min-width: 80px;
+      }
+
+      .comparison-glyph {
+        font-size: 32pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Controls -->
+  <div class="header">
+    <div class="controls">
+      <div class="control-group">
+        <label for="active-font">Active Font:</label>
+        <select id="active-font">
+          <option value="system">System Default</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="font-size">Font Size:</label>
+        <input type="range" id="font-size-slider" value="20" min="8" max="72" step="1" style="width: 120px;">
+        <input type="number" id="font-size" value="20" min="8" max="72" step="1" style="width: 60px;">
+        <span>pt</span>
+      </div>
+
+      <div class="control-group">
+        <label for="organize-toggle">Organize by:</label>
+        <span id="organize-label">Base Letter</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="organize-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <button class="button button-secondary" id="expand-all">Expand All</button>
+      <button class="button button-secondary" id="collapse-all">Collapse All</button>
+    </div>
+
+    <!-- Drop Zone Section (Collapsible) -->
+    <div class="collapsible-section collapsed" id="font-upload-section">
+      <div class="collapsible-header" id="font-upload-header">
+        <span>📁 Font Upload</span>
+        <span class="collapsible-toggle">▼</span>
+      </div>
+      <div class="collapsible-content">
+        <div class="drop-zone" id="drop-zone">
+          <p>📁 Drag & drop font files here (.ttf, .otf, .woff, .woff2)</p>
+          <p style="margin-top: 0.5rem;">or click to browse</p>
+          <input type="file" id="file-input" accept=".ttf,.otf,.woff,.woff2" multiple style="display: none;">
+        </div>
+
+        <!-- Loaded Fonts List -->
+        <div class="font-list" id="font-list" style="display: none;">
+          <h3 style="margin-bottom: 0.5rem; color: var(--neutral-700); font-size: 0.875rem;">Loaded Fonts</h3>
+          <div id="font-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container" id="content-container">
+    <!-- Sections will be dynamically generated here -->
+  </div>
+
+  <!-- Bottom Comparison Bar -->
+  <div class="comparison-bar" id="comparison-bar">
+    <div class="comparison-content" id="comparison-content">
+      <!-- Comparison items will be dynamically generated here -->
+    </div>
+  </div>
+
+  <!-- Include Scripts -->
+  <script src="sinhala-definitions.js"></script>
+  <script src="font-tester.js"></script>
+</body>
+</html>
