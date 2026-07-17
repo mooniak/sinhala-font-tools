@@ -1,10 +1,10 @@
-# mnik-lankaglyphsets — Roadmap
+# lankafea — Roadmap
 
-Status of the LankaGlyphset feature toolkit (`mnik glyphsets validate|generate`)
+Status of the LankaGlyphset feature toolkit (`lankafea validate|generate`)
 and the path forward, grounded in real-font evaluation.
 
-Package `mnik-lankaglyphsets` v0.2.0 · 31/31 tests green · CLI `mnik glyphsets`
-(+ deprecated `lankafea` alias). The [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets)
+PyPI `mnik-lankafea` v0.2.0 · import `lankafea` · 37/37 tests green · CLI
+`lankafea`. The [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets)
 repo remains the home of the naming standard; this is the font-side toolkit.
 
 ## Guiding principle

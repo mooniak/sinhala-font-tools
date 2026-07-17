@@ -11,9 +11,9 @@ from pathlib import Path
 from fontTools.fontBuilder import FontBuilder
 from fontTools.ttLib import newTable
 
-from mnik.lankaglyphsets.scripts import ScriptProfile
-from mnik.lankaglyphsets.yamlloader import load_specs
-from mnik.lankaglyphsets.names import with_ns
+from lankafea.scripts import ScriptProfile
+from lankafea.yamlloader import load_specs
+from lankafea.names import with_ns
 
 
 def aggnni_like_extras(profile: ScriptProfile) -> list[str]:
@@ -114,6 +114,6 @@ def build_test_glyphs_source(profile: ScriptProfile, out_path: Path):
         seen.add(name)
         font.glyphs.append(GSGlyph(name))
 
-    from mnik.lankaglyphsets.glyphspackage import save_source
+    from lankafea.glyphspackage import save_source
     save_source(font, out_path)
     return out_path

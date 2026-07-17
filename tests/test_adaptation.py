@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from mnik.lankaglyphsets.adaptation import _matching_class, add_variant_selection
-from mnik.lankaglyphsets.inventory import FontInventory
-from mnik.lankaglyphsets.model import FeatureDoc
-from mnik.lankaglyphsets.scripts import get_profile
+from lankafea.adaptation import _matching_class, add_variant_selection
+from lankafea.inventory import FontInventory
+from lankafea.model import FeatureDoc
+from lankafea.scripts import get_profile
 
 
 def test_matching_class_noto_vocabulary():

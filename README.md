@@ -1,21 +1,21 @@
-# mnik-lankaglyphsets — Sinhala/Tamil glyph-dependency validator + OpenType feature generator
+# lankafea — Sinhala/Tamil glyph-dependency validator + OpenType feature generator
 
 Two tools in one package, built around a single idea: **every glyph is a
 dependency**. A feature rule needs its input glyphs and its output glyph to
 exist in the font; the toolkit generates a broad candidate rule set, then
 *validates* it against the font's actual inventory:
 
-* **`mnik glyphsets validate`** — the dependency report: which rules are
+* **`lankafea validate`** — the dependency report: which rules are
   satisfiable, which glyphs *block* the rest (ranked by impact), which glyphs
   the font contains that **no rule consumes** (orphans, with an explanation of
   what kind of rule would consume them), plus anchor/variant findings.
-* **`mnik glyphsets generate`** — emits `features.fea` containing exactly the
+* **`lankafea generate`** — emits `features.fea` containing exactly the
   satisfiable rules, and can compile them into a binary (`--compile`) or write
   them back into a Glyphs source (`--glyphs-out`) **without touching your
   hand-written features**.
 
 ```
-$ mnik glyphsets validate --script sinhala --font Aggnni.glyphspackage
+$ lankafea validate --script sinhala --font Aggnni.glyphspackage
 rules: 351 satisfiable, 29478 blocked
 top blockers:
   zerowidthjoiner   blocks 29,478 rules  (akhn, rphf, vatu)
@@ -42,28 +42,28 @@ python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"   # fonttools + pyyaml + glyphsLib + uharfbuzz + pytest
 ```
 
-Console scripts: **`mnik`** (umbrella: `mnik glyphsets <cmd>`) and `lankafea`
+Console script: **`lankafea`** (installed by the `mnik-lankafea` PyPI package)
 (deprecated alias, forwards with a warning).
 
 ## Usage
 
 ```sh
 # Dependency report (human), plus machine-readable JSON:
-mnik glyphsets validate --script sinhala --font MySource.glyphspackage \
+lankafea validate --script sinhala --font MySource.glyphspackage \
     --json report.json
 
 # CI gate: exit 3 when blockers exist
-mnik glyphsets validate --script sinhala --font My.ttf --fail-on-blockers
+lankafea validate --script sinhala --font My.ttf --fail-on-blockers
 
 # Generate features gated on the font's glyphs:
-mnik glyphsets generate --script sinhala --font MyFont.ttf -o features.fea
+lankafea generate --script sinhala --font MyFont.ttf -o features.fea
 
 # Strip GSUB/GPOS/GDEF and compile fresh features into a binary:
-mnik glyphsets generate --script tamil --font MyFont.ttf --compile out.ttf
+lankafea generate --script tamil --font MyFont.ttf --compile out.ttf
 
 # Add the bundled ZWJ/ZWNJ control glyphs (in place), then write features
 # back into the SAME source — hand-written code is preserved:
-mnik glyphsets generate --script sinhala --font MySource.glyphspackage \
+lankafea generate --script sinhala --font MySource.glyphspackage \
     --fix-zwj --glyphs-out MySource.glyphspackage
 ```
 
@@ -149,7 +149,7 @@ verify.py      feaLib syntax check + uharfbuzz shaping assertions
 api.py         build_fea() / validate_font()  ;  cli.py  argparse CLI
 ```
 
-Glyphset resolution: `MNIK_GLYPHSETS_DIR` (or legacy `LANKAFEA_GLYPHSETS_DIR`)
+Glyphset resolution: `LANKAFEA_GLYPHSETS_DIR` (or legacy `MNIK_GLYPHSETS_DIR`)
 → bundled package data → repo `glyphsets/`.
 
 ## Verify

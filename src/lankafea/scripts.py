@@ -25,11 +25,11 @@ _REPO_GLYPHSETS = _HERE.parents[5] / "glyphsets"
 def glyphsets_dir() -> Path:
     """Resolve the glyphsets directory.
 
-    Priority: ``MNIK_GLYPHSETS_DIR`` (or legacy ``LANKAFEA_GLYPHSETS_DIR``) env override -> bundled package data ->
+    Priority: ``LANKAFEA_GLYPHSETS_DIR`` (or legacy ``MNIK_GLYPHSETS_DIR``) env override -> bundled package data ->
     the repo's ``glyphsets/`` (source-checkout fallback). Bundling means an
     installed wheel needs no repository files.
     """
-    env = os.environ.get("MNIK_GLYPHSETS_DIR") or os.environ.get("LANKAFEA_GLYPHSETS_DIR")
+    env = os.environ.get("LANKAFEA_GLYPHSETS_DIR") or os.environ.get("MNIK_GLYPHSETS_DIR")
     if env:
         return Path(env)
     if _BUNDLED_GLYPHSETS.is_dir():

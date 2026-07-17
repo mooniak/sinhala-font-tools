@@ -5,7 +5,7 @@ the glyphset standard into the wheel/sdist without duplicating it in the repo.
 
 The single source of truth is the repository's top-level ``glyphsets/`` directory
 (``../../glyphsets`` from here). We do NOT keep a committed copy under
-``src/mnik/lankaglyphsets/data/glyphsets/`` — it would drift. Instead a custom
+``src/lankafea/data/glyphsets/`` — it would drift. Instead a custom
 ``build_py`` copies the YAMLs in just before the package is assembled, so an
 installed wheel is self-contained (see ``scripts.glyphsets_dir()``), while a
 source checkout falls back to the repo's ``glyphsets/`` directly.
@@ -20,7 +20,7 @@ from setuptools.command.build_py import build_py as _build_py
 
 _HERE = Path(__file__).resolve().parent
 _CANONICAL = _HERE.parents[1] / "glyphsets"          # lanka-glyphsets/glyphsets
-_BUNDLE_REL = "mnik/lankaglyphsets/data/glyphsets"    # under src/
+_BUNDLE_REL = "lankafea/data/glyphsets"               # under src/
 
 
 def _sync_glyphsets(dest_root: Path) -> None:

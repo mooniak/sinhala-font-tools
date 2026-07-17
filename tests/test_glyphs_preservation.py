@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from mnik.lankaglyphsets.api import build_fea
-from mnik.lankaglyphsets.glyphsource import (
+from lankafea.api import build_fea
+from lankafea.glyphsource import (
     MARKER, inventory_from_glyphs, write_features_to_glyphs,
 )
-from mnik.lankaglyphsets.scripts import get_profile
+from lankafea.scripts import get_profile
 
 from make_font import build_test_glyphs_source
 
@@ -20,7 +20,7 @@ HAND_AKHN = "sub ka-sinh virama-sinh zerowidthjoiner ssa-sinh by kSsa-sinh;"
 def _source_with_user_code(tmp_path, ext=".glyphs"):
     from glyphsLib.classes import GSClass, GSFeature, GSFeaturePrefix
 
-    from mnik.lankaglyphsets.glyphspackage import load_source, save_source
+    from lankafea.glyphspackage import load_source, save_source
 
     profile = get_profile("sinhala", 3)
     src = build_test_glyphs_source(profile, tmp_path / f"src{ext}")
@@ -48,7 +48,7 @@ def test_user_code_survives_and_collision_kept(tmp_path):
     assert summary["collisions"]["akhn"] == "keep"
     assert summary["preserved_features"] == 2                    # calt + akhn
 
-    from mnik.lankaglyphsets.glyphspackage import load_source
+    from lankafea.glyphspackage import load_source
     font = load_source(out)
     calt = next(f for f in font.features if f.name == "calt")
     assert calt.code == HAND_CALT                                # byte-identical
@@ -70,7 +70,7 @@ def test_replace_tags_overrides_collision(tmp_path):
         replace_tags={"akhn"})
     assert summary["collisions"]["akhn"] == "replace"
 
-    from mnik.lankaglyphsets.glyphspackage import load_source
+    from lankafea.glyphspackage import load_source
     font = load_source(out)
     akhn = next(f for f in font.features if f.name == "akhn")
     assert akhn.code.startswith(MARKER)
@@ -90,7 +90,7 @@ def test_second_run_is_idempotent(tmp_path):
     assert summary2["stripped_features"] > 0                      # ours replaced
     assert summary2["collisions"].get("akhn") == "keep"
 
-    from mnik.lankaglyphsets.glyphspackage import load_source
+    from lankafea.glyphspackage import load_source
     f1, f2 = load_source(out1), load_source(out2)
     tags1 = sorted(f.name for f in f1.features)
     tags2 = sorted(f.name for f in f2.features)

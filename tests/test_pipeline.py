@@ -6,11 +6,11 @@ from pathlib import Path
 
 import pytest
 
-from mnik.lankaglyphsets.api import build_fea
-from mnik.lankaglyphsets.compile import strip_and_build
-from mnik.lankaglyphsets.inventory import FontInventory
-from mnik.lankaglyphsets.scripts import get_profile
-from mnik.lankaglyphsets.verify import shape_checks, ShapeCheck
+from lankafea.api import build_fea
+from lankafea.compile import strip_and_build
+from lankafea.inventory import FontInventory
+from lankafea.scripts import get_profile
+from lankafea.verify import shape_checks, ShapeCheck
 
 from make_font import aggnni_like_extras, build_test_font, build_test_glyphs_source
 
@@ -18,8 +18,8 @@ from make_font import aggnni_like_extras, build_test_font, build_test_glyphs_sou
 # ---- naming unit checks (port fidelity) ----------------------------------- #
 
 def test_name_construction():
-    from mnik.lankaglyphsets.scripts import SINHALA
-    from mnik.lankaglyphsets import names
+    from lankafea.scripts import SINHALA
+    from lankafea import names
     assert names.base_a(SINHALA, 0x0D9A) == "ka"
     assert names.drop_a("ka") == "k"
     assert names.cluster_stem(SINHALA, [0x0D9A, 0x0DC2], ["conj"]) == "kSsa"
@@ -31,8 +31,8 @@ def test_name_construction():
 @pytest.mark.parametrize("script,level", [("sinhala", 3), ("tamil", 0)])
 def test_build_fea_valid_syntax(script, level):
     profile = get_profile(script, level)
-    from mnik.lankaglyphsets.yamlloader import load_specs
-    from mnik.lankaglyphsets.names import with_ns
+    from lankafea.yamlloader import load_specs
+    from lankafea.names import with_ns
     specs = load_specs(profile)
     names = {g.full_name for g in specs.glyphs}
     names |= {"zerowidthjoiner", with_ns("touch", profile.namespace),
@@ -104,7 +104,7 @@ def test_formed_sign_ligatures_shape(tmp_path, text, expect):
 # ---- standalone / YAML-free mode ------------------------------------------ #
 
 def test_bundled_glyphsets_dir():
-    from mnik.lankaglyphsets import scripts
+    from lankafea import scripts
     # Default resolution uses the bundled package data (self-contained install).
     assert (scripts.glyphsets_dir() / "tamil.yaml").exists()
 
@@ -132,7 +132,7 @@ def test_yaml_free_shapes(tmp_path, script, level, text, expect):
 
 @pytest.mark.parametrize("ext", [".glyphs", ".glyphspackage"])
 def test_glyphs_source_roundtrip(tmp_path, ext):
-    from mnik.lankaglyphsets.glyphsource import inventory_from_glyphs, write_features_to_glyphs
+    from lankafea.glyphsource import inventory_from_glyphs, write_features_to_glyphs
 
     profile = get_profile("sinhala", 3)
     src = build_test_glyphs_source(profile, tmp_path / f"src{ext}")

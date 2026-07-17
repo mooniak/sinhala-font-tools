@@ -131,7 +131,7 @@ def _bundled_glyph(name: str):
     from glyphsLib.classes import GSGlyph
     from glyphsLib.parser import Parser
 
-    ref = resources.files("mnik.lankaglyphsets").joinpath(f"data/glyphs/{name}.glyph")
+    ref = resources.files("lankafea").joinpath(f"data/glyphs/{name}.glyph")
     text = ref.read_text(encoding="utf-8")
     return Parser(current_type=GSGlyph, format_version=3).parse(text)
 

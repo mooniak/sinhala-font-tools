@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 
-from mnik.lankaglyphsets.glyphinfo import (SPACING_MARK_GLYPHS, check_glyph_info)
-from mnik.lankaglyphsets.glyphsource import inventory_from_glyphs
+from lankafea.glyphinfo import (SPACING_MARK_GLYPHS, check_glyph_info)
+from lankafea.glyphsource import inventory_from_glyphs
 
 
 # ---- unit: the check itself ---------------------------------------------- #
@@ -61,7 +61,7 @@ def test_inventory_captures_category_from_source(tmp_path):
     bad = GSGlyph("aesign-sinh")                       # left unset
     font.glyphs.extend([good, bad])
 
-    from mnik.lankaglyphsets.glyphspackage import save_source
+    from lankafea.glyphspackage import save_source
     out = tmp_path / "glyphinfo.glyphs"
     save_source(font, out)
 
@@ -75,7 +75,7 @@ def test_inventory_captures_category_from_source(tmp_path):
 
 
 def test_report_renders_glyph_info(tmp_path):
-    from mnik.lankaglyphsets.validation import ValidationReport
+    from lankafea.validation import ValidationReport
     r = ValidationReport()
     r.glyph_info_available = True
     r.glyph_info_present = 2

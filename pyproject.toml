@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mnik-lankaglyphsets"
+name = "mnik-lankafea"
 version = "0.2.0"
-description = "LankaGlyphset toolkit for Sinhala & Tamil fonts: glyph-dependency validator + OpenType (GSUB/GPOS) feature generator, gated on the glyphs actually present in the font."
+description = "lankafea — glyph-dependency validator + OpenType (GSUB/GPOS) feature generator for Sinhala & Tamil fonts, gated on the glyphs actually present in the font."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -18,7 +18,7 @@ dependencies = [
 [project.optional-dependencies]
 # tptq-feacomposer authors the rules through a typed eDSL. It is optional: when
 # absent, the built-in .fea text emitter is used with identical output contract.
-# See src/mnik/lankaglyphsets/feacomposer_adapter.py.
+# See src/lankafea/feacomposer_adapter.py.
 compose = ["tptq-feacomposer>=1.11"]
 # uharfbuzz drives the end-to-end shaping verification (verify.py).
 verify = ["uharfbuzz>=0.39"]
@@ -27,22 +27,17 @@ glyphs = ["glyphsLib>=6.0"]
 dev = ["tptq-feacomposer>=1.11", "uharfbuzz>=0.39", "glyphsLib>=6.0", "pytest>=7"]
 
 [project.scripts]
-# Umbrella command: `mnik glyphsets validate|generate ...`
-mnik = "mnik.lankaglyphsets.cli:main_umbrella"
-# Deprecated alias kept for a transition period.
-lankafea = "mnik.lankaglyphsets.cli:main_deprecated"
+# `lankafea validate|generate ...`
+lankafea = "lankafea.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-# `mnik` is a PEP 420 namespace package (no __init__.py) so other mooniak
-# tools can share it.
-namespaces = true
 
 [tool.setuptools.package-data]
 # Bundle the glyphset YAMLs so the installed library carries the LankaGlyphset
 # standard and needs no repository files at runtime; the .glyph files are the
 # authored ZWJ/ZWNJ control glyphs that --fix-zwj inserts into sources.
-"mnik.lankaglyphsets" = ["data/glyphsets/*.yaml", "data/glyphs/*.glyph"]
+"lankafea" = ["data/glyphsets/*.yaml", "data/glyphs/*.glyph"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

@@ -1,28 +1,28 @@
 #!/usr/bin/env python3
-"""mnik glyphsets — validate glyph dependencies & generate OpenType features
+"""lankafea — validate glyph dependencies & generate OpenType features
 for LankaGlyphset Sinhala/Tamil fonts.
 
 Examples
 --------
     # Dependency report: satisfiable rules, blockers, orphans:
-    mnik glyphsets validate --script sinhala --font MySource.glyphspackage
+    lankafea validate --script sinhala --font MySource.glyphspackage
 
     # Emit features.fea gated on the glyphs present in the font:
-    mnik glyphsets generate --script sinhala --font MyFont.ttf -o features.fea
+    lankafea generate --script sinhala --font MyFont.ttf -o features.fea
 
     # Add the ZWJ/ZWNJ control glyphs, then write features into the source
     # (hand-written features/prefixes are preserved):
-    mnik glyphsets generate --script sinhala --font MySource.glyphspackage \\
+    lankafea generate --script sinhala --font MySource.glyphspackage \\
         --fix-zwj --glyphs-out MySource.glyphspackage
 
     # Merge hand-authored shape-group / stylistic-set lookups:
-    mnik glyphsets generate --script sinhala --font MyFont.ttf --inject inject/
+    lankafea generate --script sinhala --font MyFont.ttf --inject inject/
 
     # Fix glyph-info (Mark/Spacing) + Mooniak metadata on one source, then validate:
-    mnik glyphsets fix-source --font MySource.glyphspackage
+    lankafea fix-source --font MySource.glyphspackage
 
     # Same, batch across every sibling *-font repo:
-    mnik glyphsets fix-source --all ../.. --dry-run
+    lankafea fix-source --all ../.. --dry-run
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ def _print_blockers(report, limit: int = 3) -> None:
             print(f"#   hint: {b.hint}", file=sys.stderr)
     remaining = len(report.blockers) - limit
     if remaining > 0:
-        print(f"# ... {remaining} more blockers — run `mnik glyphsets validate` for the "
+        print(f"# ... {remaining} more blockers — run `lankafea validate` for the "
               f"full dependency report", file=sys.stderr)
 
 
@@ -295,7 +295,7 @@ def _add_common_args(p) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="mnik glyphsets", description=__doc__,
+    ap = argparse.ArgumentParser(prog="lankafea", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="command", required=True)
 
@@ -363,31 +363,6 @@ def main(argv: list[str] | None = None) -> int:
 
     args = ap.parse_args(argv)
     return args.func(args)
-
-
-def main_umbrella(argv: list[str] | None = None) -> int:
-    """`mnik` umbrella command: `mnik glyphsets <validate|generate> ...`.
-
-    Room for future mooniak tools under one entry point."""
-    argv = list(sys.argv[1:] if argv is None else argv)
-    if argv and argv[0] in ("glyphsets", "lankaglyphsets"):
-        return main(argv[1:])
-    prog_help = ("usage: mnik <tool> ...\n\n"
-                 "tools:\n"
-                 "  glyphsets    LankaGlyphset validator + OpenType feature generator\n")
-    if argv and argv[0] not in ("-h", "--help"):
-        print(f"mnik: unknown tool {argv[0]!r}\n", file=sys.stderr)
-        print(prog_help, file=sys.stderr)
-        return 2
-    print(prog_help)
-    return 0
-
-
-def main_deprecated(argv: list[str] | None = None) -> int:
-    """Legacy `lankafea` console script."""
-    print("warning: 'lankafea' is deprecated; use 'mnik glyphsets ...'",
-          file=sys.stderr)
-    return main(argv)
 
 
 if __name__ == "__main__":

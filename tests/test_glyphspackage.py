@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from mnik.lankaglyphsets.glyphspackage import (
+from lankafea.glyphspackage import (
     escape_glyph_filename, read_glyphspackage, unescape_glyph_filename,
     write_glyphspackage,
 )
-from mnik.lankaglyphsets.scripts import get_profile
+from lankafea.scripts import get_profile
 
 from make_font import build_test_glyphs_source
 

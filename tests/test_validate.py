@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import json
 
-from mnik.lankaglyphsets.api import validate_font
-from mnik.lankaglyphsets.inventory import FontInventory
-from mnik.lankaglyphsets.scripts import get_profile
+from lankafea.api import validate_font
+from lankafea.inventory import FontInventory
+from lankafea.scripts import get_profile
 
 from make_font import aggnni_like_extras, build_test_font
 

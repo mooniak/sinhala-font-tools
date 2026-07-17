@@ -25,7 +25,7 @@ _LAYERID_RE = re.compile(r'layerId = "[^"]+";')
 
 
 def _bundled_glyph_text(name: str) -> str:
-    ref = resources.files("mnik.lankaglyphsets").joinpath(f"data/glyphs/{name}.glyph")
+    ref = resources.files("lankafea").joinpath(f"data/glyphs/{name}.glyph")
     return ref.read_text(encoding="utf-8")
 
 
