@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "type": "commonjs",
+  "description": "Generated data shared by the browser tools. CommonJS scope so Node scripts can require() these files and browsers can load them via <script>. Do not edit the generated files by hand — regenerate with `npm run build && node dist/cli/index.js export-json`."
+}

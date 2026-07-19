@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "type": "commonjs",
+  "description": "Sinhala glyph chart tool (CommonJS scope so Node tools like generate-glyphnames.js can require sinhala-definitions.js; browser loads these via <script>)."
+}
