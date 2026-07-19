@@ -1,0 +1,2671 @@
+meta:
+  inventory_reference: AbhayaLibre.glyphspackage
+  anchor_reference: NotoSansSinhala.glyphspackage
+  family_model: sinhala-design-stages/sinhala-design-dependencies.yaml
+  counts:
+    composites: 300
+    by_tier:
+      0: 18
+      1: 102
+      2: 56
+      3: 124
+    review: 93
+    keep_drawn: 171
+    keep_drawn_by_reason:
+      du-form: 2
+      hal-ja: 2
+      hal-rahena: 12
+      hal-trap: 4
+      irreducible: 81
+      ispilla-fused: 46
+      llu-form: 2
+      ra-forms: 3
+      rakaransaya-exception: 4
+      repaya-exception: 3
+      u-special: 12
+atoms:
+  base_letters:
+  - ba-sinh
+  - bha-sinh
+  - ca-sinh
+  - cha-sinh
+  - da-sinh
+  - dda-sinh
+  - ddha-sinh
+  - dha-sinh
+  - fa-sinh
+  - ga-sinh
+  - gha-sinh
+  - ha-sinh
+  - ja-sinh
+  - jha-sinh
+  - jnya-sinh
+  - ka-sinh
+  - kha-sinh
+  - la-sinh
+  - lla-sinh
+  - ma-sinh
+  - mba-sinh
+  - na-sinh
+  - nda-sinh
+  - nga-sinh
+  - nna-sinh
+  - nndda-sinh
+  - nnga-sinh
+  - nya-sinh
+  - pa-sinh
+  - pha-sinh
+  - ra-sinh
+  - sa-sinh
+  - sha-sinh
+  - ssa-sinh
+  - ta-sinh
+  - tha-sinh
+  - tta-sinh
+  - ttha-sinh
+  - va-sinh
+  - ya-sinh
+  signs:
+  - aaesign-sinh
+  - aasign-sinh
+  - aesign-sinh
+  - aisign-sinh
+  - anusvaraya-sinh
+  - ausign-sinh
+  - eesign-sinh
+  - esign-sinh
+  - iisign-sinh
+  - isign-sinh
+  - oosign-sinh
+  - osign-sinh
+  - usign-sinh
+  - uusign-sinh
+  - virama-sinh
+  - visargaya-sinh
+  - vocalicllsign-sinh
+  - vocaliclsign-sinh
+  - vocalicrrsign-sinh
+  - vocalicrsign-sinh
+  ispilla_alternates:
+  - iisign-sinh
+  - iisign-sinh.alt1
+  - iisign-sinh.alt2
+  - iisign-sinh.alt3
+  - iisign-sinh.alt6
+  - iisign-sinh.alt7
+  - iisign-sinh.alt8
+  - iisign-sinh.alt9
+  - isign-sinh
+  - isign-sinh.alt1
+  - isign-sinh.alt2
+  - isign-sinh.alt3
+  - isign-sinh.alt6
+  - isign-sinh.alt7
+  - isign-sinh.alt8
+  - isign-sinh.alt9
+anchors:
+  base_anchor_frequency:
+    alSign: 39
+    iVowel: 38
+    rakar: 112
+    repaya: 57
+    uvowel: 49
+    iiVowel: 2
+    virama: 3
+  sign_attachment:
+    iisign-sinh: iVowel
+    iisign-sinh.alt1: iVowel
+    iisign-sinh.alt2: iVowel
+    iisign-sinh.alt3: iVowel
+    iisign-sinh.alt6: iiVowel
+    iisign-sinh.alt7: iVowel
+    iisign-sinh.alt8: iVowel
+    iisign-sinh.alt9: iVowel
+    isign-sinh: iVowel
+    isign-sinh.alt1: iVowel
+    isign-sinh.alt2: iVowel
+    isign-sinh.alt3: iVowel
+    isign-sinh.alt6: iVowel
+    isign-sinh.alt7: iVowel
+    isign-sinh.alt8: iVowel
+    isign-sinh.alt9: iVowel
+    rasign-sinh: rakar
+    repha-sinh: repaya
+    usign-sinh: uvowel
+    uusign-sinh: uvowel
+    virama-sinh: alSign
+composites:
+  aa-sinh:
+    components:
+    - aasign-sinh
+    - a-sinh
+    tier: 0
+    source: inventory-existing
+  aae-sinh:
+    components:
+    - aaesign-sinh
+    - a-sinh
+    tier: 0
+    source: inventory-existing
+  aasign_virama-sinh:
+    components:
+    - aasign-sinh
+    - virama-sinh
+    tier: 0
+    source: inventory-existing
+  ae-sinh:
+    components:
+    - a-sinh
+    - aesign-sinh
+    tier: 0
+    source: inventory-existing
+  anusvarayaShI-sinh:
+    components:
+    - anusvarayaSha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  anusvarayaShIi-sinh:
+    components:
+    - anusvarayaSha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  au-sinh:
+    components:
+    - vocaliclsign-sinh
+    - o-sinh
+    tier: 0
+    source: inventory-existing
+  ausign-sinh:
+    components:
+    - esign-sinh
+    - vocaliclsign-sinh
+    - bullet
+    tier: 0
+    source: inventory-existing
+  bBI-sinh:
+    components:
+    - bBa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  bBIi-sinh:
+    components:
+    - bBa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  bBa_repha-sinh:
+    components:
+    - bBa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  bRI-sinh:
+    components:
+    - bRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  bRIi-sinh:
+    components:
+    - bRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  bRa-sinh:
+    components:
+    - ba-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  bU-sinh:
+    components:
+    - ba-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  bUu-sinh:
+    components:
+    - ba-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ba_repha-sinh:
+    components:
+    - repha-sinh
+    - ba-sinh
+    tier: 0
+    source: inventory-existing
+  bh-sinh:
+    components:
+    - bha-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  bhI-sinh:
+    components:
+    - bha-sinh
+    - isign-sinh.alt7
+    tier: 3
+    source: noto-ispilla
+  bhIi-sinh:
+    components:
+    - bha-sinh
+    - iisign-sinh.alt7
+    tier: 3
+    source: noto-ispilla
+  bhRI-sinh:
+    components:
+    - bhRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  bhRIi-sinh:
+    components:
+    - bhRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  bhRa-sinh:
+    components:
+    - bha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  bha_repha-sinh:
+    components:
+    - bha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  cCI-sinh:
+    components:
+    - cCa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  cCIi-sinh:
+    components:
+    - cCa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  cCa_repha-sinh:
+    components:
+    - cCa-sinh
+    - repha-sinh
+    tier: 0
+    source: inventory-existing
+  cRI-sinh:
+    components:
+    - cRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  cRIi-sinh:
+    components:
+    - cRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  cRa-sinh:
+    components:
+    - ca-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  cU-sinh:
+    components:
+    - ca-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  cUu-sinh:
+    components:
+    - ca-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ca_repha-sinh:
+    components:
+    - ca-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  chI-sinh:
+    components:
+    - cha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  chIi-sinh:
+    components:
+    - cha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  chU-sinh:
+    components:
+    - cha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  chUu-sinh:
+    components:
+    - cha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  cha_repha-sinh:
+    components:
+    - cha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  d-sinh:
+    components:
+    - da-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  dDha_repha-sinh:
+    components:
+    - dDha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  dI-sinh:
+    components:
+    - da-sinh
+    - isign-sinh.alt2
+    tier: 3
+    source: noto-ispilla
+  dIi-sinh:
+    components:
+    - da-sinh
+    - iisign-sinh.alt2
+    tier: 3
+    source: noto-ispilla
+  dRI-sinh:
+    components:
+    - dRa-sinh
+    - isign-sinh.alt2
+    tier: 3
+    source: noto-ispilla
+  dRIi-sinh:
+    components:
+    - dRa-sinh
+    - iisign-sinh.alt2
+    tier: 3
+    source: noto-ispilla
+  dRa-sinh:
+    components:
+    - da-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  dVa_repha-sinh:
+    components:
+    - dVa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  da_repha-sinh:
+    components:
+    - da-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  ddRI-sinh:
+    components:
+    - ddRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ddRIi-sinh:
+    components:
+    - ddRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ddRa-sinh:
+    components:
+    - dda-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  ddU-sinh:
+    components:
+    - dda-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  ddUu-sinh:
+    components:
+    - dda-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  dda_repha-sinh:
+    components:
+    - dda-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  ddhI-sinh:
+    components:
+    - ddha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ddhIi-sinh:
+    components:
+    - ddha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ddhU-sinh:
+    components:
+    - ddha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  ddhUu-sinh:
+    components:
+    - ddha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ddha_repha-sinh:
+    components:
+    - ddha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  dhRI-sinh:
+    components:
+    - dhRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  dhRIi-sinh:
+    components:
+    - dhRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  dhRa-sinh:
+    components:
+    - dha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  dhU-sinh:
+    components:
+    - dha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  dhUu-sinh:
+    components:
+    - dha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  dha_repha-sinh:
+    components:
+    - dha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  f-sinh:
+    components:
+    - fa-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  f-sinh.hist:
+    components:
+    - fa-sinh
+    - virama-sinh
+    tier: 2
+    source: grammar-classify
+  fI-sinh:
+    components:
+    - fa-sinh
+    - isign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  fI-sinh.hist:
+    components:
+    - fa-sinh
+    - isign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  fIi-sinh:
+    components:
+    - fa-sinh
+    - iisign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  fIi-sinh.hist:
+    components:
+    - fa-sinh
+    - iisign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  fRI-sinh:
+    components:
+    - fRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  fRI-sinh.hist:
+    components:
+    - fRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  fRIi-sinh:
+    components:
+    - fRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  fRIi-sinh.hist:
+    components:
+    - fRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  fRa-sinh:
+    components:
+    - fa-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  fRa-sinh.hist:
+    components:
+    - fa-sinh
+    - rasign-sinh
+    tier: 2
+    source: grammar-classify
+  fU-sinh:
+    components:
+    - fa-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  fU-sinh.hist:
+    components:
+    - fa-sinh
+    - usign-sinh
+    tier: 2
+    source: grammar-classify
+  fUu-sinh:
+    components:
+    - fa-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  fUu-sinh.hist:
+    components:
+    - fa-sinh
+    - uusign-sinh
+    tier: 2
+    source: grammar-classify
+  fa_repha-sinh:
+    components:
+    - fa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  fa_repha-sinh.hist:
+    components:
+    - fa-sinh.hist
+    - repha-sinh
+    tier: 0
+    source: inventory-existing
+  g-sinh:
+    components:
+    - ga-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  gDha_repha-sinh:
+    components:
+    - gDha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  gI-sinh:
+    components:
+    - ga-sinh
+    - isign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  gIi-sinh:
+    components:
+    - ga-sinh
+    - iisign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  gRI-sinh:
+    components:
+    - gRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  gRIi-sinh:
+    components:
+    - gRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  gRa-sinh:
+    components:
+    - ga-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  ga_repha-sinh:
+    components:
+    - repha-sinh
+    - ga-sinh
+    tier: 0
+    source: inventory-existing
+  gh-sinh:
+    components:
+    - gha-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  ghI-sinh:
+    components:
+    - gha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ghIi-sinh:
+    components:
+    - gha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ghRI-sinh:
+    components:
+    - ghRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ghRIi-sinh:
+    components:
+    - ghRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ghRa-sinh:
+    components:
+    - gha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  ghU-sinh:
+    components:
+    - gha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  ghUu-sinh:
+    components:
+    - gha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  gha_repha-sinh:
+    components:
+    - gha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  h-sinh:
+    components:
+    - ha-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  hI-sinh:
+    components:
+    - ha-sinh
+    - isign-sinh.alt7
+    tier: 3
+    source: noto-ispilla
+  hIi-sinh:
+    components:
+    - ha-sinh
+    - iisign-sinh.alt7
+    tier: 3
+    source: noto-ispilla
+  hRI-sinh:
+    components:
+    - hRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  hRIi-sinh:
+    components:
+    - hRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  hRa-sinh:
+    components:
+    - ha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  hU-sinh:
+    components:
+    - ha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  hUu-sinh:
+    components:
+    - ha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ha_repha-sinh:
+    components:
+    - ha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  jI-sinh:
+    components:
+    - ja-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  jIi-sinh:
+    components:
+    - ja-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  jRI-sinh:
+    components:
+    - jRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  jRIi-sinh:
+    components:
+    - jRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  jU-sinh:
+    components:
+    - ja-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  jUu-sinh:
+    components:
+    - ja-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ja_repha-sinh:
+    components:
+    - ja-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  jhRI-sinh:
+    components:
+    - jhRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  jhRIi-sinh:
+    components:
+    - jhRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  jhRa-sinh:
+    components:
+    - jha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  jhU-sinh:
+    components:
+    - jha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  jhUu-sinh:
+    components:
+    - jha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  jha_repha-sinh:
+    components:
+    - jha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  jny-sinh:
+    components:
+    - jnya-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  jnyI-sinh:
+    components:
+    - jnya-sinh
+    - isign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  jnyIi-sinh:
+    components:
+    - jnya-sinh
+    - iisign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  jnyRI-sinh:
+    components:
+    - jnyRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  jnyRIi-sinh:
+    components:
+    - jnyRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  jnyU-sinh:
+    components:
+    - jnya-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  jnyUu-sinh:
+    components:
+    - jnya-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  jnya_repha-sinh:
+    components:
+    - jnya-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  k-sinh:
+    components:
+    - ka-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  kI-sinh:
+    components:
+    - ka-sinh
+    - isign-sinh.alt3
+    tier: 3
+    source: noto-ispilla
+  kIi-sinh:
+    components:
+    - ka-sinh
+    - iisign-sinh.alt3
+    tier: 3
+    source: noto-ispilla
+  kRI-sinh:
+    components:
+    - kRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  kRIi-sinh:
+    components:
+    - kRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  kRa-sinh:
+    components:
+    - ka-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  kSsI-sinh:
+    components:
+    - kSsa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  kSsIi-sinh:
+    components:
+    - kSsa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  kSsa_repha-sinh:
+    components:
+    - kSsa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  kVa_repha-sinh:
+    components:
+    - kVa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  ka_repha-sinh:
+    components:
+    - repha-sinh
+    - ka-sinh
+    tier: 0
+    source: inventory-existing
+  khRI-sinh:
+    components:
+    - khRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  khRIi-sinh:
+    components:
+    - khRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  khRa-sinh:
+    components:
+    - kha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  khU-sinh:
+    components:
+    - kha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  khUu-sinh:
+    components:
+    - kha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  kha_repha-sinh:
+    components:
+    - kha-sinh
+    - repha-sinh
+    tier: 0
+    source: inventory-existing
+  l-sinh:
+    components:
+    - la-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  lI-sinh:
+    components:
+    - la-sinh
+    - isign-sinh.alt6
+    tier: 3
+    source: noto-ispilla
+  lIi-sinh:
+    components:
+    - la-sinh
+    - iisign-sinh.alt6
+    tier: 3
+    source: noto-ispilla
+  lU-sinh:
+    components:
+    - la-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  lUu-sinh:
+    components:
+    - la-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  la_repha-sinh:
+    components:
+    - la-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  ll-sinh:
+    components:
+    - lla-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  llI-sinh:
+    components:
+    - lla-sinh
+    - isign-sinh.alt6
+    tier: 3
+    source: noto-ispilla
+  llIi-sinh:
+    components:
+    - lla-sinh
+    - iisign-sinh.alt6
+    tier: 3
+    source: noto-ispilla
+  lla_repha-sinh:
+    components:
+    - lla-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  mRI-sinh:
+    components:
+    - mRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  mRIi-sinh:
+    components:
+    - mRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  mRa-sinh:
+    components:
+    - ma-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  mU-sinh:
+    components:
+    - ma-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  mUu-sinh:
+    components:
+    - ma-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ma_repha-sinh:
+    components:
+    - ma-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  mbU-sinh:
+    components:
+    - mba-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  mbUu-sinh:
+    components:
+    - mba-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  mba_repha-sinh:
+    components:
+    - mba-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  n-sinh:
+    components:
+    - na-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  nDI-sinh:
+    components:
+    - nDa-sinh
+    - isign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  nDIi-sinh:
+    components:
+    - nDa-sinh
+    - iisign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  nDRI-sinh:
+    components:
+    - nDRa-sinh
+    - isign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  nDRIi-sinh:
+    components:
+    - nDRa-sinh
+    - iisign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  nDa_repha-sinh:
+    components:
+    - nDa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  nDha_repha-sinh:
+    components:
+    - nDha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  nI-sinh:
+    components:
+    - na-sinh
+    - isign-sinh.alt3
+    tier: 3
+    source: noto-ispilla
+  nIi-sinh:
+    components:
+    - na-sinh
+    - iisign-sinh.alt3
+    tier: 3
+    source: noto-ispilla
+  nThI-sinh:
+    components:
+    - nTha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  nThIi-sinh:
+    components:
+    - nTha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  nTha_repha-sinh:
+    components:
+    - nTha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  nU-sinh:
+    components:
+    - na-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  nUu-sinh:
+    components:
+    - na-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  nVa_repha-sinh:
+    components:
+    - nVa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  na_repha-sinh:
+    components:
+    - na-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  nd-sinh:
+    components:
+    - nda-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  ndI-sinh:
+    components:
+    - nda-sinh
+    - isign-sinh.alt9
+    tier: 3
+    source: noto-ispilla
+  ndIi-sinh:
+    components:
+    - nda-sinh
+    - iisign-sinh.alt9
+    tier: 3
+    source: noto-ispilla
+  ndU-sinh:
+    components:
+    - nda-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  ndUu-sinh:
+    components:
+    - nda-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  nda_repha-sinh:
+    components:
+    - nda-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  nga_repha-sinh:
+    components:
+    - nga-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  nn-sinh:
+    components:
+    - nna-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  nnU-sinh:
+    components:
+    - nna-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  nnUu-sinh:
+    components:
+    - nna-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  nna_repha-sinh:
+    components:
+    - nna-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  nnddU-sinh:
+    components:
+    - nndda-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  nnddUu-sinh:
+    components:
+    - nndda-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  nng-sinh:
+    components:
+    - nnga-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  nngI-sinh:
+    components:
+    - nnga-sinh
+    - isign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  nngIi-sinh:
+    components:
+    - nnga-sinh
+    - iisign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  nnga_repha-sinh:
+    components:
+    - nnga-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  ny-sinh:
+    components:
+    - nya-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  nyCa_repha-sinh:
+    components:
+    - nyCa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  nyChI-sinh:
+    components:
+    - nyCha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  nyChIi-sinh:
+    components:
+    - nyCha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  nyCha_repha-sinh:
+    components:
+    - nyCha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  nyI-sinh:
+    components:
+    - nya-sinh
+    - isign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  nyIi-sinh:
+    components:
+    - nya-sinh
+    - iisign-sinh.alt8
+    tier: 3
+    source: noto-ispilla
+  nyRI-sinh:
+    components:
+    - nyRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  nyRIi-sinh:
+    components:
+    - nyRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  nyU-sinh:
+    components:
+    - nya-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  nyUu-sinh:
+    components:
+    - nya-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  nyjI-sinh:
+    components:
+    - nyja-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  nyjIi-sinh:
+    components:
+    - nyja-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  nyja_repha-sinh:
+    components:
+    - nyja-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  oosign-sinh:
+    components:
+    - esign-sinh
+    - aasign_virama-sinh
+    - bullet
+    tier: 0
+    source: inventory-existing
+  osign-sinh:
+    components:
+    - esign-sinh
+    - aasign-sinh
+    - bullet
+    tier: 0
+    source: inventory-existing
+  p-sinh:
+    components:
+    - pa-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  pI-sinh:
+    components:
+    - pa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  pIi-sinh:
+    components:
+    - pa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  pRI-sinh:
+    components:
+    - pRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  pRIi-sinh:
+    components:
+    - pRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  pRa-sinh:
+    components:
+    - pa-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  pU-sinh:
+    components:
+    - pa-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  pUu-sinh:
+    components:
+    - pa-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  pa_repha-sinh:
+    components:
+    - pa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  phI-sinh:
+    components:
+    - pha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  phIi-sinh:
+    components:
+    - pha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  phU-sinh:
+    components:
+    - pha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  phUu-sinh:
+    components:
+    - pha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  pha_repha-sinh:
+    components:
+    - pha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  s-sinh:
+    components:
+    - sa-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  sI-sinh:
+    components:
+    - sa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  sIi-sinh:
+    components:
+    - sa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  sRI-sinh:
+    components:
+    - sRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  sRIi-sinh:
+    components:
+    - sRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  sRa-sinh:
+    components:
+    - sa-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  sU-sinh:
+    components:
+    - sa-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  sUu-sinh:
+    components:
+    - sa-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  sa_repha-sinh:
+    components:
+    - sa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  sh-sinh:
+    components:
+    - sha-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  shI-sinh:
+    components:
+    - sha-sinh
+    - isign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  shIi-sinh:
+    components:
+    - sha-sinh
+    - iisign-sinh.alt1
+    tier: 3
+    source: noto-ispilla
+  shRI-sinh:
+    components:
+    - shRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  shRIi-sinh:
+    components:
+    - shRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  shRa-sinh:
+    components:
+    - sha-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  sha_repha-sinh:
+    components:
+    - sha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  ss-sinh:
+    components:
+    - ssa-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  ssI-sinh:
+    components:
+    - ssa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ssIi-sinh:
+    components:
+    - ssa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ssRI-sinh:
+    components:
+    - ssRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ssRIi-sinh:
+    components:
+    - ssRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ssRa-sinh:
+    components:
+    - ssa-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  ssU-sinh:
+    components:
+    - ssa-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  ssUu-sinh:
+    components:
+    - ssa-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ssa_repha-sinh:
+    components:
+    - ssa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  t-sinh:
+    components:
+    - ta-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  tI-sinh:
+    components:
+    - ta-sinh
+    - isign-sinh.alt3
+    tier: 3
+    source: noto-ispilla
+  tIi-sinh:
+    components:
+    - ta-sinh
+    - iisign-sinh.alt3
+    tier: 3
+    source: noto-ispilla
+  tRI-sinh:
+    components:
+    - tRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  tRIi-sinh:
+    components:
+    - tRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  tRa-sinh:
+    components:
+    - ta-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  tThI-sinh:
+    components:
+    - tTha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  tThIi-sinh:
+    components:
+    - tTha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  tTha_repha-sinh:
+    components:
+    - tTha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  tVa_repha-sinh:
+    components:
+    - tVa-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  ta_repha-sinh:
+    components:
+    - ta-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  thI-sinh:
+    components:
+    - tha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  thIi-sinh:
+    components:
+    - tha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  thU-sinh:
+    components:
+    - tha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  thUu-sinh:
+    components:
+    - tha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  tha_repha-sinh:
+    components:
+    - tha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  ttRI-sinh:
+    components:
+    - ttRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ttRIi-sinh:
+    components:
+    - ttRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ttRa-sinh:
+    components:
+    - tta-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  ttTthI-sinh:
+    components:
+    - ttTtha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  ttTthIi-sinh:
+    components:
+    - ttTtha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  ttTtha_repha-sinh:
+    components:
+    - ttTtha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  ttU-sinh:
+    components:
+    - tta-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  ttUu-sinh:
+    components:
+    - tta-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  tta_repha-sinh:
+    components:
+    - tta-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  tthI-sinh:
+    components:
+    - ttha-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  tthIi-sinh:
+    components:
+    - ttha-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  tthU-sinh:
+    components:
+    - ttha-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  tthUu-sinh:
+    components:
+    - ttha-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ttha_repha-sinh:
+    components:
+    - ttha-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  uu-sinh:
+    components:
+    - u-sinh
+    - vocaliclsign-sinh
+    tier: 0
+    source: inventory-existing
+  vRI-sinh:
+    components:
+    - vRa-sinh
+    - isign-sinh
+    tier: 3
+    source: noto-ispilla
+  vRIi-sinh:
+    components:
+    - vRa-sinh
+    - iisign-sinh
+    tier: 3
+    source: noto-ispilla
+  vRa-sinh:
+    components:
+    - va-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  vU-sinh:
+    components:
+    - va-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  vUu-sinh:
+    components:
+    - va-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  va_repha-sinh:
+    components:
+    - va-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  vocalicll-sinh:
+    components:
+    - vocalicl-sinh
+    - vocaliclsign-sinh
+    tier: 0
+    source: inventory-existing
+  vocalicrrsign-sinh:
+    components:
+    - vocalicrsign-sinh
+    - vocalicrsign-sinh
+    tier: 0
+    source: inventory-existing
+  y-sinh:
+    components:
+    - ya-sinh
+    - virama-sinh
+    tier: 1
+    source: grammar
+  yU-sinh:
+    components:
+    - ya-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  yUu-sinh:
+    components:
+    - ya-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
+  ya_repha-sinh:
+    components:
+    - ya-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar
+  yasign_repha-sinh:
+    components:
+    - yasign-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  yasign_repha_aasign-sinh:
+    components:
+    - yasign_repha-sinh
+    - aasign-sinh
+    tier: 0
+    source: inventory-existing
+  yasign_repha_usign-sinh:
+    components:
+    - yasign-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+  yasign_repha_uusign-sinh:
+    components:
+    - yasign-sinh
+    - repha-sinh
+    tier: 2
+    source: grammar-classify
+review:
+  anusvarayaSh-sinh:
+    class: mixed
+    guess:
+    - anusvarayaSha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  anusvarayaShU-sinh:
+    class: mixed
+    guess:
+    - anusvarayaSha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  anusvarayaShUu-sinh:
+    class: mixed
+    guess:
+    - anusvarayaSha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  bB-sinh:
+    class: atomic
+    guess:
+    - bBa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  bBU-sinh:
+    class: mixed
+    guess:
+    - bBa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  bBUu-sinh:
+    class: mixed
+    guess:
+    - bBa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  bR-sinh:
+    class: mixed
+    guess:
+    - bRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  bhR-sinh:
+    class: mixed
+    guess:
+    - bhRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  cC-sinh:
+    class: atomic
+    guess:
+    - cCa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  cCU-sinh:
+    class: mixed
+    guess:
+    - cCa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  cCUu-sinh:
+    class: mixed
+    guess:
+    - cCa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  cR-sinh:
+    class: mixed
+    guess:
+    - cRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  candrabindu-sinh.001:
+    class: atomic
+    guess:
+    - candrabindu-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dDh-sinh:
+    class: atomic
+    guess:
+    - dDha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dDhU-sinh:
+    class: mixed
+    guess:
+    - dDha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dDhUu-sinh:
+    class: mixed
+    guess:
+    - dDha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dR-sinh:
+    class: mixed
+    guess:
+    - dRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dV-sinh:
+    class: atomic
+    guess:
+    - dVa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dVU-sinh:
+    class: atomic
+    guess:
+    - dVa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dVUu-sinh:
+    class: atomic
+    guess:
+    - dVa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ddR-sinh:
+    class: mixed
+    guess:
+    - ddRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  dhR-sinh:
+    class: mixed
+    guess:
+    - dhRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  fR-sinh:
+    class: mixed
+    guess:
+    - fRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  fR-sinh.hist:
+    class: atomic
+    guess:
+    - fRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  gDh-sinh:
+    class: atomic
+    guess:
+    - gDha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  gDhU-sinh:
+    class: mixed
+    guess:
+    - gDha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  gDhUu-sinh:
+    class: mixed
+    guess:
+    - gDha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  gR-sinh:
+    class: mixed
+    guess:
+    - gRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ghR-sinh:
+    class: mixed
+    guess:
+    - ghRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  hR-sinh:
+    class: mixed
+    guess:
+    - hRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  jR-sinh:
+    class: mixed
+    guess:
+    - jRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  jhR-sinh:
+    class: mixed
+    guess:
+    - jhRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  jnyR-sinh:
+    class: mixed
+    guess:
+    - jnyRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kR-sinh:
+    class: mixed
+    guess:
+    - kRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kSs-sinh:
+    class: mixed
+    guess:
+    - kSsa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kSsU-sinh:
+    class: mixed
+    guess:
+    - kSsa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kSsUu-sinh:
+    class: mixed
+    guess:
+    - kSsa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kV-sinh:
+    class: atomic
+    guess:
+    - kVa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kVU-sinh:
+    class: mixed
+    guess:
+    - kVa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  kVUu-sinh:
+    class: mixed
+    guess:
+    - kVa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  khR-sinh:
+    class: atomic
+    guess:
+    - khRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  mR-sinh:
+    class: mixed
+    guess:
+    - mRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nD-sinh:
+    class: mixed
+    guess:
+    - nDa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nDRa-sinh:
+    class: atomic
+    guess:
+    - nDa-sinh
+    - rasign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nDU-sinh:
+    class: atomic
+    guess:
+    - nDa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nDUu-sinh:
+    class: atomic
+    guess:
+    - nDa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nDh-sinh:
+    class: atomic
+    guess:
+    - nDha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nDhU-sinh:
+    class: mixed
+    guess:
+    - nDha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nDhUu-sinh:
+    class: mixed
+    guess:
+    - nDha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nTh-sinh:
+    class: mixed
+    guess:
+    - nTha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nThU-sinh:
+    class: mixed
+    guess:
+    - nTha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nThUu-sinh:
+    class: mixed
+    guess:
+    - nTha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nV-sinh:
+    class: atomic
+    guess:
+    - nVa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nVU-sinh:
+    class: mixed
+    guess:
+    - nVa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nVUu-sinh:
+    class: mixed
+    guess:
+    - nVa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyC-sinh:
+    class: mixed
+    guess:
+    - nyCa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyCU-sinh:
+    class: mixed
+    guess:
+    - nyCa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyCUu-sinh:
+    class: mixed
+    guess:
+    - nyCa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyCh-sinh:
+    class: mixed
+    guess:
+    - nyCha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyChU-sinh:
+    class: mixed
+    guess:
+    - nyCha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyChUu-sinh:
+    class: mixed
+    guess:
+    - nyCha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyR-sinh:
+    class: mixed
+    guess:
+    - nyRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyj-sinh:
+    class: mixed
+    guess:
+    - nyja-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyjR-sinh:
+    class: mixed
+    guess:
+    - nyjRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyjRa-sinh:
+    class: mixed
+    guess:
+    - nyja-sinh
+    - rasign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyjU-sinh:
+    class: mixed
+    guess:
+    - nyja-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  nyjUu-sinh:
+    class: mixed
+    guess:
+    - nyja-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  pR-sinh:
+    class: mixed
+    guess:
+    - pRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.001:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.002:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.003:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.004:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.005:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.006:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.007:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.008:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.009:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  repha-sinh.010:
+    class: atomic
+    guess:
+    - repha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  sR-sinh:
+    class: mixed
+    guess:
+    - sRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  shR-sinh:
+    class: mixed
+    guess:
+    - shRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ssR-sinh:
+    class: mixed
+    guess:
+    - ssRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tR-sinh:
+    class: mixed
+    guess:
+    - tRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tTh-sinh:
+    class: mixed
+    guess:
+    - tTha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tThU-sinh:
+    class: mixed
+    guess:
+    - tTha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tThUu-sinh:
+    class: mixed
+    guess:
+    - tTha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tV-sinh:
+    class: atomic
+    guess:
+    - tVa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tVU-sinh:
+    class: mixed
+    guess:
+    - tVa-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  tVUu-sinh:
+    class: mixed
+    guess:
+    - tVa-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ttR-sinh:
+    class: mixed
+    guess:
+    - ttRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ttTth-sinh:
+    class: atomic
+    guess:
+    - ttTtha-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ttTthU-sinh:
+    class: atomic
+    guess:
+    - ttTtha-sinh
+    - usign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  ttTthUu-sinh:
+    class: atomic
+    guess:
+    - ttTtha-sinh
+    - uusign-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+  vR-sinh:
+    class: mixed
+    guess:
+    - vRa-sinh
+    - virama-sinh
+    note: sign form on a conjunct base the family model does not cover — confirm before applying
+keep_drawn:
+  anusvarayaSha-sinh: irreducible
+  archaiceight-sinh: irreducible
+  archaiceighty-sinh: irreducible
+  archaicfifty-sinh: irreducible
+  archaicfive-sinh: irreducible
+  archaicforty-sinh: irreducible
+  archaicfour-sinh: irreducible
+  archaicnine-sinh: irreducible
+  archaicninety-sinh: irreducible
+  archaicone-sinh: irreducible
+  archaiconehundred-sinh: irreducible
+  archaiconethousand-sinh: irreducible
+  archaicseven-sinh: irreducible
+  archaicseventy-sinh: irreducible
+  archaicsix-sinh: irreducible
+  archaicsixty-sinh: irreducible
+  archaicten-sinh: irreducible
+  archaicthirty-sinh: irreducible
+  archaicthree-sinh: irreducible
+  archaictwenty-sinh: irreducible
+  archaictwo-sinh: irreducible
+  b-sinh: hal-rahena
+  bBa-sinh: irreducible
+  bI-sinh: ispilla-fused
+  bIi-sinh: ispilla-fused
+  bhU-sinh: u-special
+  bhUu-sinh: u-special
+  c-sinh: hal-rahena
+  cCa-sinh: irreducible
+  cI-sinh: ispilla-fused
+  cIi-sinh: ispilla-fused
+  candrabindu-sinh: irreducible
+  ch-sinh: hal-ja
+  dDhI-sinh: ispilla-fused
+  dDhIi-sinh: ispilla-fused
+  dDha-sinh: irreducible
+  dRaa._c-sinh: irreducible
+  dU-sinh: du-form
+  dUu-sinh: du-form
+  dVI-sinh: ispilla-fused
+  dVIi-sinh: ispilla-fused
+  dVa-sinh: irreducible
+  da_yansa_oosign-sinh: irreducible
+  daa._c-sinh: irreducible
+  daa_virama._c-sinh: irreducible
+  daae._c-sinh: irreducible
+  dae._c-sinh: irreducible
+  dd-sinh: hal-rahena
+  ddI-sinh: ispilla-fused
+  ddIi-sinh: ispilla-fused
+  ddh-sinh: hal-trap
+  dh-sinh: hal-rahena
+  dhI-sinh: ispilla-fused
+  dhIi-sinh: ispilla-fused
+  dvocalicr._c-sinh: irreducible
+  dvocalicrr._c-sinh: irreducible
+  dyU._c-sinh: irreducible
+  dyUu._c-sinh: irreducible
+  dya._c-sinh: irreducible
+  dyaa._c-sinh: irreducible
+  fa-sinh.hist: irreducible
+  gDhI-sinh: ispilla-fused
+  gDhIi-sinh: ispilla-fused
+  gDha-sinh: irreducible
+  gU-sinh: u-special
+  gUu-sinh: u-special
+  j-sinh: hal-ja
+  jRa-sinh: rakaransaya-exception
+  jh-sinh: hal-rahena
+  jhI-sinh: ispilla-fused
+  jhIi-sinh: ispilla-fused
+  jnyRa-sinh: rakaransaya-exception
+  jnyaa._c-sinh: irreducible
+  jnyaa_virama._c-sinh: irreducible
+  jnyaae._c-sinh: irreducible
+  jnyae._c-sinh: irreducible
+  kSsa-sinh: irreducible
+  kU-sinh: u-special
+  kUu-sinh: u-special
+  kVI-sinh: ispilla-fused
+  kVIi-sinh: ispilla-fused
+  kVa-sinh: irreducible
+  kh-sinh: hal-rahena
+  khI-sinh: ispilla-fused
+  khIi-sinh: ispilla-fused
+  llU-sinh: llu-form
+  llUu-sinh: llu-form
+  m-sinh: hal-rahena
+  mI-sinh: ispilla-fused
+  mIi-sinh: ispilla-fused
+  mb-sinh: hal-rahena
+  mbI-sinh: ispilla-fused
+  mbIi-sinh: ispilla-fused
+  nDa-sinh: irreducible
+  nDaa._c-sinh: irreducible
+  nDaa_virama._c-sinh: irreducible
+  nDaae._c-sinh: irreducible
+  nDae._c-sinh: irreducible
+  nDhI-sinh: ispilla-fused
+  nDhIi-sinh: ispilla-fused
+  nDha-sinh: irreducible
+  nTha-sinh: irreducible
+  nVI-sinh: ispilla-fused
+  nVIi-sinh: ispilla-fused
+  nVa-sinh: irreducible
+  ndRa-sinh: rakaransaya-exception
+  ndRaa._c-sinh: irreducible
+  ndaa._c-sinh: irreducible
+  ndaa_virama._c-sinh: irreducible
+  ndaae._c-sinh: irreducible
+  ndae._c-sinh: irreducible
+  ng-sinh: hal-rahena
+  ngI-sinh: ispilla-fused
+  ngIi-sinh: ispilla-fused
+  nnI-sinh: ispilla-fused
+  nnIi-sinh: ispilla-fused
+  nndd-sinh: hal-rahena
+  nnddI-sinh: ispilla-fused
+  nnddIi-sinh: ispilla-fused
+  nndda_repha-sinh: repaya-exception
+  nngU-sinh: u-special
+  nngUu-sinh: u-special
+  nyCI-sinh: ispilla-fused
+  nyCIi-sinh: ispilla-fused
+  nyCa-sinh: irreducible
+  nyCha-sinh: irreducible
+  nyRa-sinh: rakaransaya-exception
+  nya_repha-sinh: repaya-exception
+  nyaa._c-sinh: irreducible
+  nyaa_virama._c-sinh: irreducible
+  nyaae._c-sinh: irreducible
+  nyae._c-sinh: irreducible
+  nyja-sinh: irreducible
+  ph-sinh: hal-trap
+  r-sinh: ra-forms
+  rAae-sinh: irreducible
+  rAe-sinh: irreducible
+  rI-sinh: ispilla-fused
+  rIi-sinh: ispilla-fused
+  rU-sinh: ra-forms
+  rUu-sinh: ra-forms
+  ra_repha-sinh: repaya-exception
+  rasign-sinh: irreducible
+  repha-sinh: irreducible
+  shU-sinh: u-special
+  shUu-sinh: u-special
+  tTha-sinh: irreducible
+  tU-sinh: u-special
+  tUu-sinh: u-special
+  tVI-sinh: ispilla-fused
+  tVIi-sinh: ispilla-fused
+  tVa-sinh: irreducible
+  th-sinh: hal-trap
+  tt-sinh: hal-rahena
+  ttI-sinh: ispilla-fused
+  ttIi-sinh: ispilla-fused
+  ttTtha-sinh: irreducible
+  tth-sinh: hal-trap
+  usign.rasign-sinh: irreducible
+  uusign.rasign-sinh: irreducible
+  v-sinh: hal-rahena
+  vI-sinh: ispilla-fused
+  vIi-sinh: ispilla-fused
+  yI-sinh: ispilla-fused
+  yIi-sinh: ispilla-fused
+  yasign-sinh: irreducible
+  yasign_iisign-sinh: irreducible
+  yasign_isign-sinh: irreducible
+  yasign_usign-sinh: irreducible
+  yasign_uusign-sinh: irreducible
+  yasign_virama-sinh: irreducible
