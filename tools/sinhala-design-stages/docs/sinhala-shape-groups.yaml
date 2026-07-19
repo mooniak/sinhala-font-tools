@@ -1,0 +1,120 @@
+# Sinhala glyph shape groups
+#
+# Filters for sorting/grouping Sinhala text strings for font-development
+# testing. Groupings may vary by project and designer preference.
+
+glyph_construction:
+  description: >
+    Two kinds of glyphs, which may vary by project and designer preference.
+  atomically_designed:
+    description: >
+      Glyphs designed with their own outlines (or references to other
+      glyphs) rather than composed via OpenType positioning.
+    notes:
+      - Almost all orthographic ligatures in level 0 will need to be atomically designed.
+      - Almost all ි combinations may be atomically designed for higher quality.
+      - ි has three typographic forms minimum.
+      - ු has two typographic forms.
+      - ෙ ෛ ෘ ෑ combinations do not need to be atomically designed, since these marks are spacing.
+  composite:
+    description: Composed using GPOS.
+    notes:
+      - ්‍ර / ර්‍ combinations may or may not be OT composites.
+
+bases:
+  primary_shape_groups:
+    ග: [ක, ග, ඝ, ඟ, ඤ, ඥ, ණ, ත, න, භ, ශ, හ]
+    ට: [ඔ, ඕ, ච, ට, ඩ, ඞ, ධ, ඬ, ව, ම, ඹ, ඣ]
+    එ: [එ, ඒ, ඨ, ඪ, ථ, ඵ]
+    බ: [ඛ, බ]
+    ප: [ප, ජ, ඡ, ඦ, ය, ල, ළ, ස, ෂ, ෆ, ඉ, ඊ, ඍ, ඎ, ඏ, ඐ, ර]
+    උ: [අ, උ, ද, ඳ]
+    ර: [ර, ඊ, රි, ර්, රැ, රී, රූ]
+    ටි: [ටී, චී, ඩී]
+    ග්‍රි: [ක්‍රී, ච්‍රී, ප්‍රී, ශ්‍රී, දු]
+
+  elements:
+    eye_ka: [ක, ත, න, භ, හ]
+    eye_line: [එ, ච, ඩ, ඝ, ඪ, භ, ස]
+    loop: [ඔ, ම, ඹ]
+    trap: [එ, ඒ, ඨ, ථ, ඪ, ඵ, ව]
+    hang: [ඤ, ඥ, ඟ, ඬ, ඳ]
+    diagonal: [ජ, ඡ, ඦ, ණ, ර, ඊ, රි, ර්, රැ, රී, රූ]
+
+  density:
+    high: [ඉ, ණ, ඔ, ඕ, ඝ, ඥ, ම, ඹ, ෂ]
+    medium: [ක, ඊ, ළ]
+    low: [ට, ථ, ර, ෆ, උ, ඵ]
+
+  # Groups of glyphs whose right side reads as visually similar.
+  similar_right_side:
+    - [ක, ත, ග, ඟ, ණ, න, භ, ශ, හ, ෆ, ඉ, ා, ෘ, ෟ]
+    - [ජ, ඦ, ර, ඊ]
+    - [ට, ච, ධ, ව, ඩ, ඣ]
+    - [ඨ, ථ, එ, ඪ, ඵ]
+    - [ඔ, ඕ, ඛ, බ, ධ, ච, ඩ, ඣ, ඬ, ම, ඹ]
+    - [ප, ය, ඝ, ස, ෂ]
+    - [අ, ල, ළ]
+    - [උ, ද, ඤ, ඥ, ඳ, ැ, ෑ, ්‍]
+
+  # Groups of glyphs whose left side reads as visually similar.
+  similar_left_side:
+    - [ක, ත, ණ, න, ඣ]
+    - [ග, ඟ, ඤ, ඥ, ඦ, ශ, ඬ, ඳ, ඏ, ෙ]
+    - [එ, ච, ඩ, ඝ, ඪ, භ, ස]
+    - [ට, ධ, ඛ, බ]
+    - [ඔ, ඕ, ම, ඹ]
+    - [ජ, ඨ, ථ, ය, ර, ඊ, ල, ඉ, ළ, ෆ]
+    - [අ, උ, ප, ඡ, ද, ව, හ, ඵ, ස, ෂ]
+
+ligatures:
+  # Each entry's key is the representative glyph for the group.
+  # `i`/`ii` split the ි-column and ී-column forms where the source
+  # distinguished them; `forms` is used where there was only one column.
+  primary_shape_groups:
+    ක්:
+      forms: [ක්, ග්, ඝ්, ඟ්, ඤ්, ඥ්, ණ්, ත්, ද්, න්, ප්, භ්, ය්, ර්, ල්, ශ්, ෂ්, ස්, හ්, ළ්, ෆ්, ක්‍ෂ්, ත්‍ථ්, ත්‍න්, ද්, න්‍ද්]
+    ඛ්:
+      forms: [ඛ්]
+    කි:
+      i: [කි, ති, නි]
+      ii: [කී, තී, නී]
+    ගි:
+      i: [ඟි, ශි, ෆි]
+      ii: [ගී, ඟී, ශී, ෆී]
+    ඡි:
+      i: [ජි, ඦි]
+      ii: [ඡී, ජී, ඦී]
+    ඨි:
+      i: [ඪි, ථි, ඵි, ට්‍ඨි, ත්‍ථි, න්‍ථි]
+      ii: [ඨී, ඪී, ථී, ඵී, ට්‍ඨී, ත්‍ථී, න්‍ථී]
+    දි:
+      i: [ද්‍රි]
+      ii: [දී, ද්‍රී]
+    ඳි:
+      i: [ඳ්‍රි]
+      ii: [ඳි, ඳී, ඳ්‍රො, ඳො]
+    භි:
+      i: [හි]
+      ii: [භී, හී]
+    ඤ:
+      i: [ඥි, න්‍දි, න්‍ද්‍රි]
+      ii: [ඤී, ඥී, න්‍දී, න්‍ද්‍රී]
+    ලි:
+      # source did not split this row into i/ii columns; preserved as one list
+      forms: [ළි, ලී, ළී]
+    පි:
+      # source row repeats ෂි / ක්‍ෂි and has no clear i/ii split; preserved verbatim
+      forms: [ෂි, ක්‍ෂි, පී, ෂි, ෂී, ක්‍ෂි]
+    ඝි:
+      i: [සි]
+      ii: [ඝී, සී]
+    පු:
+      forms: [] # empty in source
+
+  da_forms: [ද, ඳ, ඤ, ඥ, න්‍ද]
+
+  position:
+    body: [ා, ැ, ෑ, ෘ, ෟ, ෛ, ො, ෝ, ෞ]
+    above: [ි, ී]
+    below: [ු, ූ]

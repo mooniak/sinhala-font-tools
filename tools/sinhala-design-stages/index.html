@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinhala Design Dependency Model</title>
+<meta name="description" content="A dependency-based, staged development process for Sinhala fonts — generated from sinhala-design-dependencies.yaml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6f8; --panel:#ffffff; --ink:#1a1c1e; --dim:#66707c; --line:#e7eaee;
+  --chip:#eef1f5; --accent:#cf4b34; --accent2:#345ddb; --metric:#9a7112;
+  --skeleton:#cf4b34; --element:#345ddb; --spacing:#1f9d63;
+  --accent-soft:rgba(207,75,52,.07); --accent-line:rgba(207,75,52,.18);
+  --shadow:0 1px 2px rgba(17,24,39,.04), 0 12px 28px -14px rgba(17,24,39,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.sinh{font-family:"Abhaya Libre","Noto Sans Sinhala","Iskoola Pota",serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8em;background:var(--chip);color:var(--ink);padding:2px 6px;border-radius:6px;border:1px solid var(--line)}
+h2{font-size:1.8rem;margin:3.4rem 0 .7rem;font-weight:700;letter-spacing:-.01em}
+h2 small{display:block;font-weight:400;color:var(--dim);font-size:1rem;letter-spacing:0;margin-top:.15rem}
+h4{font-weight:700;font-size:1rem;margin:1.2rem 0 .4rem}
+.hero{padding:5rem 0 3rem;position:relative;overflow:hidden}
+.hero .mark{position:absolute;right:-10px;top:-70px;font-size:18rem;opacity:.05;font-weight:800;pointer-events:none;color:var(--accent)}
+.hero h1{font-size:2.8rem;margin:0 0 .5rem;font-weight:800;line-height:1.08;letter-spacing:-.02em}
+.hero p.sub{font-size:1.18rem;color:var(--dim);max-width:52rem;margin:.5rem 0}
+.hero .prov{font-size:.85rem;color:var(--dim);margin-top:1rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:1.2rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.card h4{margin:.1rem 0 .45rem;font-size:1.05rem}
+.card p{margin:.3rem 0;font-size:.92rem;color:var(--dim)}
+.card .showcase{font-size:2.6rem;line-height:1.2;margin-bottom:.3rem;color:var(--ink)}
+.dim{color:var(--dim)}
+ol.rules li,ul.plain li{margin:.5rem 0}
+section.stage{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin:1.4rem 0;box-shadow:var(--shadow)}
+section.stage header{display:flex;gap:18px;align-items:flex-start}
+.snum{font-size:2rem;font-weight:800;color:var(--accent);min-width:2.6rem;height:2.6rem;
+  display:flex;align-items:center;justify-content:center;line-height:1;background:var(--accent-soft);border-radius:12px}
+section.stage h3{margin:.15rem 0 .3rem;font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
+p.goal{margin:.2rem 0 .6rem;color:var(--dim);max-width:56rem}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 .9rem}
+.badge{font-size:.72rem;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:var(--panel)}
+.b-metric{color:var(--metric)} .b-skeleton{color:var(--skeleton)} .b-element{color:var(--element)} .b-spacing{color:var(--spacing)}
+.flow{display:flex;flex-wrap:wrap;gap:10px;margin:.9rem 0}
+.tile{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px 8px;min-width:96px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;transition:box-shadow .15s,transform .15s}
+.tile:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.tile .g,.tile .from{font-family:"Abhaya Libre","Noto Sans Sinhala","Iskoola Pota",serif}
+.tile .g{font-size:2.3rem;line-height:1.15;font-weight:500}
+.tile .ord{font-size:.68rem;color:var(--dim);align-self:flex-start;font-family:ui-monospace,monospace}
+.tile .from{font-size:.86rem;color:var(--accent2)}
+.tile .meta{font-size:.66rem;color:var(--dim);letter-spacing:.02em}
+.t-mark .g,.t-composite .g{color:var(--accent)}
+.t-form-family{border-style:dashed}
+.t-form-family .g{font-size:1.6rem}
+.t-conjunct-system{border-style:dashed;border-color:var(--accent)}
+.t-conjunct-system .g{font-size:1.5rem}
+.t-process{opacity:.85;border-style:dotted}
+.t-process .g{font-size:1rem;font-weight:700;padding:.6rem 0}
+.texts{margin:.9rem 0}
+.texts h4{margin:.7rem 0 .2rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);font-weight:700}
+.texts p{margin:.25rem 0;font-size:1.75rem;line-height:1.5}
+.texts p.drill{color:var(--ink)}
+.texts p.sent{font-size:1.5rem}
+.gate{margin:1rem 0 .7rem;font-size:.95rem;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;padding:11px 15px;color:var(--ink)}
+.bar{position:relative;height:24px;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:var(--bg)}
+.bar div{height:100%;background:var(--spacing);opacity:.28}
+.bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--ink)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:.92rem;margin:.9rem 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--dim);background:var(--chip);font-weight:700}
+td.big{font-size:1.5rem;line-height:1.3}
+.rep{color:var(--spacing);font-weight:700}
+.tablewrap{overflow-x:auto;border-radius:14px}
+footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line);padding-top:1.4rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <div class="mark sinh">අ</div>
+  <h1>Sinhala Design Dependency Model</h1>
+  <p class="sub">A mechanical, dependency-based development order for Sinhala fonts.
+  Every design decision — a metric, a skeleton, an element, a spacing class, a mark form —
+  is introduced exactly once by one glyph and inherited by everything that follows.
+  Stages are computed conclusions of the graph, not opinions.</p>
+  <p class="prov">Generated from <code>sinhala-design-dependencies.yaml</code> v0.1.0
+  · 110 design units · 11 stages
+  · based on research by Pushpananda Ekanayake, Pathum Egodawatta
+  · orthogonal to the lanka-glyphsets <a href="../../glyphsets/">levels</a></p>
+</div></div>
+
+<div class="wrap">
+
+<h2 id="model">The model <small>what counts as a dependency</small></h2>
+<div class="cards"><div class="card"><h4>Metrics</h4><p>Global vertical and rhythm decisions: base height, descender depths, mark zones, stroke weight and contrast, counter model, spacing unit. Committed in Stage 0–1 and frozen; changing one later reopens every glyph that sits on it.</p></div><div class="card"><h4>Skeletons</h4><p>The primary structural forms of the script — bowl, arch, double-bowl, trap-body, u-bottom, diagonal. Each is introduced by one archetype glyph; every other glyph of that family is a transformation of it.</p></div><div class="card"><h4>Structural elements</h4><p>Reusable visual motifs attached to skeletons — eyes, traps, loops, hangs, tails, forks, diagonals. A glyph may introduce AT MOST ONE new element over an already-designed parent. (cf. the anatomical stroke primitives — akshi, pāsha, grantika — in sinhala-anatomy.md)</p></div><div class="card"><h4>Spacing classes</h4><p>The similar-left-side / similar-right-side families. The FIRST designed member of a class (its representative) sets the sidebearing; all later members inherit it. Spacing becomes inheritance, not per-glyph work.</p></div><div class="card"><h4>Mark-join conventions</h4><p>Each typographic form of a mark is its own decision: ි has a dozen-plus atomic form families, ු has regular, special and irregular fused forms, ් has four forms (kodiya flag, rahena wrap, trap and ja alternates). A form family is introduced by its first designed member; later hosts inherit the convention as they arrive.</p></div><div class="card"><h4>Composites</h4><p>Pure assemblies of existing parts (ො = ෙ + ා, ේ = ෙ + ්, ෝ = ො + ්, ආ = අ + ා). Near-zero design cost; schedulable as soon as all parts exist. Whether they are built as references or GPOS is per-project (see glyph_construction in sinhala-shape-groups.yaml).</p></div></div>
+
+<div class="two">
+  <div><h2>Rules <small>of the mechanical process</small></h2><ol class="rules"><li>Introduce once: every decision (metric, skeleton, element, spacing class, mark form) has exactly one introducing glyph.</li><li>Inherit afterwards: later glyphs may only USE decisions that already exist.</li><li>One new thing at a time: a glyph introduces at most one new element over its parents.</li><li>Representatives first: a spacing class member may not be designed before its representative.</li><li>Freeze at the gate: a stage's glyphs are frozen when the stage gate passes. Editing a frozen glyph formally reopens ALL its descendants.</li><li>Test with what exists: stage test texts may only use glyphs and mark forms scheduled at or before that stage. The build validates this mechanically.</li><li>Stages are computed conclusions, not opinions: if the data changes, rebuild; the document must never disagree with the graph.</li></ol></div>
+  <div><h2>Stage gates <small>every stage must pass all of these</small></h2><ul class="plain"><li>Every new glyph sits correctly in its spacing class (check against the class representative).</li><li>The stage drill strings read with even colour and rhythm at text size.</li><li>The stage word list and sentences (real Sinhala) read naturally.</li><li>All new metrics/elements introduced this stage are reviewed and frozen.</li><li>No open validation errors from `npm run build`.</li></ul></div>
+</div>
+
+<h2>Metrics <small>global decisions — change one later and every descendant reopens</small></h2>
+<div class="tablewrap"><table><tr><th>id</th><th>metric</th><th>committed by</th><th>stage</th><th>description</th></tr><tr><td><code>base_height</code></td><td>Base height</td><td class="sinh big">ස</td><td>0</td><td>Height of the letter body (the Sinhala 'x-height'). Nearly every glyph lives here. Decided on ස's body top — in multi-script fonts tuned near the Latin x-height (similar, never 100% matching). ට's bowl ascends above this band, so it is not the anchor.</td></tr><tr><td><code>stroke</code></td><td>Stroke weight &amp; contrast</td><td class="sinh big">ට</td><td>0</td><td>Main stroke thickness, thick/thin axis and modulation model.</td></tr><tr><td><code>counter</code></td><td>Counter model</td><td class="sinh big">ට</td><td>0</td><td>Interior white: aperture size, counter proportions, rounding radius.</td></tr><tr><td><code>spacing_unit</code></td><td>Spacing unit</td><td class="sinh big">ට</td><td>0</td><td>The default sidebearing rhythm every spacing class is tuned against.</td></tr><tr><td><code>overshoot</code></td><td>Overshoot</td><td class="sinh big">ට</td><td>0</td><td>How far round strokes cross the baseline / base height.</td></tr><tr><td><code>mark_height</code></td><td>Above-mark zone</td><td class="sinh big">ි</td><td>1</td><td>Ceiling and clearance for ි ී and the ් flag.</td></tr><tr><td><code>mark_depth</code></td><td>Below-mark depth</td><td class="sinh big">ු</td><td>1</td><td>Depth of ු ූ (and later ෘ ෲ). Distinct from consonant tail depth.</td></tr><tr><td><code>tail_depth</code></td><td>Consonant tail depth</td><td class="sinh big">ඩ</td><td>1</td><td>Descender depth of consonant tails (ඩ ඬ etc.).</td></tr><tr><td><code>hook_depth</code></td><td>Aeda-pilla depth</td><td class="sinh big">ැ</td><td>4</td><td>Depth of the ැ ෑ hooks below the baseline.</td></tr><tr><td><code>conjunct_depth</code></td><td>Conjunct depth</td><td class="sinh big">rakaransaya</td><td>9</td><td>Depth budget for ්‍ර and stacked/touching conjuncts.</td></tr></table></div>
+
+<h2>Skeletons <small>one archetype glyph introduces each primary structure</small></h2>
+<div class="cards"><div class="card"><div class="sinh showcase">ට</div>
+    <h4>Bowl <code>bowl</code></h4>
+    <p class="dim">archetype <span class="sinh">ට</span>, stage 1</p>
+    <p>Single open bowl on the baseline; the script's core curve.</p></div><div class="card"><div class="sinh showcase">එ</div>
+    <h4>Trap body <code>trap_body</code></h4>
+    <p class="dim">archetype <span class="sinh">එ</span>, stage 2</p>
+    <p>The open-top 'trap' body shared by එ ඒ ඨ ඪ ඵ (yaml එ-group).</p></div><div class="card"><div class="sinh showcase">ප</div>
+    <h4>Double bowl <code>double_bowl</code></h4>
+    <p class="dim">archetype <span class="sinh">ප</span>, stage 1</p>
+    <p>Two joined bowls; base of the wide ප family.</p></div><div class="card"><div class="sinh showcase">ග</div>
+    <h4>Arch <code>arch</code></h4>
+    <p class="dim">archetype <span class="sinh">ග</span>, stage 3</p>
+    <p>The arch with the shared right terminal of ක ත ග ණ න භ ශ හ — the largest family in the script.</p></div><div class="card"><div class="sinh showcase">ද</div>
+    <h4>U-bottom <code>u_bottom</code></h4>
+    <p class="dim">archetype <span class="sinh">ද</span>, stage 4</p>
+    <p>The open under-curve shared by අ උ ද ඳ (yaml උ-group).</p></div><div class="card"><div class="sinh showcase">ර</div>
+    <h4>Diagonal <code>diagonal</code></h4>
+    <p class="dim">archetype <span class="sinh">ර</span>, stage 4</p>
+    <p>The diagonal-stroke system of ර and its irregular combined forms (yaml ර-group).</p></div></div>
+
+<h2>Structural elements <small>reusable motifs — each introduced once (cf. sinhala-anatomy.md)</small></h2>
+<div class="cards"><div class="card">
+    <div class="sinh showcase">එ ච ඩ ඝ ඪ භ ස</div>
+    <h4>Eye-line entry <code>eye_line</code></h4>
+    <p class="dim">introduced by <span class="sinh">ස</span> (stage 1) — cf. Akshi (eye) + entry stroke</p>
+    <p>The left entry that runs into a small eye, shared by the එ ච ඩ ඝ ඪ භ ස left family.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ඩ ඪ ඬ</div>
+    <h4>Tail <code>tail</code></h4>
+    <p class="dim">introduced by <span class="sinh">ඩ</span> (stage 1) — Avarohana (descender) + Grantika (knot)</p>
+    <p>Knotted descender below the baseline. Commits tail_depth.</p>
+  </div><div class="card">
+    <div class="sinh showcase">එ ඒ ඨ ථ ඪ ඵ ව</div>
+    <h4>Trap <code>trap</code></h4>
+    <p class="dim">introduced by <span class="sinh">ඪ</span> (stage 1) — open counter form</p>
+    <p>The open-top trap counter. Introduced on ඪ, archetype body is එ.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ක ත න භ හ</div>
+    <h4>Ka-eye <code>eye_ka</code></h4>
+    <p class="dim">introduced by <span class="sinh">ත</span> (stage 3) — Akshi (eye)</p>
+    <p>The closed eye of the arch family.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ය</div>
+    <h4>Fork <code>fork</code></h4>
+    <p class="dim">introduced by <span class="sinh">ය</span> (stage 2) — internal divider</p>
+    <p>The internal divider that turns ප into ය.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ඔ ම ඹ</div>
+    <h4>Loop <code>loop</code></h4>
+    <p class="dim">introduced by <span class="sinh">ඔ</span> (stage 5) — Pāsha (loop)</p>
+    <p>The closed loop of ඔ ම ඹ.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ඤ ඥ ඟ ඬ ඳ</div>
+    <h4>Hang <code>hang</code></h4>
+    <p class="dim">introduced by <span class="sinh">ඳ</span> (stage 7) — descending Pāsha</p>
+    <p>The hanging tail of the prenasalized/nasal set.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ජ ඡ ඦ ණ ර ඊ</div>
+    <h4>Diagonal stroke <code>diagonal</code></h4>
+    <p class="dim">introduced by <span class="sinh">ර</span> (stage 4) — inclined Bāhuva (stem)</p>
+    <p>The diagonal stroke system; also the whole ර combined-form family.</p>
+  </div><div class="card">
+    <div class="sinh showcase">ඣ</div>
+    <h4>Twin body <code>twin_body</code></h4>
+    <p class="dim">introduced by <span class="sinh">ඣ</span> (stage 7) — Gaṇḍa (hump) + dvivakra sandi</p>
+    <p>Two letter bodies fused side by side sharing a joint — the construction of ඣ and of the ligated conjuncts (න්‍ද ත්‍ථ ක්‍ව ග්‍ධ …), which inherit it in Stage 9. Noto groups ඣ with the fused conjuncts in its OT classes.</p>
+  </div></div>
+
+<h2 id="pipeline">The stages <small>glyphs in design order — each tile derives from what precedes it</small></h2>
+<section class="stage" id="stage-0">
+  <header>
+    <div class="snum">0</div>
+    <div>
+      <h3>System</h3>
+      <p class="goal">Decide the type system before drawing letters: base height, stroke and contrast, counter model, overshoot, spacing unit. Deliverable is a set of guides plus rough control drawings of ට and ස — ට for stroke, counter and overshoot; ස for base height (tuned near the Latin x-height in multi-script projects, never 100% matching).</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-metric">Base height</span><span class="badge b-metric">Stroke weight &amp; contrast</span><span class="badge b-metric">Counter model</span><span class="badge b-metric">Spacing unit</span><span class="badge b-metric">Overshoot</span></div>
+  
+  
+  
+  
+  
+  <div class="gate"><b>Gate:</b> All Stage-0 metrics written down and drawn as guides.</div>
+  <div class="bar"><div style="width:0%"></div><span>0 / 110 design units scheduled (0%)</span></div>
+</section>
+<section class="stage" id="stage-1">
+  <header>
+    <div class="snum">1</div>
+    <div>
+      <h3>Bootstrap</h3>
+      <p class="goal">The smallest set that commits the core decisions: the bowl, the body-deciding ස (its body top fixes base height — in multi-script projects tuned near the Latin x-height, similar but never 100% matching, while ට's apex ascends above the body band — and brings the eye-line entry and doubled-body density), the double-bowl ප, the tail (descender depth), the trap, and both vertical mark zones (ි above, ු below) with their first atomic joins (ඩි ඪි). This stage front-loads risk on purpose: every core metric is committed here.</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-metric">Above-mark zone</span><span class="badge b-metric">Below-mark depth</span><span class="badge b-metric">Consonant tail depth</span><span class="badge b-skeleton">Bowl skeleton</span><span class="badge b-skeleton">Double bowl skeleton</span><span class="badge b-element">Eye-line entry element</span><span class="badge b-element">Tail element</span><span class="badge b-element">Trap element</span><span class="badge b-spacing">L-tta (rep ට)</span><span class="badge b-spacing">L-e (rep ස)</span><span class="badge b-spacing">L-pa (rep ප)</span><span class="badge b-spacing">R-bowl (rep ට)</span><span class="badge b-spacing">R-trap (rep ඪ)</span><span class="badge b-spacing">R-pa (rep ස)</span></div>
+  <div class="flow"><div class="tile t-base" title="The control glyph. A single open bowl on the baseline: one continuous stroke, aperture per the counter model. Everything in the font is calibrated against this drawing. Note: ට's apex ascends above the general body area — it is deliberately taller than the base-height band, which ස (next) decides.">
+    <span class="ord">1.1</span>
+    <span class="g">ට</span>
+    <span class="from">root</span>
+    <span class="meta">base · U+0DA7</span>
+  </div><div class="tile t-base" title="The body-deciding glyph, drawn immediately after ට: eye-line entry into a doubled body — the widest simple glyph and the first density problem. Its body top fixes base height (in multi-script projects tuned near the Latin x-height — similar, never 100% matching), while ට's apex ascends above it. Introduces the eye_line element, the L-e entry class and the R-pa terminal that ප ය ඝ ෂ inherit.">
+    <span class="ord">1.2</span>
+    <span class="g">ස</span>
+    <span class="from">← ට</span>
+    <span class="meta">base · U+0DC3</span>
+  </div><div class="tile t-base" title="Two joined bowls sitting on the base height ස decided — the flat double-bowl top lands exactly on the body band. Introduces the double_bowl skeleton and the L-pa entry that අ උ ද ව හ inherit; the right terminal inherits R-pa from ස.">
+    <span class="ord">1.3</span>
+    <span class="g">ප</span>
+    <span class="from">← ට + ස</span>
+    <span class="meta">base · U+0DB4</span>
+  </div><div class="tile t-base" title="ට reworked with ස's eye-line left entry, plus the knotted tail below the baseline. Introduces the tail element and commits tail_depth.">
+    <span class="ord">1.4</span>
+    <span class="g">ඩ</span>
+    <span class="from">← ට + ස</span>
+    <span class="meta">base · U+0DA9</span>
+  </div><div class="tile t-base" title="ඩ plus the trap closure on the right; its right side must land in the ඨ ථ එ ඵ terminal family (R-trap), which it introduces.">
+    <span class="ord">1.5</span>
+    <span class="g">ඪ</span>
+    <span class="from">← ඩ</span>
+    <span class="meta">base · U+0DAA</span>
+  </div><div class="tile t-mark" title="The above-join convention, first typographic form only — the form that rides the bowl tops (ට ච ඩ class). Which of the 3+ forms this is must be stated in the project spec. Commits mark_height.">
+    <span class="ord">1.6</span>
+    <span class="g">ි</span>
+    <span class="from">root</span>
+    <span class="meta">mark · U+0DD2</span>
+  </div><div class="tile t-form-family" title="Atomic ි over the open-bowl hosts; introduced on ඩි. ච joins in Stage 2, the ී long forms (ටී චී ඩී) in Stage 5.">
+    <span class="ord">1.7</span>
+    <span class="g">ටි ඩි (ටී චී ඩී)</span>
+    <span class="from">← ට + ඩ + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="Atomic ි over the trap-topped hosts; introduced on ඪි. Remaining hosts (ඨ ථ ඵ) complete in Stages 5–6; conjunct hosts (ට්‍ඨ ත්‍ථ න්‍ථ) in Stage 9.">
+    <span class="ord">1.8</span>
+    <span class="g">ඪි (ඨි ථි ඵි …)</span>
+    <span class="from">← ඪ + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-mark" title="The regular below-join, tested on සු. Commits mark_depth — a shallower zone than tail_depth; the two must be decided together.">
+    <span class="ord">1.9</span>
+    <span class="g">ු</span>
+    <span class="from">root</span>
+    <span class="meta">mark · U+0DD4</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටටටටට ටසටසට ටපටපට ටඩටඩට ටඪටඪට</p><p class="sinh drill">ටටටට සසටස පපටප ඩඩටඩ ඪඪටඪ</p><p class="sinh drill">ටි ඩි ඪි ටු සු පු ඩු ඪු</p></div>
+  <div class="texts"><h4>Drills</h4><p class="sinh drill">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස</p><p class="sinh drill">පට පස සප ටපස පඩට ඪප පසඩි පටඪ</p><p class="sinh drill">ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු</p></div>
+  
+  
+  <div class="gate"><b>Gate:</b> Bowl rhythm reads evenly; base height locked on ස; ඩි ඪි joins convincing; both mark depths frozen.</div>
+  <div class="bar"><div style="width:8%"></div><span>9 / 110 design units scheduled (8%)</span></div>
+</section>
+<section class="stage" id="stage-2">
+  <header>
+    <div class="snum">2</div>
+    <div>
+      <h3>Bowl derivatives</h3>
+      <p class="goal">Everything that follows from Stage 1 with zero new metrics: ච (bowl + eye-line), එ (the trap body standing alone), ය (ප plus the fork), ව (bowl + trap). One new left spacing class opens (L-ja).</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-skeleton">Trap body skeleton</span><span class="badge b-element">Fork element</span><span class="badge b-spacing">L-ja (rep ය)</span></div>
+  <div class="flow"><div class="tile t-base" title="ට's bowl with ඩ's eye-line entry; no tail. Pure recombination.">
+    <span class="ord">2.1</span>
+    <span class="g">ච</span>
+    <span class="from">← ට + ඩ</span>
+    <span class="meta">base · U+0DA0</span>
+  </div><div class="tile t-vowel" title="The trap body standing alone — the archetype refined from its first appearance on ඪ. Skeleton for ඒ ඨ ඵ later.">
+    <span class="ord">2.2</span>
+    <span class="g">එ</span>
+    <span class="from">← ඪ</span>
+    <span class="meta">vowel · U+0D91</span>
+  </div><div class="tile t-base" title="ප plus the internal fork; introduces the L-ja entry class (ජ ර ල ළ ෆ … inherit).">
+    <span class="ord">2.3</span>
+    <span class="g">ය</span>
+    <span class="from">← ප</span>
+    <span class="meta">base · U+0DBA</span>
+  </div><div class="tile t-base" title="Bowl with the trap element on the right; inherits everything.">
+    <span class="ord">2.4</span>
+    <span class="g">ව</span>
+    <span class="from">← ට + ඪ</span>
+    <span class="meta">base · U+0DC0</span>
+  </div><div class="tile t-form-family" title="The top-terminal wrap ි — for bases whose top terminal forces the loop to wrap around it (the same top-terminal logic as the rahena ්). Noto Sans Sinhala fuses every one of these as a single ligature glyph (yI-sinh, mI-sinh …). Introduced on යි; later hosts inherit as they arrive.">
+    <span class="ord">2.5</span>
+    <span class="g">යි වි (මි බි ණි …)</span>
+    <span class="from">← ය + ි</span>
+    <span class="meta">form family</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටචසචට ටඑසඑට ටයසයට ටවසවට</p><p class="sinh drill">චචටච එඑටඑ යයටය වවටව</p><p class="sinh drill">චි යි වි චු යු වු</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">වට  එය  පය  සුව  වසු  පසු  පුස</p></div>
+  
+  <div class="gate"><b>Gate:</b> All four glyphs sit in Stage-1 rhythm without touching any metric.</div>
+  <div class="bar"><div style="width:13%"></div><span>14 / 110 design units scheduled (13%)</span></div>
+</section>
+<section class="stage" id="stage-3">
+  <header>
+    <div class="snum">3</div>
+    <div>
+      <h3>Arch family and spacing marks</h3>
+      <p class="goal">The arch — the script's biggest family — enters via ග, with ා designed alongside it (they share the same right terminal). ත න introduce the ka-eye. The first spacing marks (් kodiya, ෙ, ං) unlock real words, and the ් system branches: the rahena wrap (ට්) and the trap-top alternate (ඪ්) are decided against their Stage-1 hosts. The first ි family taken from a designed host: සි (the ඝි family, introduced by its first available member).</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-skeleton">Arch skeleton</span><span class="badge b-element">Ka-eye element</span><span class="badge b-spacing">L-ka (rep ත)</span><span class="badge b-spacing">L-ga (rep ග)</span><span class="badge b-spacing">R-arch (rep ග)</span></div>
+  <div class="flow"><div class="tile t-mark" title="The default KODIYA flag form (as on ක්). Three sibling decisions follow: the rahena wrap (hal-rahena), the trap-top alternate (hal-trap) and the ja-shape alternate (hal-ja).">
+    <span class="ord">3.1</span>
+    <span class="g">්</span>
+    <span class="from">root</span>
+    <span class="meta">mark · U+0DCA</span>
+  </div><div class="tile t-base" title="The naked arch — introduces the skeleton and BOTH spacing classes of the script's largest family. The right terminal here is the exact model for ා.">
+    <span class="ord">3.2</span>
+    <span class="g">ග</span>
+    <span class="from">root</span>
+    <span class="meta">base · U+0D9C</span>
+  </div><div class="tile t-mark" title="Designed WITH ග: the same right terminal, standing as a spacing mark.">
+    <span class="ord">3.3</span>
+    <span class="g">ා</span>
+    <span class="from">← ග</span>
+    <span class="meta">mark · U+0DCF</span>
+  </div><div class="tile t-base" title="ග plus the closed ka-eye; introduces eye_ka and the L-ka entry.">
+    <span class="ord">3.4</span>
+    <span class="g">ත</span>
+    <span class="from">← ග</span>
+    <span class="meta">base · U+0DAD</span>
+  </div><div class="tile t-base" title="ත's construction with the mid-form variation; pure sibling.">
+    <span class="ord">3.5</span>
+    <span class="g">න</span>
+    <span class="from">← ත</span>
+    <span class="meta">base · U+0DB1</span>
+  </div><div class="tile t-mark" title="The pre-base spacing mark; its left profile belongs to the L-ga class (source groups ෙ with ග ඟ ඤ ඥ …), so it follows ග.">
+    <span class="ord">3.6</span>
+    <span class="g">ෙ</span>
+    <span class="from">← ග</span>
+    <span class="meta">mark · U+0DD9</span>
+  </div><div class="tile t-sign" title="A filled/open dot at base height — trivial, very frequent, and needed for real words (ගං, සං-).">
+    <span class="ord">3.7</span>
+    <span class="g">ං</span>
+    <span class="from">root</span>
+    <span class="meta">sign · U+0D82</span>
+  </div><div class="tile t-form-family" title="The ඝි-family convention introduced by its first DESIGNED member — සි (the family key ඝ only arrives in Stage 6 and inherits). Demonstrates the representative-introduces-family principle.">
+    <span class="ord">3.8</span>
+    <span class="g">සි (ඝි)</span>
+    <span class="from">← ස + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The RAHENA ් form: on bases with a TOP TERMINAL the kodiya flag cannot land, so ් wraps the terminal and the pair fuses into one glyph (Noto: tt-sinh, m-sinh …). Introduced on ට්. ර් belongs to ra-forms, not here. ඔ ඕ share the top terminal visually but, being independent vowels, never take ්.">
+    <span class="ord">3.9</span>
+    <span class="g">ට් ඩ් (ම් බ් …)</span>
+    <span class="from">← ් + ට</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The ් alternate over trap-topped bases (Noto virama.alt1 over its pha-shape class) — the flag must clear the open trap. Introduced on ඪ්; ඨ ථ ඵ inherit in Stages 5–6.">
+    <span class="ord">3.10</span>
+    <span class="g">ඪ් (ඨ් ථ් ඵ්)</span>
+    <span class="from">← ් + ඪ</span>
+    <span class="meta">form family</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටගසගට ටතසතට ටනසනට</p><p class="sinh drill">ගගටග තතටත නනටන</p><p class="sinh drill">සි නු ට් ස් ප් ඩ් ඪ් ච් ය් ව් ග් ත් න් ටා</p><p class="sinh drill">සා පා ඩා ඪා චා ටෙ සෙ පෙ ඩෙ ඪෙ චෙ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">ගත  ගස  ගස්  වත  පත  පාට  සතා  ගෙට  නෙත  වෙන  සිට  සිසු  තට්ටුව  වත්ත  වසන්තය  ගංගාව</p></div>
+  
+  <div class="gate"><b>Gate:</b> First real Sinhala words read naturally; arch terminal and ා are indistinguishable in rhythm.</div>
+  <div class="bar"><div style="width:22%"></div><span>24 / 110 design units scheduled (22%)</span></div>
+</section>
+<section class="stage" id="stage-4">
+  <header>
+    <div class="snum">4</div>
+    <div>
+      <h3>High-frequency completion</h3>
+      <p class="goal">The stage that makes the font write Sinhala: ක ද උ අ ර ල, the hooks ැ ෑ, the vowel composites ආ ඇ ඈ and ේ ො ෝ ෛ, the irregular ර forms (රි ර් රැ), the first wave of atomic ි families (කි ගි දි ලි පි), and the special ු form (කු ගු තු) plus දු. Text coverage jumps to the majority of running Sinhala.</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-metric">Aeda-pilla depth</span><span class="badge b-skeleton">U-bottom skeleton</span><span class="badge b-skeleton">Diagonal skeleton</span><span class="badge b-element">Diagonal stroke element</span><span class="badge b-spacing">R-diag (rep ර)</span><span class="badge b-spacing">R-a (rep අ)</span><span class="badge b-spacing">R-u (rep ද)</span></div>
+  <div class="flow"><div class="tile t-base" title="The eye variant of ත — the same skeleton with the doubled-eye construction.">
+    <span class="ord">4.1</span>
+    <span class="g">ක</span>
+    <span class="from">← ත</span>
+    <span class="meta">base · U+0D9A</span>
+  </div><div class="tile t-base" title="Introduces the u_bottom skeleton and the R-u terminal (උ ඤ ඥ ඳ ැ ෑ inherit). The da-form bottom must stay consistent across ද ඳ ඤ ඥ න්‍ද (da_forms note in the shape taxonomy).">
+    <span class="ord">4.2</span>
+    <span class="g">ද</span>
+    <span class="from">root</span>
+    <span class="meta">base · U+0DAF</span>
+  </div><div class="tile t-vowel" title="The u_bottom standing alone with its opening stroke.">
+    <span class="ord">4.3</span>
+    <span class="g">උ</span>
+    <span class="from">← ද</span>
+    <span class="meta">vowel · U+0D8B</span>
+  </div><div class="tile t-vowel" title="The complex member of the උ group; introduces the R-a terminal (ල ළ inherit). The most frequent letter in the language — worth a disproportionate share of stage time.">
+    <span class="ord">4.4</span>
+    <span class="g">අ</span>
+    <span class="from">← උ</span>
+    <span class="meta">vowel · U+0D85</span>
+  </div><div class="tile t-base" title="Introduces the diagonal skeleton/element. ර is deliberately early: it is top-five frequency, and the whole Stage 9 conjunct layer (rakaransaya, repaya) plus five irregular combined forms hang off it.">
+    <span class="ord">4.5</span>
+    <span class="g">ර</span>
+    <span class="from">root</span>
+    <span class="meta">base · U+0DBB</span>
+  </div><div class="tile t-base" title="L-ja entry (from ය) into the R-a terminal (from අ); everything inherited.">
+    <span class="ord">4.6</span>
+    <span class="g">ල</span>
+    <span class="from">← ය</span>
+    <span class="meta">base · U+0DBD</span>
+  </div><div class="tile t-mark" title="The below-baseline hook; commits hook_depth. Its right profile belongs to the R-u class (source groups ැ ෑ with උ ද ඳ), hence parent ද.">
+    <span class="ord">4.7</span>
+    <span class="g">ැ</span>
+    <span class="from">← ද</span>
+    <span class="meta">mark · U+0DD0</span>
+  </div><div class="tile t-mark" title="ැ plus the length stroke; pure derivative.">
+    <span class="ord">4.8</span>
+    <span class="g">ෑ</span>
+    <span class="from">← ැ</span>
+    <span class="meta">mark · U+0DD1</span>
+  </div><div class="tile t-form-family" title="The irregular ර system: රි ර් රැ are unique drawn forms, not mark attachments (the shape taxonomy gives ර-forms their own group). රී රූ complete in Stage 5 when ී ූ exist. Noto goes as far as REUSING the ැ glyph for රු (ra + u-sign is substituted by the aela-pilla-style hook) — evidence of how fused this system is.">
+    <span class="ord">4.9</span>
+    <span class="g">රි ර් රැ (රී රූ)</span>
+    <span class="from">← ර + ි + ැ + ්</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-composite" title="අ + the ා terminal, drawn as one letter. Near-zero cost.">
+    <span class="ord">4.10</span>
+    <span class="g">ආ</span>
+    <span class="from">← අ + ා</span>
+    <span class="meta">composite · U+0D86</span>
+  </div><div class="tile t-composite" title="අ + the ැ hook integrated at the terminal.">
+    <span class="ord">4.11</span>
+    <span class="g">ඇ</span>
+    <span class="from">← අ + ැ</span>
+    <span class="meta">composite · U+0D87</span>
+  </div><div class="tile t-composite" title="ඇ + length stroke, exactly as ෑ derives from ැ.">
+    <span class="ord">4.12</span>
+    <span class="g">ඈ</span>
+    <span class="from">← ඇ</span>
+    <span class="meta">composite · U+0D88</span>
+  </div><div class="tile t-composite" title="Canonical assembly ෙ + ් (U+0DDA decomposes to 0DD9 0DCA). Composite or reference, per project policy.">
+    <span class="ord">4.13</span>
+    <span class="g">ේ</span>
+    <span class="from">← ෙ + ්</span>
+    <span class="meta">composite · U+0DDA</span>
+  </div><div class="tile t-composite" title="Assembly ෙ + base + ා (U+0DDC = 0DD9 0DCF).">
+    <span class="ord">4.14</span>
+    <span class="g">ො</span>
+    <span class="from">← ෙ + ා</span>
+    <span class="meta">composite · U+0DDC</span>
+  </div><div class="tile t-composite" title="ො + ් (U+0DDD = 0DDC 0DCA).">
+    <span class="ord">4.15</span>
+    <span class="g">ෝ</span>
+    <span class="from">← ො + ්</span>
+    <span class="meta">composite · U+0DDD</span>
+  </div><div class="tile t-composite" title="Two kombuwa; rhythm between the pair is the only new decision.">
+    <span class="ord">4.16</span>
+    <span class="g">ෛ</span>
+    <span class="from">← ෙ</span>
+    <span class="meta">composite · U+0DDB</span>
+  </div><div class="tile t-form-family" title="The arch-eye ි convention, archetype කි. The ී forms complete in Stage 5.">
+    <span class="ord">4.17</span>
+    <span class="g">කි ති නි (කී තී නී)</span>
+    <span class="from">← ක + ත + න + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The naked-arch ි convention introduced on ගි; ඟ ශ ෆ inherit in Stages 6–7.">
+    <span class="ord">4.18</span>
+    <span class="g">ගි (ඟි ශි ෆි …)</span>
+    <span class="from">← ග + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The ද ි convention; conjunct hosts (ද්‍රි) join in Stage 9.">
+    <span class="ord">4.19</span>
+    <span class="g">දි (දී ද්‍රි ද්‍රී)</span>
+    <span class="from">← ද + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="Introduced on ලි; ළ inherits in Stage 6.">
+    <span class="ord">4.20</span>
+    <span class="g">ලි (ළි ලී ළී)</span>
+    <span class="from">← ල + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="Introduced on පි. NOTE: the source table for this family is marked unclear (rows repeat, no clean i/ii split) — verify membership.">
+    <span class="ord">4.21</span>
+    <span class="g">පි (පී ෂි ක්‍ෂි)</span>
+    <span class="from">← ප + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The SECOND typographic form of ු — the right-joined form on arch-family terminals. Introduced on කු; භ ශ ඟ inherit in Stages 6–7. ළු is NOT a member: it is an irregular fused form of its own (entry llu-form).">
+    <span class="ord">4.22</span>
+    <span class="g">කු ගු තු (භු ශු ඟු)</span>
+    <span class="from">← ක + ග + ත + ු</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="Irregular: ු fuses into ද's bowl. The shape taxonomy files දු beside ක්‍රී ශ්‍රී (the ග්‍රි group) — an oddity flagged in `gaps`; treated here as its own one-host family.">
+    <span class="ord">4.23</span>
+    <span class="g">දු (දූ)</span>
+    <span class="from">← ද + ු</span>
+    <span class="meta">form family</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටකනකට ටදනදට ටඋනඋට ටඅනඅට ටරනරට ටලනලට</p><p class="sinh drill">කකටක දදටද උඋටඋ අඅටඅ රරටර ලලටල</p><p class="sinh drill">පි ගි ති නි කි දි රි ලි ගු තු කු දු රු ලු</p><p class="sinh drill">ක් ද් ර් ල් කා දා රා ලා ටැ සැ පැ ඩැ ඪැ චැ</p><p class="sinh drill">ටෑ සෑ පෑ ඩෑ ඪෑ චෑ කෙ දෙ රෙ ලෙ ටේ සේ පේ ඩේ</p><p class="sinh drill">ඪේ චේ ටො සො පො ඩො ඪො චො ටෝ සෝ පෝ ඩෝ ඪෝ චෝ</p><p class="sinh drill">ටෛ සෛ පෛ ඩෛ ඪෛ චෛ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">අද  අත  රට  රටේ  කරනවා  අපේ  ගෙදර  කියනවා  දැන්  අවුරුදු  අකුරු  කුරුල්ලා  ලංකාව  වතුර  දරුවා  පාසල  උදේ  කවදා  එදා  දිය  පොත  ලොකු  කැලේ</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">අද උදේ අපේ දරුවා පාසලට ගියා.</p><p class="sinh sent">කිරි ටිකක් දෙන්න.</p></div>
+  <div class="gate"><b>Gate:</b> Full sentences set cleanly; frequency coverage measured against a corpus, not assumed.</div>
+  <div class="bar"><div style="width:43%"></div><span>47 / 110 design units scheduled (43%)</span></div>
+</section>
+<section class="stage" id="stage-5">
+  <header>
+    <div class="snum">5</div>
+    <div>
+      <h3>Loops, diagonals and long marks</h3>
+      <p class="goal">The loop enters via ඔ (then ම), ණ combines arch + diagonal, ජ ඡ put the diagonal on the ප skeleton, ඉ ථ ඨ complete the medium shapes. Long marks ී ූ unlock the ී forms of every family designed so far, and the ja-shape ් alternate arrives on ජ්.</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-element">Loop element</span><span class="badge b-spacing">L-o (rep ඔ)</span><span class="badge b-spacing">R-round (rep ඔ)</span></div>
+  <div class="flow"><div class="tile t-vowel" title="Introduces the loop (pāsha) on the bowl; opens BOTH round spacing classes.">
+    <span class="ord">5.1</span>
+    <span class="g">ඔ</span>
+    <span class="from">← ට</span>
+    <span class="meta">vowel · U+0D94</span>
+  </div><div class="tile t-base" title="The loop in body position — ඔ's decision applied mid-letter.">
+    <span class="ord">5.2</span>
+    <span class="g">ම</span>
+    <span class="from">← ඔ</span>
+    <span class="meta">base · U+0DB8</span>
+  </div><div class="tile t-base" title="Arch construction (න) carrying the diagonal (ර) — the first cross-family recombination.">
+    <span class="ord">5.3</span>
+    <span class="g">ණ</span>
+    <span class="from">← න + ර</span>
+    <span class="meta">base · U+0DAB</span>
+  </div><div class="tile t-vowel" title="High-density curled form on the ප skeleton; right terminal joins R-arch.">
+    <span class="ord">5.4</span>
+    <span class="g">ඉ</span>
+    <span class="from">← ප</span>
+    <span class="meta">vowel · U+0D89</span>
+  </div><div class="tile t-base" title="Trap body with the L-ja entry; completes ඨි-family host ථි immediately.">
+    <span class="ord">5.5</span>
+    <span class="g">ථ</span>
+    <span class="from">← එ</span>
+    <span class="meta">base · U+0DAE</span>
+  </div><div class="tile t-base" title="ඪ without the tail, on the trap body; ඨි completes.">
+    <span class="ord">5.6</span>
+    <span class="g">ඨ</span>
+    <span class="from">← ඪ</span>
+    <span class="meta">base · U+0DA8</span>
+  </div><div class="tile t-base" title="The diagonal applied to the ප skeleton; right side joins ර's R-diag class.">
+    <span class="ord">5.7</span>
+    <span class="g">ජ</span>
+    <span class="from">← ප + ර</span>
+    <span class="meta">base · U+0DA2</span>
+  </div><div class="tile t-base" title="ජ's construction with the closed/trap right; single delta.">
+    <span class="ord">5.8</span>
+    <span class="g">ඡ</span>
+    <span class="from">← ජ</span>
+    <span class="meta">base · U+0DA1</span>
+  </div><div class="tile t-mark" title="The long counterpart of ි. Unlocks the ී member of EVERY family frozen so far (කී තී නී ගී සී ටී ඩී රී …) — a sweep, not new decisions.">
+    <span class="ord">5.9</span>
+    <span class="g">ී</span>
+    <span class="from">← ි</span>
+    <span class="meta">mark · U+0DD3</span>
+  </div><div class="tile t-mark" title="Long ු; same depth, added length stroke. Unlocks කූ ගූ රූ දූ sweeps.">
+    <span class="ord">5.10</span>
+    <span class="g">ූ</span>
+    <span class="from">← ු</span>
+    <span class="meta">mark · U+0DD6</span>
+  </div><div class="tile t-form-family" title="The diagonal-host ි convention; ඦ inherits in Stage 7.">
+    <span class="ord">5.11</span>
+    <span class="g">ජි ඡි (ජී ඡී ඦි)</span>
+    <span class="from">← ජ + ඡ + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The ් alternate over the ja-shape diagonal tops (Noto virama.alt2 over its ja-shape class). Introduced on ජ්; ඦ inherits in Stage 7.">
+    <span class="ord">5.12</span>
+    <span class="g">ජ් (ඡ් ඦ්)</span>
+    <span class="from">← ් + ජ</span>
+    <span class="meta">form family</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටඔනඔට ටමනමට ටණනණට ටඉනඉට ටථනථට ටඨනඨට ටජනජට ටඡනඡට</p><p class="sinh drill">ඔඔටඔ මමටම ණණටණ ඉඉටඉ ථථටථ ඨඨටඨ ජජටජ ඡඡටඡ</p><p class="sinh drill">මි ණි ථි ඨි ජි ඡි ටී සී පී ඩී ඪී චී යී වී</p><p class="sinh drill">ගී තී නී කී දී රී ලී මී ණී ථී ඨී ජී ඡී මු</p><p class="sinh drill">ණු ථු ඨු ජු ඡු ටූ සූ පූ ඩූ ඪූ චූ යූ වූ ගූ</p><p class="sinh drill">තූ නූ කූ දූ රූ ලූ මූ ණූ ථූ ඨූ ජූ ඡූ ම් ණ්</p><p class="sinh drill">ථ් ඨ් ජ් ඡ් මා ණා ථා ඨා ජා ඡා මැ ණැ ථැ ඨැ</p><p class="sinh drill">ජැ ඡැ මෑ ණෑ ථෑ ඨෑ ජෑ ඡෑ මෙ ණෙ ථෙ ඨෙ ජෙ ඡෙ</p><p class="sinh drill">මේ ණේ ථේ ඨේ ජේ ඡේ මො ණො ථො ඨො ජො ඡො මෝ ණෝ</p><p class="sinh drill">ථෝ ඨෝ ජෝ ඡෝ මෛ ණෛ ථෛ ඨෛ ජෛ ඡෛ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">මම  අම්මා  ඔය  ඉර  ජලය  සීනි  ඉතිං  මාමා  ණය  ගණන  මිල  ජාතික  ගාථා  කථාව  පීඨය  මොකද  ඡායා</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">අම්මා පොත කියවනවා.</p><p class="sinh sent">ඉර පායනවා.</p></div>
+  <div class="gate"><b>Gate:</b> Loop counters match the counter model; ී ූ read as the long counterparts of frozen ි ු forms.</div>
+  <div class="bar"><div style="width:54%"></div><span>59 / 110 design units scheduled (54%)</span></div>
+</section>
+<section class="stage" id="stage-6">
+  <header>
+    <div class="snum">6</div>
+    <div>
+      <h3>Aspirates and dense derivatives</h3>
+      <p class="goal">Single-delta children of frozen skeletons: ධ බ ඛ on the bowl, ඕ ඹ on the loop, භ හ ශ ඝ ෂ on the arch/eye system, ළ ෆ ඵ ඒ ඊ ඌ completing their families. Spacing is pure inheritance; the density ceiling (ඝ ෂ ඹ) gets tested against the colour of Stage 1.</p>
+    </div>
+  </header>
+  
+  <div class="flow"><div class="tile t-base" title="ට plus the inner stroke; pure single delta.">
+    <span class="ord">6.1</span>
+    <span class="g">ධ</span>
+    <span class="from">← ට</span>
+    <span class="meta">base · U+0DB0</span>
+  </div><div class="tile t-base" title="The බ-group archetype (yaml බ group: ඛ බ); L-tta entry with the round right.">
+    <span class="ord">6.2</span>
+    <span class="g">බ</span>
+    <span class="from">← ධ</span>
+    <span class="meta">base · U+0DB6</span>
+  </div><div class="tile t-base" title="බ plus the aspirate mark-stroke; single delta.">
+    <span class="ord">6.3</span>
+    <span class="g">ඛ</span>
+    <span class="from">← බ</span>
+    <span class="meta">base · U+0D9B</span>
+  </div><div class="tile t-composite" title="ඔ + the ා-style terminal, as ආ derives from අ.">
+    <span class="ord">6.4</span>
+    <span class="g">ඕ</span>
+    <span class="from">← ඔ + ා</span>
+    <span class="meta">composite · U+0D95</span>
+  </div><div class="tile t-base" title="ම plus the connecting stroke — the prenasalized member of the loop family.">
+    <span class="ord">6.5</span>
+    <span class="g">ඹ</span>
+    <span class="from">← ම</span>
+    <span class="meta">base · U+0DB9</span>
+  </div><div class="tile t-base" title="Arch + ka-eye (from ත) entered with the eye-line (from ස) — a documented double-element recombination, both already frozen.">
+    <span class="ord">6.6</span>
+    <span class="g">භ</span>
+    <span class="from">← ත + ස</span>
+    <span class="meta">base · U+0DB7</span>
+  </div><div class="tile t-base" title="The eye_ka system with the looped under-entry; frequent — schedule generous review time.">
+    <span class="ord">6.7</span>
+    <span class="g">හ</span>
+    <span class="from">← ත</span>
+    <span class="meta">base · U+0DC4</span>
+  </div><div class="tile t-base" title="Arch with the L-ga entry curl and the inner hook; single delta on ග.">
+    <span class="ord">6.8</span>
+    <span class="g">ශ</span>
+    <span class="from">← ග</span>
+    <span class="meta">base · U+0DC1</span>
+  </div><div class="tile t-base" title="The ස construction closed and densified; inherits the frozen fam-i-ghi convention (ඝි) from සි.">
+    <span class="ord">6.9</span>
+    <span class="g">ඝ</span>
+    <span class="from">← ස</span>
+    <span class="meta">base · U+0D9D</span>
+  </div><div class="tile t-base" title="ස plus the crossing bar; joins fam-i-pi for ෂි.">
+    <span class="ord">6.10</span>
+    <span class="g">ෂ</span>
+    <span class="from">← ස</span>
+    <span class="meta">base · U+0DC2</span>
+  </div><div class="tile t-base" title="ල plus the retroflex knot; ළි completes fam-i-li. The irregular ළු follows as its own entry (llu-form).">
+    <span class="ord">6.11</span>
+    <span class="g">ළ</span>
+    <span class="from">← ල</span>
+    <span class="meta">base · U+0DC5</span>
+  </div><div class="tile t-base" title="ප reworked with the R-arch terminal; loan-sound letter.">
+    <span class="ord">6.12</span>
+    <span class="g">ෆ</span>
+    <span class="from">← ප</span>
+    <span class="meta">base · U+0DC6</span>
+  </div><div class="tile t-base" title="Trap body with the L-pa entry; ඵි completes fam-i-tthi hosts.">
+    <span class="ord">6.13</span>
+    <span class="g">ඵ</span>
+    <span class="from">← එ</span>
+    <span class="meta">base · U+0DB5</span>
+  </div><div class="tile t-composite" title="එ + the halanta-style stroke, as ේ derives from ෙ.">
+    <span class="ord">6.14</span>
+    <span class="g">ඒ</span>
+    <span class="from">← එ + ්</span>
+    <span class="meta">composite · U+0D92</span>
+  </div><div class="tile t-vowel" title="ඉ carrying the diagonal — the taxonomy files ඊ in BOTH the ප and ර groups; primary here is the ර system's diagonal.">
+    <span class="ord">6.15</span>
+    <span class="g">ඊ</span>
+    <span class="from">← ඉ + ර</span>
+    <span class="meta">vowel · U+0D8A</span>
+  </div><div class="tile t-composite" title="උ plus the length tail — the ූ logic at letter scale.">
+    <span class="ord">6.16</span>
+    <span class="g">ඌ</span>
+    <span class="from">← උ</span>
+    <span class="meta">composite · U+0D8C</span>
+  </div><div class="tile t-form-family" title="The eye-topped-arch ි convention for භ හ.">
+    <span class="ord">6.17</span>
+    <span class="g">භි හි (භී හී)</span>
+    <span class="from">← භ + හ + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="Irregular fused form of its own, like දු — NOT ළ plus an attached ු. Visually it belongs to the trap family: an එ/ඵ-like body carrying the ඪ-style top trap. Draw it from the trap-body archetype (එ) with the frozen trap element; ළ contributes identity, not outline. ළූ adds the length stroke.">
+    <span class="ord">6.18</span>
+    <span class="g">ළු (ළූ)</span>
+    <span class="from">← ළ + එ + ු</span>
+    <span class="meta">form family</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටධනධට ටබනබට ටඛනඛට ටඹනඹට ටභනභට ටහනහට ටශනශට ටඝනඝට ටෂනෂට ටළනළට ටෆනෆට ටඵනඵට ටඊනඊට</p><p class="sinh drill">ධධටධ බබටබ ඛඛටඛ ඹඹටඹ භභටභ හහටහ ශශටශ ඝඝටඝ ෂෂටෂ ළළටළ ෆෆටෆ ඵඵටඵ ඊඊටඊ</p><p class="sinh drill">ධි බි ඛි ඹි භි හි ශි ඝි ෂි ළි ෆි ඵි ධී බී</p><p class="sinh drill">ඛී ඹී භී හී ශී ඝී ෂී ළී ෆී ඵී ධු බු ඛු ඹු</p><p class="sinh drill">භු හු ශු ඝු ෂු ළු ෆු ඵු ධූ බූ ඛූ ඹූ භූ හූ</p><p class="sinh drill">ශූ ඝූ ෂූ ළූ ෆූ ඵූ ධ් බ් ඛ් ඹ් භ් හ් ශ් ඝ්</p><p class="sinh drill">ෂ් ළ් ෆ් ඵ් ධා බා ඛා ඹා භා හා ධැ බැ ඛැ ඹැ</p><p class="sinh drill">භැ හැ ධෑ බෑ ඛෑ ඹෑ භෑ හෑ ධෙ බෙ ඛෙ ඹෙ භෙ හෙ</p><p class="sinh drill">ධේ බේ ඛේ ඹේ භේ හේ ධො බො ඛො ඹො භො හො ධෝ බෝ</p><p class="sinh drill">ඛෝ ඹෝ භෝ හෝ ධෛ බෛ ඛෛ ඹෛ භෛ හෛ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">බත්  බස්  හතර  හරි  හිස  භාෂාව  ඔළුව  ඕනෑ  බඩු  ඝෝෂාව  ඵලය  ඒක  ඊයේ  ඌරා  ෆෝනය  ශබ්දය</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">ඊයේ හවස අපි බත් කෑවා.</p></div>
+  <div class="gate"><b>Gate:</b> No spacing class needed retuning; dense glyphs hold the page colour.</div>
+  <div class="bar"><div style="width:70%"></div><span>77 / 110 design units scheduled (70%)</span></div>
+</section>
+<section class="stage" id="stage-7">
+  <header>
+    <div class="snum">7</div>
+    <div>
+      <h3>The hang system</h3>
+      <p class="goal">The hang element enters on ඳ and propagates: ඬ ඟ ඤ ඥ ඦ ඣ. The da_forms note applies — the bottoms of ද ඳ ඤ ඥ (and later න්‍ද) must stay consistent. Their ි families (ඳි, ඤ/ඥි) close the nasal set.</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-element">Hang element</span><span class="badge b-element">Twin body element</span></div>
+  <div class="flow"><div class="tile t-base" title="ද plus the hang — introduces the element for the whole nasal set. da-form bottom stays verbatim.">
+    <span class="ord">7.1</span>
+    <span class="g">ඳ</span>
+    <span class="from">← ද</span>
+    <span class="meta">base · U+0DB3</span>
+  </div><div class="tile t-base" title="ඩ plus the hang; tail and hang must coexist below the baseline.">
+    <span class="ord">7.2</span>
+    <span class="g">ඬ</span>
+    <span class="from">← ඩ</span>
+    <span class="meta">base · U+0DAC</span>
+  </div><div class="tile t-base" title="ග plus the hang; ඟි and ඟු complete their families.">
+    <span class="ord">7.3</span>
+    <span class="g">ඟ</span>
+    <span class="from">← ග</span>
+    <span class="meta">base · U+0D9F</span>
+  </div><div class="tile t-base" title="L-ga entry + hang + the da-form bottom (da_forms list: ද ඳ ඤ ඥ න්‍ද share it).">
+    <span class="ord">7.4</span>
+    <span class="g">ඤ</span>
+    <span class="from">← ඟ + ද</span>
+    <span class="meta">base · U+0DA4</span>
+  </div><div class="tile t-base" title="ඤ's construction with the doubled body; single delta.">
+    <span class="ord">7.5</span>
+    <span class="g">ඥ</span>
+    <span class="from">← ඤ</span>
+    <span class="meta">base · U+0DA5</span>
+  </div><div class="tile t-base" title="ජ plus the hang; completes fam-i-ji hosts.">
+    <span class="ord">7.6</span>
+    <span class="g">ඦ</span>
+    <span class="from">← ජ</span>
+    <span class="meta">base · U+0DA6</span>
+  </div><div class="tile t-base" title="Two bowl bodies (ච-type) fused side by side — introduces the twin_body element: the Gaṇḍa joint between two halves that the ligated conjuncts (න්‍ද ත්‍ථ ක්‍ව ග්‍ධ …) inherit in Stage 9. A rare letter, but drawing it solves the fusion construction once, two stages before the conjunct layer needs it eleven more times.">
+    <span class="ord">7.7</span>
+    <span class="g">ඣ</span>
+    <span class="from">← ච</span>
+    <span class="meta">base · U+0DA3</span>
+  </div><div class="tile t-form-family" title="The ඳ ි convention; conjunct hosts join in Stage 9. Source rows mix ො forms (ඳො ඳ්‍රො) — verify.">
+    <span class="ord">7.8</span>
+    <span class="g">ඳි (ඳී ඳ්‍රි)</span>
+    <span class="from">← ඳ + ි</span>
+    <span class="meta">form family</span>
+  </div><div class="tile t-form-family" title="The nasal-set ි convention; න්‍දි න්‍ද්‍රි join in Stage 9 (source files them in this family).">
+    <span class="ord">7.9</span>
+    <span class="g">ඤි ඥි (ඤී ඥී)</span>
+    <span class="from">← ඤ + ඥ + ි</span>
+    <span class="meta">form family</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටඳනඳට ටඬනඬට ටඟනඟට ටඤනඤට ටඥනඥට ටඦනඦට ටඣනඣට</p><p class="sinh drill">ඳඳටඳ ඬඬටඬ ඟඟටඟ ඤඤටඤ ඥඥටඥ ඦඦටඦ ඣඣටඣ</p><p class="sinh drill">ඳි ඬි ඟි ඤි ඥි ඦි ඣි ඳී ඬී ඟී ඤී ඥී ඦී ඣී</p><p class="sinh drill">ඳු ඬු ඟු ඤු ඥු ඦු ඣු ඳූ ඬූ ඟූ ඤූ ඥූ ඦූ ඣූ</p><p class="sinh drill">ඳ් ඬ් ඟ් ඤ් ඥ් ඦ් ඣ් ඳා ඬා ඟා ඤා ඥා ඦා ඳැ</p><p class="sinh drill">ඬැ ඟැ ඤැ ඥැ ඦැ ඳෑ ඬෑ ඟෑ ඤෑ ඥෑ ඦෑ ඳෙ ඬෙ ඟෙ</p><p class="sinh drill">ඤෙ ඥෙ ඦෙ ඳේ ඬේ ඟේ ඤේ ඥේ ඦේ ඳො ඬො ඟො ඤො ඥො</p><p class="sinh drill">ඦො ඳෝ ඬෝ ඟෝ ඤෝ ඥෝ ඦෝ ඳෛ ඬෛ ඟෛ ඤෛ ඥෛ ඦෛ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">හොඳ  කඳ  හඳ  අඬනවා  ළඟ  ඉඟුරු  දඬුවම  ඥානය  සංඥාව  මඤ්ඤොක්කා  බණ්ඩාරවෙල</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">අද රෑ අහසේ හඳ හොඳට පේනවා.</p></div>
+  <div class="gate"><b>Gate:</b> Hang depth identical across the set; da-form bottoms interchangeable.</div>
+  <div class="bar"><div style="width:78%"></div><span>86 / 110 design units scheduled (78%)</span></div>
+</section>
+<section class="stage" id="stage-8">
+  <header>
+    <div class="snum">8</div>
+    <div>
+      <h3>Completion sweep</h3>
+      <p class="goal">Close the base × mark matrix before conjuncts: the body-mark tail (ෘ ෲ ෟ ෳ and the composite ෞ), the systematic ් sweep across every base (kodiya / rahena / trap / ja form per assignment), and completion of every ි/ී family member whose host arrived after the family was frozen. Full-grid QA in the glyph chart tool is the gate.</p>
+    </div>
+  </header>
+  
+  <div class="flow"><div class="tile t-mark" title="Below-right body mark at mark_depth; right profile joins R-arch per the taxonomy.">
+    <span class="ord">8.1</span>
+    <span class="g">ෘ</span>
+    <span class="from">← ු</span>
+    <span class="meta">mark · U+0DD8</span>
+  </div><div class="tile t-mark" title="ෘ + length stroke.">
+    <span class="ord">8.2</span>
+    <span class="g">ෲ</span>
+    <span class="from">← ෘ</span>
+    <span class="meta">mark · U+0DF2</span>
+  </div><div class="tile t-mark" title="The gayanukitta descender-tail mark.">
+    <span class="ord">8.3</span>
+    <span class="g">ෟ</span>
+    <span class="from">root</span>
+    <span class="meta">mark · U+0DDF</span>
+  </div><div class="tile t-mark" title="ෟ + length stroke.">
+    <span class="ord">8.4</span>
+    <span class="g">ෳ</span>
+    <span class="from">← ෟ</span>
+    <span class="meta">mark · U+0DF3</span>
+  </div><div class="tile t-composite" title="Assembly ෙ + base + ෟ (U+0DDE = 0DD9 0DDF).">
+    <span class="ord">8.5</span>
+    <span class="g">ෞ</span>
+    <span class="from">← ෙ + ෟ</span>
+    <span class="meta">composite · U+0DDE</span>
+  </div><div class="tile t-process" title="Mechanical pass: every form-family member whose host arrived after the family froze (ටී ඩී චී, ථි ඨි ඵි+ී, ඝි, ළි ළී, ෂි, ඟි ශි ෆි+ී, ඦි, භු ශු ඟු, කූ ගූ තූ …) is produced by applying the frozen convention. No new decisions permitted; anything that resists the convention goes to `gaps`.">
+    <span class="ord">8.6</span>
+    <span class="g">family completion sweep</span>
+    <span class="from">root</span>
+    <span class="meta">process</span>
+  </div><div class="tile t-process" title="Apply the correct ් form to every base per the four-form assignment (kodiya default / rahena wrap / trap alternate / ja alternate; the ක් group of the shape taxonomy lists the kodiya set). Word-final forms checked in running text.">
+    <span class="ord">8.7</span>
+    <span class="g">් across all bases</span>
+    <span class="from">← ්</span>
+    <span class="meta">process</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටෘ සෘ පෘ ඩෘ ඪෘ චෘ ටෲ සෲ පෲ ඩෲ ඪෲ චෲ ටෟ සෟ</p><p class="sinh drill">පෟ ඩෟ ඪෟ චෟ ටෳ සෳ පෳ ඩෳ ඪෳ චෳ ටෞ සෞ පෞ ඩෞ</p><p class="sinh drill">ඪෞ චෞ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">කෘතිය  පෘථිවිය  ගෞරවය  ගෞතම</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">මේ කෘතිය ඉතා වටිනවා.</p></div>
+  <div class="gate"><b>Gate:</b> Every cell of the sinhala-glyph-chart base grid renders correctly or is a documented exception.</div>
+  <div class="bar"><div style="width:85%"></div><span>93 / 110 design units scheduled (85%)</span></div>
+</section>
+<section class="stage" id="stage-9">
+  <header>
+    <div class="snum">9</div>
+    <div>
+      <h3>Conjunct layer</h3>
+      <p class="goal">The ZWJ layer: rakaransaya ්‍ර (with its exception list), yansaya ්‍ය, repaya ර්‍, the ක්‍ෂ ligature, the classic conjuncts (න්‍ද ත්‍ථ න්‍ථ ට්‍ඨ ද්‍ර), touching clusters, and the conjunct ි/ී forms (ක්‍රී ශ්‍රී ද්‍රි න්‍දි — the ග්‍රි group of the shape taxonomy). Per-glyph atomic-vs-GPOS decisions are recorded here.</p>
+    </div>
+  </header>
+  <div class="badges"><span class="badge b-metric">Conjunct depth</span></div>
+  <div class="flow"><div class="tile t-conjunct-system" title="The below-base ර form. Encoding: base + ් + ZWJ + ර. Apply the exception list from sinhala-definitions.js (rakaransayaExceptions). Atomic vs GPOS per glyph_construction policy.">
+    <span class="ord">9.1</span>
+    <span class="g">්‍ර (ක්‍ර ප්‍ර ශ්‍ර …)</span>
+    <span class="from">← ර + ්</span>
+    <span class="meta">conjunct system</span>
+  </div><div class="tile t-conjunct-system" title="The post-base ය form; base + ් + ZWJ + ය.">
+    <span class="ord">9.2</span>
+    <span class="g">්‍ය (ක්‍ය ව්‍ය …)</span>
+    <span class="from">← ය + ්</span>
+    <span class="meta">conjunct system</span>
+  </div><div class="tile t-conjunct-system" title="The above-base ර form (reph). Encoding: ර + ් + ZWJ + base. Apply repayaExceptions from sinhala-definitions.js.">
+    <span class="ord">9.3</span>
+    <span class="g">ර්‍ (ධර්‍ම style)</span>
+    <span class="from">← ර + ්</span>
+    <span class="meta">conjunct system</span>
+  </div><div class="tile t-conjunct-system" title="The ක්‍ෂ ligature; its ි ී forms belong to fam-i-pi per the source.">
+    <span class="ord">9.4</span>
+    <span class="g">ක්‍ෂ</span>
+    <span class="from">← ක + ෂ + ්</span>
+    <span class="meta">conjunct system</span>
+  </div><div class="tile t-conjunct-system" title="The classic stacked/fused conjuncts. The twin-body fusion convention is INHERITED from ඣ (element twin_body) — reuse its joint, do not re-derive it. න්‍ද joins the da_forms consistency set. Their ි ී forms extend fam-i-tthi, fam-i-nyi and fam-i-di per the source tables.">
+    <span class="ord">9.5</span>
+    <span class="g">න්‍ද ත්‍ථ න්‍ථ ට්‍ඨ ද්‍ර න්‍ද්‍ර</span>
+    <span class="from">← ඣ + න + ද + ත + ථ + ට + ඨ + ර + ්</span>
+    <span class="meta">conjunct system</span>
+  </div><div class="tile t-conjunct-system" title="Touching consonant clusters. NOTE the encoding difference: touching = c1 + ZWJ + ් + c2; ligated conjuncts = c1 + ් + ZWJ + c2.">
+    <span class="ord">9.6</span>
+    <span class="g">touching pairs (ක්‍ක style)</span>
+    <span class="from">← ්</span>
+    <span class="meta">conjunct system</span>
+  </div><div class="tile t-form-family" title="ි ී over conjunct hosts — the ග්‍රි group of the shape taxonomy (ක්‍රී ච්‍රී ප්‍රී ශ්‍රී). Extends the frozen family conventions to two-storey hosts.">
+    <span class="ord">9.7</span>
+    <span class="g">ක්‍රි ක්‍රී ශ්‍රී ද්‍රි න්‍දි (ග්‍රි group)</span>
+    <span class="from">← rakaransaya + ි</span>
+    <span class="meta">form family</span>
+  </div></div>
+  
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">ශ්‍රී  ක්‍රමය  විද්‍යාව  ප්‍රශ්නය  ධර්‍මය  සත්‍ය  චන්ද්‍රයා  ක්‍ෂණික</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">ශ්‍රී ලංකාවේ ක්‍රිකට් ක්‍රීඩාව ඉතා ප්‍රසිද්ධයි.</p></div>
+  <div class="gate"><b>Gate:</b> Shaping-engine tests pass (sinh/sin2); every conjunct either drawn, composed, or a documented exclusion.</div>
+  <div class="bar"><div style="width:91%"></div><span>100 / 110 design units scheduled (91%)</span></div>
+</section>
+<section class="stage" id="stage-10">
+  <header>
+    <div class="snum">10</div>
+    <div>
+      <h3>Long tail and polish</h3>
+      <p class="goal">The archaic and rare set (ඍ ඎ ඏ ඐ ඞ ඓ ඖ ඃ), kunddaliya ෴, punctuation and numeral policy, then the kerning pass across spacing-class representatives. Weight/width derivatives replay this same graph from Stage 0.</p>
+    </div>
+  </header>
+  
+  <div class="flow"><div class="tile t-vowel" title="Vocalic-r letter on the ප-group skeleton per the taxonomy.">
+    <span class="ord">10.1</span>
+    <span class="g">ඍ</span>
+    <span class="from">← ප</span>
+    <span class="meta">vowel · U+0D8D</span>
+  </div><div class="tile t-vowel" title="ඍ + length element.">
+    <span class="ord">10.2</span>
+    <span class="g">ඎ</span>
+    <span class="from">← ඍ</span>
+    <span class="meta">vowel · U+0D8E</span>
+  </div><div class="tile t-vowel" title="Vocalic-l letter; L-ga entry per the taxonomy.">
+    <span class="ord">10.3</span>
+    <span class="g">ඏ</span>
+    <span class="from">root</span>
+    <span class="meta">vowel · U+0D8F</span>
+  </div><div class="tile t-vowel" title="ඏ + length element.">
+    <span class="ord">10.4</span>
+    <span class="g">ඐ</span>
+    <span class="from">← ඏ</span>
+    <span class="meta">vowel · U+0D90</span>
+  </div><div class="tile t-base" title="Archaic velar nasal on the ට-group skeleton.">
+    <span class="ord">10.5</span>
+    <span class="g">ඞ</span>
+    <span class="from">← ට</span>
+    <span class="meta">base · U+0D9E</span>
+  </div><div class="tile t-vowel" title="The ai letter; derivation from the එ system — verify with designer.">
+    <span class="ord">10.6</span>
+    <span class="g">ඓ</span>
+    <span class="from">← එ</span>
+    <span class="meta">vowel · U+0D93</span>
+  </div><div class="tile t-vowel" title="The au letter; ඔ system + tail logic.">
+    <span class="ord">10.7</span>
+    <span class="g">ඖ</span>
+    <span class="from">← ඔ</span>
+    <span class="meta">vowel · U+0D96</span>
+  </div><div class="tile t-sign" title="Two ං dots stacked at the right.">
+    <span class="ord">10.8</span>
+    <span class="g">ඃ</span>
+    <span class="from">← ං</span>
+    <span class="meta">sign · U+0D83</span>
+  </div><div class="tile t-sign" title="Traditional section mark; spiral construction (cf. Śṅkaya).">
+    <span class="ord">10.9</span>
+    <span class="g">෴</span>
+    <span class="from">root</span>
+    <span class="meta">sign · U+0DF4</span>
+  </div><div class="tile t-process" title="Kern between spacing-CLASS representatives first (7 left × 8 right pairs), then push exceptions down to members only where the class solution fails. Punctuation and numeral policy decided here.">
+    <span class="ord">10.10</span>
+    <span class="g">kerning pass</span>
+    <span class="from">root</span>
+    <span class="meta">process</span>
+  </div></div>
+  <div class="texts"><h4>Generated drills</h4><p class="sinh drill">ටඍනඍට ටඎනඎට ටඏනඏට ටඐනඐට ටඞනඞට ටඓනඓට ටඖනඖට</p><p class="sinh drill">ඍඍටඍ ඎඎටඎ ඏඏටඏ ඐඐටඐ ඞඞටඞ ඓඓටඓ ඖඖටඖ</p><p class="sinh drill">ඞි ඞී ඞු ඞූ ඞ් ඞා ඞැ ඞෑ ඞෙ ඞේ ඞො ඞෝ ඞෛ ඞෘ</p><p class="sinh drill">ඞෲ ඞෟ ඞෳ ඞෞ</p></div>
+  
+  <div class="texts"><h4>Words</h4><p class="sinh ">ඍතුව  ඓතිහාසික  ඖෂධ</p></div>
+  <div class="texts"><h4>Sentences</h4><p class="sinh sent">ඓතිහාසික ඖෂධ ගැන ඍජු තොරතුරු.</p></div>
+  <div class="gate"><b>Gate:</b> Level target inventories (glyphsets/*.yaml) fully covered for the shipping level.</div>
+  <div class="bar"><div style="width:100%"></div><span>110 / 110 design units scheduled (100%)</span></div>
+</section>
+
+<h2 id="families">Mark form families <small>one row = one design decision covering many combinations</small></h2>
+<div class="tablewrap"><table><tr><th>family</th><th>id</th><th>hosts</th><th>introduced</th><th>completes</th><th>convention</th></tr><tr><td class="sinh big">ටි ඩි (ටී චී ඩී)</td><td><code>fam-i-tti</code></td>
+    <td class="sinh">ට ච ඩ</td><td>1</td><td>2</td>
+    <td>Atomic ි over the open-bowl hosts; introduced on ඩි. ච joins in Stage 2, the ී long forms (ටී චී ඩී) in Stage 5.</td></tr><tr><td class="sinh big">ඪි (ඨි ථි ඵි …)</td><td><code>fam-i-tthi</code></td>
+    <td class="sinh">ඨ ඪ ථ ඵ</td><td>1</td><td>6</td>
+    <td>Atomic ි over the trap-topped hosts; introduced on ඪි. Remaining hosts (ඨ ථ ඵ) complete in Stages 5–6; conjunct hosts (ට්‍ඨ ත්‍ථ න්‍ථ) in Stage 9.</td></tr><tr><td class="sinh big">යි වි (මි බි ණි …)</td><td><code>fam-i-term</code></td>
+    <td class="sinh">ය ව ම බ ඛ ධ ණ ඹ ඬ ඣ ඞ</td><td>2</td><td>10</td>
+    <td>The top-terminal wrap ි — for bases whose top terminal forces the loop to wrap around it (the same top-terminal logic as the rahena ්). Noto Sans Sinhala fuses every one of these as a single ligature glyph (yI-sinh, mI-sinh …). Introduced on යි; later hosts inherit as they arrive.</td></tr><tr><td class="sinh big">සි (ඝි)</td><td><code>fam-i-ghi</code></td>
+    <td class="sinh">ඝ ස</td><td>3</td><td>6</td>
+    <td>The ඝි-family convention introduced by its first DESIGNED member — සි (the family key ඝ only arrives in Stage 6 and inherits). Demonstrates the representative-introduces-family principle.</td></tr><tr><td class="sinh big">ට් ඩ් (ම් බ් …)</td><td><code>hal-rahena</code></td>
+    <td class="sinh">ට ඩ ඬ ච ධ ඛ බ ම ඹ ව ඣ ඞ</td><td>3</td><td>10</td>
+    <td>The RAHENA ් form: on bases with a TOP TERMINAL the kodiya flag cannot land, so ් wraps the terminal and the pair fuses into one glyph (Noto: tt-sinh, m-sinh …). Introduced on ට්. ර් belongs to ra-forms, not here. ඔ ඕ share the top terminal visually but, being independent vowels, never take ්.</td></tr><tr><td class="sinh big">ඪ් (ඨ් ථ් ඵ්)</td><td><code>hal-trap</code></td>
+    <td class="sinh">ඨ ඪ ථ ඵ</td><td>3</td><td>6</td>
+    <td>The ් alternate over trap-topped bases (Noto virama.alt1 over its pha-shape class) — the flag must clear the open trap. Introduced on ඪ්; ඨ ථ ඵ inherit in Stages 5–6.</td></tr><tr><td class="sinh big">රි ර් රැ (රී රූ)</td><td><code>ra-forms</code></td>
+    <td class="sinh">ර</td><td>4</td><td>4</td>
+    <td>The irregular ර system: රි ර් රැ are unique drawn forms, not mark attachments (the shape taxonomy gives ර-forms their own group). රී රූ complete in Stage 5 when ී ූ exist. Noto goes as far as REUSING the ැ glyph for රු (ra + u-sign is substituted by the aela-pilla-style hook) — evidence of how fused this system is.</td></tr><tr><td class="sinh big">කි ති නි (කී තී නී)</td><td><code>fam-i-ki</code></td>
+    <td class="sinh">ක ත න</td><td>4</td><td>4</td>
+    <td>The arch-eye ි convention, archetype කි. The ී forms complete in Stage 5.</td></tr><tr><td class="sinh big">ගි (ඟි ශි ෆි …)</td><td><code>fam-i-gi</code></td>
+    <td class="sinh">ග ඟ ශ ෆ</td><td>4</td><td>7</td>
+    <td>The naked-arch ි convention introduced on ගි; ඟ ශ ෆ inherit in Stages 6–7.</td></tr><tr><td class="sinh big">දි (දී ද්‍රි ද්‍රී)</td><td><code>fam-i-di</code></td>
+    <td class="sinh">ද</td><td>4</td><td>4</td>
+    <td>The ද ි convention; conjunct hosts (ද්‍රි) join in Stage 9.</td></tr><tr><td class="sinh big">ලි (ළි ලී ළී)</td><td><code>fam-i-li</code></td>
+    <td class="sinh">ල ළ</td><td>4</td><td>6</td>
+    <td>Introduced on ලි; ළ inherits in Stage 6.</td></tr><tr><td class="sinh big">පි (පී ෂි ක්‍ෂි)</td><td><code>fam-i-pi</code></td>
+    <td class="sinh">ප ෂ</td><td>4</td><td>6</td>
+    <td>Introduced on පි. NOTE: the source table for this family is marked unclear (rows repeat, no clean i/ii split) — verify membership.</td></tr><tr><td class="sinh big">කු ගු තු (භු ශු ඟු)</td><td><code>u-special</code></td>
+    <td class="sinh">ක ග ත භ ශ ඟ</td><td>4</td><td>7</td>
+    <td>The SECOND typographic form of ු — the right-joined form on arch-family terminals. Introduced on කු; භ ශ ඟ inherit in Stages 6–7. ළු is NOT a member: it is an irregular fused form of its own (entry llu-form).</td></tr><tr><td class="sinh big">දු (දූ)</td><td><code>du-form</code></td>
+    <td class="sinh">ද</td><td>4</td><td>4</td>
+    <td>Irregular: ු fuses into ද's bowl. The shape taxonomy files දු beside ක්‍රී ශ්‍රී (the ග්‍රි group) — an oddity flagged in `gaps`; treated here as its own one-host family.</td></tr><tr><td class="sinh big">ජි ඡි (ජී ඡී ඦි)</td><td><code>fam-i-ji</code></td>
+    <td class="sinh">ජ ඡ ඦ</td><td>5</td><td>7</td>
+    <td>The diagonal-host ි convention; ඦ inherits in Stage 7.</td></tr><tr><td class="sinh big">ජ් (ඡ් ඦ්)</td><td><code>hal-ja</code></td>
+    <td class="sinh">ඡ ජ ඦ</td><td>5</td><td>7</td>
+    <td>The ් alternate over the ja-shape diagonal tops (Noto virama.alt2 over its ja-shape class). Introduced on ජ්; ඦ inherits in Stage 7.</td></tr><tr><td class="sinh big">භි හි (භී හී)</td><td><code>fam-i-bhi</code></td>
+    <td class="sinh">භ හ</td><td>6</td><td>6</td>
+    <td>The eye-topped-arch ි convention for භ හ.</td></tr><tr><td class="sinh big">ළු (ළූ)</td><td><code>llu-form</code></td>
+    <td class="sinh">ළ</td><td>6</td><td>6</td>
+    <td>Irregular fused form of its own, like දු — NOT ළ plus an attached ු. Visually it belongs to the trap family: an එ/ඵ-like body carrying the ඪ-style top trap. Draw it from the trap-body archetype (එ) with the frozen trap element; ළ contributes identity, not outline. ළූ adds the length stroke.</td></tr><tr><td class="sinh big">ඳි (ඳී ඳ්‍රි)</td><td><code>fam-i-ndi</code></td>
+    <td class="sinh">ඳ</td><td>7</td><td>7</td>
+    <td>The ඳ ි convention; conjunct hosts join in Stage 9. Source rows mix ො forms (ඳො ඳ්‍රො) — verify.</td></tr><tr><td class="sinh big">ඤි ඥි (ඤී ඥී)</td><td><code>fam-i-nyi</code></td>
+    <td class="sinh">ඤ ඥ</td><td>7</td><td>7</td>
+    <td>The nasal-set ි convention; න්‍දි න්‍ද්‍රි join in Stage 9 (source files them in this family).</td></tr><tr><td class="sinh big">ක්‍රි ක්‍රී ශ්‍රී ද්‍රි න්‍දි (ග්‍රි group)</td><td><code>conjunct-i-forms</code></td>
+    <td class="sinh">—</td><td>9</td><td>9</td>
+    <td>ි ී over conjunct hosts — the ග්‍රි group of the shape taxonomy (ක්‍රී ච්‍රී ප්‍රී ශ්‍රී). Extends the frozen family conventions to two-storey hosts.</td></tr></table></div>
+<p class="dim">The formerly-unassigned hosts (ම ය ව බ ඛ ධ ණ …) are FUSED-ligature hosts in Noto Sans Sinhala (mI-sinh, yI-sinh …): bases whose top terminal forces the ි loop to wrap, the same top-terminal logic as the rahena ් form. Modeled as fam-i-term. See docs/sinhala.min.yaml.</p>
+
+<h2 id="spacing">Spacing classes <small>the representative (green) sets the sidebearing; members inherit it</small></h2>
+<h4>Right side</h4>
+<div class="tablewrap"><table><tr><th>class</th><th>rep</th><th>rep designed</th><th>members</th><th>note</th></tr><tr><td><code>R-bowl</code></td><td class="sinh big rep">ට</td>
+    <td>s1.1</td><td class="sinh big"><b class="rep">ට</b> ච ධ ව ඩ ඣ</td><td></td></tr><tr><td><code>R-trap</code></td><td class="sinh big rep">ඪ</td>
+    <td>s1.5</td><td class="sinh big">ඨ ථ එ <b class="rep">ඪ</b> ඵ</td><td></td></tr><tr><td><code>R-pa</code></td><td class="sinh big rep">ස</td>
+    <td>s1.2</td><td class="sinh big">ප ය ඝ <b class="rep">ස</b> ෂ</td><td></td></tr><tr><td><code>R-arch</code></td><td class="sinh big rep">ග</td>
+    <td>s3.2</td><td class="sinh big">ක ත <b class="rep">ග</b> ඟ ණ න භ ශ හ ෆ ඉ ා ෘ ෟ</td><td></td></tr><tr><td><code>R-diag</code></td><td class="sinh big rep">ර</td>
+    <td>s4.5</td><td class="sinh big">ජ ඦ <b class="rep">ර</b> ඊ</td><td></td></tr><tr><td><code>R-a</code></td><td class="sinh big rep">අ</td>
+    <td>s4.4</td><td class="sinh big"><b class="rep">අ</b> ල ළ</td><td></td></tr><tr><td><code>R-u</code></td><td class="sinh big rep">ද</td>
+    <td>s4.2</td><td class="sinh big">උ <b class="rep">ද</b> ඤ ඥ ඳ ැ ෑ</td><td></td></tr><tr><td><code>R-round</code></td><td class="sinh big rep">ඔ</td>
+    <td>s5.1</td><td class="sinh big"><b class="rep">ඔ</b> ඕ ඛ බ ම ඹ ඬ</td><td>Source also lists ධ ච ඩ ඣ here; their primary class is R-bowl.</td></tr></table></div>
+<h4>Left side</h4>
+<div class="tablewrap"><table><tr><th>class</th><th>rep</th><th>rep designed</th><th>members</th><th>note</th></tr><tr><td><code>L-tta</code></td><td class="sinh big rep">ට</td>
+    <td>s1.1</td><td class="sinh big"><b class="rep">ට</b> ධ ඛ බ</td><td></td></tr><tr><td><code>L-e</code></td><td class="sinh big rep">ස</td>
+    <td>s1.2</td><td class="sinh big">එ ච ඩ ඝ ඪ භ <b class="rep">ස</b></td><td>ස also appears in L-pa in the source; primary here.</td></tr><tr><td><code>L-ja</code></td><td class="sinh big rep">ය</td>
+    <td>s2.3</td><td class="sinh big">ජ ඨ ථ <b class="rep">ය</b> ර ඊ ල ඉ ළ ෆ</td><td></td></tr><tr><td><code>L-pa</code></td><td class="sinh big rep">ප</td>
+    <td>s1.3</td><td class="sinh big">අ උ <b class="rep">ප</b> ඡ ද ව හ ඵ ෂ</td><td></td></tr><tr><td><code>L-ka</code></td><td class="sinh big rep">ත</td>
+    <td>s3.4</td><td class="sinh big">ක <b class="rep">ත</b> ණ න ඣ</td><td></td></tr><tr><td><code>L-ga</code></td><td class="sinh big rep">ග</td>
+    <td>s3.2</td><td class="sinh big"><b class="rep">ග</b> ඟ ඤ ඥ ඦ ශ ඬ ඳ ඏ ෙ</td><td></td></tr><tr><td><code>L-o</code></td><td class="sinh big rep">ඔ</td>
+    <td>s5.1</td><td class="sinh big"><b class="rep">ඔ</b> ඕ ම ඹ</td><td></td></tr></table></div>
+
+<h2 id="ai">For AI font tools <small>this whole model is machine-consumable — the YAML carries the same guidance</small></h2>
+<p>This file is a machine-readable build plan for a Sinhala font. An AI drawing agent (or a human) can follow it glyph by glyph and always know what already exists, what each glyph is derived from, and how to verify the result.</p>
+<div class="two">
+  <div><h4>Algorithm</h4><ol class="rules"><li>1. Sort glyph entries by (stage, order).</li><li>2. Before drawing glyph G: assert every entry in G.parents is already drawn and frozen; assert every metric in G.requires is decided.</li><li>3. Draw G per ai.construction, reusing outlines/components of parents wherever possible (G is a transformation of its parents, not a new drawing).</li><li>4. Space G by copying the sidebearings of its spacing-class representatives (spacing.left / spacing.right reps); only representatives get bespoke spacing.</li><li>5. Run G through ai.checks and the stage test texts; render tests must use ONLY glyphs scheduled so far.</li><li>6. At each stage gate, freeze the stage. If any frozen glyph is later modified, re-open and re-verify every descendant (transitive closure over parents).</li></ol></div>
+  <div><h4>Never</h4><ul class="plain"><li>Do not draw a glyph before its parents (topological order is mandatory).</li><li>Do not give a non-representative glyph bespoke sidebearings without flagging it as a spacing-class exception.</li><li>Do not emit test strings containing glyphs not yet scheduled.</li><li>Do not silently resolve taxonomy gaps (see `gaps`); surface them.</li></ul>
+  <h4>Form families</h4><p class="dim">Entries of type form-family are single design decisions covering many combinations (e.g. the කි family fixes how ි sits on ක ත න). Draw the family archetype first (first host listed), then apply the same convention to remaining hosts as they become available. Hosts not yet assigned to any ි family (ම ය ව බ ඛ ධ ණ) are open taxonomy gaps: compose them provisionally and flag them for the designer.</p></div>
+</div>
+
+<h2>Levels × stages</h2>
+<p>The lanka-glyphsets <b>levels</b> (<code>glyphsets/sinhala-0-kernel.yaml</code> …) define <i>what a font must
+contain</i>; these <b>stages</b> define <i>in what order to design it</i>. Every entry carries a
+<code>level</code> tag, so a shipping target is a computed slice: “design in stage order, stop when the
+level inventory is covered.”</p>
+
+<h2 id="gaps">Open gaps &amp; concerns <small>carried as data — resolve them in the YAML, then rebuild</small></h2>
+<ul class="plain"><li><code>i-unassigned-hosts</code> — RESOLVED via Noto evidence: the formerly-unassigned ි hosts (ම ය ව බ ඛ ධ ණ …) are fused top-terminal wrap hosts — now fam-i-term. Kept here as a record of how the gap was closed (extract-noto.js diff, 2026-07-17).</li><li><code>pu-empty</code> — RESOLVED via Noto: ප is in none of Noto's ු-alternate classes (uSignAlt1/2/3) nor its u_fused set, so it takes the DEFAULT ු — no special form. The empty පු group in the source taxonomy was correct; the draft's duplicate පු was spurious.</li><li><code>du-classification</code> — RESOLVED via Noto: ද is in Noto's u_fused set (දු = the fused dU glyph), so the model's du-form (its own one-host ු family) is correct. The source taxonomy's filing under the ග්‍රි (conjunct-ි) group was a mis-file — දු concerns ු, not conjunct-ි.</li><li><code>side-overlaps</code> — RESOLVED (confirmed): the source side-family/shape overlaps are settled by the spacing classes — ධ ච ඩ ඣ → R-bowl (with ට), dropped from R-round; ස → L-e (eye-line, its rep), dropped from L-pa; ර ඊ → the ර/diagonal family (R-diag, L-ja), dropped from the ප shape group.</li><li><code>taxonomy-holes</code> — RESOLVED (confirmed): ථ → trap/එ family (skeleton trap_body, R-trap; Noto phaShapeGroup agrees); ඣ → bowl/ට family (skeleton bowl + twin_body element, R-bowl). Source docs/sinhala-shape-groups.yaml cleaned: ථ added to the එ group, ඣ to the ට group, ප added to its own ප group, and the duplicate ජ/ඦ removed from the diagonal element list.</li><li><code>density-incomplete</code> — DEFERRED (future work): density is not consumed by the model, and the source classes cover only ~20 letters (high/medium/low). To close: complete the density classification for all bases in docs/sinhala-shape-groups.yaml, then decide whether the model should use density (e.g. as a drill-ordering or contrast-check dimension).</li><li><code>level-tags</code> — RESOLVED: every codepoint-bearing glyph was cross-checked against glyphsets/*.yaml — 80/80 now consistent. Fixes: ඥ ඦ ඍ → core and ෟ ෳ → kernel (model tags); ඟ promoted to kernel and ඦ/nyja added to core, plus four blank sign unicodes filled (ෟ ෳ ෲ ෴), in the glyphsets.</li><li><code>fam-i-pi-source</code> — RESOLVED (confirmed): fam-i-pi is the DEFAULT ි for its hosts ප ෂ — Noto puts neither (nor ක්‍ෂ) in any iVowelAlt class, so no special atomic form is needed. The source row's repeats and ක්‍ෂි were already dropped; membership [ප, ෂ] confirmed.</li><li><code>ndi-o-forms</code> — RESOLVED: the ඳි family in the source mixed in ො forms (ඳො ඳ්‍රො) — a data error; those ො forms are excluded from fam-i-ndi here.</li><li><code>frequency-unmeasured</code> — DEFERRED (future work): frequency tags are qualitative. To close: compute per-stage cumulative corpus coverage from a representative Sinhala corpus (the standard texture paragraph is a starting sample) and use it to validate/adjust the Stage-4/6 gate boundaries. Ties into the planned texture_texts integration.</li><li><code>u-system-noto</code> — RESOLVED (decided): keep the model minimal — default ු + the small fused set (u-special ක ග ත භ ශ ඟ, du-form ද, llu-form ළ). Noto's richer system (extra fused ඤු ඥු ඳු ලු + the alt1/alt2/alt3 contextual tiers) stays documented in docs/sinhala.min.yaml as a per-project opt-in, not folded into the baseline.</li><li><code>nu-alternate</code> — RESOLVED (decided): premise confirmed — න IS in Noto's uSignAlt2 class — but per the u-system-noto decision the model keeps නු as the regular ු (contextual alt tiers not adopted into the baseline; available as opt-in in docs/sinhala.min.yaml).</li><li><code>aasign-al</code> — RESOLVED (recorded): Noto builds ෝ as esign + aasign.al (a dedicated long-tail ා variant); this model builds ෝ as ො + ් (esign + ා + virama). Both yield the long tail — the model's composite is a valid alternative, no dedicated .al glyph required. For Noto parity, add an aasign.al and point ෝ/ො at it.</li><li><code>noto-vestigials</code> — NOTE (extraction caveat, permanent): Noto's iVowelAlt class lists ඟ, but ඟි/ඟී are also fused ligatures which fire first — the class entry is vestigial there. Extraction keeps both; don't copy classes blindly.</li></ul>
+
+<footer class="wrap">
+  Generated 2026-07-17 18:53 by <code>build.js</code> from <code>sinhala-design-dependencies.yaml</code>
+  (v0.1.0). To change the process: edit the YAML, run <code>npm run build</code> —
+  this page and <code>stages.json</code> are always derived, never hand-edited.
+  Typeface: <a href="https://fonts.google.com/specimen/Abhaya+Libre">Abhaya Libre</a>.
+  · Pathum Egodawatta, Mooniak / lanka-glyphsets
+</footer>
+</div>
+</body>
+</html>
