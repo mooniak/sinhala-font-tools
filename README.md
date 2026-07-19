@@ -37,7 +37,7 @@ coexist; a change to the naming standard lands in lanka-glyphsets first.
 ## Install
 
 ```sh
-cd font-directory/scripts/feature-generator
+cd mooniak-font-tools/scripts/feature-generator
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"   # fonttools + pyyaml + glyphsLib + uharfbuzz + pytest
 ```
