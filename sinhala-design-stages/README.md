@@ -131,14 +131,15 @@ build a font stage-by-stage from these two files without reading this README.
 ## Sources and provenance
 
 Derived from, and intended to supersede, the draft staging in
-`tools/sinhala-glyph-chart/font-developemnt-stages.md`, using:
+`docs/font-developemnt-stages.md`, using:
 
-- `tools/sinhala-glyph-chart/sinhala-shape-groups.yaml` — shape taxonomy
+- `docs/sinhala-shape-groups.yaml` — shape taxonomy
   (primary shape groups, elements, side-similarity families, ligature
   families, mark positions)
-- `tools/sinhala-glyph-chart/sinhala-anatomy.md` — anatomical vocabulary
+- `docs/sinhala-anatomy.md` — anatomical vocabulary
   (akshi, pāsha, grantika, …)
-- `glyphsets/sinhala-*.yaml` — level inventories
+- `glyphsets/sinhala-*.yaml` — level inventories, in the
+  [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) standard repo
 - Research by Pushpananda Ekanayake and Pathum Egodawatta
 
 Unresolved questions inherited from the sources are **data**, not footnotes:
@@ -148,10 +149,15 @@ they keep the taxonomy gap visible until it is resolved.
 
 ## Relationship to the other tools
 
-- `tools/sinhala-glyph-chart/` — the base × mark grid used as the Stage 8
-  completion-sweep gate; its planned shape-group filters share the same
-  taxonomy.
-- `tools/feature-generator/` — OpenType feature generation for the Stage 9
-  conjunct layer.
+- [`tools/glyph-chart/`](../tools/glyph-chart/) — the base × mark grid used
+  as the Stage 8 completion-sweep gate; its planned shape-group filters share
+  the same taxonomy.
+- [`tools/composite-map/`](../tools/composite-map/) — reads
+  `sinhala-design-dependencies.yaml` directly as its `family_model` to decide
+  which consonant+mark forms are genuinely compositional vs. fused/kept-drawn;
+  writes `sinhala-composites.yaml` (repo root).
+- `tools/feature-generator/`, in the
+  [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) repo —
+  OpenType feature generation for the Stage 9 conjunct layer.
 - `stages.json` is the integration point: per-stage glyph lists, generated
   drills and cumulative counts, consumable by any of the above.

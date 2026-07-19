@@ -473,7 +473,7 @@ footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px s
   <p class="prov">Generated from <code>sinhala-design-dependencies.yaml</code> v${esc(data.meta.version)}
   · ${ordered.length} design units · ${data.stages.length} stages
   · based on research by ${esc((data.meta.based_on_research_by || []).join(', '))}
-  · orthogonal to the lanka-glyphsets <a href="../../glyphsets/">levels</a></p>
+  · orthogonal to the <a href="https://github.com/mooniak/lanka-glyphsets">lanka-glyphsets</a> levels</p>
 </div></div>
 
 <div class="wrap">

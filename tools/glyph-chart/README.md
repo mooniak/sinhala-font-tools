@@ -17,7 +17,6 @@ Open `index.html` in a browser — no server, no build step.
 | `sinhala-sorting.js` | Sorting orders — default, alphabetical, frequency, phonetic, uMatra, custom. |
 | `sinhala-chart.js` | Chart renderer and UI logic — grid, copy actions, font drag-and-drop, sidebar. |
 | `index.html` | Shell — CSS, sidebar filters, sort dropdown. |
-| `sinhala-shape-groups.md` | Design doc — typographic shape-group taxonomy for planned shape-based filtering (not yet wired into the JS). |
 | `font-tester.html` / `font-tester.js` | A separate, simpler font-testing tool that shares `sinhala-definitions.js`. |
 | `generate-glyphnames.js` | Node script — enumerates every possible composite glyph name a designer might need to draw. |
 
@@ -31,3 +30,10 @@ shaping-exception sets are **generated data**, vendored from the
 `../glyphname-unicode-converter/lankaglyphset-map.js`. This repo does not
 redefine the standard — if the inventory, exceptions, or naming rules need to
 change, the change lands in lanka-glyphsets first.
+
+## Related
+
+The typographic shape-group taxonomy for planned shape-based filtering (not
+yet wired into the JS above) now lives in
+[`../../sinhala-design-stages/docs/sinhala-shape-groups.yaml`](../../sinhala-design-stages/docs/sinhala-shape-groups.yaml),
+the cross-cutting design-stages model that also backs `tools/composite-map`.

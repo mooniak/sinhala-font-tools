@@ -19,9 +19,9 @@
 # computed as a slice of the stage plan.
 #
 # Derived from:
-#   tools/sinhala-glyph-chart/sinhala-shape-groups.yaml   (shape taxonomy)
-#   tools/sinhala-glyph-chart/font-developemnt-stages.md  (draft staging)
-#   tools/sinhala-glyph-chart/sinhala-anatomy.md          (anatomy terms)
+#   docs/sinhala-shape-groups.yaml   (shape taxonomy)
+#   docs/font-developemnt-stages.md  (draft staging)
+#   docs/sinhala-anatomy.md          (anatomy terms)
 # =============================================================================
 
 meta:
