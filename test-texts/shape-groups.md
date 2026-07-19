@@ -14,6 +14,9 @@ layout: default.html
 collection: tests
 ---
 
+පුලතිසිපුර
+ප්‍රියදර්ශි මහා ස්ථවිර 
+
 
 ## full Character set
 

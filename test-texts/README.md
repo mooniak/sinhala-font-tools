@@ -1,21 +1,34 @@
-= Sinhala Sample Texts
+# Sinhala test-text corpus
 
-සීගිරි පර්‍වත මස්තකාරූඪ මනුෂ්‍යයෙකුට සෝදාහරණ සහිත ව හෙළයා ගේ ශෛල, වාරි, ගෘහ නිර්මාණ ශක්‍යතාව ද සෙල්බිතෙහි තැවරූ මඩස්තරයක ඇඳි නාරි චිත්‍රයන් ගෙන් සහ කැටපත්පවුරෙහි ලිඛිත කුරුටු ගීවලින් හෙළයා ගේ සෞන්දර්ය හැකියාව දු මනා සේ දැකගත හැක.
-From (https://www.facebook.com/isuru.upanada)
+Curated Sinhala (and some multi-script) test strings for font proofing and
+type testing: display paragraphs, kern-pair and conjunct word lists, numeral
+and punctuation samples, classical/Pali/Sanskrit text, and short pangrams.
 
-ශ්‍රී ලඞ්කාවේ ගැමි ක්‍රීඩා ආදී දෑ දකින්නට ලැබෙන අතර එතුළින් අන්‍යොන්‍ය ව ක්‍රෝධය වෛරය වැනි  දේ වෙනුවට ප්‍රීතිය දක්‍ෂතා සහ කරුණාව සහයෝගීතාව ඈ වර්ධනය වේ.
+This is the **canonical source**. It is vendored (copied, not linked) into two
+downstream consumers, each for a different purpose:
 
-ගඟෙන් වතුර බී මුහුදට ආවඩපු ඒ රතු තැඹිලි කඩන දුෂාන් ක්‍රෝධ නොකරන දක්‍ෂ නැණවතෙකි. ඔහු වසන දැරණියගල ශ්‍රී ලංකාවේ ප්‍රසිද්ධ නගරයකි.
+- [`font-directory`](https://github.com/mooniak/font-repos)'s
+  `mnik/tools/proofpdf/sections/` — renders these as pages in each font's
+  proof PDF (any `.md` dropped there becomes a proof section automatically,
+  see that tool's own `__init__.py`).
+- [`polytypetester`](https://github.com/mooniak/polytypetester)'s
+  `testing-templates/mooniak/sinhala/` — plain `.txt` (frontmatter/headers
+  stripped) for that tool's live type-testing UI.
 
-දැරණියගලට ඉහල අහසේ දඟකරන වලාපෙළ මවනා සොඳුරු දසුන රාත්‍රිය උදාවත් සමග ක්‍ෂයවේ. 
+If you add, edit, or remove a file here, copy the change into both consumers
+by hand (there's no automated sync yet) — see the README in each of those
+directories for the exact mapping.
 
-මහරාවණ දඬුමොණරයෙන් ගොස් දැරණියගල සඟවා සිටි සීතා රැගෙන රාත්‍රිය උදාවට පෙර ක්‍ෂණයෙන් දුවන්නට විය.
+## File format
 
-වජ්‍රාසන ආරූඪ වූ ශ්‍රී ශක්‍ර දිව්‍ය රාජයා විචක්ෂණ ලෙස බැලුම් හෙලන කල දෝලාවෙන් බට මහා රාජිණිය දුටුවේය.
+Most files carry YAML frontmatter (`title`, `credits`, `license`, ...)
+followed by Markdown body text. A few simple word/string lists have no
+frontmatter. `## `-prefixed lines inside a file are content section headers
+(e.g. grouping conjunct test words by cluster), not document structure.
 
+## Provenance
 
-
-Paragraph
-
-සිංහල අකුරු, ඈත අතීතයේ පටන් ඒවා පරිහරණය කළ අපේ මුතුන් මිත්තන් අතින් වැඩි දියුණු වෙමින් අප කරා පැමිණ තිබෙනවා. සිංහල අක්ෂර නිර්මාණය  හා විකාශනය දීර්ඝ ඉතිහාසයකට උරුමකම් කියන්නක්. එය, අපේ ඉපැරැණි චිත්‍ර කලා සම්ප්‍රදාය තුළ ඉතා සුන්දර ප්‍රකාශනයක් හැටියට මතු වුණා. සිංහල අකුරුවලට උපතින් ම හිමි වී තිබෙන ජීව ගුණය, ආවේණික හැඩ තල හා සෞන්දර්ය වටිනාකම එදවස කලා ශිල්පීන් මනා ලෙස හඳුනාගෙන සිටි නිසයි ඒ.මුද්‍රණ ශිල්පයේ සම්ප්‍රාප්තියත් සමඟ, තාක්ෂණය හා මුසු වූ අක්ෂර හැඩ තල හා අනුපාත, ප්‍රායෝගික ව වඩාත් නිවැරැදි හා පැහැදිලි තත්ත්වයක් කරා ළඟා වුණා. අප රටේ මුල් කාලයේ මුද්‍රිත පොතපතේ පටන්, එක්දහස් නවසිය අසූ ගණන් දක්වා ම සිංහල අකුරුවල රූපමය ලක්ෂණ වර්ධනය වුණා. එකල කුඩා දරුවන් ගේ පොතකට ගැනුණු ඊයම්වලින් තැනුණු අකුරු මෙන් ම, චිත්‍ර ශිල්පීන් විසින් අවස්ථානුකූල ව අතින් ඇඳි අකුරු වුවත් ඕනෑ ම ළමයෙකුට කියවා ගැනීමේ අපහසුවක් තිබුණේ නැහැ.
-
+Several files are researched/attested content, not placeholder text — keep
+existing `credits` / `copyright` frontmatter intact when editing. Notably
+`display-strings.md` credits Mooniak, Pushpanada Ekanayake, and LTRL/UCSC; do
+not casually rephrase the sample paragraphs.
