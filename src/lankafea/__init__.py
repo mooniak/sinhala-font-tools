@@ -7,4 +7,4 @@ Pipeline (see the project plan): YAML glyphsets + a target font's glyph inventor
 Public entry points live in :mod:`lankafea.api`.
 """
 
-__version__ = "0.2.0"
+__version__ = "0.2.0"  # x-release-please-version
