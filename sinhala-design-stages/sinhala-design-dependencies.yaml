@@ -28,7 +28,7 @@
 meta:
   name: Sinhala Design Dependency Model
   id: sinhala-design-stages
-  version: 0.1.0
+  version: 0.2.0
   script: Sinhala (sinh)
   authors: [Pathum Egodawatta, Mooniak]
   based_on_research_by: [Pushpananda Ekanayake, Pathum Egodawatta]
@@ -201,7 +201,12 @@ spacing_classes:
     R-diag:  {rep: ර, members: [ජ, ඦ, ර, ඊ]}
     R-a:     {rep: අ, members: [අ, ල, ළ]}
     R-u:     {rep: ද, members: [උ, ද, ඤ, ඥ, ඳ, ැ, ෑ]}
-    R-round: {rep: ඔ, members: [ඔ, ඕ, ඛ, බ, ම, ඹ, ඬ], note: "Source also lists ධ ච ඩ ඣ here; their primary class is R-bowl."}
+    R-round: {rep: ඔ, members: [ඔ, ඛ, බ, ම, ඹ, ඬ], note: "Source also lists ධ ච ඩ ඣ here; their primary class is R-bowl. ඕ also came from this source group, but its right edge is the ා stroke (ඕ = ඔ + ා), so its primary class is R-arch — see glyphs.ඕ."}
+    # Classes below were not in the source taxonomy — added 2026-07-20 to cover
+    # the unassigned pool; provisional, see gap rare-spacing-provisional.
+    R-kombu: {rep: ෙ, members: [ෙ, ෛ], note: "PROPOSED: the pre-base kombuwa's right sidebearing — the gap to the following base. ෛ (kombu deka) shares the same trailing curl."}
+    R-ring: {rep: ං, members: [ං, ඃ], note: "PROPOSED: the dot/ring signs. ඃ is two ං dots stacked, same right profile. A small round shape needs more optical sidebearing than the big R-round letters, hence its own class."}
+    R-spiral: {rep: ෴, members: [෴], note: "PROPOSED: kunddaliya section mark; punctuation-scale spacing, singleton."}
   left:
     L-tta:   {rep: ට, members: [ට, ධ, ඛ, බ]}
     L-e:     {rep: ස, members: [එ, ච, ඩ, ඝ, ඪ, භ, ස], note: "ස also appears in L-pa in the source; primary here."}
@@ -210,6 +215,15 @@ spacing_classes:
     L-ka:    {rep: ත, members: [ක, ත, ණ, න, ඣ]}
     L-ga:    {rep: ග, members: [ග, ඟ, ඤ, ඥ, ඦ, ශ, ඬ, ඳ, ඏ, ෙ]}
     L-o:     {rep: ඔ, members: [ඔ, ඕ, ම, ඹ]}
+    # Mark/sign left classes below were not in the source taxonomy — added
+    # 2026-07-20; provisional, see gap rare-spacing-provisional. A spacing
+    # mark's left sidebearing sets its gap to the preceding base.
+    L-aela:   {rep: ා, members: [ා], note: "PROPOSED: the ා stem's left profile; singleton until ෘ-family entries prove to match."}
+    L-aeda:   {rep: ැ, members: [ැ, ෑ], note: "PROPOSED: the aeda-pilla hook entry; ෑ doubles the hook but enters identically."}
+    L-gaetta: {rep: ෘ, members: [ෘ, ෲ], note: "PROPOSED: the gaetta-pilla loop entry, attaching low under the base. May merge with L-gaya after visual check."}
+    L-gaya:   {rep: ෟ, members: [ෟ, ෳ], note: "PROPOSED: the gayanukitta entry at baseline. May merge with L-gaetta after visual check."}
+    L-ring:   {rep: ං, members: [ං, ඃ], note: "PROPOSED: mirror of R-ring."}
+    L-spiral: {rep: ෴, members: [෴], note: "PROPOSED: mirror of R-spiral."}
 
 # -----------------------------------------------------------------------------
 # Visual density (texture darkness) classes, moved verbatim from the retired
@@ -268,9 +282,13 @@ mark_systems:
       system (ra-forms). The systematic sweep across all bases is Stage 8
       (entry hal-sweep).
   spacing_marks:
-    body: [ා, ැ, ෑ, ෙ, ෘ, ෟ, ෛ, ො, ෝ, ෞ, ෲ, ෳ]
-    above: [ි, ී, ්, ං]
-    below: [ු, ූ]
+    # body: marks that advance like letters and carry their own sidebearings.
+    # sign: spacing signs (Mc/Lo) — same spacing behaviour as body marks.
+    # nonspacing: zero-advance combining marks (Mn) — anchored/fused, they
+    #   never carry sidebearings and are excluded from the spacing scheme.
+    body: [ා, ැ, ෑ, ෙ, ේ, ෘ, ෟ, ෛ, ො, ෝ, ෞ, ෲ, ෳ]
+    sign: [ං, ඃ]
+    nonspacing: [ි, ී, ්, ු, ූ]
 
 # -----------------------------------------------------------------------------
 # Stages: narrative, gate focus, and AUTHORED test texts (validated by build).
@@ -572,6 +590,7 @@ glyphs:
     display: ටි ඩි (ටී චී ඩී)
     mark: ි
     hosts: [ට, ච, ඩ]
+    fused: true
     stage: 1
     order: 7
     parents: [ට, ඩ, ි]
@@ -584,9 +603,11 @@ glyphs:
 
   fam-i-tthi:
     type: form-family
-    display: ඪි (ඨි ථි ඵි …)
+    display: ඪි (ඨි ථි ඵි ට්‍ඨි ත්‍ථි න්‍ථි …)
     mark: ි
     hosts: [ඨ, ඪ, ථ, ඵ]
+    conjunct_hosts: [ට්‍ඨ, ත්‍ථ, න්‍ථ]
+    fused: true
     stage: 1
     order: 8
     parents: [ඪ, ි]
@@ -594,8 +615,8 @@ glyphs:
     ai:
       construction: >
         Atomic ි over the trap-topped hosts; introduced on ඪි. Remaining hosts
-        (ඨ ථ ඵ) complete in Stages 5–6; conjunct hosts (ට්‍ඨ ත්‍ථ න්‍ථ) in
-        Stage 9.
+        (ඨ ථ ඵ) completed Stages 5–6; conjunct hosts (ට්‍ඨ ත්‍ථ න්‍ථ, per the
+        source shape taxonomy's ග්‍රි-group filing) joined Stage 9.
       checks: ["The ි loop negotiates the open trap without closing it."]
 
   ු:
@@ -687,6 +708,8 @@ glyphs:
     display: යි වි (මි බි ණි …)
     mark: ි
     hosts: [ය, ව, ම, බ, ඛ, ධ, ණ, ඹ, ඬ, ඣ, ඞ]
+    fused: true
+    spacing_note: "FLAG: the wrap can push past the host's right extreme on narrow terminals — verify per host and add form_overrides if the workbench disagrees."
     stage: 2
     order: 5
     parents: [ය, ි]
@@ -746,7 +769,7 @@ glyphs:
     stage: 3
     order: 3
     parents: [ග]
-    spacing: {right: R-arch}
+    spacing: {left: L-aela, right: R-arch}
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -793,7 +816,7 @@ glyphs:
     stage: 3
     order: 6
     parents: [ග]
-    spacing: {left: L-ga}
+    spacing: {left: L-ga, right: R-kombu}
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -810,6 +833,7 @@ glyphs:
     order: 7
     parents: []
     requires: [counter]
+    spacing: {left: L-ring, right: R-ring}
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -821,6 +845,7 @@ glyphs:
     display: සි (ඝි)
     mark: ි
     hosts: [ඝ, ස]
+    fused: true
     stage: 3
     order: 8
     parents: [ස, ි]
@@ -837,6 +862,8 @@ glyphs:
     display: ට් ඩ් (ම් බ් …)
     mark: ්
     hosts: [ට, ඩ, ඬ, ච, ධ, ඛ, බ, ම, ඹ, ව, ඣ, ඞ]
+    fused: true
+    spacing_note: "FLAG: assumes the wrap rides above the body and the host's right edge stands — verify the narrow bowls (ට් ව්) first."
     stage: 3
     order: 9
     parents: [්, ට]
@@ -855,6 +882,7 @@ glyphs:
     display: ඪ් (ඨ් ථ් ඵ්)
     mark: ්
     hosts: [ඨ, ඪ, ථ, ඵ]
+    fused: false   # positioned mark alternate (Noto virama.alt1) — the base keeps its spacing; the ් glyph is nonspacing
     stage: 3
     order: 10
     parents: [්, ඪ]
@@ -981,7 +1009,7 @@ glyphs:
     order: 7
     parents: [ද]
     requires: [hook_depth]
-    spacing: {right: R-u}
+    spacing: {left: L-aeda, right: R-u}
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -998,7 +1026,7 @@ glyphs:
     stage: 4
     order: 8
     parents: [ැ]
-    spacing: {right: R-u}
+    spacing: {left: L-aeda, right: R-u}
     level: sinhala-0-kernel
     frequency: medium
     ai:
@@ -1010,6 +1038,13 @@ glyphs:
     display: රි ර් රැ (රී රූ)
     mark: ි
     hosts: [ර]
+    fused: true
+    forms: [රි, රී, ර්, රැ, රු, රූ]
+    form_overrides:
+      රැ: {right: R-u}
+      රු: {right: R-u}
+      රූ: {right: R-u}
+    spacing_note: "FLAG: රි රී ර් keep ර's classes (L-ja/R-diag); රැ රු රූ end in the ැ-style hook, hence R-u. The ර් wrap and රී tail right extremes need a visual check."
     stage: 4
     order: 9
     parents: [ර, ි, ැ, ්]
@@ -1073,6 +1108,7 @@ glyphs:
     stage: 4
     order: 13
     parents: [ෙ, ්]
+    spacing: {left: L-ga, right: R-kombu}
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -1087,6 +1123,8 @@ glyphs:
     stage: 4
     order: 14
     parents: [ෙ, ා]
+    spacing: {left: L-ga, right: R-arch}
+    spacing_note: "Standalone-glyph view (mark row in charts): left = kombuwa entry, right = the ා stem. In running text the font decomposes it to ෙ + base + ා, each half keeping its own class."
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -1101,6 +1139,8 @@ glyphs:
     stage: 4
     order: 15
     parents: [ො, ්]
+    spacing: {left: L-ga, right: R-arch}
+    spacing_note: "Same standalone-glyph caveat as ො; the ් flag rides the ා stem and should not change the right edge."
     level: sinhala-0-kernel
     frequency: high
     ai:
@@ -1115,6 +1155,7 @@ glyphs:
     stage: 4
     order: 16
     parents: [ෙ]
+    spacing: {left: L-ga, right: R-kombu}
     level: sinhala-0-kernel
     frequency: medium
     ai:
@@ -1126,6 +1167,7 @@ glyphs:
     display: කි ති නි (කී තී නී)
     mark: ි
     hosts: [ක, ත, න]
+    fused: true
     stage: 4
     order: 17
     parents: [ක, ත, න, ි]
@@ -1139,6 +1181,7 @@ glyphs:
     display: ගි (ඟි ශි ෆි …)
     mark: ි
     hosts: [ග, ඟ, ශ, ෆ]
+    fused: true
     stage: 4
     order: 18
     parents: [ග, ි]
@@ -1152,12 +1195,14 @@ glyphs:
     display: දි (දී ද්‍රි ද්‍රී)
     mark: ි
     hosts: [ද]
+    conjunct_hosts: [ද්‍ර]
+    fused: true
     stage: 4
     order: 19
     parents: [ද, ි]
     level: sinhala-0-kernel
     ai:
-      construction: "The ද ි convention; conjunct hosts (ද්‍රි) join in Stage 9."
+      construction: "The ද ි convention; conjunct host ද්‍ර (iVowelAlt2 in Noto) joined Stage 9."
       checks: ["දි loop respects the u_bottom counter."]
 
   fam-i-li:
@@ -1165,6 +1210,7 @@ glyphs:
     display: ලි (ළි ලී ළී)
     mark: ි
     hosts: [ල, ළ]
+    fused: true
     stage: 4
     order: 20
     parents: [ල, ි]
@@ -1178,6 +1224,7 @@ glyphs:
     display: පි (පී ෂි ක්‍ෂි)
     mark: ි
     hosts: [ප, ෂ]
+    fused: true
     stage: 4
     order: 21
     parents: [ප, ි]
@@ -1193,6 +1240,9 @@ glyphs:
     display: කු ගු තු (භු ශු ඟු)
     mark: ු
     hosts: [ක, ග, ත, භ, ශ, ඟ]
+    fused: true
+    form_spacing: {right: R-u}
+    spacing_note: "FLAG: the fused right-joined ු hook takes over the right edge; mapped to R-u on the assumption it shares the ද/ැ hook rhythm — split into a dedicated class if the workbench disagrees. Covers the ූ doubled hook too."
     stage: 4
     order: 22
     parents: [ක, ග, ත, ු]
@@ -1209,6 +1259,9 @@ glyphs:
     display: දු (දූ)
     mark: ු
     hosts: [ද]
+    fused: true
+    form_spacing: {right: R-u}
+    spacing_note: "FLAG: fused hook → R-u like u-special; verify දූ's doubled loop separately."
     stage: 4
     order: 23
     parents: [ද, ු]
@@ -1384,6 +1437,7 @@ glyphs:
     display: ජි ඡි (ජී ඡී ඦි)
     mark: ි
     hosts: [ජ, ඡ, ඦ]
+    fused: true
     stage: 5
     order: 11
     parents: [ජ, ඡ, ි]
@@ -1397,6 +1451,7 @@ glyphs:
     display: ජ් (ඡ් ඦ්)
     mark: ්
     hosts: [ඡ, ජ, ඦ]
+    fused: false   # positioned mark alternate (Noto virama.alt2) — the base keeps its spacing; the ් glyph is nonspacing
     stage: 5
     order: 12
     parents: [්, ජ]
@@ -1647,6 +1702,7 @@ glyphs:
     display: භි හි (භී හී)
     mark: ි
     hosts: [භ, හ]
+    fused: true
     stage: 6
     order: 17
     parents: [භ, හ, ි]
@@ -1660,6 +1716,9 @@ glyphs:
     display: ළු (ළූ)
     mark: ු
     hosts: [ළ]
+    fused: true
+    form_spacing: {left: L-e, right: R-trap}
+    spacing_note: "Right R-trap is the model's own check (spaces with the trap family, not with ළ). FLAG: left L-e follows the එ-archetype body — verify the entry stroke."
     stage: 6
     order: 18
     parents: [ළ, එ, ු]
@@ -1793,24 +1852,28 @@ glyphs:
     display: ඳි (ඳී ඳ්‍රි)
     mark: ි
     hosts: [ඳ]
+    conjunct_hosts: [ඳ්‍ර]
+    fused: true
     stage: 7
     order: 8
     parents: [ඳ, ි]
     level: sinhala-0-kernel
     ai:
-      construction: "The ඳ ි convention; conjunct hosts join in Stage 9. Source rows mix ො forms (ඳො ඳ්‍රො) — verify."
+      construction: "The ඳ ි convention; conjunct host ඳ්‍ර (iVowelAlt9 in Noto) joined Stage 9. Source rows mix ො forms (ඳො ඳ්‍රො) — verify."
       checks: ["Distinct from දි at a glance."]
   fam-i-nyi:
     type: form-family
-    display: ඤි ඥි (ඤී ඥී)
+    display: ඤි ඥි (ඤී ඥී න්‍දි න්‍ද්‍රි)
     mark: ි
     hosts: [ඤ, ඥ]
+    conjunct_hosts: [න්‍ද, න්‍ද්‍ර]
+    fused: true
     stage: 7
     order: 9
     parents: [ඤ, ඥ, ි]
     level: sinhala-0-kernel
     ai:
-      construction: "The nasal-set ි convention; න්‍දි න්‍ද්‍රි join in Stage 9 (source files them in this family)."
+      construction: "The nasal-set ි convention; conjunct hosts න්‍ද න්‍ද්‍ර (iVowelAlt8 in Noto, filed with ඤ ඥ) joined Stage 9."
       checks: ["Convention scales to the wide ඥ body."]
 
   # ---- Stage 8 — Completion sweep -------------------------------------------
@@ -1822,7 +1885,7 @@ glyphs:
     stage: 8
     order: 1
     parents: [ු]
-    spacing: {right: R-arch}
+    spacing: {left: L-gaetta, right: R-arch}
     level: sinhala-0-kernel
     frequency: low
     ai:
@@ -1836,6 +1899,8 @@ glyphs:
     stage: 8
     order: 2
     parents: [ෘ]
+    spacing: {left: L-gaetta, right: R-arch}
+    spacing_note: "FLAG: assumes the doubled loop keeps ෘ's entry and terminal — verify."
     level: sinhala-0-kernel
     frequency: rare
     ai:
@@ -1849,7 +1914,7 @@ glyphs:
     stage: 8
     order: 3
     parents: []
-    spacing: {right: R-arch}
+    spacing: {left: L-gaya, right: R-arch}
     level: sinhala-0-kernel
     frequency: rare
     ai:
@@ -1863,6 +1928,8 @@ glyphs:
     stage: 8
     order: 4
     parents: [ෟ]
+    spacing: {left: L-gaya, right: R-arch}
+    spacing_note: "FLAG: assumes the length stroke ends in the ා/ෟ-style terminal (R-arch) — verify."
     level: sinhala-0-kernel
     frequency: rare
     ai:
@@ -1876,6 +1943,8 @@ glyphs:
     stage: 8
     order: 5
     parents: [ෙ, ෟ]
+    spacing: {left: L-ga, right: R-arch}
+    spacing_note: "Same standalone-glyph caveat as ො; right = the ෟ tail's terminal."
     level: sinhala-0-kernel
     frequency: rare
     ai:
@@ -1968,8 +2037,8 @@ glyphs:
         The classic stacked/fused conjuncts. The twin-body fusion convention
         is INHERITED from ඣ (element twin_body) — reuse its joint, do not
         re-derive it. න්‍ද joins the da_forms consistency set. Their ි ී
-        forms extend fam-i-tthi, fam-i-nyi and fam-i-di per the source
-        tables.
+        forms extend fam-i-tthi, fam-i-nyi and fam-i-di — see those entries'
+        hosts (Stage 9 addition, gap conjunct-i-forms-resolution).
       checks: ["da-form bottom verbatim in න්‍ද; ත්‍ථි matches fam-i-tthi."]
   touching-clusters:
     type: conjunct-system
@@ -1983,21 +2052,6 @@ glyphs:
         Touching consonant clusters. NOTE the encoding difference: touching =
         c1 + ZWJ + ් + c2; ligated conjuncts = c1 + ් + ZWJ + c2.
       checks: ["Shaping tests distinguish the two encodings correctly."]
-  conjunct-i-forms:
-    type: form-family
-    display: ක්‍රි ක්‍රී ශ්‍රී ද්‍රි න්‍දි (ග්‍රි group)
-    mark: ි
-    hosts: []
-    stage: 9
-    order: 7
-    parents: [rakaransaya, ි]
-    level: sinhala-0-kernel
-    ai:
-      construction: >
-        ි ී over conjunct hosts — the ග්‍රි group of the shape taxonomy
-        (ක්‍රී ච්‍රී ප්‍රී ශ්‍රී). Extends the frozen family conventions to
-        two-storey hosts.
-      checks: ["Mark clears the conjunct stack; no re-decisions of frozen forms."]
 
   # ---- Stage 10 — Long tail and polish --------------------------------------
   ඍ:
@@ -2020,6 +2074,8 @@ glyphs:
     stage: 10
     order: 2
     parents: [ඍ]
+    spacing: {left: L-ja, right: R-arch}
+    spacing_note: "FLAG: inherited from ඍ; assumes the length element stays inside ඍ's right terminal — verify."
     level: sinhala-1-core
     frequency: rare
     ai: {construction: "ඍ + length element.", checks: []}
@@ -2030,7 +2086,8 @@ glyphs:
     stage: 10
     order: 3
     parents: []
-    spacing: {left: L-ga}
+    spacing: {left: L-ga, right: R-u}
+    spacing_note: "FLAG (low confidence): right R-u guesses the bottom curl reads like the ද/උ hook family — the taxonomy only assigned the left; verify with designer."
     level: sinhala-1-core
     frequency: rare
     ai: {construction: "Vocalic-l letter; L-ga entry per the taxonomy.", checks: []}
@@ -2041,6 +2098,8 @@ glyphs:
     stage: 10
     order: 4
     parents: [ඏ]
+    spacing: {left: L-ga, right: R-u}
+    spacing_note: "FLAG (low confidence): inherited from ඏ; both sides carry ඏ's uncertainty plus the length element — verify."
     level: sinhala-1-core
     frequency: rare
     ai: {construction: "ඏ + length element.", checks: []}
@@ -2064,6 +2123,8 @@ glyphs:
     stage: 10
     order: 6
     parents: [එ]
+    spacing: {left: L-e, right: R-trap}
+    spacing_note: "FLAG: assumes the එ-system derivation holds at both edges (extra element stays on top) — verify with designer."
     level: sinhala-0-kernel
     frequency: rare
     ai: {construction: "The ai letter; derivation from the එ system — verify with designer.", checks: []}
@@ -2074,6 +2135,8 @@ glyphs:
     stage: 10
     order: 7
     parents: [ඔ]
+    spacing: {left: L-o, right: R-arch}
+    spacing_note: "FLAG: left follows ඔ; right R-arch assumes the trailing tail ends in the ා/ෟ-style terminal (as ඕ does) — verify."
     level: sinhala-0-kernel
     frequency: rare
     ai: {construction: "The au letter; ඔ system + tail logic.", checks: []}
@@ -2084,6 +2147,7 @@ glyphs:
     stage: 10
     order: 8
     parents: [ං]
+    spacing: {left: L-ring, right: R-ring}
     level: sinhala-0-kernel
     frequency: rare
     ai: {construction: "Two ං dots stacked at the right.", checks: []}
@@ -2094,6 +2158,7 @@ glyphs:
     stage: 10
     order: 9
     parents: []
+    spacing: {left: L-spiral, right: R-spiral}
     level: sinhala-1-core
     frequency: rare
     ai: {construction: "Traditional section mark; spiral construction (cf. Śṅkaya).", checks: []}
@@ -2121,6 +2186,8 @@ gaps:
     text: "RESOLVED via Noto: ප is in none of Noto's ු-alternate classes (uSignAlt1/2/3) nor its u_fused set, so it takes the DEFAULT ු — no special form. The empty පු group in the source taxonomy was correct; the draft's duplicate පු was spurious."
   - id: du-classification
     text: "RESOLVED via Noto: ද is in Noto's u_fused set (දු = the fused dU glyph), so the model's du-form (its own one-host ු family) is correct. The source taxonomy's filing under the ග්‍රි (conjunct-ි) group was a mis-file — දු concerns ු, not conjunct-ි."
+  - id: conjunct-i-forms-resolution
+    text: "RESOLVED via Noto evidence: the source taxonomy's ග්‍රි group (ක්‍රි ක්‍රී ශ්‍රී ද්‍රි න්‍දි) was carried as its own empty conjunct-i-forms entry (hosts: [], flagged by build.js as a hole — issue found via the fam-i-di filter looking short of ද්‍රි/ද්‍රී, 2026-07-20). Checked each member against docs/sinhala.min.yaml's iVowelAlt* classes and each family's own ai notes (which already said 'conjunct hosts join in Stage 9'): ද්‍ර is in iVowelAlt2 with ද → fam-i-di.conjunct_hosts; ඳ්‍ර is in iVowelAlt9 with ඳ → fam-i-ndi.conjunct_hosts; න්‍ද/න්‍ද්‍ර are in iVowelAlt8 with ඤ/ඥ → fam-i-nyi.conjunct_hosts; ට්‍ඨ/ත්‍ථ/න්‍ථ have no iVowelAlt entry but fam-i-tthi's own note already named them → fam-i-tthi.conjunct_hosts. conjunct_hosts is a new field (not hosts) because build.js's host validator requires an entry id, and these compound conjunct strings aren't their own model.glyphs entries; tools/glyphs-filters/sources.js formGlyphs() reads both. ක්‍රි/ශ්‍රී are in NO iVowelAlt class and no family note claims them (same absence pattern as the fam-i-pi-source/ක්‍ෂි decision) — DEFAULT ි composition, no bespoke atomic form, not added anywhere. conjunct-i-forms entry removed as redundant."
   - id: side-overlaps
     text: "RESOLVED (confirmed): the source side-family/shape overlaps are settled by the spacing classes — ධ ච ඩ ඣ → R-bowl (with ට), dropped from R-round; ස → L-e (eye-line, its rep), dropped from L-pa; ර ඊ → the ර/diagonal family (R-diag, L-ja), dropped from the ප shape group."
   - id: taxonomy-holes
@@ -2143,3 +2210,5 @@ gaps:
     text: "RESOLVED (recorded): Noto builds ෝ as esign + aasign.al (a dedicated long-tail ා variant); this model builds ෝ as ො + ් (esign + ා + virama). Both yield the long tail — the model's composite is a valid alternative, no dedicated .al glyph required. For Noto parity, add an aasign.al and point ෝ/ො at it."
   - id: noto-vestigials
     text: "NOTE (extraction caveat, permanent): Noto's iVowelAlt class lists ඟ, but ඟි/ඟී are also fused ligatures which fire first — the class entry is vestigial there. Extraction keeps both; don't copy classes blindly."
+  - id: rare-spacing-provisional
+    text: "OPEN (needs designer): the 2026-07-20 spacing sweep assigned every previously-unassigned character and fused form a class, but several are best-guess proposals marked FLAG in spacing_note fields — least certain: ඏ ඐ right (R-u guessed from the bottom curl), ඓ ඖ ඎ edges, the mark left-classes (L-aela L-aeda L-gaetta L-gaya — merge candidates), the fused ු hook reusing R-u (u-special/du-form), llu-form's left, and whether ී long tails / ි-ර්-wraps reset any right extremes. Verify each against drawings in the spacing workbench; record decisions by editing the spacing/form_spacing fields and re-running build-map."

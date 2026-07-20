@@ -2,7 +2,7 @@
   "meta": {
     "name": "Sinhala Design Dependency Model",
     "id": "sinhala-design-stages",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "script": "Sinhala (sinh)",
     "authors": [
       "Pathum Egodawatta",
@@ -31,7 +31,7 @@
       "generated_drills": [],
       "new_count": 0,
       "cumulative_count": 0,
-      "total": 110
+      "total": 109
     },
     {
       "n": 1,
@@ -65,7 +65,7 @@
       ],
       "new_count": 9,
       "cumulative_count": 9,
-      "total": 110
+      "total": 109
     },
     {
       "n": 2,
@@ -99,7 +99,7 @@
       ],
       "new_count": 5,
       "cumulative_count": 14,
-      "total": 110
+      "total": 109
     },
     {
       "n": 3,
@@ -148,7 +148,7 @@
       ],
       "new_count": 10,
       "cumulative_count": 24,
-      "total": 110
+      "total": 109
     },
     {
       "n": 4,
@@ -223,7 +223,7 @@
       ],
       "new_count": 23,
       "cumulative_count": 47,
-      "total": 110
+      "total": 109
     },
     {
       "n": 5,
@@ -284,7 +284,7 @@
       ],
       "new_count": 12,
       "cumulative_count": 59,
-      "total": 110
+      "total": 109
     },
     {
       "n": 6,
@@ -349,7 +349,7 @@
       ],
       "new_count": 18,
       "cumulative_count": 77,
-      "total": 110
+      "total": 109
     },
     {
       "n": 7,
@@ -398,7 +398,7 @@
       ],
       "new_count": 9,
       "cumulative_count": 86,
-      "total": 110
+      "total": 109
     },
     {
       "n": 8,
@@ -433,7 +433,7 @@
       ],
       "new_count": 7,
       "cumulative_count": 93,
-      "total": 110
+      "total": 109
     },
     {
       "n": 9,
@@ -462,13 +462,12 @@
         "repaya",
         "ksha",
         "classic-conjuncts",
-        "touching-clusters",
-        "conjunct-i-forms"
+        "touching-clusters"
       ],
       "generated_drills": [],
-      "new_count": 7,
-      "cumulative_count": 100,
-      "total": 110
+      "new_count": 6,
+      "cumulative_count": 99,
+      "total": 109
     },
     {
       "n": 10,
@@ -505,8 +504,8 @@
         "ඞෲ ඞෟ ඞෳ ඞෞ"
       ],
       "new_count": 10,
-      "cumulative_count": 110,
-      "total": 110
+      "cumulative_count": 109,
+      "total": 109
     }
   ],
   "glyphs": {
@@ -686,6 +685,7 @@
         "ච",
         "ඩ"
       ],
+      "fused": true,
       "stage": 1,
       "order": 7,
       "parents": [
@@ -703,7 +703,7 @@
     },
     "fam-i-tthi": {
       "type": "form-family",
-      "display": "ඪි (ඨි ථි ඵි …)",
+      "display": "ඪි (ඨි ථි ඵි ට්‍ඨි ත්‍ථි න්‍ථි …)",
       "mark": "ි",
       "hosts": [
         "ඨ",
@@ -711,6 +711,12 @@
         "ථ",
         "ඵ"
       ],
+      "conjunct_hosts": [
+        "ට්‍ඨ",
+        "ත්‍ථ",
+        "න්‍ථ"
+      ],
+      "fused": true,
       "stage": 1,
       "order": 8,
       "parents": [
@@ -719,7 +725,7 @@
       ],
       "level": "sinhala-0-kernel",
       "ai": {
-        "construction": "Atomic ි over the trap-topped hosts; introduced on ඪි. Remaining hosts (ඨ ථ ඵ) complete in Stages 5–6; conjunct hosts (ට්‍ඨ ත්‍ථ න්‍ථ) in Stage 9.\n",
+        "construction": "Atomic ි over the trap-topped hosts; introduced on ඪි. Remaining hosts (ඨ ථ ඵ) completed Stages 5–6; conjunct hosts (ට්‍ඨ ත්‍ථ න්‍ථ, per the source shape taxonomy's ග්‍රි-group filing) joined Stage 9.\n",
         "checks": [
           "The ි loop negotiates the open trap without closing it."
         ]
@@ -869,6 +875,8 @@
         "ඣ",
         "ඞ"
       ],
+      "fused": true,
+      "spacing_note": "FLAG: the wrap can push past the host's right extreme on narrow terminals — verify per host and add form_overrides if the workbench disagrees.",
       "stage": 2,
       "order": 5,
       "parents": [
@@ -936,6 +944,7 @@
         "ග"
       ],
       "spacing": {
+        "left": "L-aela",
         "right": "R-arch"
       },
       "level": "sinhala-0-kernel",
@@ -1010,7 +1019,8 @@
         "ග"
       ],
       "spacing": {
-        "left": "L-ga"
+        "left": "L-ga",
+        "right": "R-kombu"
       },
       "level": "sinhala-0-kernel",
       "frequency": "high",
@@ -1031,6 +1041,10 @@
       "requires": [
         "counter"
       ],
+      "spacing": {
+        "left": "L-ring",
+        "right": "R-ring"
+      },
       "level": "sinhala-0-kernel",
       "frequency": "high",
       "ai": {
@@ -1048,6 +1062,7 @@
         "ඝ",
         "ස"
       ],
+      "fused": true,
       "stage": 3,
       "order": 8,
       "parents": [
@@ -1080,6 +1095,8 @@
         "ඣ",
         "ඞ"
       ],
+      "fused": true,
+      "spacing_note": "FLAG: assumes the wrap rides above the body and the host's right edge stands — verify the narrow bowls (ට් ව්) first.",
       "stage": 3,
       "order": 9,
       "parents": [
@@ -1104,6 +1121,7 @@
         "ථ",
         "ඵ"
       ],
+      "fused": false,
       "stage": 3,
       "order": 10,
       "parents": [
@@ -1276,6 +1294,7 @@
         "hook_depth"
       ],
       "spacing": {
+        "left": "L-aeda",
         "right": "R-u"
       },
       "level": "sinhala-0-kernel",
@@ -1298,6 +1317,7 @@
         "ැ"
       ],
       "spacing": {
+        "left": "L-aeda",
         "right": "R-u"
       },
       "level": "sinhala-0-kernel",
@@ -1316,6 +1336,27 @@
       "hosts": [
         "ර"
       ],
+      "fused": true,
+      "forms": [
+        "රි",
+        "රී",
+        "ර්",
+        "රැ",
+        "රු",
+        "රූ"
+      ],
+      "form_overrides": {
+        "රැ": {
+          "right": "R-u"
+        },
+        "රු": {
+          "right": "R-u"
+        },
+        "රූ": {
+          "right": "R-u"
+        }
+      },
+      "spacing_note": "FLAG: රි රී ර් keep ර's classes (L-ja/R-diag); රැ රු රූ end in the ැ-style hook, hence R-u. The ර් wrap and රී tail right extremes need a visual check.",
       "stage": 4,
       "order": 9,
       "parents": [
@@ -1411,6 +1452,10 @@
         "ෙ",
         "්"
       ],
+      "spacing": {
+        "left": "L-ga",
+        "right": "R-kombu"
+      },
       "level": "sinhala-0-kernel",
       "frequency": "high",
       "ai": {
@@ -1431,6 +1476,11 @@
         "ෙ",
         "ා"
       ],
+      "spacing": {
+        "left": "L-ga",
+        "right": "R-arch"
+      },
+      "spacing_note": "Standalone-glyph view (mark row in charts): left = kombuwa entry, right = the ා stem. In running text the font decomposes it to ෙ + base + ා, each half keeping its own class.",
       "level": "sinhala-0-kernel",
       "frequency": "high",
       "ai": {
@@ -1451,6 +1501,11 @@
         "ො",
         "්"
       ],
+      "spacing": {
+        "left": "L-ga",
+        "right": "R-arch"
+      },
+      "spacing_note": "Same standalone-glyph caveat as ො; the ් flag rides the ා stem and should not change the right edge.",
       "level": "sinhala-0-kernel",
       "frequency": "high",
       "ai": {
@@ -1470,6 +1525,10 @@
       "parents": [
         "ෙ"
       ],
+      "spacing": {
+        "left": "L-ga",
+        "right": "R-kombu"
+      },
       "level": "sinhala-0-kernel",
       "frequency": "medium",
       "ai": {
@@ -1488,6 +1547,7 @@
         "ත",
         "න"
       ],
+      "fused": true,
       "stage": 4,
       "order": 17,
       "parents": [
@@ -1514,6 +1574,7 @@
         "ශ",
         "ෆ"
       ],
+      "fused": true,
       "stage": 4,
       "order": 18,
       "parents": [
@@ -1535,6 +1596,10 @@
       "hosts": [
         "ද"
       ],
+      "conjunct_hosts": [
+        "ද්‍ර"
+      ],
+      "fused": true,
       "stage": 4,
       "order": 19,
       "parents": [
@@ -1543,7 +1608,7 @@
       ],
       "level": "sinhala-0-kernel",
       "ai": {
-        "construction": "The ද ි convention; conjunct hosts (ද්‍රි) join in Stage 9.",
+        "construction": "The ද ි convention; conjunct host ද්‍ර (iVowelAlt2 in Noto) joined Stage 9.",
         "checks": [
           "දි loop respects the u_bottom counter."
         ]
@@ -1557,6 +1622,7 @@
         "ල",
         "ළ"
       ],
+      "fused": true,
       "stage": 4,
       "order": 20,
       "parents": [
@@ -1579,6 +1645,7 @@
         "ප",
         "ෂ"
       ],
+      "fused": true,
       "stage": 4,
       "order": 21,
       "parents": [
@@ -1605,6 +1672,11 @@
         "ශ",
         "ඟ"
       ],
+      "fused": true,
+      "form_spacing": {
+        "right": "R-u"
+      },
+      "spacing_note": "FLAG: the fused right-joined ු hook takes over the right edge; mapped to R-u on the assumption it shares the ද/ැ hook rhythm — split into a dedicated class if the workbench disagrees. Covers the ූ doubled hook too.",
       "stage": 4,
       "order": 22,
       "parents": [
@@ -1628,6 +1700,11 @@
       "hosts": [
         "ද"
       ],
+      "fused": true,
+      "form_spacing": {
+        "right": "R-u"
+      },
+      "spacing_note": "FLAG: fused hook → R-u like u-special; verify දූ's doubled loop separately.",
       "stage": 4,
       "order": 23,
       "parents": [
@@ -1897,6 +1974,7 @@
         "ඡ",
         "ඦ"
       ],
+      "fused": true,
       "stage": 5,
       "order": 11,
       "parents": [
@@ -1921,6 +1999,7 @@
         "ජ",
         "ඦ"
       ],
+      "fused": false,
       "stage": 5,
       "order": 12,
       "parents": [
@@ -2340,6 +2419,7 @@
         "භ",
         "හ"
       ],
+      "fused": true,
       "stage": 6,
       "order": 17,
       "parents": [
@@ -2362,6 +2442,12 @@
       "hosts": [
         "ළ"
       ],
+      "fused": true,
+      "form_spacing": {
+        "left": "L-e",
+        "right": "R-trap"
+      },
+      "spacing_note": "Right R-trap is the model's own check (spaces with the trap family, not with ළ). FLAG: left L-e follows the එ-archetype body — verify the entry stroke.",
       "stage": 6,
       "order": 18,
       "parents": [
@@ -2571,6 +2657,10 @@
       "hosts": [
         "ඳ"
       ],
+      "conjunct_hosts": [
+        "ඳ්‍ර"
+      ],
+      "fused": true,
       "stage": 7,
       "order": 8,
       "parents": [
@@ -2579,7 +2669,7 @@
       ],
       "level": "sinhala-0-kernel",
       "ai": {
-        "construction": "The ඳ ි convention; conjunct hosts join in Stage 9. Source rows mix ො forms (ඳො ඳ්‍රො) — verify.",
+        "construction": "The ඳ ි convention; conjunct host ඳ්‍ර (iVowelAlt9 in Noto) joined Stage 9. Source rows mix ො forms (ඳො ඳ්‍රො) — verify.",
         "checks": [
           "Distinct from දි at a glance."
         ]
@@ -2587,12 +2677,17 @@
     },
     "fam-i-nyi": {
       "type": "form-family",
-      "display": "ඤි ඥි (ඤී ඥී)",
+      "display": "ඤි ඥි (ඤී ඥී න්‍දි න්‍ද්‍රි)",
       "mark": "ි",
       "hosts": [
         "ඤ",
         "ඥ"
       ],
+      "conjunct_hosts": [
+        "න්‍ද",
+        "න්‍ද්‍ර"
+      ],
+      "fused": true,
       "stage": 7,
       "order": 9,
       "parents": [
@@ -2602,7 +2697,7 @@
       ],
       "level": "sinhala-0-kernel",
       "ai": {
-        "construction": "The nasal-set ි convention; න්‍දි න්‍ද්‍රි join in Stage 9 (source files them in this family).",
+        "construction": "The nasal-set ි convention; conjunct hosts න්‍ද න්‍ද්‍ර (iVowelAlt8 in Noto, filed with ඤ ඥ) joined Stage 9.",
         "checks": [
           "Convention scales to the wide ඥ body."
         ]
@@ -2619,6 +2714,7 @@
         "ු"
       ],
       "spacing": {
+        "left": "L-gaetta",
         "right": "R-arch"
       },
       "level": "sinhala-0-kernel",
@@ -2640,6 +2736,11 @@
       "parents": [
         "ෘ"
       ],
+      "spacing": {
+        "left": "L-gaetta",
+        "right": "R-arch"
+      },
+      "spacing_note": "FLAG: assumes the doubled loop keeps ෘ's entry and terminal — verify.",
       "level": "sinhala-0-kernel",
       "frequency": "rare",
       "ai": {
@@ -2658,6 +2759,7 @@
       "order": 3,
       "parents": [],
       "spacing": {
+        "left": "L-gaya",
         "right": "R-arch"
       },
       "level": "sinhala-0-kernel",
@@ -2679,6 +2781,11 @@
       "parents": [
         "ෟ"
       ],
+      "spacing": {
+        "left": "L-gaya",
+        "right": "R-arch"
+      },
+      "spacing_note": "FLAG: assumes the length stroke ends in the ා/ෟ-style terminal (R-arch) — verify.",
       "level": "sinhala-0-kernel",
       "frequency": "rare",
       "ai": {
@@ -2697,6 +2804,11 @@
         "ෙ",
         "ෟ"
       ],
+      "spacing": {
+        "left": "L-ga",
+        "right": "R-arch"
+      },
+      "spacing_note": "Same standalone-glyph caveat as ො; right = the ෟ tail's terminal.",
       "level": "sinhala-0-kernel",
       "frequency": "rare",
       "ai": {
@@ -2822,7 +2934,7 @@
       ],
       "level": "sinhala-0-kernel",
       "ai": {
-        "construction": "The classic stacked/fused conjuncts. The twin-body fusion convention is INHERITED from ඣ (element twin_body) — reuse its joint, do not re-derive it. න්‍ද joins the da_forms consistency set. Their ි ී forms extend fam-i-tthi, fam-i-nyi and fam-i-di per the source tables.\n",
+        "construction": "The classic stacked/fused conjuncts. The twin-body fusion convention is INHERITED from ඣ (element twin_body) — reuse its joint, do not re-derive it. න්‍ද joins the da_forms consistency set. Their ි ී forms extend fam-i-tthi, fam-i-nyi and fam-i-di — see those entries' hosts (Stage 9 addition, gap conjunct-i-forms-resolution).\n",
         "checks": [
           "da-form bottom verbatim in න්‍ද; ත්‍ථි matches fam-i-tthi."
         ]
@@ -2841,25 +2953,6 @@
         "construction": "Touching consonant clusters. NOTE the encoding difference: touching = c1 + ZWJ + ් + c2; ligated conjuncts = c1 + ් + ZWJ + c2.\n",
         "checks": [
           "Shaping tests distinguish the two encodings correctly."
-        ]
-      }
-    },
-    "conjunct-i-forms": {
-      "type": "form-family",
-      "display": "ක්‍රි ක්‍රී ශ්‍රී ද්‍රි න්‍දි (ග්‍රි group)",
-      "mark": "ි",
-      "hosts": [],
-      "stage": 9,
-      "order": 7,
-      "parents": [
-        "rakaransaya",
-        "ි"
-      ],
-      "level": "sinhala-0-kernel",
-      "ai": {
-        "construction": "ි ී over conjunct hosts — the ග්‍රි group of the shape taxonomy (ක්‍රී ච්‍රී ප්‍රී ශ්‍රී). Extends the frozen family conventions to two-storey hosts.\n",
-        "checks": [
-          "Mark clears the conjunct stack; no re-decisions of frozen forms."
         ]
       }
     },
@@ -2894,6 +2987,11 @@
       "parents": [
         "ඍ"
       ],
+      "spacing": {
+        "left": "L-ja",
+        "right": "R-arch"
+      },
+      "spacing_note": "FLAG: inherited from ඍ; assumes the length element stays inside ඍ's right terminal — verify.",
       "level": "sinhala-1-core",
       "frequency": "rare",
       "ai": {
@@ -2909,8 +3007,10 @@
       "order": 3,
       "parents": [],
       "spacing": {
-        "left": "L-ga"
+        "left": "L-ga",
+        "right": "R-u"
       },
+      "spacing_note": "FLAG (low confidence): right R-u guesses the bottom curl reads like the ද/උ hook family — the taxonomy only assigned the left; verify with designer.",
       "level": "sinhala-1-core",
       "frequency": "rare",
       "ai": {
@@ -2927,6 +3027,11 @@
       "parents": [
         "ඏ"
       ],
+      "spacing": {
+        "left": "L-ga",
+        "right": "R-u"
+      },
+      "spacing_note": "FLAG (low confidence): inherited from ඏ; both sides carry ඏ's uncertainty plus the length element — verify.",
       "level": "sinhala-1-core",
       "frequency": "rare",
       "ai": {
@@ -2965,6 +3070,11 @@
       "parents": [
         "එ"
       ],
+      "spacing": {
+        "left": "L-e",
+        "right": "R-trap"
+      },
+      "spacing_note": "FLAG: assumes the එ-system derivation holds at both edges (extra element stays on top) — verify with designer.",
       "level": "sinhala-0-kernel",
       "frequency": "rare",
       "ai": {
@@ -2981,6 +3091,11 @@
       "parents": [
         "ඔ"
       ],
+      "spacing": {
+        "left": "L-o",
+        "right": "R-arch"
+      },
+      "spacing_note": "FLAG: left follows ඔ; right R-arch assumes the trailing tail ends in the ා/ෟ-style terminal (as ඕ does) — verify.",
       "level": "sinhala-0-kernel",
       "frequency": "rare",
       "ai": {
@@ -2997,6 +3112,10 @@
       "parents": [
         "ං"
       ],
+      "spacing": {
+        "left": "L-ring",
+        "right": "R-ring"
+      },
       "level": "sinhala-0-kernel",
       "frequency": "rare",
       "ai": {
@@ -3011,6 +3130,10 @@
       "stage": 10,
       "order": 9,
       "parents": [],
+      "spacing": {
+        "left": "L-spiral",
+        "right": "R-spiral"
+      },
       "level": "sinhala-1-core",
       "frequency": "rare",
       "ai": {

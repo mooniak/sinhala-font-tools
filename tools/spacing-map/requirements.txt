@@ -1,0 +1,2 @@
+PyYAML>=6.0
+# audit/apply (planned) will add: glyphsLib>=6.0, openstep-plist

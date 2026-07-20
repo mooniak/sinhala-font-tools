@@ -1,0 +1,747 @@
+meta:
+  version: 1
+  generated_by: tools/spacing-map (python -m spacing_map build-map)
+  model: sinhala-design-stages/sinhala-design-dependencies.yaml
+  model_version: 0.2.0
+  unit: spacing_unit
+  description: 'Sinhala spacing scheme. Each class: `rep` sets the sidebearing, `members` inherit it (applied
+    as Glyphs metrics keys), `value` is the rep''s sidebearing target as a multiple of the font''s spacing_unit
+    metric (null = not yet authored). `forms` are the fused form-family glyphs (ටි ම් කු …): each maps
+    to the class whose rep it copies per side — per-form override > family form_spacing > inherited from
+    its host. `flags` collect the model''s provisional spacing_note markers awaiting the designer. `nonspacing`
+    combining marks carry no sidebearings. Relationships are rebuilt from the model; values/notes/exceptions
+    survive rebuilds.'
+  counts:
+    classes:
+      right: 11
+      left: 13
+    members:
+      right: 75
+      left: 75
+    forms: 128
+classes:
+  right:
+    R-bowl:
+      rep: ට
+      members:
+      - ට
+      - ච
+      - ධ
+      - ව
+      - ඩ
+      - ඣ
+      - ඞ
+      value: 1.0
+    R-trap:
+      rep: ඪ
+      members:
+      - ඨ
+      - ථ
+      - එ
+      - ඪ
+      - ඵ
+      - ඡ
+      - ඒ
+      - ඓ
+      value: null
+    R-pa:
+      rep: ස
+      members:
+      - ප
+      - ය
+      - ඝ
+      - ස
+      - ෂ
+      value: null
+    R-arch:
+      rep: ග
+      members:
+      - ක
+      - ත
+      - ග
+      - ඟ
+      - ණ
+      - න
+      - භ
+      - ශ
+      - හ
+      - ෆ
+      - ඉ
+      - ා
+      - ෘ
+      - ෟ
+      - ආ
+      - ො
+      - ෝ
+      - ඕ
+      - ෲ
+      - ෳ
+      - ෞ
+      - ඍ
+      - ඎ
+      - ඖ
+      value: null
+    R-diag:
+      rep: ර
+      members:
+      - ජ
+      - ඦ
+      - ර
+      - ඊ
+      value: null
+    R-a:
+      rep: අ
+      members:
+      - අ
+      - ල
+      - ළ
+      value: null
+    R-u:
+      rep: ද
+      members:
+      - උ
+      - ද
+      - ඤ
+      - ඥ
+      - ඳ
+      - ැ
+      - ෑ
+      - ඇ
+      - ඈ
+      - ඌ
+      - ඏ
+      - ඐ
+      value: null
+    R-round:
+      rep: ඔ
+      members:
+      - ඔ
+      - ඛ
+      - බ
+      - ම
+      - ඹ
+      - ඬ
+      value: null
+      note: Source also lists ධ ච ඩ ඣ here; their primary class is R-bowl. ඕ also came from this source
+        group, but its right edge is the ා stroke (ඕ = ඔ + ා), so its primary class is R-arch — see glyphs.ඕ.
+    R-kombu:
+      rep: ෙ
+      members:
+      - ෙ
+      - ෛ
+      - ේ
+      value: null
+      note: 'PROPOSED: the pre-base kombuwa''s right sidebearing — the gap to the following base. ෛ (kombu
+        deka) shares the same trailing curl.'
+    R-ring:
+      rep: ං
+      members:
+      - ං
+      - ඃ
+      value: null
+      note: 'PROPOSED: the dot/ring signs. ඃ is two ං dots stacked, same right profile. A small round
+        shape needs more optical sidebearing than the big R-round letters, hence its own class.'
+    R-spiral:
+      rep: ෴
+      members:
+      - ෴
+      value: null
+      note: 'PROPOSED: kunddaliya section mark; punctuation-scale spacing, singleton.'
+  left:
+    L-tta:
+      rep: ට
+      members:
+      - ට
+      - ධ
+      - ඛ
+      - බ
+      - ඞ
+      value: 1.0
+    L-e:
+      rep: ස
+      members:
+      - එ
+      - ච
+      - ඩ
+      - ඝ
+      - ඪ
+      - භ
+      - ස
+      - ඒ
+      - ඓ
+      value: null
+      note: ස also appears in L-pa in the source; primary here.
+    L-ja:
+      rep: ය
+      members:
+      - ජ
+      - ඨ
+      - ථ
+      - ය
+      - ර
+      - ඊ
+      - ල
+      - ඉ
+      - ළ
+      - ෆ
+      - ඍ
+      - ඎ
+      value: null
+    L-pa:
+      rep: ප
+      members:
+      - අ
+      - උ
+      - ප
+      - ඡ
+      - ද
+      - ව
+      - හ
+      - ඵ
+      - ෂ
+      - ආ
+      - ඇ
+      - ඈ
+      - ඌ
+      value: null
+    L-ka:
+      rep: ත
+      members:
+      - ක
+      - ත
+      - ණ
+      - න
+      - ඣ
+      value: null
+    L-ga:
+      rep: ග
+      members:
+      - ග
+      - ඟ
+      - ඤ
+      - ඥ
+      - ඦ
+      - ශ
+      - ඬ
+      - ඳ
+      - ඏ
+      - ෙ
+      - ේ
+      - ො
+      - ෝ
+      - ෛ
+      - ෞ
+      - ඐ
+      value: null
+    L-o:
+      rep: ඔ
+      members:
+      - ඔ
+      - ඕ
+      - ම
+      - ඹ
+      - ඖ
+      value: null
+    L-aela:
+      rep: ා
+      members:
+      - ා
+      value: null
+      note: 'PROPOSED: the ා stem''s left profile; singleton until ෘ-family entries prove to match.'
+    L-aeda:
+      rep: ැ
+      members:
+      - ැ
+      - ෑ
+      value: null
+      note: 'PROPOSED: the aeda-pilla hook entry; ෑ doubles the hook but enters identically.'
+    L-gaetta:
+      rep: ෘ
+      members:
+      - ෘ
+      - ෲ
+      value: null
+      note: 'PROPOSED: the gaetta-pilla loop entry, attaching low under the base. May merge with L-gaya
+        after visual check.'
+    L-gaya:
+      rep: ෟ
+      members:
+      - ෟ
+      - ෳ
+      value: null
+      note: 'PROPOSED: the gayanukitta entry at baseline. May merge with L-gaetta after visual check.'
+    L-ring:
+      rep: ං
+      members:
+      - ං
+      - ඃ
+      value: null
+      note: 'PROPOSED: mirror of R-ring.'
+    L-spiral:
+      rep: ෴
+      members:
+      - ෴
+      value: null
+      note: 'PROPOSED: mirror of R-spiral.'
+forms:
+  fam-i-tti:
+    glyphs:
+      ටි:
+        left: L-tta
+        right: R-bowl
+      ටී:
+        left: L-tta
+        right: R-bowl
+      චි:
+        left: L-e
+        right: R-bowl
+      චී:
+        left: L-e
+        right: R-bowl
+      ඩි:
+        left: L-e
+        right: R-bowl
+      ඩී:
+        left: L-e
+        right: R-bowl
+  fam-i-tthi:
+    glyphs:
+      ඨි:
+        left: L-ja
+        right: R-trap
+      ඨී:
+        left: L-ja
+        right: R-trap
+      ඪි:
+        left: L-e
+        right: R-trap
+      ඪී:
+        left: L-e
+        right: R-trap
+      ථි:
+        left: L-ja
+        right: R-trap
+      ථී:
+        left: L-ja
+        right: R-trap
+      ඵි:
+        left: L-pa
+        right: R-trap
+      ඵී:
+        left: L-pa
+        right: R-trap
+      ට්‍ඨි:
+        left: L-tta
+        right: R-bowl
+      ට්‍ඨී:
+        left: L-tta
+        right: R-bowl
+      ත්‍ථි:
+        left: L-ka
+        right: R-arch
+      ත්‍ථී:
+        left: L-ka
+        right: R-arch
+      න්‍ථි:
+        left: L-ka
+        right: R-arch
+      න්‍ථී:
+        left: L-ka
+        right: R-arch
+  fam-i-term:
+    note: 'FLAG: the wrap can push past the host''s right extreme on narrow terminals — verify per host
+      and add form_overrides if the workbench disagrees.'
+    glyphs:
+      යි:
+        left: L-ja
+        right: R-pa
+      යී:
+        left: L-ja
+        right: R-pa
+      වි:
+        left: L-pa
+        right: R-bowl
+      වී:
+        left: L-pa
+        right: R-bowl
+      මි:
+        left: L-o
+        right: R-round
+      මී:
+        left: L-o
+        right: R-round
+      බි:
+        left: L-tta
+        right: R-round
+      බී:
+        left: L-tta
+        right: R-round
+      ඛි:
+        left: L-tta
+        right: R-round
+      ඛී:
+        left: L-tta
+        right: R-round
+      ධි:
+        left: L-tta
+        right: R-bowl
+      ධී:
+        left: L-tta
+        right: R-bowl
+      ණි:
+        left: L-ka
+        right: R-arch
+      ණී:
+        left: L-ka
+        right: R-arch
+      ඹි:
+        left: L-o
+        right: R-round
+      ඹී:
+        left: L-o
+        right: R-round
+      ඬි:
+        left: L-ga
+        right: R-round
+      ඬී:
+        left: L-ga
+        right: R-round
+      ඣි:
+        left: L-ka
+        right: R-bowl
+      ඣී:
+        left: L-ka
+        right: R-bowl
+      ඞි:
+        left: L-tta
+        right: R-bowl
+      ඞී:
+        left: L-tta
+        right: R-bowl
+  fam-i-ghi:
+    glyphs:
+      ඝි:
+        left: L-e
+        right: R-pa
+      ඝී:
+        left: L-e
+        right: R-pa
+      සි:
+        left: L-e
+        right: R-pa
+      සී:
+        left: L-e
+        right: R-pa
+  hal-rahena:
+    note: 'FLAG: assumes the wrap rides above the body and the host''s right edge stands — verify the
+      narrow bowls (ට් ව්) first.'
+    glyphs:
+      ට්:
+        left: L-tta
+        right: R-bowl
+      ඩ්:
+        left: L-e
+        right: R-bowl
+      ඬ්:
+        left: L-ga
+        right: R-round
+      ච්:
+        left: L-e
+        right: R-bowl
+      ධ්:
+        left: L-tta
+        right: R-bowl
+      ඛ්:
+        left: L-tta
+        right: R-round
+      බ්:
+        left: L-tta
+        right: R-round
+      ම්:
+        left: L-o
+        right: R-round
+      ඹ්:
+        left: L-o
+        right: R-round
+      ව්:
+        left: L-pa
+        right: R-bowl
+      ඣ්:
+        left: L-ka
+        right: R-bowl
+      ඞ්:
+        left: L-tta
+        right: R-bowl
+  ra-forms:
+    note: 'FLAG: රි රී ර් keep ර''s classes (L-ja/R-diag); රැ රු රූ end in the ැ-style hook, hence R-u.
+      The ර් wrap and රී tail right extremes need a visual check.'
+    glyphs:
+      රි:
+        left: L-ja
+        right: R-diag
+      රී:
+        left: L-ja
+        right: R-diag
+      ර්:
+        left: L-ja
+        right: R-diag
+      රැ:
+        left: L-ja
+        right: R-u
+      රු:
+        left: L-ja
+        right: R-u
+      රූ:
+        left: L-ja
+        right: R-u
+  fam-i-ki:
+    glyphs:
+      කි:
+        left: L-ka
+        right: R-arch
+      කී:
+        left: L-ka
+        right: R-arch
+      ති:
+        left: L-ka
+        right: R-arch
+      තී:
+        left: L-ka
+        right: R-arch
+      නි:
+        left: L-ka
+        right: R-arch
+      නී:
+        left: L-ka
+        right: R-arch
+  fam-i-gi:
+    glyphs:
+      ගි:
+        left: L-ga
+        right: R-arch
+      ගී:
+        left: L-ga
+        right: R-arch
+      ඟි:
+        left: L-ga
+        right: R-arch
+      ඟී:
+        left: L-ga
+        right: R-arch
+      ශි:
+        left: L-ga
+        right: R-arch
+      ශී:
+        left: L-ga
+        right: R-arch
+      ෆි:
+        left: L-ja
+        right: R-arch
+      ෆී:
+        left: L-ja
+        right: R-arch
+  fam-i-di:
+    glyphs:
+      දි:
+        left: L-pa
+        right: R-u
+      දී:
+        left: L-pa
+        right: R-u
+      ද්‍රි:
+        left: L-pa
+        right: R-u
+      ද්‍රී:
+        left: L-pa
+        right: R-u
+  fam-i-li:
+    glyphs:
+      ලි:
+        left: L-ja
+        right: R-a
+      ලී:
+        left: L-ja
+        right: R-a
+      ළි:
+        left: L-ja
+        right: R-a
+      ළී:
+        left: L-ja
+        right: R-a
+  fam-i-pi:
+    glyphs:
+      පි:
+        left: L-pa
+        right: R-pa
+      පී:
+        left: L-pa
+        right: R-pa
+      ෂි:
+        left: L-pa
+        right: R-pa
+      ෂී:
+        left: L-pa
+        right: R-pa
+  u-special:
+    note: 'FLAG: the fused right-joined ු hook takes over the right edge; mapped to R-u on the assumption
+      it shares the ද/ැ hook rhythm — split into a dedicated class if the workbench disagrees. Covers
+      the ූ doubled hook too.'
+    glyphs:
+      කු:
+        left: L-ka
+        right: R-u
+      කූ:
+        left: L-ka
+        right: R-u
+      ගු:
+        left: L-ga
+        right: R-u
+      ගූ:
+        left: L-ga
+        right: R-u
+      තු:
+        left: L-ka
+        right: R-u
+      තූ:
+        left: L-ka
+        right: R-u
+      භු:
+        left: L-e
+        right: R-u
+      භූ:
+        left: L-e
+        right: R-u
+      ශු:
+        left: L-ga
+        right: R-u
+      ශූ:
+        left: L-ga
+        right: R-u
+      ඟු:
+        left: L-ga
+        right: R-u
+      ඟූ:
+        left: L-ga
+        right: R-u
+  du-form:
+    note: 'FLAG: fused hook → R-u like u-special; verify දූ''s doubled loop separately.'
+    glyphs:
+      දු:
+        left: L-pa
+        right: R-u
+      දූ:
+        left: L-pa
+        right: R-u
+  fam-i-ji:
+    glyphs:
+      ජි:
+        left: L-ja
+        right: R-diag
+      ජී:
+        left: L-ja
+        right: R-diag
+      ඡි:
+        left: L-pa
+        right: R-trap
+      ඡී:
+        left: L-pa
+        right: R-trap
+      ඦි:
+        left: L-ga
+        right: R-diag
+      ඦී:
+        left: L-ga
+        right: R-diag
+  fam-i-bhi:
+    glyphs:
+      භි:
+        left: L-e
+        right: R-arch
+      භී:
+        left: L-e
+        right: R-arch
+      හි:
+        left: L-pa
+        right: R-arch
+      හී:
+        left: L-pa
+        right: R-arch
+  llu-form:
+    note: 'Right R-trap is the model''s own check (spaces with the trap family, not with ළ). FLAG: left
+      L-e follows the එ-archetype body — verify the entry stroke.'
+    glyphs:
+      ළු:
+        left: L-e
+        right: R-trap
+      ළූ:
+        left: L-e
+        right: R-trap
+  fam-i-ndi:
+    glyphs:
+      ඳි:
+        left: L-ga
+        right: R-u
+      ඳී:
+        left: L-ga
+        right: R-u
+      ඳ්‍රි:
+        left: L-ga
+        right: R-u
+      ඳ්‍රී:
+        left: L-ga
+        right: R-u
+  fam-i-nyi:
+    glyphs:
+      ඤි:
+        left: L-ga
+        right: R-u
+      ඤී:
+        left: L-ga
+        right: R-u
+      ඥි:
+        left: L-ga
+        right: R-u
+      ඥී:
+        left: L-ga
+        right: R-u
+      න්‍දි:
+        left: L-ka
+        right: R-arch
+      න්‍දී:
+        left: L-ka
+        right: R-arch
+      න්‍ද්‍රි:
+        left: L-ka
+        right: R-arch
+      න්‍ද්‍රී:
+        left: L-ka
+        right: R-arch
+forms_note: 'Fused forms inherit their host''s classes unless the family overrides a side. FLAG (blanket):
+  ී long tails and ්-wraps may set their own right extreme on some hosts — verify against each family
+  rep in the workbench and add form_overrides in the model where the drawing disagrees.'
+exceptions: {}
+unassigned:
+  right: []
+  left: []
+nonspacing:
+- ි
+- ී
+- ්
+- ු
+- ූ
+flags:
+  ො: 'Standalone-glyph view (mark row in charts): left = kombuwa entry, right = the ා stem. In running
+    text the font decomposes it to ෙ + base + ා, each half keeping its own class.'
+  ෝ: Same standalone-glyph caveat as ො; the ් flag rides the ා stem and should not change the right edge.
+  ෲ: 'FLAG: assumes the doubled loop keeps ෘ''s entry and terminal — verify.'
+  ෳ: 'FLAG: assumes the length stroke ends in the ා/ෟ-style terminal (R-arch) — verify.'
+  ෞ: Same standalone-glyph caveat as ො; right = the ෟ tail's terminal.
+  ඎ: 'FLAG: inherited from ඍ; assumes the length element stays inside ඍ''s right terminal — verify.'
+  ඏ: 'FLAG (low confidence): right R-u guesses the bottom curl reads like the ද/උ hook family — the taxonomy
+    only assigned the left; verify with designer.'
+  ඐ: 'FLAG (low confidence): inherited from ඏ; both sides carry ඏ''s uncertainty plus the length element
+    — verify.'
+  ඓ: 'FLAG: assumes the එ-system derivation holds at both edges (extra element stays on top) — verify
+    with designer.'
+  ඖ: 'FLAG: left follows ඔ; right R-arch assumes the trailing tail ends in the ා/ෟ-style terminal (as
+    ඕ does) — verify.'

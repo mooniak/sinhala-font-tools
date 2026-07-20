@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "commonjs",
+  "description": "Generates Glyphs 3 sidebar filters (CustomFilter*.plist) from the design-stages, spacing and composite models. Run `node build.js`; output goes to filters/ at the repo root. js-yaml is resolved from sinhala-design-stages/node_modules, so no install is needed.",
+  "scripts": {
+    "build": "node build.js",
+    "check": "node build.js --check",
+    "list": "node build.js --list"
+  }
+}
