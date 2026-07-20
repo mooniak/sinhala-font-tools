@@ -35,5 +35,7 @@ change, the change lands in lanka-glyphsets first.
 
 The typographic shape-group taxonomy for planned shape-based filtering (not
 yet wired into the JS above) now lives in
-[`../../sinhala-design-stages/docs/sinhala-shape-groups.yaml`](../../sinhala-design-stages/docs/sinhala-shape-groups.yaml),
+[`../../sinhala-design-stages/sinhala-design-dependencies.yaml`](../../sinhala-design-stages/sinhala-design-dependencies.yaml)
+(`skeletons`, `elements`, `spacing_classes`, `mark_systems`, `density`),
 the cross-cutting design-stages model that also backs `tools/composite-map`.
+Its machine view is `../../sinhala-design-stages/stages.json`.

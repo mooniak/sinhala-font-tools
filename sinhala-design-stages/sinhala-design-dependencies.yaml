@@ -19,7 +19,8 @@
 # computed as a slice of the stage plan.
 #
 # Derived from:
-#   docs/sinhala-shape-groups.yaml   (shape taxonomy)
+#   docs/sinhala-shape-groups.yaml   (shape taxonomy; fully absorbed here and
+#                                     removed 2026-07-20 — git history only)
 #   docs/font-developemnt-stages.md  (draft staging)
 #   docs/sinhala-anatomy.md          (anatomy terms)
 # =============================================================================
@@ -36,7 +37,7 @@ meta:
     Production glyph names follow the lanka-glyphsets namespace convention:
     "name-sinh" (e.g. ka-sinh), as defined in glyphsets/sinhala-0-kernel.yaml.
   sources:
-    - "docs/sinhala-shape-groups.yaml — WIP shape taxonomy (superseded where this file disagrees)"
+    - "docs/sinhala-shape-groups.yaml — WIP shape taxonomy, fully absorbed into this file (skeletons, elements, spacing_classes, mark_systems, density) and removed 2026-07-20; git history only"
     - "docs/font-developemnt-stages.md — original draft staging"
     - "docs/sinhala-anatomy.md — anatomical vocabulary"
     - "docs/NotoSansSinhala.glyphspackage — production reference; behavioural classes extracted to docs/sinhala.min.yaml via extract-noto.js"
@@ -87,7 +88,7 @@ model:
         Pure assemblies of existing parts (ො = ෙ + ා, ේ = ෙ + ්, ෝ = ො + ්,
         ආ = අ + ා). Near-zero design cost; schedulable as soon as all parts
         exist. Whether they are built as references or GPOS is per-project
-        (see glyph_construction in sinhala-shape-groups.yaml).
+        (resolved per-glyph in ../sinhala-composites.yaml via tools/composite-map).
 
   rules:
     - "Introduce once: every decision (metric, skeleton, element, spacing class, mark form) has exactly one introducing glyph."
@@ -185,8 +186,8 @@ elements:
   twin_body: {name: Twin body,     introduced_by: ඣ, anatomy: "Gaṇḍa (hump) + dvivakra sandi", members: [ඣ], description: "Two letter bodies fused side by side sharing a joint — the construction of ඣ and of the ligated conjuncts (න්‍ද ත්‍ථ ක්‍ව ග්‍ධ …), which inherit it in Stage 9. Noto groups ඣ with the fused conjuncts in its OT classes."}
 
 # -----------------------------------------------------------------------------
-# Spacing classes, from similar_left_side / similar_right_side in
-# sinhala-shape-groups.yaml. `rep` = the first-designed member; it sets the
+# Spacing classes, from similar_left_side / similar_right_side in the retired
+# shape taxonomy. `rep` = the first-designed member; it sets the
 # sidebearing that all other members inherit.
 # Source overlaps (a glyph in two groups) are resolved to ONE primary class;
 # the secondary membership is kept as data and listed under `gaps`.
@@ -211,9 +212,21 @@ spacing_classes:
     L-o:     {rep: ඔ, members: [ඔ, ඕ, ම, ඹ]}
 
 # -----------------------------------------------------------------------------
-# Mark systems. The ි form families come from `ligatures` in
-# sinhala-shape-groups.yaml; each family is ONE design decision (an entry of
-# type form-family in `glyphs`). This block is the overview.
+# Visual density (texture darkness) classes, moved verbatim from the retired
+# docs/sinhala-shape-groups.yaml (this was that file's last unique data).
+# NOT yet consumed by the model, and INCOMPLETE — covers ~20 of ~60 letters.
+# See gap `density-incomplete` for what closing this looks like.
+# -----------------------------------------------------------------------------
+density:
+  high: [ඉ, ණ, ඔ, ඕ, ඝ, ඥ, ම, ඹ, ෂ]
+  medium: [ක, ඊ, ළ]
+  low: [ට, ථ, ර, ෆ, උ, ඵ]
+
+# -----------------------------------------------------------------------------
+# Mark systems. The ි form families come from `ligatures` in the retired
+# shape taxonomy (docs/sinhala-shape-groups.yaml, git history); each family
+# is ONE design decision (an entry of type form-family in `glyphs`). This
+# block is the overview.
 # -----------------------------------------------------------------------------
 mark_systems:
   ispilla:
@@ -221,8 +234,8 @@ mark_systems:
     long: ී
     note: >
       ි has three-plus typographic forms. Every base+ි combination should be
-      atomically designed for quality (glyph_construction note in
-      sinhala-shape-groups.yaml). Families below are scheduled independently,
+      atomically designed for quality (glyph_construction note inherited from
+      the retired shape taxonomy). Families below are scheduled independently,
       each introduced by its first designed member.
     families: [fam-i-tti, fam-i-tthi, fam-i-ghi, fam-i-ki, fam-i-gi, fam-i-di, fam-i-li, fam-i-pi, fam-i-ji, fam-i-bhi, fam-i-ndi, fam-i-nyi, fam-i-term]
     unassigned_hosts: []
@@ -2113,7 +2126,7 @@ gaps:
   - id: taxonomy-holes
     text: "RESOLVED (confirmed): ථ → trap/එ family (skeleton trap_body, R-trap; Noto phaShapeGroup agrees); ඣ → bowl/ට family (skeleton bowl + twin_body element, R-bowl). Source docs/sinhala-shape-groups.yaml cleaned: ථ added to the එ group, ඣ to the ට group, ප added to its own ප group, and the duplicate ජ/ඦ removed from the diagonal element list."
   - id: density-incomplete
-    text: "DEFERRED (future work): density is not consumed by the model, and the source classes cover only ~20 letters (high/medium/low). To close: complete the density classification for all bases in docs/sinhala-shape-groups.yaml, then decide whether the model should use density (e.g. as a drill-ordering or contrast-check dimension)."
+    text: "DEFERRED (future work): density is not consumed by the model, and the classes cover only ~20 letters (high/medium/low). The classification now lives in this file's `density:` block (moved 2026-07-20 from the retired docs/sinhala-shape-groups.yaml, its last unique data). To close: complete it for all bases, then decide whether the model should use density (e.g. as a drill-ordering or contrast-check dimension)."
   - id: level-tags
     text: "RESOLVED: every codepoint-bearing glyph was cross-checked against glyphsets/*.yaml — 80/80 now consistent. Fixes: ඥ ඦ ඍ → core and ෟ ෳ → kernel (model tags); ඟ promoted to kernel and ඦ/nyja added to core, plus four blank sign unicodes filled (ෟ ෳ ෲ ෴), in the glyphsets."
   - id: fam-i-pi-source

@@ -15,7 +15,7 @@
     "license": "see repository",
     "glyph_naming": "Production glyph names follow the lanka-glyphsets namespace convention: \"name-sinh\" (e.g. ka-sinh), as defined in glyphsets/sinhala-0-kernel.yaml.\n",
     "sources": [
-      "docs/sinhala-shape-groups.yaml — WIP shape taxonomy (superseded where this file disagrees)",
+      "docs/sinhala-shape-groups.yaml — WIP shape taxonomy, fully absorbed into this file (skeletons, elements, spacing_classes, mark_systems, density) and removed 2026-07-20; git history only",
       "docs/font-developemnt-stages.md — original draft staging",
       "docs/sinhala-anatomy.md — anatomical vocabulary",
       "docs/NotoSansSinhala.glyphspackage — production reference; behavioural classes extracted to docs/sinhala.min.yaml via extract-noto.js"

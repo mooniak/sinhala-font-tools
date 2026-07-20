@@ -25,7 +25,7 @@ covered.
 | `index.html` | **Generated** visual explainer (Abhaya Libre). Never hand-edit. |
 | `stages.json` | **Generated** machine view for other tools (chart tool, test-string generators, AI agents). |
 | `extract-noto.js` | Mines `docs/NotoSansSinhala.glyphspackage` for its OT classes and substitution behaviour; writes `docs/sinhala.min.yaml` and prints a diff against the model. |
-| `docs/` | Working sources: the WIP shape-groups/stages/anatomy files, the Noto Sans Sinhala Glyphs package (production reference), and the **generated** `sinhala.min.yaml`. |
+| `docs/` | Working sources: the WIP stages/anatomy files, the Noto Sans Sinhala Glyphs package (production reference), and the **generated** `sinhala.min.yaml`. (The WIP shape taxonomy `sinhala-shape-groups.yaml` was fully absorbed into the model and removed 2026-07-20 — git history only.) |
 
 ## Completing the taxonomy against a production font
 
@@ -135,7 +135,9 @@ Derived from, and intended to supersede, the draft staging in
 
 - `docs/sinhala-shape-groups.yaml` — shape taxonomy
   (primary shape groups, elements, side-similarity families, ligature
-  families, mark positions)
+  families, mark positions, density). Fully absorbed into the model
+  (`skeletons`, `elements`, `spacing_classes`, `mark_systems`, `density`)
+  and removed 2026-07-20; git history only.
 - `docs/sinhala-anatomy.md` — anatomical vocabulary
   (akshi, pāsha, grantika, …)
 - `glyphsets/sinhala-*.yaml` — level inventories, in the
@@ -146,6 +148,14 @@ Unresolved questions inherited from the sources are **data**, not footnotes:
 see the `gaps` block in the YAML (rendered at the bottom of the page). The
 five build warnings about ම ය ව බ ඛ ධ ණ having no ි family are deliberate —
 they keep the taxonomy gap visible until it is resolved.
+
+## TODO
+
+- **Complete the density classification.** The `density:` block in the YAML
+  (moved from the retired shape taxonomy) covers only ~20 of ~60 letters
+  (high/medium/low). Classify the remaining bases, then decide whether the
+  model should consume density — e.g. as a drill-ordering or contrast-check
+  dimension. Tracked as gap `density-incomplete`.
 
 ## Relationship to the other tools
 
