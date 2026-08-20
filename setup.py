@@ -17,6 +17,7 @@ from pathlib import Path
 
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
+from setuptools.command.sdist import sdist as _sdist
 
 _HERE = Path(__file__).resolve().parent
 _CANONICAL = _HERE.parents[1] / "glyphsets"          # lanka-glyphsets/glyphsets
@@ -42,4 +43,20 @@ class build_py(_build_py):
         super().run()
 
 
-setup(cmdclass={"build_py": build_py})
+class sdist(_sdist):
+    """`python -m build` makes the sdist first, then builds the wheel *from it*.
+
+    At that point the canonical ``glyphsets/`` is out of reach (the sdist is
+    unpacked into a temp dir), so ``build_py`` above short-circuits and the wheel
+    inherits whatever the sdist carried. If the sdist were assembled from the
+    stale, gitignored on-disk copy left by an earlier build, both artifacts would
+    silently ship outdated glyph data. Sync here too, so the sdist is correct at
+    the moment it is created.
+    """
+
+    def run(self) -> None:
+        _sync_glyphsets(_HERE / "src")
+        super().run()
+
+
+setup(cmdclass={"build_py": build_py, "sdist": sdist})

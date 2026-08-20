@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mnik-lankafea"
-version = "0.2.0"
+version = "0.3.0"
 description = "lankafea — glyph-dependency validator + OpenType (GSUB/GPOS) feature generator for Sinhala & Tamil fonts, gated on the glyphs actually present in the font."
 readme = "README.md"
 requires-python = ">=3.10"
