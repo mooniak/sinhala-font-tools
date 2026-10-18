@@ -212,7 +212,12 @@ class FontComparison {
     }
 
     async loadDefaultFonts() {
-        for (const fontData of defaultFonts) {
+        // default-fonts.local.js is optional (gitignored) — merge it in if
+        // the page loaded it successfully (see README.md).
+        const fontsToLoad = typeof defaultFontsLocal !== 'undefined'
+            ? [...defaultFonts, ...defaultFontsLocal]
+            : defaultFonts;
+        for (const fontData of fontsToLoad) {
             if (fontData.url && !fontData.systemFont) {
                 try {
                     const response = await fetch(fontData.url);

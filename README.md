@@ -1,30 +1,108 @@
-# Mooniak Fonts Docs: Developing Multiscript fonts for Sri Lankan audiences 
+# Sinhala Font Design
 
+Design research, design processes and design-side tooling for Sinhala type, by
+[mooniak](https://github.com/mooniak).
 
-## Glyphsets
-Mooniak Glyphsets defines glyphsets for fonts made for Sri Lanka supporting Sinhala, Tamil and Latin scripts. 
+This repo answers **how to design a Sinhala typeface** — anatomy, what order to
+draw glyphs in, how spacing inherits, which forms are composites, what to test
+with, and the browser tools to look at all of it. It deliberately stops where
+engineering begins.
 
-- Single script (SI/ TA)
-— Bilingual (SIN+TML / SIN+LTN / TML+LTN / TML+LTN)
-— Trilingual ()
+> **Renaming.** This repository is being renamed from `sinhala-font-tools` to
+> **`sinhala-font-design`** to match that scope. Existing clone URLs will keep
+> redirecting, but update your remotes when you next pull.
 
+## Where the boundary is
 
-## Font projects
+Design lives here. Font engineering — glyph inventories, glyph naming,
+encoding, OpenType features, building, QA and release — lives in three other
+places, and this repo defers to them rather than duplicating them:
 
-Project status
-— actively-developed
-— passively-maintained
-— as-is
-— experimental
-— looking-for-maintainer
-— deprecated
+| Standard / project | What it governs | Use it for |
+|---|---|---|
+| **[lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets)** | The glyphset standard for Sri Lankan fonts: cumulative Sinhala levels (Kernel / Core / Plus / Pro) mapped to ICTA Levels 1–3, plus a Tamil glyphset, and the normative **glyph-naming standard** (visual-form names such as `kRa-sinh`). Ships `@mooniak/lankaglyphsets` (npm) and `mnik-lankafea` (PyPI) for feature generation and dependency validation. | What a font must contain, what each glyph is called, generating and validating OpenType features. |
+| **SLS 1134** | The Sri Lanka Standard for Sinhala character encoding, published by the Sri Lanka Standards Institution — the national standard behind Sinhala in Unicode: character repertoire, code points and how Sinhala text is encoded. | Encoding, `cmap`, codepoint questions, conformance claims. |
+| **[mooniak-font-tools](https://github.com/mooniak/mooniak-font-tools)** (`mnik`) | The production toolchain across all mooniak font repos: building with gftools, QA/fontspector, proof PDFs, build manifests, release channels, native Glyphs export, and the font directory/dashboard. | Building, QA-ing, proofing, releasing and tracking a font project. |
 
+**Glyph names used throughout this repo are lanka-glyphsets names.** If a model
+here disagrees with lanka-glyphsets, lanka-glyphsets wins.
 
-Release channels 
+## What's here
 
-—dev (design stable, expected release glyphset complete, testing ready, features might be broken, spacing, kerning pending)
-—nightly (Design explorations, drafts, ideas, broken glyphs, broken spacing )
+### Models (the design data)
 
+- **[sinhala-design-stages/](sinhala-design-stages/)** — a dependency-based
+  development model. Every design *decision* (a metric, a skeleton, a spacing
+  class, a mark-join convention) is introduced once by one glyph and inherited
+  by every glyph that depends on it; stages, drills and coverage are computed
+  from the graph. Orthogonal to lanka-glyphsets levels: levels say *what* a
+  font must contain, stages say *in what order to draw it*.
+- **[sinhala-spacing.yaml](sinhala-spacing.yaml)** — the spacing scheme:
+  sidebearing relationships derived from the stages model, applied to sources
+  as Glyphs metrics keys.
+- **[sinhala-composites.yaml](sinhala-composites.yaml)** — which glyphs should
+  be assembled from components rather than drawn as merged outlines.
 
+### Tools
 
+- **[tools/glyph-chart/](tools/glyph-chart/)** — browser font tester: a grid of
+  base letters × vowel marks/compound signs. Drop in a `.ttf`/`.otf`/`.woff`.
+- **[tools/spacing-map/](tools/spacing-map/)** — builds `sinhala-spacing.yaml`
+  from the stages model and audits a font's sidebearings against it (writing
+  metrics keys into `.glyphspackage` sources is on its roadmap).
+- **[tools/composite-map/](tools/composite-map/)** — builds the composite map
+  and rebuilds atomic glyphs into proper composites in Glyphs sources.
+- **[tools/glyphs-filters/](tools/glyphs-filters/)** — generates Glyphs 3
+  sidebar filters from these models, so a working font's sidebar is a live view
+  of the model. Output in [filters/](filters/).
+- **[tools/font-comparison/](tools/font-comparison/)** — side-by-side rendering
+  comparison across fonts. Ships with just the system fonts; see its README
+  to set up your own default collection.
+- **[tools/glyphname-unicode-converter/](tools/glyphname-unicode-converter/)** —
+  vendored copy of lanka-glyphsets' glyph name ↔ Unicode library, used by
+  glyph-chart and glyphs-filters (not a standalone tool).
+- **[tools/wordlist/](tools/wordlist/)** — regex search over a Sinhala word
+  list (`si.txt`) for Unicode sequences such as ZWJ conjuncts.
 
+### Reference material
+
+- **[test-texts/](test-texts/)** — the canonical Sinhala test-text corpus:
+  display paragraphs, kern pairs, conjuncts, marks, numerals, punctuation,
+  classical/Pali/Sanskrit text, pangrams, multiscript samples. Vendored into
+  `mnik`'s proof PDFs and into
+  [polytypetester](https://github.com/mooniak/polytypetester) — see
+  [test-texts/README.md](test-texts/README.md) for the sync mapping.
+- **[resources/](resources/)** — Sinhala anatomy notes, character-frequency
+  analysis, reference fonts.
+
+## Getting started
+
+Most of the browser tools are static — open the `index.html` and drop a font in,
+no build step. The Python tools (`spacing-map`, `composite-map`) each have their
+own README with setup instructions. `tools/glyphs-filters` reuses `js-yaml` from
+`sinhala-design-stages/node_modules`.
+
+If you are **starting a Sinhala font**, the order is roughly:
+
+1. Pick a target level in [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) — that's your inventory and your glyph names.
+2. Design in the order given by [sinhala-design-stages/](sinhala-design-stages/), using the Glyphs filters in [filters/](filters/) to see what should exist by now.
+3. Apply spacing and composites with the tools above.
+4. Generate features and validate with lanka-glyphsets (`mnik-lankafea`).
+5. Build, QA, proof and release with [`mnik`](https://github.com/mooniak/mooniak-font-tools).
+
+## Licence
+
+The models and tools authored in this repo are [GPL-3.0](LICENSE.md).
+
+Some vendored and reference content carries its own licence instead:
+
+| Content | Licence |
+|---|---|
+| [`test-texts/`](test-texts/) (most files) | CC-BY-SA-4.0, per each file's `license:` frontmatter |
+| [`test-texts/libreoffice-ui-strings.md`](test-texts/libreoffice-ui-strings.md) | Extracted from LibreOffice's Sinhala `.po` files; frontmatter says CC-BY-SA-4.0, but upstream LibreOffice is MPL-2.0 — confirm before reuse |
+| [`resources/Hodipotha-9.ttf`](resources/Hodipotha-9.ttf) | © ICTA 2014, CC BY-ND 4.0 — see [`resources/README.md`](resources/README.md) |
+| [`resources/sinhala-frequency-analysis/sinhala/Corpus/`](resources/sinhala-frequency-analysis/) | Sinhala newspaper text (e.g. Silumina, ANCL, 2004); no licence recorded — check redistribution terms before reuse |
+| [`sinhala-design-stages/docs/sinhala.min.yaml`](sinhala-design-stages/docs/sinhala.min.yaml) | Extracted from Noto Sans Sinhala (OFL-1.1); regenerated locally, not vendored |
+| [`tools/_generated/lanka-glyph-data.js`](tools/_generated/), [`shaping-exceptions.js`](tools/_generated/), [`tools/glyphname-unicode-converter/lankaglyphset-map.js`](tools/glyphname-unicode-converter/) | Vendored from [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets); see that repo's licence |
+
+When in doubt about a specific file, check its own header/frontmatter first — it overrides this table.

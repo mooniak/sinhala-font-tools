@@ -1,3 +1,7 @@
-_site/
 .DS_Store
+
+# Local fonts dropped into the browser tools (often not redistributable)
 /tools/font-comparison/fonts
+/tools/font-comparison/default-fonts.local.js
+/tools/glyph-chart/font/*
+!/tools/glyph-chart/font/.gitkeep

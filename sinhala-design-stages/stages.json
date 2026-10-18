@@ -16,7 +16,7 @@
     "glyph_naming": "Production glyph names follow the lanka-glyphsets namespace convention: \"name-sinh\" (e.g. ka-sinh), as defined in glyphsets/sinhala-0-kernel.yaml.\n",
     "sources": [
       "docs/sinhala-shape-groups.yaml — WIP shape taxonomy, fully absorbed into this file (skeletons, elements, spacing_classes, mark_systems, density) and removed 2026-07-20; git history only",
-      "docs/font-developemnt-stages.md — original draft staging",
+      "docs/font-developemnt-stages.md — original draft staging (stages 1–4), superseded by this file and removed 2026-10-18; git history only",
       "docs/sinhala-anatomy.md — anatomical vocabulary",
       "docs/NotoSansSinhala.glyphspackage — production reference; behavioural classes extracted to docs/sinhala.min.yaml via extract-noto.js"
     ]
@@ -28,6 +28,7 @@
       "goal": "Decide the type system before drawing letters: base height, stroke and contrast, counter model, overshoot, spacing unit. Deliverable is a set of guides plus rough control drawings of ට and ස — ට for stroke, counter and overshoot; ස for base height (tuned near the Latin x-height in multi-script projects, never 100% matching).\n",
       "gate": "All Stage-0 metrics written down and drawn as guides.",
       "glyphs": [],
+      "family_joins": [],
       "generated_drills": [],
       "new_count": 0,
       "cumulative_count": 0,
@@ -58,6 +59,7 @@
         "fam-i-tthi",
         "ු"
       ],
+      "family_joins": [],
       "generated_drills": [
         "ටටටටට ටසටසට ටපටපට ටඩටඩට ටඪටඪට",
         "ටටටට සසටස පපටප ඩඩටඩ ඪඪටඪ",
@@ -91,6 +93,14 @@
         "ය",
         "ව",
         "fam-i-term"
+      ],
+      "family_joins": [
+        {
+          "family": "fam-i-tti",
+          "forms": [
+            "චි"
+          ]
+        }
       ],
       "generated_drills": [
         "ටචසචට ටඑසඑට ටයසයට ටවසවට",
@@ -140,6 +150,7 @@
         "hal-rahena",
         "hal-trap"
       ],
+      "family_joins": [],
       "generated_drills": [
         "ටගසගට ටතසතට ටනසනට",
         "ගගටග තතටත නනටන",
@@ -212,6 +223,7 @@
         "u-special",
         "du-form"
       ],
+      "family_joins": [],
       "generated_drills": [
         "ටකනකට ටදනදට ටඋනඋට ටඅනඅට ටරනරට ටලනලට",
         "කකටක දදටද උඋටඋ අඅටඅ රරටර ලලටල",
@@ -269,6 +281,35 @@
         "ූ",
         "fam-i-ji",
         "hal-ja"
+      ],
+      "family_joins": [
+        {
+          "family": "fam-i-tthi",
+          "forms": [
+            "ඨි",
+            "ථි"
+          ]
+        },
+        {
+          "family": "fam-i-term",
+          "forms": [
+            "මි",
+            "ණි"
+          ]
+        },
+        {
+          "family": "hal-rahena",
+          "forms": [
+            "ම්"
+          ]
+        },
+        {
+          "family": "hal-trap",
+          "forms": [
+            "ඨ්",
+            "ථ්"
+          ]
+        }
       ],
       "generated_drills": [
         "ටඔනඔට ටමනමට ටණනණට ටඉනඉට ටථනථට ටඨනඨට ටජනජට ටඡනඡට",
@@ -335,6 +376,70 @@
         "fam-i-bhi",
         "llu-form"
       ],
+      "family_joins": [
+        {
+          "family": "fam-i-tthi",
+          "forms": [
+            "ඵි"
+          ]
+        },
+        {
+          "family": "fam-i-term",
+          "forms": [
+            "බි",
+            "ඛි",
+            "ධි",
+            "ඹි"
+          ]
+        },
+        {
+          "family": "fam-i-ghi",
+          "forms": [
+            "ඝි"
+          ]
+        },
+        {
+          "family": "hal-rahena",
+          "forms": [
+            "ධ්",
+            "ඛ්",
+            "බ්",
+            "ඹ්"
+          ]
+        },
+        {
+          "family": "hal-trap",
+          "forms": [
+            "ඵ්"
+          ]
+        },
+        {
+          "family": "fam-i-gi",
+          "forms": [
+            "ශි",
+            "ෆි"
+          ]
+        },
+        {
+          "family": "fam-i-li",
+          "forms": [
+            "ළි"
+          ]
+        },
+        {
+          "family": "fam-i-pi",
+          "forms": [
+            "ෂි"
+          ]
+        },
+        {
+          "family": "u-special",
+          "forms": [
+            "භු",
+            "ශු"
+          ]
+        }
+      ],
       "generated_drills": [
         "ටධනධට ටබනබට ටඛනඛට ටඹනඹට ටභනභට ටහනහට ටශනශට ටඝනඝට ටෂනෂට ටළනළට ටෆනෆට ටඵනඵට ටඊනඊට",
         "ධධටධ බබටබ ඛඛටඛ ඹඹටඹ භභටභ හහටහ ශශටශ ඝඝටඝ ෂෂටෂ ළළටළ ෆෆටෆ ඵඵටඵ ඊඊටඊ",
@@ -386,6 +491,46 @@
         "fam-i-ndi",
         "fam-i-nyi"
       ],
+      "family_joins": [
+        {
+          "family": "fam-i-term",
+          "forms": [
+            "ඬි",
+            "ඣි"
+          ]
+        },
+        {
+          "family": "hal-rahena",
+          "forms": [
+            "ඬ්",
+            "ඣ්"
+          ]
+        },
+        {
+          "family": "fam-i-gi",
+          "forms": [
+            "ඟි"
+          ]
+        },
+        {
+          "family": "u-special",
+          "forms": [
+            "ඟු"
+          ]
+        },
+        {
+          "family": "fam-i-ji",
+          "forms": [
+            "ඦි"
+          ]
+        },
+        {
+          "family": "hal-ja",
+          "forms": [
+            "ඦ්"
+          ]
+        }
+      ],
       "generated_drills": [
         "ටඳනඳට ටඬනඬට ටඟනඟට ටඤනඤට ටඥනඥට ටඦනඦට ටඣනඣට",
         "ඳඳටඳ ඬඬටඬ ඟඟටඟ ඤඤටඤ ඥඥටඥ ඦඦටඦ ඣඣටඣ",
@@ -426,6 +571,7 @@
         "completion-sweep",
         "hal-sweep"
       ],
+      "family_joins": [],
       "generated_drills": [
         "ටෘ සෘ පෘ ඩෘ ඪෘ චෘ ටෲ සෲ පෲ ඩෲ ඪෲ චෲ ටෟ සෟ",
         "පෟ ඩෟ ඪෟ චෟ ටෳ සෳ පෳ ඩෳ ඪෳ චෳ ටෞ සෞ පෞ ඩෞ",
@@ -464,6 +610,35 @@
         "classic-conjuncts",
         "touching-clusters"
       ],
+      "family_joins": [
+        {
+          "family": "fam-i-tthi",
+          "forms": [
+            "ට්‍ඨි",
+            "ත්‍ථි",
+            "න්‍ථි"
+          ]
+        },
+        {
+          "family": "fam-i-di",
+          "forms": [
+            "ද්‍රි"
+          ]
+        },
+        {
+          "family": "fam-i-ndi",
+          "forms": [
+            "ඳ්‍රි"
+          ]
+        },
+        {
+          "family": "fam-i-nyi",
+          "forms": [
+            "න්‍දි",
+            "න්‍ද්‍රි"
+          ]
+        }
+      ],
       "generated_drills": [],
       "new_count": 6,
       "cumulative_count": 99,
@@ -496,6 +671,20 @@
         "ඃ",
         "෴",
         "kerning-pass"
+      ],
+      "family_joins": [
+        {
+          "family": "fam-i-term",
+          "forms": [
+            "ඞි"
+          ]
+        },
+        {
+          "family": "hal-rahena",
+          "forms": [
+            "ඞ්"
+          ]
+        }
       ],
       "generated_drills": [
         "ටඍනඍට ටඎනඎට ටඏනඏට ටඐනඐට ටඞනඞට ටඓනඓට ටඖනඖට",

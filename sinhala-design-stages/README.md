@@ -22,10 +22,10 @@ covered.
 |---|---|
 | `sinhala-design-dependencies.yaml` | **Source of truth.** The whole model: metrics, skeletons, elements, spacing classes, mark systems, stages, every glyph with its parents and schedule, AI guidance, open gaps. |
 | `build.js` | Validator + generator. Checks the graph, validates/generates test texts, writes `index.html` and `stages.json`. |
-| `index.html` | **Generated** visual explainer (Abhaya Libre). Never hand-edit. |
+| `index.html` | **Generated** visual explainer (Abhaya Libre). Never hand-edit. Two tabs: *Model & stages* and *Design units* — a searchable card per unit (construction, parents/children, skeleton, elements, metrics, spacing, family members by stage, checks); link a unit with `#u-<id>`. |
 | `stages.json` | **Generated** machine view for other tools (chart tool, test-string generators, AI agents). |
 | `extract-noto.js` | Mines `docs/NotoSansSinhala.glyphspackage` for its OT classes and substitution behaviour; writes `docs/sinhala.min.yaml` and prints a diff against the model. |
-| `docs/` | Working sources: the WIP stages/anatomy files, the Noto Sans Sinhala Glyphs package (production reference), and the **generated** `sinhala.min.yaml`. (The WIP shape taxonomy `sinhala-shape-groups.yaml` was fully absorbed into the model and removed 2026-07-20 — git history only.) |
+| `docs/` | `sinhala-anatomy.md` (letterform vocabulary) and the **generated** `sinhala.min.yaml`. `extract-noto.js` also expects the Noto Sans Sinhala Glyphs package here; it is gitignored, so copy it in from [notofonts/sinhala](https://github.com/notofonts/sinhala) before running the extractor. (The WIP shape taxonomy `sinhala-shape-groups.yaml` and the draft `font-developemnt-stages.md` were absorbed into the model and removed — git history only.) |
 
 ## Completing the taxonomy against a production font
 
@@ -118,6 +118,13 @@ combinations: `mark` + `hosts` + a `display` label. The family is introduced
 by its first designed member and later hosts inherit the convention (e.g.
 `fam-i-ghi` is introduced by සි in Stage 3; ඝ inherits it in Stage 6).
 
+A member becomes drawable at the latest of the family's stage, its host's
+stage and its mark's stage; `conjunct_hosts` (ත්‍ථ, ද්‍ර …) wait for the
+conjunct layer. The page shows a family's tile with only the members drawable
+at its own stage plus a "later" line, and each stage lists the family members
+that join it — `stages[].family_joins` in `stages.json`. The authored
+`display` label (which lists every member) appears only in the families table.
+
 ## For AI font tools
 
 The `ai_guidance` block in the YAML is written for machine consumption: the
@@ -130,24 +137,25 @@ build a font stage-by-stage from these two files without reading this README.
 
 ## Sources and provenance
 
-Derived from, and intended to supersede, the draft staging in
-`docs/font-developemnt-stages.md`, using:
+Supersedes an early draft staging (`docs/font-developemnt-stages.md`, stages
+1–4 only; removed 2026-10-18 — git history only), using:
 
 - `docs/sinhala-shape-groups.yaml` — shape taxonomy
   (primary shape groups, elements, side-similarity families, ligature
   families, mark positions, density). Fully absorbed into the model
   (`skeletons`, `elements`, `spacing_classes`, `mark_systems`, `density`)
   and removed 2026-07-20; git history only.
-- `docs/sinhala-anatomy.md` — anatomical vocabulary
-  (akshi, pāsha, grantika, …)
+- [`docs/sinhala-anatomy.md`](docs/sinhala-anatomy.md) — anatomical
+  vocabulary (akshi, pāsha, grantika, …), mapped to the model's metrics,
+  skeletons and elements, plus per-group design notes
 - `glyphsets/sinhala-*.yaml` — level inventories, in the
   [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) standard repo
 - Research by Pushpananda Ekanayake and Pathum Egodawatta
 
 Unresolved questions inherited from the sources are **data**, not footnotes:
-see the `gaps` block in the YAML (rendered at the bottom of the page). The
-five build warnings about ම ය ව බ ඛ ධ ණ having no ි family are deliberate —
-they keep the taxonomy gap visible until it is resolved.
+see the `gaps` block in the YAML (rendered at the bottom of the page). Hosts
+that belong to no ි family produce build *warnings* rather than errors, so a
+taxonomy gap stays visible until it is resolved (currently none).
 
 ## TODO
 

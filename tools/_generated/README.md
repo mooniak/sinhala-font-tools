@@ -7,6 +7,9 @@ Two provenances live here:
 - **Generated locally** by a tool in this repo: `sinhala-composites.js`, emitted
   by [`tools/composite-map`](../composite-map/) from `sinhala-composites.yaml`.
   Regenerate with `python -m composite_map export-js`; do not edit by hand.
+- `sinhala-spacing.js`, emitted by [`tools/spacing-map`](../spacing-map/) from
+  `sinhala-spacing.yaml` for `tools/spacing-workbench/`. Regenerate with
+  `python -m spacing_map export-js`; do not edit by hand.
 
 ## Vendored copies
 

@@ -57,6 +57,34 @@ for (const f of entries.filter(e => e.type === 'form-family' && e.mark === '්'
 }
 const minConjunctStage = Math.min(...entries.filter(e => e.type === 'conjunct-system').map(e => e.stage));
 
+// When each form-family member becomes drawable: the latest of the family's
+// introduction, its host and its mark. A family introduced on one host does
+// not bring its later hosts with it (fam-i-tthi is Stage 1 via ඪි; ථි waits
+// for ථ). Conjunct hosts (ත්‍ථ, ද්‍ර) wait for the conjunct layer.
+function hostStage(h) {
+  if (byId.get(h)) return byId.get(h).stage;
+  const letters = [...h].map(c => byId.get(c)).filter(Boolean).map(e => e.stage);
+  return Math.max(minConjunctStage, ...letters);
+}
+function familyMembersByStage(f) {
+  const markStage = byId.get(f.mark) ? byId.get(f.mark).stage : f.stage;
+  const out = new Map();
+  for (const h of [...(f.hosts || []), ...(f.conjunct_hosts || [])]) {
+    const st = Math.max(f.stage, markStage, hostStage(h));
+    if (!out.has(st)) out.set(st, []);
+    out.get(st).push(h + f.mark);
+  }
+  return out;
+}
+const familyJoins = new Map(); // stage -> [{family, forms}] for members after the introducing stage
+for (const f of entries.filter(e => e.type === 'form-family')) {
+  for (const [st, forms] of familyMembersByStage(f)) {
+    if (st === f.stage) continue;
+    if (!familyJoins.has(st)) familyJoins.set(st, []);
+    familyJoins.get(st).push({ family: f.id, forms });
+  }
+}
+
 const isMarkLike = e => !!e.position; // attaches to a preceding base
 const isBaseLike = e => !e.position && e.type !== 'form-family' && e.type !== 'process' && e.type !== 'conjunct-system';
 
@@ -229,6 +257,7 @@ for (const s of data.stages) {
   stagesOut.push({
     ...s,
     glyphs: news.map(e => e.id),
+    family_joins: familyJoins.get(s.n) || [],
     generated_drills: generated,
     new_count: news.length,
     cumulative_count: cumulative.length,
@@ -283,8 +312,21 @@ function stageBadges(n) {
   return b;
 }
 
+// A multi-host family's tile shows only what is drawable at its own stage;
+// the authored `display` (which lists every member) would claim later hosts.
+// Single-host families keep `display`: it names irregular forms (ර් රැ) that
+// host + mark can't spell.
+function familyLabel(f) {
+  const hosts = [...(f.hosts || []), ...(f.conjunct_hosts || [])];
+  if (hosts.length < 2) return { disp: f.display || f.id, later: '' };
+  const byStage = familyMembersByStage(f);
+  const later = [...byStage].filter(([st]) => st !== f.stage).sort((a, b) => a[0] - b[0])
+    .map(([st, forms]) => `s${st}: ${forms.join(' ')}`).join(' · ');
+  return { disp: (byStage.get(f.stage) || []).join(' ') || f.display || f.id, later };
+}
+
 function tile(e) {
-  const disp = e.display || e.id;
+  const { disp, later } = e.type === 'form-family' ? familyLabel(e) : { disp: e.display || e.id, later: '' };
   const from = (e.parents || []).length ? `← ${(e.parents || []).join(' + ')}` : (e.stage === 0 ? '' : 'root');
   const meta = [TYPE_LABEL[e.type] || e.type, e.codepoint ? `U+${e.codepoint}` : null].filter(Boolean).join(' · ');
   const note = e.ai && e.ai.construction ? one(e.ai.construction) : '';
@@ -292,8 +334,16 @@ function tile(e) {
     <span class="ord">${e.stage}.${e.order}</span>
     <span class="g">${esc(disp)}</span>
     <span class="from">${esc(from)}</span>
+    ${later ? `<span class="later sinh">later ${esc(later)}</span>` : ''}
     <span class="meta">${esc(meta)}</span>
   </div>`;
+}
+
+function joinsBlock(n) {
+  const joins = familyJoins.get(n) || [];
+  if (!joins.length) return '';
+  return `<div class="texts"><h4>Family members joining this stage</h4>${joins.map(j =>
+    `<p><span class="sinh big">${esc(j.forms.join(' '))}</span> <code>${esc(j.family)}</code></p>`).join('')}</div>`;
 }
 
 function textBlock(title, arr, cls) {
@@ -302,10 +352,10 @@ function textBlock(title, arr, cls) {
 }
 
 const famRows = entries.filter(e => e.type === 'form-family').sort((a, b) => seq(a) - seq(b)).map(f => {
-  const hostStages = (f.hosts || []).map(h => byId.get(h)).filter(Boolean).map(h => h.stage);
-  const completes = hostStages.length ? Math.max(...hostStages, f.stage) : f.stage;
+  const completes = Math.max(f.stage, ...familyMembersByStage(f).keys());
+  const hosts = [...(f.hosts || []), ...(f.conjunct_hosts || [])];
   return `<tr><td class="sinh big">${esc(f.display || f.id)}</td><td><code>${esc(f.id)}</code></td>
-    <td class="sinh">${esc((f.hosts || []).join(' ') || '—')}</td><td>${f.stage}</td><td>${completes}</td>
+    <td class="sinh">${esc(hosts.join(' ') || '—')}</td><td>${f.stage}</td><td>${completes}</td>
     <td>${one(f.ai && f.ai.construction || '')}</td></tr>`;
 }).join('');
 
@@ -362,6 +412,7 @@ const stageSections = stagesOut.map(s => {
   </header>
   ${badges.length ? `<div class="badges">${badges.map(b => `<span class="badge b-${b.k}">${esc(b.t)}</span>`).join('')}</div>` : ''}
   ${news.length ? `<div class="flow">${news.map(tile).join('')}</div>` : ''}
+  ${joinsBlock(s.n)}
   ${textBlock('Generated drills', s.generated_drills, 'drill')}
   ${textBlock('Drills', ts.drills, 'drill')}
   ${textBlock('Words', ts.words && ts.words.length ? [ts.words.join('  ')] : null, '')}
@@ -371,7 +422,78 @@ const stageSections = stagesOut.map(s => {
 </section>`;
 }).join('\n');
 
-const generatedAt = new Date().toISOString().slice(0, 16).replace('T', ' ');
+// ---------------------------------------------------------------------------
+// Design units tab: one detailed card per glyph entry, in schedule order.
+// ---------------------------------------------------------------------------
+const childrenOf = new Map(entries.map(e => [e.id, []]));
+for (const e of ordered) for (const p of e.parents || []) if (childrenOf.has(p)) childrenOf.get(p).push(e.id);
+
+// what each unit introduces (metrics, skeletons, elements, spacing reps)
+const introduces = new Map(entries.map(e => [e.id, []]));
+const intro = (id, k, t) => introduces.has(id) && introduces.get(id).push({ k, t });
+for (const [mid, m] of Object.entries(data.metrics)) intro(m.committed_by, 'metric', m.name);
+for (const [sid, sk] of Object.entries(data.skeletons)) intro(sk.introduced_by, 'skeleton', `${sk.name} skeleton`);
+for (const [eid, el] of Object.entries(data.elements)) intro(el.introduced_by, 'element', `${el.name} element`);
+for (const side of ['left', 'right']) {
+  for (const [cid, cls] of Object.entries(data.spacing_classes[side])) intro(cls.rep, 'spacing', `${cid} (rep)`);
+}
+
+const unitLink = id => byId.has(id) ? `<a class="sinh ulink" href="#u-${encodeURIComponent(id)}">${esc(id)}</a>` : `<span class="sinh">${esc(id)}</span>`;
+const dl = rows => `<dl class="facts">${rows.filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>`;
+
+function unitCard(e) {
+  const kids = childrenOf.get(e.id) || [];
+  const intros = introduces.get(e.id) || [];
+  const sk = e.skeleton && data.skeletons[e.skeleton];
+  const els = (e.elements || []).map(x => data.elements[x] ? `${esc(data.elements[x].name)} <code>${esc(x)}</code>` : `<code>${esc(x)}</code>`);
+  const reqs = (e.requires || []).map(x => data.metrics[x] ? `${esc(data.metrics[x].name)} <code>${esc(x)}</code>` : `<code>${esc(x)}</code>`);
+  const sp = e.spacing || e.form_spacing;
+  const spacing = sp ? ['left', 'right'].filter(s => sp[s]).map(s => `${s} <code>${esc(sp[s])}</code>`).join(' · ') : '';
+  const overrides = e.form_overrides ? Object.entries(e.form_overrides).map(([f, o]) =>
+    `<span class="sinh">${esc(f)}</span> → ${Object.entries(o).map(([s, c]) => `${s} <code>${esc(c)}</code>`).join(', ')}`).join(' · ') : '';
+  let members = '';
+  if (e.type === 'form-family') {
+    members = [...familyMembersByStage(e)].sort((a, b) => a[0] - b[0])
+      .map(([st, forms]) => `<span class="dim">s${st}</span> <span class="sinh">${esc(forms.join(' '))}</span>`).join(' · ');
+  }
+  const disp = e.display || e.id;
+  const search = [e.id, e.display, e.translit, e.type, e.codepoint, e.level, e.skeleton, ...(e.elements || []),
+    e.ai && e.ai.construction].filter(Boolean).join(' ').toLowerCase();
+  return `<article class="unit t-${esc(e.type)}" id="u-${esc(e.id)}" data-type="${esc(e.type)}" data-stage="${e.stage}" data-search="${esc(search)}">
+  <div class="uhead">
+    <div class="ug sinh">${esc(disp)}</div>
+    <div class="utitle">
+      <h3>${e.translit ? esc(e.translit) : `<code>${esc(e.id)}</code>`}
+        <span class="uord">stage ${e.stage}.${e.order}</span></h3>
+      <p class="dim">${esc(TYPE_LABEL[e.type] || e.type)}${e.codepoint ? ` · U+${esc(e.codepoint)}` : ''}${e.position ? ` · ${esc(e.position)}` : ''}${e.level ? ` · <code>${esc(e.level)}</code>` : ''}${e.frequency ? ` · ${esc(e.frequency)} frequency` : ''}</p>
+      ${intros.length ? `<div class="badges">${intros.map(b => `<span class="badge b-${b.k}">introduces ${esc(b.t)}</span>`).join('')}</div>` : ''}
+    </div>
+  </div>
+  ${e.ai && e.ai.construction ? `<p class="construction">${one(e.ai.construction)}</p>` : ''}
+  ${dl([
+    ['Derives from', (e.parents || []).length ? e.parents.map(unitLink).join(' ') : (e.stage === 0 ? '' : '<span class="dim">root — no parents</span>')],
+    ['Feeds', kids.length ? kids.map(unitLink).join(' ') : ''],
+    ['Skeleton', sk ? `${esc(sk.name)} <code>${esc(e.skeleton)}</code>` : ''],
+    ['Elements', els.join(', ')],
+    ['Commits / requires', reqs.join(', ')],
+    ['Mark', e.mark ? `<span class="sinh">${esc(e.mark)}</span>${e.fused ? ' <span class="dim">· fused forms</span>' : ''}` : ''],
+    ['Members', members],
+    ['Forms', e.forms ? `<span class="sinh">${esc(e.forms.join(' '))}</span>` : ''],
+    ['Spacing', spacing],
+    ['Form overrides', overrides],
+    ['Spacing note', e.spacing_note ? one(e.spacing_note) : ''],
+  ])}
+  ${e.ai && (e.ai.checks || []).length ? `<h4>Checks</h4><ul class="checks">${e.ai.checks.map(c => `<li>${one(c)}</li>`).join('')}</ul>` : ''}
+</article>`;
+}
+
+const unitTypes = [...new Set(ordered.map(e => e.type))];
+const unitsByStage = data.stages.map(s => {
+  const us = ordered.filter(e => e.stage === s.n);
+  if (!us.length) return '';
+  return `<section class="ustage" data-stage="${s.n}"><h2><span class="snum">${s.n}</span> ${esc(s.name)} <small>${us.length} unit${us.length === 1 ? '' : 's'}</small></h2>
+  <div class="units">${us.map(unitCard).join('\n')}</div></section>`;
+}).join('\n');
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -433,6 +555,7 @@ p.goal{margin:.2rem 0 .6rem;color:var(--dim);max-width:56rem}
 .tile .g{font-size:2.3rem;line-height:1.15;font-weight:500}
 .tile .ord{font-size:.68rem;color:var(--dim);align-self:flex-start;font-family:ui-monospace,monospace}
 .tile .from{font-size:.86rem;color:var(--accent2)}
+.tile .later{font-size:.78rem;color:var(--dim);max-width:16rem;text-align:center;font-family:"Abhaya Libre","Noto Sans Sinhala","Iskoola Pota",serif}
 .tile .meta{font-size:.66rem;color:var(--dim);letter-spacing:.02em}
 .t-mark .g,.t-composite .g{color:var(--accent)}
 .t-form-family{border-style:dashed}
@@ -460,6 +583,43 @@ td.big{font-size:1.5rem;line-height:1.3}
 footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line);padding-top:1.4rem}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 @media(max-width:800px){.two{grid-template-columns:1fr}}
+.tabs{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px}
+.tabs button{font:inherit;font-size:.95rem;font-weight:600;color:var(--dim);background:none;border:0;border-bottom:3px solid transparent;padding:12px 14px 9px;cursor:pointer}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+[role="tabpanel"][hidden]{display:none}
+.ufilter{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2rem 0 .5rem}
+.ufilter input{font:inherit;flex:1 1 240px;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+.ufilter .chip{font:inherit;font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer}
+.ufilter .chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.ucount{font-size:.85rem;color:var(--dim);margin:.2rem 0 0}
+.ustage h2{display:flex;align-items:center;gap:12px;font-size:1.4rem;margin:2.4rem 0 .6rem}
+.ustage h2 small{display:inline;margin:0}
+.ustage .snum{font-size:1.2rem;min-width:2rem;height:2rem;border-radius:9px}
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
+@media(max-width:560px){.units{grid-template-columns:1fr}}
+.unit{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);scroll-margin-top:64px}
+.unit:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-line)}
+.unit.t-form-family,.unit.t-conjunct-system{border-style:dashed}
+.uhead{display:flex;gap:16px;align-items:flex-start}
+.ug{font-size:3rem;line-height:1.1;min-width:3.6rem;text-align:center;font-weight:500}
+.unit.t-mark .ug,.unit.t-composite .ug{color:var(--accent)}
+.unit.t-form-family .ug,.unit.t-conjunct-system .ug{font-size:1.7rem;max-width:12rem}
+.unit.t-process .ug{font-family:inherit;font-size:1rem;font-weight:700;padding-top:.5rem}
+.utitle h3{margin:.1rem 0 0;font-size:1.1rem;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.utitle p{margin:.1rem 0;font-size:.85rem}
+.utitle .badges{margin:.4rem 0 0}
+.uord{font-size:.72rem;font-weight:500;color:var(--dim);font-family:ui-monospace,monospace}
+.construction{font-size:.93rem;margin:.8rem 0}
+.facts{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:.6rem 0;font-size:.88rem}
+.facts dt{color:var(--dim);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding-top:.2rem}
+.facts dd{margin:0}
+.facts .sinh{font-size:1.2rem}
+.ulink{margin-right:.35rem}
+.unit h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin:.8rem 0 .2rem}
+ul.checks{margin:.2rem 0;padding-left:1.2rem;font-size:.88rem}
+ul.checks li{margin:.2rem 0}
 </style>
 </head>
 <body>
@@ -476,7 +636,22 @@ footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px s
   · orthogonal to the <a href="https://github.com/mooniak/lanka-glyphsets">lanka-glyphsets</a> levels</p>
 </div></div>
 
-<div class="wrap">
+<nav class="tabs" role="tablist"><div class="wrap">
+  <button role="tab" id="tab-model" aria-controls="panel-model" aria-selected="true">Model &amp; stages</button>
+  <button role="tab" id="tab-units" aria-controls="panel-units" aria-selected="false">Design units <span class="dim">${ordered.length}</span></button>
+</div></nav>
+
+<div class="wrap" role="tabpanel" id="panel-units" aria-labelledby="tab-units" hidden>
+<div class="ufilter">
+  <input type="search" id="ufind" placeholder="Search glyph, transliteration, element, construction…" aria-label="Search design units">
+  <button class="chip" data-type="" aria-pressed="true">all</button>
+  ${unitTypes.map(t => `<button class="chip" data-type="${esc(t)}" aria-pressed="false">${esc(TYPE_LABEL[t] || t)}</button>`).join('')}
+</div>
+<p class="ucount" id="ucount"></p>
+${unitsByStage}
+</div>
+
+<div class="wrap" role="tabpanel" id="panel-model" aria-labelledby="tab-model">
 
 <h2 id="model">The model <small>what counts as a dependency</small></h2>
 <div class="cards">${depCards}</div>
@@ -526,15 +701,65 @@ level inventory is covered.”</p>
 
 <h2 id="gaps">Open gaps &amp; concerns <small>carried as data — resolve them in the YAML, then rebuild</small></h2>
 <ul class="plain">${gapItems}</ul>
+</div>
 
 <footer class="wrap">
-  Generated ${esc(generatedAt)} by <code>build.js</code> from <code>sinhala-design-dependencies.yaml</code>
+  Generated by <code>build.js</code> from <code>sinhala-design-dependencies.yaml</code>
   (v${esc(data.meta.version)}). To change the process: edit the YAML, run <code>npm run build</code> —
   this page and <code>stages.json</code> are always derived, never hand-edited.
   Typeface: <a href="https://fonts.google.com/specimen/Abhaya+Libre">Abhaya Libre</a>.
   · ${esc(data.meta.authors.join(', '))} / lanka-glyphsets
 </footer>
-</div>
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('[role=tab]')];
+  const show = (id, scroll) => {
+    for (const t of tabs) {
+      const on = t.id === id;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    }
+    if (scroll) document.querySelector('.tabs').scrollIntoView();
+  };
+  // a hash decides the tab: #units or #u-… opens units, anything else the model
+  const fromHash = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (h === 'units' || h.startsWith('u-')) {
+      show('tab-units');
+      const el = h.startsWith('u-') && document.getElementById(h);
+      if (el) { el.hidden = false; el.closest('.ustage').hidden = false; el.scrollIntoView(); }
+    } else if (h) show('tab-model');
+  };
+  for (const t of tabs) t.addEventListener('click', () => {
+    history.replaceState(null, '', t.id === 'tab-units' ? '#units' : '#model');
+    show(t.id, window.scrollY > document.querySelector('.tabs').offsetTop);
+  });
+  window.addEventListener('hashchange', fromHash);
+
+  const find = document.getElementById('ufind');
+  const chips = [...document.querySelectorAll('.ufilter .chip')];
+  const units = [...document.querySelectorAll('.unit')];
+  let type = '';
+  const filter = () => {
+    const q = find.value.trim().toLowerCase();
+    let n = 0;
+    for (const u of units) {
+      const ok = (!type || u.dataset.type === type) && (!q || u.dataset.search.includes(q));
+      u.hidden = !ok; if (ok) n++;
+    }
+    for (const s of document.querySelectorAll('.ustage')) s.hidden = !s.querySelector('.unit:not([hidden])');
+    document.getElementById('ucount').textContent = n + ' of ' + units.length + ' design units';
+  };
+  find.addEventListener('input', filter);
+  for (const c of chips) c.addEventListener('click', () => {
+    type = c.dataset.type;
+    for (const x of chips) x.setAttribute('aria-pressed', x === c);
+    filter();
+  });
+  filter();
+  fromHash();
+})();
+</script>
 </body>
 </html>
 `;
