@@ -15,24 +15,24 @@ The design schedule from sinhala-design-dependencies.yaml. The cumulative filter
 
 | Folder | Filter | Glyphs | Generated from |
 |---|---|---:|---|
-| By stage | Stage 1 — Bootstrap | 27 | `glyphs[].stage` |
-| By stage | Stage 2 — Bowl derivatives | 26 | `glyphs[].stage` |
-| By stage | Stage 3 — Arch family and spacing marks | 27 | `glyphs[].stage` |
-| By stage | Stage 4 — High-frequency completion | 61 | `glyphs[].stage` |
-| By stage | Stage 5 — Loops, diagonals and long marks | 19 | `glyphs[].stage` |
-| By stage | Stage 6 — Aspirates and dense derivatives | 22 | `glyphs[].stage` |
-| By stage | Stage 7 — The hang system | 19 | `glyphs[].stage` |
+| By stage | Stage 1 — Bootstrap | 10 | `glyphs[].stage` |
+| By stage | Stage 2 — Bowl derivatives | 7 | `glyphs[].stage` |
+| By stage | Stage 3 — Arch family and spacing marks | 13 | `glyphs[].stage` |
+| By stage | Stage 4 — High-frequency completion | 30 | `glyphs[].stage` |
+| By stage | Stage 5 — Loops, diagonals and long marks | 47 | `glyphs[].stage` |
+| By stage | Stage 6 — Aspirates and dense derivatives | 51 | `glyphs[].stage` |
+| By stage | Stage 7 — The hang system | 26 | `glyphs[].stage` |
 | By stage | Stage 8 — Completion sweep | 210 | `glyphs[].stage` |
-| By stage | Stage 9 — Conjunct layer | 169 | `glyphs[].stage` |
-| By stage | Stage 10 — Long tail and polish | 26 | `glyphs[].stage` |
-| Cumulative — what should exist by now | Through Stage 1 | 27 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 2 | 53 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 3 | 80 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 4 | 141 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 5 | 160 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 6 | 182 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 7 | 201 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 8 | 291 | `glyphs[].stage (cumulative)` |
+| By stage | Stage 9 — Conjunct layer | 183 | `glyphs[].stage` |
+| By stage | Stage 10 — Long tail and polish | 29 | `glyphs[].stage` |
+| Cumulative — what should exist by now | Through Stage 1 | 10 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 2 | 17 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 3 | 30 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 4 | 60 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 5 | 107 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 6 | 158 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 7 | 184 | `glyphs[].stage (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 8 | 277 | `glyphs[].stage (cumulative)` |
 | Cumulative — what should exist by now | Through Stage 9 | 459 | `glyphs[].stage (cumulative)` |
 | Cumulative — what should exist by now | Through Stage 10 | 468 | `glyphs[].stage (cumulative)` |
 

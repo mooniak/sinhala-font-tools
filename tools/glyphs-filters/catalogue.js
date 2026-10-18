@@ -84,6 +84,51 @@ function stageChars(id) {
   return S.charsOf(id);
 }
 
+const stageOf = id => (model.glyphs[id] ? model.glyphs[id].stage : -Infinity);
+
+/**
+ * The stage a host becomes available. A plain letter has its own entry; a
+ * conjunct host (ත්‍ථ, ද්‍ර, න්‍ද්‍ර) exists once every letter in it and every
+ * conjunct system that builds part of it is scheduled.
+ */
+function hostStage(host) {
+  if (model.glyphs[host]) return stageOf(host);
+  let st = Math.max(...[...host].filter(c => model.glyphs[c]).map(stageOf));
+  let matched = false;
+  for (const [sys, forms] of Object.entries(conjunctFormsByEntry)) {
+    if (forms.some(f => host.includes(f))) {
+      st = Math.max(st, stageOf(sys));
+      matched = true;
+    }
+  }
+  // No system builds it (e.g. ඳ්‍ර, whose ඳ is a rakaransaya exception): still
+  // a ZWJ cluster, so never earlier than the conjunct layer.
+  if (!matched && host.includes(ZWJ)) {
+    st = Math.max(st, Math.min(...Object.keys(conjunctFormsByEntry).map(stageOf)));
+  }
+  return st;
+}
+
+/**
+ * A family's forms bucketed by the stage each one actually becomes drawable:
+ * the latest of the family's introduction, its host and its mark — the same
+ * rule build.js applies to test texts (සි family in Stage 3, ඝි in Stage 6).
+ * Without this, a family introduced on one host drags all its later hosts
+ * (and Stage 9 conjunct hosts) into the introducing stage.
+ */
+function familyFormsByStage(id) {
+  const fam = model.glyphs[id];
+  const out = new Map();
+  for (const form of S.formGlyphs(id)) {
+    const mark = form.slice(-1);
+    const host = form.slice(0, -1);
+    const st = Math.max(fam.stage, stageOf(mark), hostStage(host));
+    if (!out.has(st)) out.set(st, []);
+    out.get(st).push(form);
+  }
+  return out;
+}
+
 // ---------------------------------------------------------------------------
 // 1. Stages — the design schedule, exact and cumulative.
 // ---------------------------------------------------------------------------
@@ -92,9 +137,16 @@ function stageChars(id) {
     'The design schedule from sinhala-design-dependencies.yaml. The cumulative ' +
     'filters are the useful ones day to day: "everything that should exist by now".');
   const byStage = new Map();
+  const push = (n, chars) => {
+    if (!byStage.has(n)) byStage.set(n, []);
+    byStage.get(n).push(...chars);
+  };
   for (const [id, e] of entries) {
-    if (!byStage.has(e.stage)) byStage.set(e.stage, []);
-    byStage.get(e.stage).push(...stageChars(id));
+    if (e.type === 'form-family') {
+      for (const [n, forms] of familyFormsByStage(id)) push(n, forms);
+    } else {
+      push(e.stage, stageChars(id));
+    }
   }
   const stageNums = [...byStage.keys()].sort((a, b) => a - b);
   sec.group('By stage');

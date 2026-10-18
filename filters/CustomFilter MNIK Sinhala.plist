@@ -24,25 +24,8 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
 						</array>
 					</dict>
@@ -51,32 +34,13 @@
 						<string>Stage 2 — Bowl derivatives</string>
 						<key>list</key>
 						<array>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -91,26 +55,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -127,11 +77,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -140,45 +88,16 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
-							<string>dUu-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -186,6 +105,37 @@
 						<string>Stage 5 — Loops, diagonals and long marks</string>
 						<key>list</key>
 						<array>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
+							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
 							<string>nna-sinh</string>
@@ -200,11 +150,8 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -212,6 +159,35 @@
 						<string>Stage 6 — Aspirates and dense derivatives</string>
 						<key>list</key>
 						<array>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>mb-sinh</string>
+							<string>ph-sinh</string>
+							<string>shI-sinh</string>
+							<string>shIi-sinh</string>
+							<string>fI-sinh</string>
+							<string>fIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>bhU-sinh</string>
+							<string>bhUu-sinh</string>
+							<string>shU-sinh</string>
+							<string>shUu-sinh</string>
 							<string>dha-sinh</string>
 							<string>ba-sinh</string>
 							<string>kha-sinh</string>
@@ -241,6 +217,19 @@
 						<string>Stage 7 — The hang system</string>
 						<key>list</key>
 						<array>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>nndd-sinh</string>
+							<string>jh-sinh</string>
+							<string>nngI-sinh</string>
+							<string>nngIi-sinh</string>
+							<string>nngU-sinh</string>
+							<string>nngUu-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>nyj-sinh</string>
 							<string>nda-sinh</string>
 							<string>nndda-sinh</string>
 							<string>nnga-sinh</string>
@@ -250,16 +239,10 @@
 							<string>jha-sinh</string>
 							<string>ndI-sinh</string>
 							<string>ndIi-sinh</string>
-							<string>ndRI-sinh</string>
-							<string>ndRIi-sinh</string>
 							<string>nyI-sinh</string>
 							<string>nyIi-sinh</string>
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
-							<string>nDI-sinh</string>
-							<string>nDIi-sinh</string>
-							<string>nDRI-sinh</string>
-							<string>nDRIi-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -484,6 +467,20 @@
 						<string>Stage 9 — Conjunct layer</string>
 						<key>list</key>
 						<array>
+							<string>ttTthI-sinh</string>
+							<string>ttTthIi-sinh</string>
+							<string>tThI-sinh</string>
+							<string>tThIi-sinh</string>
+							<string>nThI-sinh</string>
+							<string>nThIi-sinh</string>
+							<string>dRI-sinh</string>
+							<string>dRIi-sinh</string>
+							<string>ndRI-sinh</string>
+							<string>ndRIi-sinh</string>
+							<string>nDI-sinh</string>
+							<string>nDIi-sinh</string>
+							<string>nDRI-sinh</string>
+							<string>nDRIi-sinh</string>
 							<string>ttRa-sinh</string>
 							<string>sRa-sinh</string>
 							<string>pRa-sinh</string>
@@ -660,6 +657,9 @@
 						<string>Stage 10 — Long tail and polish</string>
 						<key>list</key>
 						<array>
+							<string>ngI-sinh</string>
+							<string>ngIi-sinh</string>
+							<string>ng-sinh</string>
 							<string>vocalicr-sinh</string>
 							<string>vocalicrr-sinh</string>
 							<string>vocalicl-sinh</string>
@@ -707,25 +707,8 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
 						</array>
 					</dict>
@@ -741,52 +724,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -801,52 +748,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -854,26 +765,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -888,52 +785,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -941,26 +802,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -970,11 +817,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -983,45 +828,16 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
-							<string>dUu-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -1036,52 +852,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -1089,26 +869,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -1118,11 +884,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -1131,44 +895,46 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
 							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
@@ -1184,11 +950,8 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -1203,52 +966,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -1256,26 +983,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -1285,11 +998,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -1298,44 +1009,46 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
 							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
@@ -1351,11 +1064,37 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>mb-sinh</string>
+							<string>ph-sinh</string>
+							<string>shI-sinh</string>
+							<string>shIi-sinh</string>
+							<string>fI-sinh</string>
+							<string>fIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>bhU-sinh</string>
+							<string>bhUu-sinh</string>
+							<string>shU-sinh</string>
+							<string>shUu-sinh</string>
 							<string>dha-sinh</string>
 							<string>ba-sinh</string>
 							<string>kha-sinh</string>
@@ -1392,52 +1131,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -1445,26 +1148,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -1474,11 +1163,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -1487,44 +1174,46 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
 							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
@@ -1540,11 +1229,37 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>mb-sinh</string>
+							<string>ph-sinh</string>
+							<string>shI-sinh</string>
+							<string>shIi-sinh</string>
+							<string>fI-sinh</string>
+							<string>fIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>bhU-sinh</string>
+							<string>bhUu-sinh</string>
+							<string>shU-sinh</string>
+							<string>shUu-sinh</string>
 							<string>dha-sinh</string>
 							<string>ba-sinh</string>
 							<string>kha-sinh</string>
@@ -1567,6 +1282,19 @@
 							<string>hIi-sinh</string>
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>nndd-sinh</string>
+							<string>jh-sinh</string>
+							<string>nngI-sinh</string>
+							<string>nngIi-sinh</string>
+							<string>nngU-sinh</string>
+							<string>nngUu-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>nyj-sinh</string>
 							<string>nda-sinh</string>
 							<string>nndda-sinh</string>
 							<string>nnga-sinh</string>
@@ -1576,16 +1304,10 @@
 							<string>jha-sinh</string>
 							<string>ndI-sinh</string>
 							<string>ndIi-sinh</string>
-							<string>ndRI-sinh</string>
-							<string>ndRIi-sinh</string>
 							<string>nyI-sinh</string>
 							<string>nyIi-sinh</string>
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
-							<string>nDI-sinh</string>
-							<string>nDIi-sinh</string>
-							<string>nDRI-sinh</string>
-							<string>nDRIi-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -1600,52 +1322,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -1653,26 +1339,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -1682,11 +1354,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -1695,44 +1365,46 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
 							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
@@ -1748,11 +1420,37 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>mb-sinh</string>
+							<string>ph-sinh</string>
+							<string>shI-sinh</string>
+							<string>shIi-sinh</string>
+							<string>fI-sinh</string>
+							<string>fIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>bhU-sinh</string>
+							<string>bhUu-sinh</string>
+							<string>shU-sinh</string>
+							<string>shUu-sinh</string>
 							<string>dha-sinh</string>
 							<string>ba-sinh</string>
 							<string>kha-sinh</string>
@@ -1775,6 +1473,19 @@
 							<string>hIi-sinh</string>
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>nndd-sinh</string>
+							<string>jh-sinh</string>
+							<string>nngI-sinh</string>
+							<string>nngIi-sinh</string>
+							<string>nngU-sinh</string>
+							<string>nngUu-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>nyj-sinh</string>
 							<string>nda-sinh</string>
 							<string>nndda-sinh</string>
 							<string>nnga-sinh</string>
@@ -1784,16 +1495,10 @@
 							<string>jha-sinh</string>
 							<string>ndI-sinh</string>
 							<string>ndIi-sinh</string>
-							<string>ndRI-sinh</string>
-							<string>ndRIi-sinh</string>
 							<string>nyI-sinh</string>
 							<string>nyIi-sinh</string>
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
-							<string>nDI-sinh</string>
-							<string>nDIi-sinh</string>
-							<string>nDRI-sinh</string>
-							<string>nDRIi-sinh</string>
 							<string>vocalicrsign-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 							<string>vocaliclsign-sinh</string>
@@ -1882,8 +1587,11 @@
 							<string>nyjUu-sinh</string>
 							<string>jhU-sinh</string>
 							<string>jhUu-sinh</string>
+							<string>ngI-sinh</string>
+							<string>ngIi-sinh</string>
 							<string>ngU-sinh</string>
 							<string>ngUu-sinh</string>
+							<string>ng-sinh</string>
 						</array>
 					</dict>
 					<dict>
@@ -1898,52 +1606,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -1951,26 +1623,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -1980,11 +1638,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -1993,44 +1649,46 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
 							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
@@ -2046,11 +1704,37 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>mb-sinh</string>
+							<string>ph-sinh</string>
+							<string>shI-sinh</string>
+							<string>shIi-sinh</string>
+							<string>fI-sinh</string>
+							<string>fIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>bhU-sinh</string>
+							<string>bhUu-sinh</string>
+							<string>shU-sinh</string>
+							<string>shUu-sinh</string>
 							<string>dha-sinh</string>
 							<string>ba-sinh</string>
 							<string>kha-sinh</string>
@@ -2073,6 +1757,19 @@
 							<string>hIi-sinh</string>
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>nndd-sinh</string>
+							<string>jh-sinh</string>
+							<string>nngI-sinh</string>
+							<string>nngIi-sinh</string>
+							<string>nngU-sinh</string>
+							<string>nngUu-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>nyj-sinh</string>
 							<string>nda-sinh</string>
 							<string>nndda-sinh</string>
 							<string>nnga-sinh</string>
@@ -2082,16 +1779,10 @@
 							<string>jha-sinh</string>
 							<string>ndI-sinh</string>
 							<string>ndIi-sinh</string>
-							<string>ndRI-sinh</string>
-							<string>ndRIi-sinh</string>
 							<string>nyI-sinh</string>
 							<string>nyIi-sinh</string>
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
-							<string>nDI-sinh</string>
-							<string>nDIi-sinh</string>
-							<string>nDRI-sinh</string>
-							<string>nDRIi-sinh</string>
 							<string>vocalicrsign-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 							<string>vocaliclsign-sinh</string>
@@ -2180,8 +1871,25 @@
 							<string>nyjUu-sinh</string>
 							<string>jhU-sinh</string>
 							<string>jhUu-sinh</string>
+							<string>ngI-sinh</string>
+							<string>ngIi-sinh</string>
 							<string>ngU-sinh</string>
 							<string>ngUu-sinh</string>
+							<string>ng-sinh</string>
+							<string>ttTthI-sinh</string>
+							<string>ttTthIi-sinh</string>
+							<string>tThI-sinh</string>
+							<string>tThIi-sinh</string>
+							<string>nThI-sinh</string>
+							<string>nThIi-sinh</string>
+							<string>dRI-sinh</string>
+							<string>dRIi-sinh</string>
+							<string>ndRI-sinh</string>
+							<string>ndRIi-sinh</string>
+							<string>nDI-sinh</string>
+							<string>nDIi-sinh</string>
+							<string>nDRI-sinh</string>
+							<string>nDRIi-sinh</string>
 							<string>ttRa-sinh</string>
 							<string>sRa-sinh</string>
 							<string>pRa-sinh</string>
@@ -2364,52 +2072,16 @@
 							<string>ddha-sinh</string>
 							<string>isign-sinh</string>
 							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
 							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
 							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
 							<string>usign-sinh</string>
+							<string>cI-sinh</string>
 							<string>ca-sinh</string>
 							<string>e-sinh</string>
 							<string>ya-sinh</string>
 							<string>va-sinh</string>
 							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
 							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
 							<string>virama-sinh</string>
 							<string>ga-sinh</string>
 							<string>aasign-sinh</string>
@@ -2417,26 +2089,12 @@
 							<string>na-sinh</string>
 							<string>esign-sinh</string>
 							<string>anusvaraya-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
 							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
 							<string>tt-sinh</string>
 							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
 							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
 							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
 							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
 							<string>ka-sinh</string>
 							<string>da-sinh</string>
 							<string>u-sinh</string>
@@ -2446,11 +2104,9 @@
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 							<string>rI-sinh</string>
-							<string>rIi-sinh</string>
 							<string>r-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rU-sinh</string>
-							<string>rUu-sinh</string>
 							<string>aa-sinh</string>
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
@@ -2459,44 +2115,46 @@
 							<string>oosign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>kI-sinh</string>
-							<string>kIi-sinh</string>
 							<string>tI-sinh</string>
-							<string>tIi-sinh</string>
 							<string>nI-sinh</string>
-							<string>nIi-sinh</string>
 							<string>gI-sinh</string>
-							<string>gIi-sinh</string>
-							<string>nngI-sinh</string>
-							<string>nngIi-sinh</string>
-							<string>shI-sinh</string>
-							<string>shIi-sinh</string>
-							<string>fI-sinh</string>
-							<string>fIi-sinh</string>
 							<string>dI-sinh</string>
-							<string>dIi-sinh</string>
-							<string>dRI-sinh</string>
-							<string>dRIi-sinh</string>
 							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
 							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
 							<string>kU-sinh</string>
-							<string>kUu-sinh</string>
 							<string>gU-sinh</string>
-							<string>gUu-sinh</string>
 							<string>tU-sinh</string>
-							<string>tUu-sinh</string>
-							<string>bhU-sinh</string>
-							<string>bhUu-sinh</string>
-							<string>shU-sinh</string>
-							<string>shUu-sinh</string>
-							<string>nngU-sinh</string>
-							<string>nngUu-sinh</string>
 							<string>dU-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>sIi-sinh</string>
+							<string>m-sinh</string>
+							<string>tth-sinh</string>
+							<string>th-sinh</string>
+							<string>rIi-sinh</string>
+							<string>rUu-sinh</string>
+							<string>kIi-sinh</string>
+							<string>tIi-sinh</string>
+							<string>nIi-sinh</string>
+							<string>gIi-sinh</string>
+							<string>dIi-sinh</string>
+							<string>lIi-sinh</string>
+							<string>pIi-sinh</string>
+							<string>kUu-sinh</string>
+							<string>gUu-sinh</string>
+							<string>tUu-sinh</string>
 							<string>dUu-sinh</string>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
@@ -2512,11 +2170,37 @@
 							<string>jIi-sinh</string>
 							<string>chI-sinh</string>
 							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
-							<string>nyj-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>mb-sinh</string>
+							<string>ph-sinh</string>
+							<string>shI-sinh</string>
+							<string>shIi-sinh</string>
+							<string>fI-sinh</string>
+							<string>fIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>bhU-sinh</string>
+							<string>bhUu-sinh</string>
+							<string>shU-sinh</string>
+							<string>shUu-sinh</string>
 							<string>dha-sinh</string>
 							<string>ba-sinh</string>
 							<string>kha-sinh</string>
@@ -2539,6 +2223,19 @@
 							<string>hIi-sinh</string>
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>nndd-sinh</string>
+							<string>jh-sinh</string>
+							<string>nngI-sinh</string>
+							<string>nngIi-sinh</string>
+							<string>nngU-sinh</string>
+							<string>nngUu-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>nyj-sinh</string>
 							<string>nda-sinh</string>
 							<string>nndda-sinh</string>
 							<string>nnga-sinh</string>
@@ -2548,16 +2245,10 @@
 							<string>jha-sinh</string>
 							<string>ndI-sinh</string>
 							<string>ndIi-sinh</string>
-							<string>ndRI-sinh</string>
-							<string>ndRIi-sinh</string>
 							<string>nyI-sinh</string>
 							<string>nyIi-sinh</string>
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
-							<string>nDI-sinh</string>
-							<string>nDIi-sinh</string>
-							<string>nDRI-sinh</string>
-							<string>nDRIi-sinh</string>
 							<string>vocalicrsign-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 							<string>vocaliclsign-sinh</string>
@@ -2646,8 +2337,25 @@
 							<string>nyjUu-sinh</string>
 							<string>jhU-sinh</string>
 							<string>jhUu-sinh</string>
+							<string>ngI-sinh</string>
+							<string>ngIi-sinh</string>
 							<string>ngU-sinh</string>
 							<string>ngUu-sinh</string>
+							<string>ng-sinh</string>
+							<string>ttTthI-sinh</string>
+							<string>ttTthIi-sinh</string>
+							<string>tThI-sinh</string>
+							<string>tThIi-sinh</string>
+							<string>nThI-sinh</string>
+							<string>nThIi-sinh</string>
+							<string>dRI-sinh</string>
+							<string>dRIi-sinh</string>
+							<string>ndRI-sinh</string>
+							<string>ndRIi-sinh</string>
+							<string>nDI-sinh</string>
+							<string>nDIi-sinh</string>
+							<string>nDRI-sinh</string>
+							<string>nDRIi-sinh</string>
 							<string>ttRa-sinh</string>
 							<string>sRa-sinh</string>
 							<string>pRa-sinh</string>
