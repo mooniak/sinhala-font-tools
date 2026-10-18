@@ -8,8 +8,10 @@ values/notes/exceptions are authored in the scheme file and survive rebuilds.
 
 Subcommands:
   build-map   seed/refresh sinhala-spacing.yaml from the design-stages model
+  audit       measure a font against the scheme (read-only): coverage, class
+              drift, metrics keys, and the font's implied spacing unit
 
-Planned (see README.md): audit, apply, export-js.
+Planned (see README.md): apply, export-js.
 """
 import argparse
 import sys
@@ -17,6 +19,7 @@ from pathlib import Path
 
 import yaml
 
+from . import audit as audit_mod
 from . import mapbuild, model
 
 DEFAULT_MAP_YAML = model.REPO_ROOT / "sinhala-spacing.yaml"
@@ -80,6 +83,78 @@ def cmd_build_map(args):
     _print_report(report, x, args.limit)
 
 
+def _fmt_sb(v):
+    return "  —  " if v is None else f"{v:>5g}"
+
+
+def cmd_audit(args):
+    with open(args.map, encoding="utf-8") as f:
+        scheme = yaml.safe_load(f)
+    overrides = {}
+    if args.names:
+        with open(args.names, encoding="utf-8") as f:
+            overrides = yaml.safe_load(f) or {}
+    result = audit_mod.audit(args.font, scheme, tolerance=args.tolerance,
+                             master_ids=args.master, overrides=overrides)
+
+    cov = result["coverage"]
+    print(f"font: {Path(result['font']).name}   masters: {', '.join(result['masters'])}")
+    print(f"coverage: {cov['resolved']}/{cov['entries']} scheme entries present")
+    if cov["absent"]:
+        shown = list(cov["absent"])[: args.limit]
+        print(f"  absent ({len(cov['absent'])}): " + " ".join(shown)
+              + (" ..." if len(cov["absent"]) > args.limit else ""))
+
+    for m in result["per_master"]:
+        u = m["unit"]
+        print(f"\n── master {m['name']} " + "─" * 40)
+        print(f"implied spacing unit (from {audit_mod.UNIT_GLYPH} = {m['unit_glyph']}): "
+              f"left {u['left']}, right {u['right']}")
+        c = m["counts"]
+        print(f"sidebearings vs class rep (±{result['tolerance']}): "
+              f"{c.get('ok', 0)} ok, {c.get('drift', 0)} drift, "
+              f"{c.get('absent', 0)} absent, {c.get('rep', 0)} reps")
+        k = m["key_counts"]
+        print(f"metrics keys: {k['ok']} point at the rep, {k['other']} elsewhere, "
+              f"{k['missing']} missing")
+
+        for cl in sorted(m["classes"], key=lambda c: (c["side"], c["class"])):
+            n_drift = cl["counts"].get("drift", 0)
+            if not args.verbose and not n_drift:
+                continue
+            iv, sv = cl["implied_value"], cl["scheme_value"]
+            print(f"\n  {cl['side']}/{cl['class']}  rep {cl['rep']} "
+                  f"({cl['rep_glyph']}) sb={_fmt_sb(cl['rep_sb'])}"
+                  f"  measured {iv if iv is not None else '—'}× unit"
+                  f"  scheme value {sv if sv is not None else '—'}"
+                  + (f"   {n_drift} drift" if n_drift else ""))
+            for r in cl["rows"]:
+                if not args.verbose and r["status"] != "drift":
+                    continue
+                delta = "" if r["delta"] is None else f"{r['delta']:+g}"
+                print(f"    {r['entry']:<8s} {str(r['glyph'] or ''):<14s} "
+                      f"{_fmt_sb(r['sb'])} {delta:>6s}  {r['status']:<7s} "
+                      f"key:{r['key_status']}")
+
+    if args.emit_values:
+        first = result["per_master"][0]
+        out = {
+            "meta": {
+                "font": Path(result["font"]).name,
+                "master": first["name"],
+                "spacing_unit": first["unit"],
+                "note": ("Measured from the font, not authored: each number is the "
+                         "class rep's sidebearing divided by the implied unit. "
+                         "Review before copying into sinhala-spacing.yaml."),
+            },
+            "values": audit_mod.harvest_values(first),
+        }
+        Path(args.emit_values).write_text(
+            yaml.safe_dump(out, allow_unicode=True, sort_keys=False, width=100),
+            encoding="utf-8")
+        print(f"\nwrote measured values to {args.emit_values} (master {first['name']})")
+
+
 def build_parser():
     p = argparse.ArgumentParser(prog="spacing-map", description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -95,6 +170,23 @@ def build_parser():
     bm.add_argument("--limit", type=int, default=20,
                     help="max warnings/list items to print [default 20]")
     bm.set_defaults(func=cmd_build_map)
+
+    au = sub.add_parser("audit", help="measure a font against the scheme (read-only)")
+    au.add_argument("--font", required=True, help="target .glyphs(package) to measure")
+    au.add_argument("--map", default=str(DEFAULT_MAP_YAML))
+    au.add_argument("--tolerance", type=int, default=8,
+                    help="font units a member may differ from its rep before it "
+                         "counts as drift [default 8]")
+    au.add_argument("--master", action="append",
+                    help="master name or id to audit (repeatable) [default: all]")
+    au.add_argument("--names", help="YAML mapping of scheme entries to glyph names, "
+                                    "for fonts using another naming convention")
+    au.add_argument("--emit-values", metavar="FILE",
+                    help="write the measured per-class unit multiples to a values YAML")
+    au.add_argument("-v", "--verbose", action="store_true",
+                    help="list every class and member, not just drift")
+    au.add_argument("--limit", type=int, default=20)
+    au.set_defaults(func=cmd_audit)
 
     return p
 

@@ -32,6 +32,16 @@ python3 -m venv venv
 
 # validate + preview the diff without writing
 ./venv/bin/python -m spacing_map build-map --check
+
+# measure a font against the scheme (read-only)
+./venv/bin/python -m spacing_map audit --font path/to/Font.glyphspackage
+
+# every class and member, not just drift; wider drift tolerance
+./venv/bin/python -m spacing_map audit --font Font.glyphspackage -v --tolerance 12
+
+# harvest a well-spaced font's class values as candidate scheme numbers
+./venv/bin/python -m spacing_map audit --font Font.glyphspackage \
+    --master Regular --emit-values values-fontname.yaml
 ```
 
 ## The scheme file (`sinhala-spacing.yaml`, repo root)
@@ -95,15 +105,70 @@ class. Warnings (membership without a matching per-glyph declaration,
 members with no model entry, overrides for unknown forms) are printed but
 don't block.
 
+## `audit` — measuring a font against the scheme
+
+Read-only. Answers three questions per master:
+
+| | |
+|---|---|
+| **coverage** | which scheme entries the font actually contains |
+| **drift** | does each member's measured sidebearing match its class rep's? (the design gate "every new glyph sits correctly in its spacing class", measured rather than eyeballed) |
+| **keys** | does each member carry a metrics key pointing at its rep — i.e. is the inheritance wired up in the source, or only true by coincidence? |
+
+Sidebearings are not stored in a Glyphs source; only each layer's `width` is.
+LSB/RSB are derived from outline bounds exactly as Glyphs displays them
+(`LSB = bounds.x`, `RSB = width − (bounds.x + bounds.width)`), with components
+resolved, so composites measure correctly.
+
+It also reports the font's **implied spacing unit** — the sidebearings of ට,
+the glyph the model says defines the unit — and each class rep's sidebearing as
+a multiple of it. `--emit-values` writes those multiples to a values file, which
+turns a well-spaced existing font into candidate `value:` numbers for the
+scheme. They are measurements, not endorsements: review before copying in.
+
+### Glyph-name resolution
+
+Single characters resolve **by codepoint** straight from the font — exact and
+naming-agnostic. Fused forms (ටි, කු, ක්, ද්‍රි) have no codepoint and must be
+resolved **by name**, which is a per-vendor convention. `names.py` encodes the
+lanka-glyphsets one (also used by `tools/composite-map`):
+
+| form | name | rule |
+|---|---|---|
+| ක | `ka-sinh` | stem + inherent `a` |
+| ක් | `k-sinh` | stem alone (al-form) |
+| කි ‍/ කී | `kI-sinh` / `kIi-sinh` | stem + sign suffix (`I Ii U Uu Ae Aae`) |
+| ක්‍ර | `kRa-sinh` | stem + `R` + inherent `a` |
+| ක්‍රි | `kRI-sinh` | stem + `R` + sign suffix |
+| න්‍ද | `nDa-sinh` | stems joined, later ones capitalised |
+
+Stems come from the font's own name for each codepoint where possible, so a
+font naming ඦ `nyja-sinh` resolves ඦි to `nyjI-sinh` without any table — this
+also covers letters missing from the vendored lanka-glyphsets data (ඦ is).
+
+On AbhayaLibre 126 of 128 fused forms resolve; the two that don't (ඳ්‍රි ඳ්‍රී)
+are genuinely absent from the font. On Noto Sans Sinhala only 59 resolve — not
+a naming mismatch (Noto uses the same convention: `ka-sinh`, `ttha-sinh`) but a
+**fusion-policy** difference: Noto positions ි with nine contextual
+`isign-sinh.altN` alternates instead of fusing it into a single glyph. Coverage
+therefore measures how far a font follows the model's `fused: true` families.
+
+Failures are always reported as absent, never silently skipped. For a font
+that does name things differently, `--names <yaml>` maps entries by hand:
+
+```yaml
+ඨි: ThI-sinh
+ඨී: ThIi-sinh
+```
+
 ## Roadmap
 
-- `audit --font <pkg>` — measure actual member LSB/RSB vs rep and rep vs
-  `value × spacing_unit`; report drift, missing keys, unflagged bespokes.
 - `apply --font <pkg> [--apply]` — write `leftMetricsKey`/`rightMetricsKey`
   on member glyphs (dry-run by default, surgical per-glyph-file writes as in
   `tools/composite-map/composite_map/packageio.py`).
 - `export-js` — vendored `tools/_generated/sinhala-spacing.js` for the
   spacing workbench (browser authoring/preview tool).
 
-Like `tools/composite-map`, glyph naming is currently hardcoded to the
-lanka-glyphsets convention (chars in the scheme, `name-sinh` at apply time).
+Like `tools/composite-map`, the default naming convention is lanka-glyphsets'
+(chars in the scheme, `name-sinh` in fonts) — but only fused forms depend on
+it, letters resolve by codepoint, and `--names` overrides the rest.
