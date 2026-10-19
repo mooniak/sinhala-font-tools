@@ -20,7 +20,7 @@ places, and this repo defers to them rather than duplicating them:
 
 | Standard / project | What it governs | Use it for |
 |---|---|---|
-| **[lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets)** | The glyphset standard for Sri Lankan fonts: cumulative Sinhala levels (Kernel / Core / Plus / Pro) mapped to ICTA Levels 1–3, plus a Tamil glyphset, and the normative **glyph-naming standard** (visual-form names such as `kRa-sinh`). Ships `@mooniak/lankaglyphsets` (npm) and `mnik-lankafea` (PyPI) for feature generation and dependency validation. | What a font must contain, what each glyph is called, generating and validating OpenType features. |
+| **[lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets)** | The glyphset standard for Sri Lankan fonts: cumulative Sinhala levels (Kernel / Core / Plus / Pro) mapped to ICTA Levels 1–3, plus a Tamil glyphset, and the normative **glyph-naming standard** (visual-form names such as `kRa-sinh`). Ships `@mooniak/lankaglyphsets` (npm). | What a font must contain and what each glyph is called. |
 | **SLS 1134** | The Sri Lanka Standard for Sinhala character encoding, published by the Sri Lanka Standards Institution — the national standard behind Sinhala in Unicode: character repertoire, code points and how Sinhala text is encoded. | Encoding, `cmap`, codepoint questions, conformance claims. |
 | **[mooniak-font-tools](https://github.com/mooniak/mooniak-font-tools)** (`mnik`) | The production toolchain across all mooniak font repos: building with gftools, QA/fontspector, proof PDFs, build manifests, release channels, native Glyphs export, and the font directory/dashboard. | Building, QA-ing, proofing, releasing and tracking a font project. |
 
@@ -58,6 +58,13 @@ here disagrees with lanka-glyphsets, lanka-glyphsets wins.
 - **[tools/font-comparison/](tools/font-comparison/)** — side-by-side rendering
   comparison across fonts. Ships with just the system fonts; see its README
   to set up your own default collection.
+- **[tools/feature-generator/](tools/feature-generator/)** — `lankafea`
+  (PyPI `mnik-lankafea`): generates Sinhala/Tamil OpenType features from the
+  lanka-glyphsets standard, gated on the glyphs a font actually has, and
+  reports dependency blockers and orphans. Its Glyphs 3 plugin, **Lanka
+  Features**, is in [glyphs-plugin/](tools/feature-generator/glyphs-plugin/).
+  Moved here from lanka-glyphsets so that repo holds only the standard; it
+  reads the glyphset YAMLs from a sibling `lanka-glyphsets` checkout.
 - **[tools/glyphname-unicode-converter/](tools/glyphname-unicode-converter/)** —
   vendored copy of lanka-glyphsets' glyph name ↔ Unicode library, used by
   glyph-chart and glyphs-filters (not a standalone tool).

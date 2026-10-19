@@ -17,8 +17,9 @@ Two provenances live here:
 authored here. They are generated in the
 [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) standard repo and
 copied byte-for-byte into this directory so `tools/glyph-chart/` can run
-standalone (same pattern as `tools/feature-generator/src/lankafea/data/glyphsets/`
-in that repo, which vendors the glyphset YAMLs for the same reason).
+standalone (same pattern as [`tools/feature-generator/`](../feature-generator/)'s
+`src/lankafea/data/glyphsets/`, which vendors the glyphset YAMLs for the same
+reason).
 
 Do not edit these files by hand. To sync after the standard changes, from a
 checkout of lanka-glyphsets:

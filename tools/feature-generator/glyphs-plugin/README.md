@@ -1,6 +1,6 @@
 # Lanka Features — Glyphs 3 plugin
 
-Runs the [`lankafea`](../feature-generator) generator inside Glyphs: Sinhala /
+Runs the [`lankafea`](..) generator inside Glyphs: Sinhala /
 Tamil OpenType features, gated on the glyphs actually in the font. The plugin
 bundles `lankafea` (and PyYAML), so there is nothing to `pip install`.
 

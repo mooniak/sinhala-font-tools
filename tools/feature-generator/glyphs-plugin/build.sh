@@ -1,7 +1,8 @@
 #!/bin/sh
 # Assemble a self-contained LankaFeatures.glyphsPlugin into ./build and (with
-# --install) copy it to the Glyphs 3 Plugins folder. Bundles lankafea from
-# ../feature-generator/src so the plugin needs no pip install.
+# --install) symlink it into the Glyphs 3 Plugins folder, so later rebuilds
+# take effect on the next Glyphs restart. Bundles lankafea from ../src so the
+# plugin needs no pip install.
 set -eu
 here=$(cd "$(dirname "$0")" && pwd)
 src="$here/LankaFeatures.glyphsPlugin"
@@ -18,10 +19,10 @@ launcher=$(ls "$plugins"/*/Contents/MacOS/plugin 2>/dev/null | head -n 1 || true
 [ -n "$launcher" ] || { echo "no installed Glyphs Python plugin to borrow the launcher from" >&2; exit 1; }
 cp "$launcher" "$out/Contents/MacOS/plugin"
 
-cp -R "$here/../feature-generator/src/lankafea" "$out/Contents/Resources/lankafea"
+cp -R "$here/../src/lankafea" "$out/Contents/Resources/lankafea"
 # Vendor pure-Python PyYAML (glyphset YAMLs) if the generator's venv has it;
 # without it the plugin falls back to the built-in codepoint tables.
-yaml_dir=$(ls -d "$here"/../feature-generator/.venv/lib/*/site-packages/yaml 2>/dev/null | head -n 1 || true)
+yaml_dir=$(ls -d "$here"/../.venv/lib/*/site-packages/yaml 2>/dev/null | head -n 1 || true)
 if [ -n "$yaml_dir" ]; then
   cp -R "$yaml_dir" "$out/Contents/Resources/yaml"
   find "$out/Contents/Resources/yaml" -name '*.so' -delete
@@ -31,6 +32,6 @@ find "$out" -name __pycache__ -type d -prune -exec rm -rf {} +
 echo "built $out"
 if [ "${1:-}" = "--install" ]; then
   rm -rf "$plugins/LankaFeatures.glyphsPlugin"
-  cp -R "$out" "$plugins/"
-  echo "installed — restart Glyphs"
+  ln -s "$out" "$plugins/LankaFeatures.glyphsPlugin"
+  echo "linked $plugins/LankaFeatures.glyphsPlugin -> $out — restart Glyphs"
 fi

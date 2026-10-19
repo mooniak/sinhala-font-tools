@@ -3,15 +3,17 @@
 All project metadata lives in pyproject.toml. This file exists only to bundle
 the glyphset standard into the wheel/sdist without duplicating it in the repo.
 
-The single source of truth is the repository's top-level ``glyphsets/`` directory
-(``../../glyphsets`` from here). We do NOT keep a committed copy under
+The single source of truth is the lanka-glyphsets standard repo's ``glyphsets/``
+directory, expected as a sibling checkout (``../../../lanka-glyphsets/glyphsets``
+from here) or named by ``LANKAFEA_GLYPHSETS_DIR``. We do NOT keep a committed copy under
 ``src/lankafea/data/glyphsets/`` — it would drift. Instead a custom
 ``build_py`` copies the YAMLs in just before the package is assembled, so an
 installed wheel is self-contained (see ``scripts.glyphsets_dir()``), while a
-source checkout falls back to the repo's ``glyphsets/`` directly.
+source checkout falls back to the sibling lanka-glyphsets ``glyphsets/`` directly.
 """
 from __future__ import annotations
 
+import os
 import shutil
 from pathlib import Path
 
@@ -20,7 +22,9 @@ from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.sdist import sdist as _sdist
 
 _HERE = Path(__file__).resolve().parent
-_CANONICAL = _HERE.parents[1] / "glyphsets"          # lanka-glyphsets/glyphsets
+# <workspace>/lanka-glyphsets/glyphsets, next to this sinhala-font-tools checkout.
+_CANONICAL = Path(os.environ.get("LANKAFEA_GLYPHSETS_DIR")
+                  or _HERE.parents[2] / "lanka-glyphsets" / "glyphsets")
 _BUNDLE_REL = "lankafea/data/glyphsets"               # under src/
 
 

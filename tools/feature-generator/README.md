@@ -34,10 +34,23 @@ standard — it bundles a copy of the YAMLs (`data/glyphsets/`) so it installs
 self-contained, but the standard itself is defined *there*, not here. They
 coexist; a change to the naming standard lands in lanka-glyphsets first.
 
+This package used to live in lanka-glyphsets (`tools/feature-generator/`) and
+moved here, with its history, so that repo holds only the standard. Building
+from source reads the YAMLs from a **sibling checkout**:
+
+```
+<workspace>/
+  lanka-glyphsets/glyphsets/*.yaml      ← canonical standard
+  sinhala-font-tools/tools/feature-generator/   ← this package
+```
+
+Point `LANKAFEA_GLYPHSETS_DIR` at a `glyphsets/` directory to use another
+location (honoured by both `setup.py` and `lankafea` at runtime).
+
 ## Install
 
 ```sh
-cd mooniak-font-tools/scripts/feature-generator
+cd sinhala-font-tools/tools/feature-generator
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"   # fonttools + pyyaml + glyphsLib + uharfbuzz + pytest
 ```
@@ -150,7 +163,7 @@ api.py         build_fea() / validate_font()  ;  cli.py  argparse CLI
 ```
 
 Glyphset resolution: `LANKAFEA_GLYPHSETS_DIR` (or legacy `MNIK_GLYPHSETS_DIR`)
-→ bundled package data → repo `glyphsets/`.
+→ bundled package data → sibling `lanka-glyphsets/glyphsets/`.
 
 ## Verify
 

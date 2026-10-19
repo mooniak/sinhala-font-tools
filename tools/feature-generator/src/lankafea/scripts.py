@@ -18,15 +18,16 @@ _HERE = Path(__file__).resolve()
 # YAMLs bundled inside the package, so the library is self-contained when installed
 # out of this repository.
 _BUNDLED_GLYPHSETS = _HERE.parent / "data" / "glyphsets"
-# Fallback: the repo's canonical glyphsets/ (when running from a source checkout).
-_REPO_GLYPHSETS = _HERE.parents[5] / "glyphsets"
+# Fallback: the canonical glyphsets/ in a lanka-glyphsets checkout next to this
+# sinhala-font-tools checkout (when running from source).
+_REPO_GLYPHSETS = _HERE.parents[5] / "lanka-glyphsets" / "glyphsets"
 
 
 def glyphsets_dir() -> Path:
     """Resolve the glyphsets directory.
 
     Priority: ``LANKAFEA_GLYPHSETS_DIR`` (or legacy ``MNIK_GLYPHSETS_DIR``) env override -> bundled package data ->
-    the repo's ``glyphsets/`` (source-checkout fallback). Bundling means an
+    the sibling lanka-glyphsets ``glyphsets/`` (source-checkout fallback). Bundling means an
     installed wheel needs no repository files.
     """
     env = os.environ.get("LANKAFEA_GLYPHSETS_DIR") or os.environ.get("MNIK_GLYPHSETS_DIR")
