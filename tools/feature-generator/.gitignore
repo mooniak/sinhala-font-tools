@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Build artifact: the glyphset YAMLs are copied in from ../../glyphsets at build
+# time (see setup.py). The canonical copy is the repo's top-level glyphsets/.
+src/lankafea/data/glyphsets/

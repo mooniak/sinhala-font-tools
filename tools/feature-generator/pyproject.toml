@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mnik-lankafea"
+version = "0.3.0"
+description = "lankafea — glyph-dependency validator + OpenType (GSUB/GPOS) feature generator for Sinhala & Tamil fonts, gated on the glyphs actually present in the font."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mooniak" }]
+dependencies = [
+    "fonttools>=4.40",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# tptq-feacomposer authors the rules through a typed eDSL. It is optional: when
+# absent, the built-in .fea text emitter is used with identical output contract.
+# See src/lankafea/feacomposer_adapter.py.
+compose = ["tptq-feacomposer>=1.11"]
+# uharfbuzz drives the end-to-end shaping verification (verify.py).
+verify = ["uharfbuzz>=0.39"]
+# glyphsLib enables reading .glyphs/.glyphspackage sources and writing features back.
+glyphs = ["glyphsLib>=6.0"]
+dev = ["tptq-feacomposer>=1.11", "uharfbuzz>=0.39", "glyphsLib>=6.0", "pytest>=7"]
+
+[project.scripts]
+# `lankafea validate|generate ...`
+lankafea = "lankafea.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+# Bundle the glyphset YAMLs so the installed library carries the LankaGlyphset
+# standard and needs no repository files at runtime; the .glyph files are the
+# authored ZWJ/ZWNJ control glyphs that --fix-zwj inserts into sources.
+"lankafea" = ["data/glyphsets/*.yaml", "data/glyphs/*.glyph"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

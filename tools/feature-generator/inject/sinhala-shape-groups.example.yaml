@@ -1,0 +1,27 @@
+# Example injection: the hand-tuned shape-group / below-base lookups that are NOT
+# derivable from the base YAML (they encode designer decisions about which glyphs
+# share a below-base form). Modelled on the @shapeGroup classes and blws/abvs
+# lookups in tools/font-processing/NotoSansSinhala.glyphs and the taxonomy in
+# tools/sinhala-glyph-chart/sinhala-shape-groups.md.
+#
+# Every glyph named here is presence-gated: rules referencing an absent glyph or a
+# class that prunes to empty are dropped, so it is safe to over-specify.
+
+classes:
+  # Consonants that take the below-base "da-shape" (._c) form with a spacing vowel.
+  daShapeGroup: [da, nya, jnya, nda]
+
+lookups:
+  # ss01 "Da Forms": swap da + aasign for the precomposed below-base glyph.
+  - name: DaFormsAasign
+    feature: ss01
+    rules:
+      - { sub: "daa", by: "daa._c", comment: "da+aa -> below-base da-form" }
+      - { sub: "dae", by: "dae._c" }
+      - { sub: "daae", by: "daae._c" }
+
+  # Historical kombuwa (ss03): expose the alternate e-sign.
+  - name: HistoricalKombuwa
+    feature: ss03
+    rules:
+      - { sub: "esign", by: "esign._ui" }
