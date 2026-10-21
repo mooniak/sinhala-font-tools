@@ -67,7 +67,7 @@
       main.innerHTML = `<div class="bar"><b>${esc(t.title)} <small>${esc(t.desc)}</small></b>${readme}<a href="${t.path}" target="_blank">Open in new tab ↗</a></div><iframe src="${t.path}" title="${esc(t.title)}"></iframe>`;
     } else {
       const cmds = t.commands.join('\n');
-      main.innerHTML = `<div class="bar"><b>${esc(t.title)}</b>${readme}</div><div class="page"><p>${esc(t.desc)}</p><p>This tool runs on the command line (from the repo root unless a <code>cd</code> is shown).</p><pre id="cmd">${esc(cmds)}</pre><button id="copy">Copy</button></div>`;
+      main.innerHTML = `<div class="bar"><b>${esc(t.title)}</b>${readme}</div><div class="page"><p>${esc(t.desc)}</p><p>${t.type === 'plugin' ? 'This is a Glyphs 3 plugin. Install it from the repo root unless a <code>cd</code> is shown.' : 'This tool runs on the command line (from the repo root unless a <code>cd</code> is shown).'}</p><pre id="cmd">${esc(cmds)}</pre><button id="copy">Copy</button></div>`;
       document.getElementById('copy').onclick = e => { navigator.clipboard.writeText(cmds); e.target.textContent = 'Copied'; setTimeout(() => e.target.textContent = 'Copy', 1200); };
     }
   }
