@@ -1,7 +1,7 @@
 # spacing-workbench
 
 Browser tool for authoring the Sinhala spacing scheme
-([`sinhala-spacing.yaml`](../../sinhala-spacing.yaml)) against a real font.
+([`sinhala-spacing.yaml`](../../model/sinhala-spacing.yaml)) against a real font.
 Static, no build step. It reads the scheme from the vendored
 `../_generated/sinhala-spacing.js`.
 
@@ -78,7 +78,7 @@ them.
 |---|---|---|
 | Scheme YAML | `sinhala-spacing.yaml` | Replace the repo file, then run `export-js`. Values, notes and exceptions survive `build-map`. |
 | Font values | `spacing-values-<font>.yaml` | Per-font `spacing_unit` + `overrides` (also lists the current targets and the measured multiples). Re-import it to restore a session. |
-| Model changes | `spacing-model-changes.yaml` | Membership, rep and new-class edits written as model edits. Port them into `sinhala-design-stages/sinhala-design-dependencies.yaml`, because `build-map` rebuilds relationships from the model and would otherwise revert them. |
+| Model changes | `spacing-model-changes.yaml` | Membership, rep and new-class edits written as model edits. Port them into `model/sinhala-design-dependencies.yaml`, because `build-map` rebuilds relationships from the model and would otherwise revert them. |
 
 **Import YAML…** (or drop a `.yaml`) accepts any of three files:
 

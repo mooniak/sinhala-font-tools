@@ -6,9 +6,10 @@ The core idea: **stage decisions, not glyphs.** Every design decision — a
 metric, a skeleton, a structural element, a spacing class, a mark-join
 convention — is introduced exactly once by one glyph and inherited by every
 later glyph that uses it. A glyph may enter the schedule only when everything
-it depends on already exists. Stages, drills and coverage numbers are then
-*computed* from the graph, so the documentation can never disagree with the
-data.
+it depends on already exists. Each glyph's stage is scheduled by hand in the
+model and *validated* against the graph; drills, glyph lists and coverage
+numbers are then computed from it, so the documentation can never disagree
+with the data.
 
 This is **orthogonal to the lanka-glyphsets levels** (`glyphsets/*.yaml`):
 levels define *what a font must contain*; these stages define *in what order
@@ -20,40 +21,10 @@ covered.
 
 | File | Role |
 |---|---|
-| `sinhala-design-dependencies.yaml` | **Source of truth.** The whole model: metrics, skeletons, elements, spacing classes, mark systems, stages, every glyph with its parents and schedule, AI guidance, open gaps. |
+| [`../model/sinhala-design-dependencies.yaml`](../model/sinhala-design-dependencies.yaml) | **Source of truth** (lives in `model/`; this folder only renders it). The whole model: metrics, skeletons, elements, spacing classes, mark systems, stages, every glyph with its parents and schedule, AI guidance, open gaps. |
 | `build.js` | Validator + generator. Checks the graph, validates/generates test texts, writes `index.html` and `stages.json`. |
 | `index.html` | **Generated** visual explainer (Abhaya Libre). Never hand-edit. Three tabs: *Model & stages*; *Design units* — a searchable card per unit (construction, parents/children, skeleton, elements, metrics, spacing, family members by stage, checks); link a unit with `#u-<id>`; and *Glyph lists & texts* — per stage, copyable glyph names (new and cumulative, taken from the `tools/glyphs-filters` Stages catalogue so they match the sidebar filters) and the cumulative test text; link a stage with `#l-<n>`. |
 | `stages.json` | **Generated** machine view for other tools (chart tool, test-string generators, AI agents). |
-| `extract-noto.js` | Mines `docs/NotoSansSinhala.glyphspackage` for its OT classes and substitution behaviour; writes `docs/sinhala.min.yaml` and prints a diff against the model. |
-| `docs/` | `sinhala-anatomy.md` (letterform vocabulary) and the **generated** `sinhala.min.yaml`. `extract-noto.js` also expects the Noto Sans Sinhala Glyphs package here; it is gitignored, so copy it in from [notofonts/sinhala](https://github.com/notofonts/sinhala) before running the extractor. (The WIP shape taxonomy `sinhala-shape-groups.yaml` and the draft `font-developemnt-stages.md` were absorbed into the model and removed — git history only.) |
-
-## Completing the taxonomy against a production font
-
-The WIP taxonomy files in `docs/` are intentionally incomplete. Instead of
-completing them by intuition, mine a highly optimised production font and
-diff its behaviour against the model:
-
-```sh
-node extract-noto.js   # regenerates docs/sinhala.min.yaml + prints the diff
-```
-
-Noto processes every mark through a **three-tier system** — default mark
-form, contextual alternate (per class), or a fully fused ligature glyph —
-and its classes map almost one-to-one onto this model's form families
-(`iVowelAlt3` = කි family, `iVowelAlt6` = ලි family, …). Findings already
-folded back into the model this way:
-
-- The ් (virama) system has **four forms**: the default *kodiya* flag, the
-  *rahena* wrap fused over top-terminal bases (ට ඩ ඬ ච ධ ඛ බ ම ඹ ව ඣ ඞ),
-  a trap-top alternate (ඨ ඪ ථ ඵ) and a ja-shape alternate (ඡ ජ ඦ).
-- The formerly "unassigned" ි hosts (ම ය ව බ ඛ ධ ණ …) are fused
-  top-terminal wrap hosts — now `fam-i-term`.
-- Noto reuses the ැ glyph for රු, and fuses ලු ඳු ඤු ඥු beyond our current
-  ු families — recorded in `gaps` pending a design decision.
-
-The workflow generalises: drop another well-made font's Glyphs package into
-`docs/`, point the extractor at it, and every disagreement becomes a listed
-decision instead of an unnoticed hole.
 
 ## Workflow
 
@@ -137,17 +108,21 @@ build a font stage-by-stage from these two files without reading this README.
 
 ## Sources and provenance
 
-Supersedes an early draft staging (`docs/font-developemnt-stages.md`, stages
+Supersedes an early draft staging (`font-developemnt-stages.md`, stages
 1–4 only; removed 2026-10-18 — git history only), using:
 
-- `docs/sinhala-shape-groups.yaml` — shape taxonomy
+- `sinhala-shape-groups.yaml` — shape taxonomy
   (primary shape groups, elements, side-similarity families, ligature
   families, mark positions, density). Fully absorbed into the model
   (`skeletons`, `elements`, `spacing_classes`, `mark_systems`, `density`)
   and removed 2026-07-20; git history only.
-- [`docs/sinhala-anatomy.md`](docs/sinhala-anatomy.md) — anatomical
+- [`model/sinhala-anatomy.md`](../model/sinhala-anatomy.md) — anatomical
   vocabulary (akshi, pāsha, grantika, …), mapped to the model's metrics,
   skeletons and elements, plus per-group design notes
+- Noto Sans Sinhala ([notofonts/sinhala](https://github.com/notofonts/sinhala))
+  — production reference. Its OpenType mark behaviour (the three-tier
+  default / contextual-alternate / fused system) was mined once to resolve the
+  ් and ි taxonomy gaps; the findings live in `mark_systems` and `gaps`.
 - `glyphsets/sinhala-*.yaml` — level inventories, in the
   [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) standard repo
 - Research by Pushpananda Ekanayake and Pathum Egodawatta
@@ -171,9 +146,9 @@ taxonomy gap stays visible until it is resolved (currently none).
   as the Stage 8 completion-sweep gate; its planned shape-group filters share
   the same taxonomy.
 - [`tools/composite-map/`](../tools/composite-map/) — reads
-  `sinhala-design-dependencies.yaml` directly as its `family_model` to decide
+  `model/sinhala-design-dependencies.yaml` directly as its `family_model` to decide
   which consonant+mark forms are genuinely compositional vs. fused/kept-drawn;
-  writes `sinhala-composites.yaml` (repo root).
+  writes `model/sinhala-composites.yaml`.
 - `tools/feature-generator/`, in the
   [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) repo —
   OpenType feature generation for the Stage 9 conjunct layer.

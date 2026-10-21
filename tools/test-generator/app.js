@@ -15,7 +15,7 @@
   var TG = window.TextGen;
   var EX = window.Extras;
   var DATA = "data/";
-  var STAGES = "../../sinhala-design-stages/stages.json";
+  var STAGES = "../design-stages/stages.json";
   var STORE_KEY = "test-generator:v2";
   var DEFAULT_SET = "සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි පට පස ටුසු ඩුසු පුසු වට එය පය සුව";
 

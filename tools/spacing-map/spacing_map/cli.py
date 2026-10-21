@@ -1,6 +1,6 @@
 """spacing-map — build and apply the Sinhala spacing scheme.
 
-The scheme (sinhala-spacing.yaml, repo root) maps every glyph's left/right
+The scheme (model/sinhala-spacing.yaml) maps every glyph's left/right
 sidebearing to a spacing class: the class `rep` sets the sidebearing, members
 inherit it, and `value` records the class target as a multiple of the font's
 spacing_unit metric. Relationships come from the design-stages model;
@@ -27,7 +27,7 @@ import yaml
 from . import audit as audit_mod
 from . import jsexport, mapbuild, model, pluginbuild
 
-DEFAULT_MAP_YAML = model.REPO_ROOT / "sinhala-spacing.yaml"
+DEFAULT_MAP_YAML = model.REPO_ROOT / "model" / "sinhala-spacing.yaml"
 DEFAULT_JS = model.REPO_ROOT / "tools" / "_generated" / "sinhala-spacing.js"
 
 

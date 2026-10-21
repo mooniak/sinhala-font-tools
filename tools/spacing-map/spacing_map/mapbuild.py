@@ -13,7 +13,7 @@ until authored in the workbench or by hand.
 """
 from .model import SIDES, SPACING_CARRIER_TYPES
 
-MODEL_RELPATH = "sinhala-design-stages/sinhala-design-dependencies.yaml"
+MODEL_RELPATH = "model/sinhala-design-dependencies.yaml"
 UNIT_DEFINING_REP = "ට"
 
 # class-entry keys owned by the builder; anything else in an existing entry

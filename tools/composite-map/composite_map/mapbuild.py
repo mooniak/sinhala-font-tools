@@ -144,7 +144,7 @@ def build_map(inventory_path, anchor_path, classification):
     meta = {
         "inventory_reference": Path(inventory_path).name,
         "anchor_reference": Path(anchor_path).name,
-        "family_model": "sinhala-design-stages/sinhala-design-dependencies.yaml",
+        "family_model": "model/sinhala-design-dependencies.yaml",
         "counts": {
             "composites": len(composites),
             "by_tier": dict(sorted(Counter(v["tier"] for v in composites.values()).items())),

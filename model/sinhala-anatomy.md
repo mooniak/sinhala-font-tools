@@ -2,7 +2,7 @@
 
 The vocabulary this repo uses for the parts of Sinhala letterforms: what each
 part is called, what it looks like, and where it shows up in the
-[design-stages model](../sinhala-design-dependencies.yaml).
+[design-stages model](sinhala-design-dependencies.yaml).
 
 The model's `elements` block points here through its `anatomy:` field. Terms
 used in the model's `ai.construction` and `ai.checks` notes (akshi, grantika,
@@ -16,7 +16,7 @@ pāsha …) are defined below.
   added. Romanisations follow the source. Where the source spelling looks
   garbled, the normalised form is shown with the source spelling in a note.
 - **Design notes** (§5): from
-  [`resources/sinhala-anatomy-notes.pdf`](../../resources/sinhala-anatomy-notes.pdf),
+  [`resources/sinhala-anatomy-notes.pdf`](../resources/sinhala-anatomy-notes.pdf),
   a set of annotated drawings of Sinhala letter groups.
 - **Model mapping**: the right-hand columns show where a term is used in
   `sinhala-design-dependencies.yaml`. A blank cell means the model does not
@@ -93,7 +93,7 @@ How strokes meet and end.
 
 ## 5. Design notes by letter group
 
-From [`resources/sinhala-anatomy-notes.pdf`](../../resources/sinhala-anatomy-notes.pdf).
+From [`resources/sinhala-anatomy-notes.pdf`](../resources/sinhala-anatomy-notes.pdf).
 The groups in the notes match the model's skeletons closely; the model column
 shows which one.
 

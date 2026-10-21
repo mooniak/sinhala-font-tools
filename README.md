@@ -31,23 +31,26 @@ here disagrees with lanka-glyphsets, lanka-glyphsets wins.
 
 ### Models (the design data)
 
-- **[sinhala-design-stages/](sinhala-design-stages/)** — a dependency-based
+All three live in [model/](model/); see [model/README.md](model/README.md).
+
+- **[model/sinhala-design-dependencies.yaml](model/sinhala-design-dependencies.yaml)** — a dependency-based
   development model. Every design *decision* (a metric, a skeleton, a spacing
   class, a mark-join convention) is introduced once by one glyph and inherited
-  by every glyph that depends on it; stages, drills and coverage are computed
-  from the graph. Orthogonal to lanka-glyphsets levels: levels say *what* a
-  font must contain, stages say *in what order to draw it*.
-- **[sinhala-spacing.yaml](sinhala-spacing.yaml)** — the spacing scheme:
+  by every glyph that depends on it; stages are scheduled by hand and
+  validated against that graph, and drills and coverage are computed from it. Orthogonal to lanka-glyphsets levels: levels say *what* a
+  font must contain, stages say *in what order to draw it*. Rendered as a
+  visual explainer by [tools/design-stages/](tools/design-stages/).
+- **[model/sinhala-spacing.yaml](model/sinhala-spacing.yaml)** — the spacing scheme:
   sidebearing relationships derived from the stages model, applied to sources
   as Glyphs metrics keys.
-- **[sinhala-composites.yaml](sinhala-composites.yaml)** — which glyphs should
+- **[model/sinhala-composites.yaml](model/sinhala-composites.yaml)** — which glyphs should
   be assembled from components rather than drawn as merged outlines.
 
 ### Tools
 
 - **[tools/glyph-chart/](tools/glyph-chart/)** — browser font tester: a grid of
   base letters × vowel marks/compound signs. Drop in a `.ttf`/`.otf`/`.woff`.
-- **[tools/spacing-map/](tools/spacing-map/)** — builds `sinhala-spacing.yaml`
+- **[tools/spacing-map/](tools/spacing-map/)** — builds `model/sinhala-spacing.yaml`
   from the stages model and audits a font's sidebearings against it (writing
   metrics keys into `.glyphspackage` sources is on its roadmap).
 - **[tools/composite-map/](tools/composite-map/)** — builds the composite map
@@ -97,7 +100,7 @@ here disagrees with lanka-glyphsets, lanka-glyphsets wins.
 Most of the browser tools are static — open the `index.html` and drop a font in,
 no build step. The Python tools (`spacing-map`, `composite-map`) each have their
 own README with setup instructions. `tools/glyphs-filters` reuses `js-yaml` from
-`sinhala-design-stages/node_modules`.
+`tools/design-stages/node_modules`.
 
 All the browser tools share one black-and-white palette,
 [`tools/_shared/bw.css`](tools/_shared/bw.css). Use its tokens rather than
@@ -106,7 +109,7 @@ colours: show differences with fill, weight and solid/dashed borders, not hue.
 If you are **starting a Sinhala font**, the order is roughly:
 
 1. Pick a target level in [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) — that's your inventory and your glyph names.
-2. Design in the order given by [sinhala-design-stages/](sinhala-design-stages/), using the Glyphs filters in [filters/](filters/) to see what should exist by now.
+2. Design in the order given by [tools/design-stages/](tools/design-stages/), using the Glyphs filters in [filters/](filters/) to see what should exist by now.
 3. Apply spacing and composites with the tools above.
 4. Generate features and validate with lanka-glyphsets (`mnik-lankafea`).
 5. Build, QA, proof and release with [`mnik`](https://github.com/mooniak/mooniak-font-tools).
@@ -123,7 +126,6 @@ Some vendored and reference content carries its own licence instead:
 | [`test-texts/libreoffice-ui-strings.md`](test-texts/libreoffice-ui-strings.md) | Extracted from LibreOffice's Sinhala `.po` files; frontmatter says CC-BY-SA-4.0, but upstream LibreOffice is MPL-2.0 — confirm before reuse |
 | [`resources/Hodipotha-9.ttf`](resources/Hodipotha-9.ttf) | © ICTA 2014, CC BY-ND 4.0 — see [`resources/README.md`](resources/README.md) |
 | [`resources/sinhala-frequency-analysis/sinhala/Corpus/`](resources/sinhala-frequency-analysis/) | Sinhala newspaper text (e.g. Silumina, ANCL, 2004); no licence recorded — check redistribution terms before reuse |
-| [`sinhala-design-stages/docs/sinhala.min.yaml`](sinhala-design-stages/docs/sinhala.min.yaml) | Extracted from Noto Sans Sinhala (OFL-1.1); regenerated locally, not vendored |
 | [`tools/_generated/lanka-glyph-data.js`](tools/_generated/), [`shaping-exceptions.js`](tools/_generated/), [`tools/glyphname-unicode-converter/`](tools/glyphname-unicode-converter/) (`index.html`, `converter.js`, `lankaglyphset-map.js`) | Vendored from [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets); see that repo's licence |
 
 When in doubt about a specific file, check its own header/frontmatter first — it overrides this table.

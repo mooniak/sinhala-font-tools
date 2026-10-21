@@ -6,9 +6,9 @@
     "CustomFilter MNIK Sinhala.plist"
   ],
   "sources": {
-    "model": "sinhala-design-stages/sinhala-design-dependencies.yaml",
-    "spacing": "sinhala-spacing.yaml",
-    "composites": "sinhala-composites.yaml"
+    "model": "model/sinhala-design-dependencies.yaml",
+    "spacing": "model/sinhala-spacing.yaml",
+    "composites": "model/sinhala-composites.yaml"
   },
   "sections": [
     {

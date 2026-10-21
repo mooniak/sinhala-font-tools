@@ -14,7 +14,7 @@ tools/_generated/*.js            ┘                  filters/README.md
 
 ## Usage
 
-No install: it reuses `js-yaml` from `sinhala-design-stages/node_modules`.
+No install: it reuses `js-yaml` from `tools/design-stages/node_modules`.
 
 ```sh
 node tools/glyphs-filters/build.js               # filters/CustomFilter MNIK Sinhala.plist

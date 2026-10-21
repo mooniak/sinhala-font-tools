@@ -19,7 +19,7 @@ from pathlib import Path
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_MODEL = REPO_ROOT / "sinhala-design-stages" / "sinhala-design-dependencies.yaml"
+DEFAULT_MODEL = REPO_ROOT / "model" / "sinhala-design-dependencies.yaml"
 
 SIDES = ("right", "left")
 

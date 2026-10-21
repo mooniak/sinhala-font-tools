@@ -1,7 +1,7 @@
 """Noto's three-tier ිී (ispilla) i-vowel system, mined from the anchor reference.
 
 `ි`/`ී` are not one shape: Noto Sans Sinhala processes them through three tiers
-(docs/sinhala.min.yaml `reading`):
+(see `mark_systems.ispilla` in model/sinhala-design-dependencies.yaml):
 
   fused     — a precomposed ligature glyph exists (khI-sinh, yI-sinh, ttI-sinh …);
               the i-vowel is drawn into the base. Stays drawn.

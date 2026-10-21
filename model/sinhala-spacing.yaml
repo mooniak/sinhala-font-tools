@@ -1,7 +1,7 @@
 meta:
   version: 1
   generated_by: tools/spacing-map (python -m spacing_map build-map)
-  model: sinhala-design-stages/sinhala-design-dependencies.yaml
+  model: model/sinhala-design-dependencies.yaml
   model_version: 0.2.0
   unit: spacing_unit
   description: 'Sinhala spacing scheme. Each class: `rep` sets the sidebearing, `members` inherit it (applied

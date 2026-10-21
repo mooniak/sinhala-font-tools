@@ -18,7 +18,7 @@ are only apparently compositional** from the design-stages form-family model, so
 it never claims a false decomposition.
 
 Mark attachment is not uniform (see
-[`sinhala-design-stages`](../../sinhala-design-stages/) `mark_systems`):
+[`design-stages`](../design-stages/) `mark_systems`):
 
 | mark | composable? |
 |------|-------------|
@@ -50,7 +50,7 @@ two references.
 
 ## Outputs
 
-- **`sinhala-composites.yaml`** (repo root) — hand-editable source of truth.
+- **`model/sinhala-composites.yaml`** — hand-editable source of truth.
   Sections: `atoms`, `anchors`, `composites` (with confidence `tier`), `review`
   (sign forms on conjunct bases the family model does not cover — a best-effort
   guess is attached for a human to confirm), and `keep_drawn` (name → reason:
@@ -78,7 +78,7 @@ than corrupting them. `atoms.ispilla_alternates` lists the i-sign inventory a
 target needs to rebuild them.
 
 The composable-vs-drawn decision is read from the design-stages form-family
-model (`sinhala-design-stages/sinhala-design-dependencies.yaml`) plus the
+model (`model/sinhala-design-dependencies.yaml`) plus the
 rakaransaya/repaya exceptions in `tools/_generated/shaping-exceptions.js`, so
 the map tracks the taxonomy instead of guessing from names.
 
@@ -162,7 +162,7 @@ glyphs-plugin/    the Sinhala Glyph Builder Glyphs 3 plugin
 ## The glyph catalogue
 
 `glyph-catalogue/build.js` (Node, no install — it reuses `js-yaml` from
-`sinhala-design-stages`) writes `tools/_generated/sinhala-glyph-catalogue.json`:
+`design-stages`) writes `tools/_generated/sinhala-glyph-catalogue.json`:
 every glyph of the design stages, every grapheme attested in the corpus
 (`tools/test-generator/data`), the map's composites / keep-drawn / review
 glyphs and the sign variants — 1 292 glyphs. Per glyph it records the

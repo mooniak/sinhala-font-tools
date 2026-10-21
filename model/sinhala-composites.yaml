@@ -1,7 +1,7 @@
 meta:
   inventory_reference: AbhayaLibre.glyphspackage
   anchor_reference: NotoSansSinhala.glyphspackage
-  family_model: sinhala-design-stages/sinhala-design-dependencies.yaml
+  family_model: model/sinhala-design-dependencies.yaml
   counts:
     composites: 300
     by_tier:

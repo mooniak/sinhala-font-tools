@@ -21,7 +21,7 @@ let yaml;
 try {
   yaml = require('js-yaml');
 } catch (e) {
-  yaml = require(path.join(REPO, 'sinhala-design-stages/node_modules/js-yaml'));
+  yaml = require(path.join(REPO, 'tools/design-stages/node_modules/js-yaml'));
 }
 
 const LGS = require(path.join(REPO, 'tools/glyphname-unicode-converter/lankaglyphset-map.js'));
@@ -29,9 +29,9 @@ const SHAPING = require(path.join(REPO, 'tools/_generated/shaping-exceptions.js'
 const LANKA = require(path.join(REPO, 'tools/_generated/lanka-glyph-data.js'));
 
 const PATHS = {
-  model: path.join(REPO, 'sinhala-design-stages/sinhala-design-dependencies.yaml'),
-  spacing: path.join(REPO, 'sinhala-spacing.yaml'),
-  composites: path.join(REPO, 'sinhala-composites.yaml'),
+  model: path.join(REPO, 'model/sinhala-design-dependencies.yaml'),
+  spacing: path.join(REPO, 'model/sinhala-spacing.yaml'),
+  composites: path.join(REPO, 'model/sinhala-composites.yaml'),
 };
 
 const loadYaml = p => yaml.load(fs.readFileSync(p, 'utf8'));

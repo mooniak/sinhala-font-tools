@@ -2,8 +2,8 @@
  "generated_by": "tools/composite-map/glyph-catalogue/build.js",
  "model_version": "0.2.0",
  "sources": [
-  "sinhala-design-stages/sinhala-design-dependencies.yaml",
-  "sinhala-composites.yaml",
+  "model/sinhala-design-dependencies.yaml",
+  "model/sinhala-composites.yaml",
   "tools/test-generator/data/sentences/index.json",
   "tools/glyphname-unicode-converter/lankaglyphset-map.js"
  ],

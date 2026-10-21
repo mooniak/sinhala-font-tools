@@ -23,7 +23,7 @@
 #                                     removed 2026-07-20 — git history only)
 #   docs/font-developemnt-stages.md  (draft staging; removed 2026-10-18 —
 #                                     git history only)
-#   docs/sinhala-anatomy.md          (anatomy terms)
+#   sinhala-anatomy.md               (anatomy terms; alongside this file)
 # =============================================================================
 
 meta:
@@ -40,8 +40,8 @@ meta:
   sources:
     - "docs/sinhala-shape-groups.yaml — WIP shape taxonomy, fully absorbed into this file (skeletons, elements, spacing_classes, mark_systems, density) and removed 2026-07-20; git history only"
     - "docs/font-developemnt-stages.md — original draft staging (stages 1–4), superseded by this file and removed 2026-10-18; git history only"
-    - "docs/sinhala-anatomy.md — anatomical vocabulary"
-    - "docs/NotoSansSinhala.glyphspackage — production reference; behavioural classes extracted to docs/sinhala.min.yaml via extract-noto.js"
+    - "sinhala-anatomy.md — anatomical vocabulary (alongside this file)"
+    - "Noto Sans Sinhala (github.com/notofonts/sinhala) — production reference; its OT mark behaviour was mined once and the findings folded into mark_systems and gaps"
 
 # -----------------------------------------------------------------------------
 # The model: what counts as a dependency, and the rules of the game.
@@ -258,7 +258,7 @@ mark_systems:
       The formerly-unassigned hosts (ම ය ව බ ඛ ධ ණ …) are FUSED-ligature
       hosts in Noto Sans Sinhala (mI-sinh, yI-sinh …): bases whose top
       terminal forces the ි loop to wrap, the same top-terminal logic as the
-      rahena ් form. Modeled as fam-i-term. See docs/sinhala.min.yaml.
+      rahena ් form. Modeled as fam-i-term.
   papilla:
     mark: ු
     long: ූ
@@ -275,7 +275,7 @@ mark_systems:
     mark: ්
     note: >
       FOUR forms (designer terminology + confirmed by Noto Sans Sinhala's OT
-      behaviour, docs/sinhala.min.yaml): the default KODIYA flag
+      behaviour): the default KODIYA flag
       (ක්), introduced with ් in Stage 3; the RAHENA wrap for bases with a
       TOP TERMINAL (ට ඩ ඬ ච ධ ඛ බ ම ඹ ව ඣ ඞ — fused as one glyph; entry
       hal-rahena); the trap-top alternate (ඨ ඪ ථ ඵ — entry hal-trap); and

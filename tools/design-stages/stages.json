@@ -17,8 +17,8 @@
     "sources": [
       "docs/sinhala-shape-groups.yaml — WIP shape taxonomy, fully absorbed into this file (skeletons, elements, spacing_classes, mark_systems, density) and removed 2026-07-20; git history only",
       "docs/font-developemnt-stages.md — original draft staging (stages 1–4), superseded by this file and removed 2026-10-18; git history only",
-      "docs/sinhala-anatomy.md — anatomical vocabulary",
-      "docs/NotoSansSinhala.glyphspackage — production reference; behavioural classes extracted to docs/sinhala.min.yaml via extract-noto.js"
+      "sinhala-anatomy.md — anatomical vocabulary (alongside this file)",
+      "Noto Sans Sinhala (github.com/notofonts/sinhala) — production reference; its OT mark behaviour was mined once and the findings folded into mark_systems and gaps"
     ]
   },
   "stages": [

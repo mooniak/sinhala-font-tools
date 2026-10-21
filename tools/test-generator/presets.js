@@ -1,6 +1,6 @@
 /*
  * presets.js — grapheme sets for "what a font has reached" by a design stage or
- * a glyphset level, read from sinhala-design-stages/stages.json.
+ * a glyphset level, read from tools/design-stages/stages.json.
  *
  *   Presets.build(stagesJson) -> {
  *     stages: [{ n, name, items }],       // cumulative: everything up to stage n

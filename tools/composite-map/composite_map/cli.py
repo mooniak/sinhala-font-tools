@@ -24,7 +24,7 @@ from .lanka_data import REPO_ROOT, load_classification
 MOONIAK = REPO_ROOT.parent
 DEFAULT_INVENTORY = MOONIAK / "font-repos/abhaya-libre-font/sources/AbhayaLibre.glyphspackage"
 DEFAULT_ANCHOR = MOONIAK / "font-repos/noto-sans-sinhala/sources/NotoSansSinhala.glyphspackage"
-DEFAULT_MAP_YAML = REPO_ROOT / "sinhala-composites.yaml"
+DEFAULT_MAP_YAML = REPO_ROOT / "model" / "sinhala-composites.yaml"
 DEFAULT_JS_OUT = REPO_ROOT / "tools/_generated/sinhala-composites.js"
 
 

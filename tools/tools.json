@@ -9,7 +9,7 @@
   "tools": [
     { "id": "design-stages", "group": "model", "type": "web", "title": "Design stages",
       "desc": "Dependency-based development model: what to draw, in what order.",
-      "path": "sinhala-design-stages/index.html", "readme": "sinhala-design-stages/README.md" },
+      "path": "tools/design-stages/index.html", "readme": "tools/design-stages/README.md" },
     { "id": "glyph-chart", "group": "analyse", "type": "web", "title": "Glyph chart",
       "desc": "Font tester: base letters × vowel marks and compound signs.",
       "path": "tools/glyph-chart/index.html", "readme": "tools/glyph-chart/README.md" },

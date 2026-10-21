@@ -9,7 +9,7 @@
     "meta": {
       "version": 1,
       "generated_by": "tools/spacing-map (python -m spacing_map build-map)",
-      "model": "sinhala-design-stages/sinhala-design-dependencies.yaml",
+      "model": "model/sinhala-design-dependencies.yaml",
       "model_version": "0.2.0",
       "unit": "spacing_unit",
       "description": "Sinhala spacing scheme. Each class: `rep` sets the sidebearing, `members` inherit it (applied as Glyphs metrics keys), `value` is the rep's sidebearing target as a multiple of the font's spacing_unit metric (null = not yet authored). `forms` are the fused form-family glyphs (ටි ම් කු …): each maps to the class whose rep it copies per side — per-form override > family form_spacing > inherited from its host. `flags` collect the model's provisional spacing_note markers awaiting the designer. `nonspacing` combining marks carry no sidebearings. Relationships are rebuilt from the model; values/notes/exceptions survive rebuilds.",

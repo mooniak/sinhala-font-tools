@@ -1025,7 +1025,7 @@
     var c = computeChanges();
     var L = [
       "# Spacing workbench — relationship edits, " + today() + ".",
-      "# Port these into sinhala-design-stages/sinhala-design-dependencies.yaml, then",
+      "# Port these into model/sinhala-design-dependencies.yaml, then",
       "# run `python -m spacing_map build-map`. Until then build-map reverts them in",
       "# sinhala-spacing.yaml.",
       "",

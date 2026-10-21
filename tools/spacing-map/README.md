@@ -4,7 +4,7 @@ Builds and applies the Sinhala **spacing scheme**: a YAML map of sidebearing
 relationships derived from the design-stages model, ultimately written into
 `.glyphspackage` sources as Glyphs metrics keys.
 
-The model (`sinhala-design-stages/sinhala-design-dependencies.yaml`) already
+The model (`model/sinhala-design-dependencies.yaml`) already
 treats spacing as inheritance — the first-designed member of a spacing class
 (its `rep`) sets the sidebearing, every later member inherits it. This tool
 makes that operational:
@@ -27,7 +27,7 @@ python3 -m venv venv
 ## Usage
 
 ```sh
-# seed or refresh ../../sinhala-spacing.yaml from the design-stages model
+# seed or refresh ../../model/sinhala-spacing.yaml from the design-stages model
 ./venv/bin/python -m spacing_map build-map
 
 # validate + preview the diff without writing
@@ -44,7 +44,7 @@ python3 -m venv venv
     --master Regular --emit-values values-fontname.yaml
 ```
 
-## The scheme file (`sinhala-spacing.yaml`, repo root)
+## The scheme file (`model/sinhala-spacing.yaml`)
 
 ```yaml
 meta:        # generator info, model version, counts

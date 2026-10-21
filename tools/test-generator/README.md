@@ -27,7 +27,7 @@ preview the output in it. Dropping or loading a `.txt` / `.md` replaces only the
 ## Grapheme set
 
 Type glyph names, Sinhala text, or both — or start from a **preset**: what a font
-has reached by a design stage 1–10 ([sinhala-design-stages](../../sinhala-design-stages/),
+has reached by a design stage 1–10 ([design-stages](../design-stages/),
 cumulative) or by glyphset level Kernel / Core. Presets list letters and signs and
 turn on *also build from parts*.
 

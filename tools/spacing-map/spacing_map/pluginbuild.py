@@ -18,7 +18,7 @@ import yaml
 
 from . import names
 
-COMPOSITES_YAML = names.REPO_ROOT / "sinhala-composites.yaml"
+COMPOSITES_YAML = names.REPO_ROOT / "model" / "sinhala-composites.yaml"
 
 PLUGIN = Path(__file__).resolve().parents[1] / "glyphs-plugin" / "SinhalaSpacing.glyphsPlugin"
 CORE = PLUGIN / "Contents" / "Resources" / "sinhala_spacing"

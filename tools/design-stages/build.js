@@ -17,7 +17,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const HERE = __dirname;
-const SRC = path.join(HERE, 'sinhala-design-dependencies.yaml');
+const SRC = path.join(HERE, '..', '..', 'model', 'sinhala-design-dependencies.yaml');
 const OUT_HTML = path.join(HERE, 'index.html');
 const OUT_JSON = path.join(HERE, 'stages.json');
 
@@ -500,7 +500,7 @@ const unitsByStage = data.stages.map(s => {
 // Names come from the glyphs-filters Stages catalogue — the same derivation
 // and naming authority as the Glyphs sidebar filters, so the two never drift.
 // ---------------------------------------------------------------------------
-const stageFilters = require(path.join(HERE, '../tools/glyphs-filters/catalogue'))
+const stageFilters = require(path.join(HERE, '..', 'glyphs-filters', 'catalogue'))
   .sections.find(s => s.id === 'Stages').filters;
 const namesFor = prefix => new Map(stageFilters
   .filter(f => f.name.startsWith(prefix))
@@ -545,9 +545,9 @@ const html = `<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tools/_shared/bw.css">
+<link rel="stylesheet" href="../_shared/bw.css">
 <style>
-/* Black-and-white palette: tokens from ../tools/_shared/bw.css. */
+/* Black-and-white palette: tokens from ../_shared/bw.css. */
 :root{
   --panel:var(--bg); --ink:var(--fg); --dim:var(--muted);
   --chip:var(--soft); --accent:var(--fg); --accent2:var(--fg); --metric:var(--fg);

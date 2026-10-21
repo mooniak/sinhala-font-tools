@@ -30,7 +30,7 @@ const REPO = path.resolve(__dirname, "../..");
 const opt = {
   out: path.join(REPO, "test-texts/generated"),
   data: path.join(__dirname, "data"),
-  stages: path.join(REPO, "sinhala-design-stages/stages.json"),
+  stages: path.join(REPO, "tools/design-stages/stages.json"),
   seed: 1,
 };
 for (let i = 2; i < process.argv.length; i++) {

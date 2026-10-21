@@ -422,8 +422,8 @@ const catalogue = {
   generated_by: 'tools/composite-map/glyph-catalogue/build.js',
   model_version: model.meta && model.meta.version,
   sources: [
-    'sinhala-design-stages/sinhala-design-dependencies.yaml',
-    'sinhala-composites.yaml',
+    'model/sinhala-design-dependencies.yaml',
+    'model/sinhala-composites.yaml',
     'tools/test-generator/data/sentences/index.json',
     'tools/glyphname-unicode-converter/lankaglyphset-map.js',
   ],

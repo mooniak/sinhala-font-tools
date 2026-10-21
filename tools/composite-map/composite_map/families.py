@@ -2,7 +2,7 @@
 simple composites.
 
 Loaded from the design-stages source of truth
-(`sinhala-design-stages/sinhala-design-dependencies.yaml`) so this tool stays in
+(`model/sinhala-design-dependencies.yaml`) so this tool stays in
 sync with the taxonomy instead of hardcoding it. Sinhala mark attachment is not
 uniform:
 
@@ -29,7 +29,7 @@ from pathlib import Path
 
 from .lanka_data import REPO_ROOT, load_letters
 
-DESIGN_DEPS_YAML = REPO_ROOT / "sinhala-design-stages" / "sinhala-design-dependencies.yaml"
+DESIGN_DEPS_YAML = REPO_ROOT / "model" / "sinhala-design-dependencies.yaml"
 SHAPING_EXCEPTIONS_JS = REPO_ROOT / "tools" / "_generated" / "shaping-exceptions.js"
 
 # Sinhala letters present in the design taxonomy but not in the lanka letters

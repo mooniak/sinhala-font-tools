@@ -26,7 +26,7 @@ test("generated test texts: inside each preset's set, clean, deterministic", { s
   assert.ok(files.includes("stages.md") && files.includes("levels.md") && files.includes("targeted-rakar.md"));
   files.forEach((f) => assert.strictEqual(fs.readFileSync(path.join(a, f), "utf8"), fs.readFileSync(path.join(b, f), "utf8"), f + " differs between runs"));
 
-  const presets = Presets.build(JSON.parse(fs.readFileSync(path.join(ROOT, "../../sinhala-design-stages/stages.json"), "utf8")));
+  const presets = Presets.build(JSON.parse(fs.readFileSync(path.join(ROOT, "../design-stages/stages.json"), "utf8")));
   const check = (file, heading, items) => {
     const body = fs.readFileSync(path.join(a, file), "utf8");
     const start = body.indexOf("## " + heading);
