@@ -1,0 +1,2742 @@
+{
+ "meta": {
+  "inventory_reference": "AbhayaLibre.glyphspackage",
+  "anchor_reference": "NotoSansSinhala.glyphspackage",
+  "family_model": "sinhala-design-stages/sinhala-design-dependencies.yaml",
+  "counts": {
+   "composites": 300,
+   "by_tier": {
+    "0": 14,
+    "1": 105,
+    "2": 57,
+    "3": 124
+   },
+   "review": 89,
+   "keep_drawn": 171,
+   "keep_drawn_by_reason": {
+    "du-form": 2,
+    "hal-ja": 3,
+    "hal-rahena": 12,
+    "hal-trap": 4,
+    "irreducible": 80,
+    "ispilla-fused": 46,
+    "llu-form": 2,
+    "ra-forms": 3,
+    "rakaransaya-exception": 4,
+    "repaya-exception": 3,
+    "u-special": 12
+   }
+  }
+ },
+ "sign_variants": {
+  "rasign-sinh.alone": {
+   "sign": "rasign-sinh",
+   "slot": "alone",
+   "noto": "rasign-sinh.alone"
+  },
+  "rasign-sinh.long": {
+   "sign": "rasign-sinh",
+   "slot": "long",
+   "noto": "rasign-sinh.alt3"
+  },
+  "rasign-sinh.medium": {
+   "sign": "rasign-sinh",
+   "slot": "medium",
+   "noto": "rasign-sinh.alt2"
+  },
+  "rasign-sinh.pa": {
+   "sign": "rasign-sinh",
+   "slot": "pa",
+   "noto": "rasign-sinh.alt1"
+  },
+  "rasign-sinh.short": {
+   "sign": "rasign-sinh",
+   "slot": "short",
+   "noto": "rasign-sinh.alt4"
+  },
+  "usign-sinh.long": {
+   "sign": "usign-sinh",
+   "slot": "long",
+   "noto": "usign-sinh.alt3"
+  },
+  "usign-sinh.medium": {
+   "sign": "usign-sinh",
+   "slot": "medium",
+   "noto": "usign-sinh.alt2"
+  },
+  "usign-sinh.tta": {
+   "sign": "usign-sinh",
+   "slot": "tta",
+   "noto": "usign-sinh.alt1"
+  },
+  "uusign-sinh.long": {
+   "sign": "uusign-sinh",
+   "slot": "long",
+   "noto": "uusign-sinh.alt3"
+  },
+  "uusign-sinh.medium": {
+   "sign": "uusign-sinh",
+   "slot": "medium",
+   "noto": "uusign-sinh.alt2"
+  },
+  "uusign-sinh.tta": {
+   "sign": "uusign-sinh",
+   "slot": "tta",
+   "noto": "uusign-sinh.alt1"
+  }
+ },
+ "spacing_signs": [
+  "aaesign",
+  "aasign",
+  "aesign",
+  "aisign",
+  "anusvaraya",
+  "ausign",
+  "eesign",
+  "esign",
+  "oosign",
+  "osign",
+  "visargaya",
+  "vocalicllsign",
+  "vocaliclsign",
+  "vocalicrrsign",
+  "vocalicrsign"
+ ],
+ "prebase_signs": [
+  "aisign",
+  "esign"
+ ],
+ "composites": {
+  "aa-sinh": {
+   "components": [
+    "a-sinh",
+    "aasign-sinh"
+   ],
+   "tier": 0
+  },
+  "aae-sinh": {
+   "components": [
+    "a-sinh",
+    "aaesign-sinh"
+   ],
+   "tier": 0
+  },
+  "aasign_virama-sinh": {
+   "components": [
+    "aasign-sinh",
+    "virama-sinh"
+   ],
+   "tier": 0
+  },
+  "ae-sinh": {
+   "components": [
+    "a-sinh",
+    "aesign-sinh"
+   ],
+   "tier": 0
+  },
+  "anusvarayaShI-sinh": {
+   "components": [
+    "anusvarayaSha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "anusvarayaShIi-sinh": {
+   "components": [
+    "anusvarayaSha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "au-sinh": {
+   "components": [
+    "o-sinh",
+    "vocaliclsign-sinh"
+   ],
+   "tier": 0
+  },
+  "bBI-sinh": {
+   "components": [
+    "bBa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "bBIi-sinh": {
+   "components": [
+    "bBa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "bBa_repha-sinh": {
+   "components": [
+    "bBa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "bRI-sinh": {
+   "components": [
+    "bRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "bRIi-sinh": {
+   "components": [
+    "bRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "bRa-sinh": {
+   "components": [
+    "ba-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "bU-sinh": {
+   "components": [
+    "ba-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "bUu-sinh": {
+   "components": [
+    "ba-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ba_repha-sinh": {
+   "components": [
+    "ba-sinh",
+    "repha-sinh"
+   ],
+   "tier": 0
+  },
+  "bh-sinh": {
+   "components": [
+    "bha-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "bhI-sinh": {
+   "components": [
+    "bha-sinh",
+    "isign-sinh.alt7"
+   ],
+   "tier": 3
+  },
+  "bhIi-sinh": {
+   "components": [
+    "bha-sinh",
+    "iisign-sinh.alt7"
+   ],
+   "tier": 3
+  },
+  "bhRI-sinh": {
+   "components": [
+    "bhRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "bhRIi-sinh": {
+   "components": [
+    "bhRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "bhRa-sinh": {
+   "components": [
+    "bha-sinh",
+    "rasign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "bha_repha-sinh": {
+   "components": [
+    "bha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "cCI-sinh": {
+   "components": [
+    "cCa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "cCIi-sinh": {
+   "components": [
+    "cCa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "cCa_repha-sinh": {
+   "components": [
+    "cCa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 0
+  },
+  "cRI-sinh": {
+   "components": [
+    "cRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "cRIi-sinh": {
+   "components": [
+    "cRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "cRa-sinh": {
+   "components": [
+    "ca-sinh",
+    "rasign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "cU-sinh": {
+   "components": [
+    "ca-sinh",
+    "usign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "cUu-sinh": {
+   "components": [
+    "ca-sinh",
+    "uusign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "ca_repha-sinh": {
+   "components": [
+    "ca-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "chI-sinh": {
+   "components": [
+    "cha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "chIi-sinh": {
+   "components": [
+    "cha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "chU-sinh": {
+   "components": [
+    "cha-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "chUu-sinh": {
+   "components": [
+    "cha-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "cha_repha-sinh": {
+   "components": [
+    "cha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "d-sinh": {
+   "components": [
+    "da-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "dDha_repha-sinh": {
+   "components": [
+    "dDha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "dI-sinh": {
+   "components": [
+    "da-sinh",
+    "isign-sinh.alt2"
+   ],
+   "tier": 3
+  },
+  "dIi-sinh": {
+   "components": [
+    "da-sinh",
+    "iisign-sinh.alt2"
+   ],
+   "tier": 3
+  },
+  "dRI-sinh": {
+   "components": [
+    "dRa-sinh",
+    "isign-sinh.alt2"
+   ],
+   "tier": 3
+  },
+  "dRIi-sinh": {
+   "components": [
+    "dRa-sinh",
+    "iisign-sinh.alt2"
+   ],
+   "tier": 3
+  },
+  "dRa-sinh": {
+   "components": [
+    "da-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "dVa_repha-sinh": {
+   "components": [
+    "dVa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "da_repha-sinh": {
+   "components": [
+    "da-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ddRI-sinh": {
+   "components": [
+    "ddRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ddRIi-sinh": {
+   "components": [
+    "ddRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ddRa-sinh": {
+   "components": [
+    "dda-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "ddU-sinh": {
+   "components": [
+    "dda-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ddUu-sinh": {
+   "components": [
+    "dda-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "dda_repha-sinh": {
+   "components": [
+    "dda-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ddhI-sinh": {
+   "components": [
+    "ddha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ddhIi-sinh": {
+   "components": [
+    "ddha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ddhU-sinh": {
+   "components": [
+    "ddha-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ddhUu-sinh": {
+   "components": [
+    "ddha-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ddha_repha-sinh": {
+   "components": [
+    "ddha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "dhRI-sinh": {
+   "components": [
+    "dhRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "dhRIi-sinh": {
+   "components": [
+    "dhRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "dhRa-sinh": {
+   "components": [
+    "dha-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "dhU-sinh": {
+   "components": [
+    "dha-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "dhUu-sinh": {
+   "components": [
+    "dha-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "dha_repha-sinh": {
+   "components": [
+    "dha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "f-sinh": {
+   "components": [
+    "fa-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "f-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "virama-sinh"
+   ],
+   "tier": 2
+  },
+  "fI-sinh": {
+   "components": [
+    "fa-sinh",
+    "isign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "fI-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "isign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "fIi-sinh": {
+   "components": [
+    "fa-sinh",
+    "iisign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "fIi-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "iisign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "fRI-sinh": {
+   "components": [
+    "fRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "fRI-sinh.hist": {
+   "components": [
+    "fRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "fRIi-sinh": {
+   "components": [
+    "fRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "fRIi-sinh.hist": {
+   "components": [
+    "fRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "fRa-sinh": {
+   "components": [
+    "fa-sinh",
+    "rasign-sinh.pa"
+   ],
+   "tier": 1
+  },
+  "fRa-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "rasign-sinh.pa"
+   ],
+   "tier": 2
+  },
+  "fU-sinh": {
+   "components": [
+    "fa-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "fU-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "usign-sinh"
+   ],
+   "tier": 2
+  },
+  "fUu-sinh": {
+   "components": [
+    "fa-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "fUu-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 2
+  },
+  "fa_repha-sinh": {
+   "components": [
+    "fa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "fa_repha-sinh.hist": {
+   "components": [
+    "fa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "g-sinh": {
+   "components": [
+    "ga-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "gDha_repha-sinh": {
+   "components": [
+    "gDha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "gI-sinh": {
+   "components": [
+    "ga-sinh",
+    "isign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "gIi-sinh": {
+   "components": [
+    "ga-sinh",
+    "iisign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "gRI-sinh": {
+   "components": [
+    "gRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "gRIi-sinh": {
+   "components": [
+    "gRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "gRa-sinh": {
+   "components": [
+    "ga-sinh",
+    "rasign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "ga_repha-sinh": {
+   "components": [
+    "ga-sinh",
+    "repha-sinh"
+   ],
+   "tier": 0
+  },
+  "gh-sinh": {
+   "components": [
+    "gha-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "ghI-sinh": {
+   "components": [
+    "gha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ghIi-sinh": {
+   "components": [
+    "gha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ghRI-sinh": {
+   "components": [
+    "ghRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ghRIi-sinh": {
+   "components": [
+    "ghRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ghRa-sinh": {
+   "components": [
+    "gha-sinh",
+    "rasign-sinh.short"
+   ],
+   "tier": 1
+  },
+  "ghU-sinh": {
+   "components": [
+    "gha-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ghUu-sinh": {
+   "components": [
+    "gha-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "gha_repha-sinh": {
+   "components": [
+    "gha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "h-sinh": {
+   "components": [
+    "ha-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "hI-sinh": {
+   "components": [
+    "ha-sinh",
+    "isign-sinh.alt7"
+   ],
+   "tier": 3
+  },
+  "hIi-sinh": {
+   "components": [
+    "ha-sinh",
+    "iisign-sinh.alt7"
+   ],
+   "tier": 3
+  },
+  "hRI-sinh": {
+   "components": [
+    "hRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "hRIi-sinh": {
+   "components": [
+    "hRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "hRa-sinh": {
+   "components": [
+    "ha-sinh",
+    "rasign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "hU-sinh": {
+   "components": [
+    "ha-sinh",
+    "usign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "hUu-sinh": {
+   "components": [
+    "ha-sinh",
+    "uusign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "ha_repha-sinh": {
+   "components": [
+    "ha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "jI-sinh": {
+   "components": [
+    "ja-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "jIi-sinh": {
+   "components": [
+    "ja-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "jRI-sinh": {
+   "components": [
+    "jRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "jRIi-sinh": {
+   "components": [
+    "jRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "jU-sinh": {
+   "components": [
+    "ja-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "jUu-sinh": {
+   "components": [
+    "ja-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "ja_repha-sinh": {
+   "components": [
+    "ja-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "jhRI-sinh": {
+   "components": [
+    "jhRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "jhRIi-sinh": {
+   "components": [
+    "jhRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "jhRa-sinh": {
+   "components": [
+    "jha-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "jhU-sinh": {
+   "components": [
+    "jha-sinh",
+    "usign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "jhUu-sinh": {
+   "components": [
+    "jha-sinh",
+    "uusign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "jha_repha-sinh": {
+   "components": [
+    "jha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "jny-sinh": {
+   "components": [
+    "jnya-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "jnyI-sinh": {
+   "components": [
+    "jnya-sinh",
+    "isign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "jnyIi-sinh": {
+   "components": [
+    "jnya-sinh",
+    "iisign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "jnyRI-sinh": {
+   "components": [
+    "jnyRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "jnyRIi-sinh": {
+   "components": [
+    "jnyRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "jnyU-sinh": {
+   "components": [
+    "jnya-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "jnyUu-sinh": {
+   "components": [
+    "jnya-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "jnya_repha-sinh": {
+   "components": [
+    "jnya-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "k-sinh": {
+   "components": [
+    "ka-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "kI-sinh": {
+   "components": [
+    "ka-sinh",
+    "isign-sinh.alt3"
+   ],
+   "tier": 3
+  },
+  "kIi-sinh": {
+   "components": [
+    "ka-sinh",
+    "iisign-sinh.alt3"
+   ],
+   "tier": 3
+  },
+  "kRI-sinh": {
+   "components": [
+    "kRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "kRIi-sinh": {
+   "components": [
+    "kRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "kRa-sinh": {
+   "components": [
+    "ka-sinh",
+    "rasign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "kSsI-sinh": {
+   "components": [
+    "kSsa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "kSsIi-sinh": {
+   "components": [
+    "kSsa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "kSsa_repha-sinh": {
+   "components": [
+    "kSsa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "kVa_repha-sinh": {
+   "components": [
+    "kVa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ka_repha-sinh": {
+   "components": [
+    "ka-sinh",
+    "repha-sinh"
+   ],
+   "tier": 0
+  },
+  "khRI-sinh": {
+   "components": [
+    "khRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "khRIi-sinh": {
+   "components": [
+    "khRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "khRa-sinh": {
+   "components": [
+    "kha-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "khU-sinh": {
+   "components": [
+    "kha-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "khUu-sinh": {
+   "components": [
+    "kha-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "kha_repha-sinh": {
+   "components": [
+    "kha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 0
+  },
+  "l-sinh": {
+   "components": [
+    "la-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "lI-sinh": {
+   "components": [
+    "la-sinh",
+    "isign-sinh.alt6"
+   ],
+   "tier": 3
+  },
+  "lIi-sinh": {
+   "components": [
+    "la-sinh",
+    "iisign-sinh.alt6"
+   ],
+   "tier": 3
+  },
+  "lU-sinh": {
+   "components": [
+    "la-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "lUu-sinh": {
+   "components": [
+    "la-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "la_repha-sinh": {
+   "components": [
+    "la-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ll-sinh": {
+   "components": [
+    "lla-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "llI-sinh": {
+   "components": [
+    "lla-sinh",
+    "isign-sinh.alt6"
+   ],
+   "tier": 3
+  },
+  "llIi-sinh": {
+   "components": [
+    "lla-sinh",
+    "iisign-sinh.alt6"
+   ],
+   "tier": 3
+  },
+  "lla_repha-sinh": {
+   "components": [
+    "lla-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "mRI-sinh": {
+   "components": [
+    "mRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "mRIi-sinh": {
+   "components": [
+    "mRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "mRa-sinh": {
+   "components": [
+    "ma-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "mU-sinh": {
+   "components": [
+    "ma-sinh",
+    "usign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "mUu-sinh": {
+   "components": [
+    "ma-sinh",
+    "uusign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "ma_repha-sinh": {
+   "components": [
+    "ma-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "mbU-sinh": {
+   "components": [
+    "mba-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "mbUu-sinh": {
+   "components": [
+    "mba-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "mba_repha-sinh": {
+   "components": [
+    "mba-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "n-sinh": {
+   "components": [
+    "na-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "nDI-sinh": {
+   "components": [
+    "nDa-sinh",
+    "isign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "nDIi-sinh": {
+   "components": [
+    "nDa-sinh",
+    "iisign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "nDRI-sinh": {
+   "components": [
+    "nDRa-sinh",
+    "isign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "nDRIi-sinh": {
+   "components": [
+    "nDRa-sinh",
+    "iisign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "nDa_repha-sinh": {
+   "components": [
+    "nDa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nDha_repha-sinh": {
+   "components": [
+    "nDha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nI-sinh": {
+   "components": [
+    "na-sinh",
+    "isign-sinh.alt3"
+   ],
+   "tier": 3
+  },
+  "nIi-sinh": {
+   "components": [
+    "na-sinh",
+    "iisign-sinh.alt3"
+   ],
+   "tier": 3
+  },
+  "nThI-sinh": {
+   "components": [
+    "nTha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "nThIi-sinh": {
+   "components": [
+    "nTha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "nTha_repha-sinh": {
+   "components": [
+    "nTha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nU-sinh": {
+   "components": [
+    "na-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "nUu-sinh": {
+   "components": [
+    "na-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "nVa_repha-sinh": {
+   "components": [
+    "nVa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "na_repha-sinh": {
+   "components": [
+    "na-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nd-sinh": {
+   "components": [
+    "nda-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "ndI-sinh": {
+   "components": [
+    "nda-sinh",
+    "isign-sinh.alt9"
+   ],
+   "tier": 3
+  },
+  "ndIi-sinh": {
+   "components": [
+    "nda-sinh",
+    "iisign-sinh.alt9"
+   ],
+   "tier": 3
+  },
+  "ndU-sinh": {
+   "components": [
+    "nda-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "ndUu-sinh": {
+   "components": [
+    "nda-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "nda_repha-sinh": {
+   "components": [
+    "nda-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nga_repha-sinh": {
+   "components": [
+    "nga-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nn-sinh": {
+   "components": [
+    "nna-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "nnU-sinh": {
+   "components": [
+    "nna-sinh",
+    "usign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "nnUu-sinh": {
+   "components": [
+    "nna-sinh",
+    "uusign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "nna_repha-sinh": {
+   "components": [
+    "nna-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nnddU-sinh": {
+   "components": [
+    "nndda-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "nnddUu-sinh": {
+   "components": [
+    "nndda-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "nng-sinh": {
+   "components": [
+    "nnga-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "nngI-sinh": {
+   "components": [
+    "nnga-sinh",
+    "isign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "nngIi-sinh": {
+   "components": [
+    "nnga-sinh",
+    "iisign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "nnga_repha-sinh": {
+   "components": [
+    "nnga-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ny-sinh": {
+   "components": [
+    "nya-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "nyCa_repha-sinh": {
+   "components": [
+    "nyCa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nyChI-sinh": {
+   "components": [
+    "nyCha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "nyChIi-sinh": {
+   "components": [
+    "nyCha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "nyCha_repha-sinh": {
+   "components": [
+    "nyCha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "nyI-sinh": {
+   "components": [
+    "nya-sinh",
+    "isign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "nyIi-sinh": {
+   "components": [
+    "nya-sinh",
+    "iisign-sinh.alt8"
+   ],
+   "tier": 3
+  },
+  "nyRI-sinh": {
+   "components": [
+    "nyRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "nyRIi-sinh": {
+   "components": [
+    "nyRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "nyU-sinh": {
+   "components": [
+    "nya-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "nyUu-sinh": {
+   "components": [
+    "nya-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "nyjI-sinh": {
+   "components": [
+    "nyja-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "nyjIi-sinh": {
+   "components": [
+    "nyja-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "nyjRa-sinh": {
+   "components": [
+    "nyja-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "nyjU-sinh": {
+   "components": [
+    "nyja-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "nyjUu-sinh": {
+   "components": [
+    "nyja-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "nyja_repha-sinh": {
+   "components": [
+    "nyja-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "p-sinh": {
+   "components": [
+    "pa-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "pI-sinh": {
+   "components": [
+    "pa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "pIi-sinh": {
+   "components": [
+    "pa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "pRI-sinh": {
+   "components": [
+    "pRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "pRIi-sinh": {
+   "components": [
+    "pRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "pRa-sinh": {
+   "components": [
+    "pa-sinh",
+    "rasign-sinh.pa"
+   ],
+   "tier": 1
+  },
+  "pU-sinh": {
+   "components": [
+    "pa-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "pUu-sinh": {
+   "components": [
+    "pa-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "pa_repha-sinh": {
+   "components": [
+    "pa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "phI-sinh": {
+   "components": [
+    "pha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "phIi-sinh": {
+   "components": [
+    "pha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "phU-sinh": {
+   "components": [
+    "pha-sinh",
+    "usign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "phUu-sinh": {
+   "components": [
+    "pha-sinh",
+    "uusign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "pha_repha-sinh": {
+   "components": [
+    "pha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "s-sinh": {
+   "components": [
+    "sa-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "sI-sinh": {
+   "components": [
+    "sa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "sIi-sinh": {
+   "components": [
+    "sa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "sRI-sinh": {
+   "components": [
+    "sRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "sRIi-sinh": {
+   "components": [
+    "sRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "sRa-sinh": {
+   "components": [
+    "sa-sinh",
+    "rasign-sinh.short"
+   ],
+   "tier": 1
+  },
+  "sU-sinh": {
+   "components": [
+    "sa-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "sUu-sinh": {
+   "components": [
+    "sa-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "sa_repha-sinh": {
+   "components": [
+    "sa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "sh-sinh": {
+   "components": [
+    "sha-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "shI-sinh": {
+   "components": [
+    "sha-sinh",
+    "isign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "shIi-sinh": {
+   "components": [
+    "sha-sinh",
+    "iisign-sinh.alt1"
+   ],
+   "tier": 3
+  },
+  "shRI-sinh": {
+   "components": [
+    "shRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "shRIi-sinh": {
+   "components": [
+    "shRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "shRa-sinh": {
+   "components": [
+    "sha-sinh",
+    "rasign-sinh.long"
+   ],
+   "tier": 1
+  },
+  "sha_repha-sinh": {
+   "components": [
+    "sha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ss-sinh": {
+   "components": [
+    "ssa-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "ssI-sinh": {
+   "components": [
+    "ssa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ssIi-sinh": {
+   "components": [
+    "ssa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ssRI-sinh": {
+   "components": [
+    "ssRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ssRIi-sinh": {
+   "components": [
+    "ssRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ssRa-sinh": {
+   "components": [
+    "ssa-sinh",
+    "rasign-sinh.pa"
+   ],
+   "tier": 1
+  },
+  "ssU-sinh": {
+   "components": [
+    "ssa-sinh",
+    "usign-sinh"
+   ],
+   "tier": 1
+  },
+  "ssUu-sinh": {
+   "components": [
+    "ssa-sinh",
+    "uusign-sinh"
+   ],
+   "tier": 1
+  },
+  "ssa_repha-sinh": {
+   "components": [
+    "ssa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "t-sinh": {
+   "components": [
+    "ta-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "tI-sinh": {
+   "components": [
+    "ta-sinh",
+    "isign-sinh.alt3"
+   ],
+   "tier": 3
+  },
+  "tIi-sinh": {
+   "components": [
+    "ta-sinh",
+    "iisign-sinh.alt3"
+   ],
+   "tier": 3
+  },
+  "tRI-sinh": {
+   "components": [
+    "tRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "tRIi-sinh": {
+   "components": [
+    "tRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "tRa-sinh": {
+   "components": [
+    "ta-sinh",
+    "rasign-sinh"
+   ],
+   "tier": 1
+  },
+  "tThI-sinh": {
+   "components": [
+    "tTha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "tThIi-sinh": {
+   "components": [
+    "tTha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "tTha_repha-sinh": {
+   "components": [
+    "tTha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "tVa_repha-sinh": {
+   "components": [
+    "tVa-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ta_repha-sinh": {
+   "components": [
+    "ta-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "thI-sinh": {
+   "components": [
+    "tha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "thIi-sinh": {
+   "components": [
+    "tha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "thU-sinh": {
+   "components": [
+    "tha-sinh",
+    "usign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "thUu-sinh": {
+   "components": [
+    "tha-sinh",
+    "uusign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "tha_repha-sinh": {
+   "components": [
+    "tha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ttRI-sinh": {
+   "components": [
+    "ttRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ttRIi-sinh": {
+   "components": [
+    "ttRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ttRa-sinh": {
+   "components": [
+    "tta-sinh",
+    "rasign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ttTthI-sinh": {
+   "components": [
+    "ttTtha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "ttTthIi-sinh": {
+   "components": [
+    "ttTtha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "ttTtha_repha-sinh": {
+   "components": [
+    "ttTtha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "ttU-sinh": {
+   "components": [
+    "tta-sinh",
+    "usign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "ttUu-sinh": {
+   "components": [
+    "tta-sinh",
+    "uusign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "tta_repha-sinh": {
+   "components": [
+    "tta-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "tthI-sinh": {
+   "components": [
+    "ttha-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "tthIi-sinh": {
+   "components": [
+    "ttha-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "tthU-sinh": {
+   "components": [
+    "ttha-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "tthUu-sinh": {
+   "components": [
+    "ttha-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ttha_repha-sinh": {
+   "components": [
+    "ttha-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "uu-sinh": {
+   "components": [
+    "u-sinh",
+    "vocaliclsign-sinh"
+   ],
+   "tier": 0
+  },
+  "vRI-sinh": {
+   "components": [
+    "vRa-sinh",
+    "isign-sinh"
+   ],
+   "tier": 3
+  },
+  "vRIi-sinh": {
+   "components": [
+    "vRa-sinh",
+    "iisign-sinh"
+   ],
+   "tier": 3
+  },
+  "vRa-sinh": {
+   "components": [
+    "va-sinh",
+    "rasign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "vU-sinh": {
+   "components": [
+    "va-sinh",
+    "usign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "vUu-sinh": {
+   "components": [
+    "va-sinh",
+    "uusign-sinh.tta"
+   ],
+   "tier": 1
+  },
+  "va_repha-sinh": {
+   "components": [
+    "va-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "vocalicll-sinh": {
+   "components": [
+    "vocalicl-sinh",
+    "vocaliclsign-sinh"
+   ],
+   "tier": 0
+  },
+  "vocalicrrsign-sinh": {
+   "components": [
+    "vocalicrsign-sinh",
+    "vocalicrsign-sinh"
+   ],
+   "tier": 0
+  },
+  "y-sinh": {
+   "components": [
+    "ya-sinh",
+    "virama-sinh"
+   ],
+   "tier": 1
+  },
+  "yU-sinh": {
+   "components": [
+    "ya-sinh",
+    "usign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "yUu-sinh": {
+   "components": [
+    "ya-sinh",
+    "uusign-sinh.medium"
+   ],
+   "tier": 1
+  },
+  "ya_repha-sinh": {
+   "components": [
+    "ya-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "yasign_repha-sinh": {
+   "components": [
+    "yasign-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "yasign_repha_aasign-sinh": {
+   "components": [
+    "yasign_repha-sinh",
+    "aasign-sinh"
+   ],
+   "tier": 0
+  },
+  "yasign_repha_usign-sinh": {
+   "components": [
+    "yasign-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  },
+  "yasign_repha_uusign-sinh": {
+   "components": [
+    "yasign-sinh",
+    "repha-sinh"
+   ],
+   "tier": 2
+  }
+ },
+ "keep_drawn": {
+  "anusvarayaSha-sinh": "irreducible",
+  "archaiceight-sinh": "irreducible",
+  "archaiceighty-sinh": "irreducible",
+  "archaicfifty-sinh": "irreducible",
+  "archaicfive-sinh": "irreducible",
+  "archaicforty-sinh": "irreducible",
+  "archaicfour-sinh": "irreducible",
+  "archaicnine-sinh": "irreducible",
+  "archaicninety-sinh": "irreducible",
+  "archaicone-sinh": "irreducible",
+  "archaiconehundred-sinh": "irreducible",
+  "archaiconethousand-sinh": "irreducible",
+  "archaicseven-sinh": "irreducible",
+  "archaicseventy-sinh": "irreducible",
+  "archaicsix-sinh": "irreducible",
+  "archaicsixty-sinh": "irreducible",
+  "archaicten-sinh": "irreducible",
+  "archaicthirty-sinh": "irreducible",
+  "archaicthree-sinh": "irreducible",
+  "archaictwenty-sinh": "irreducible",
+  "archaictwo-sinh": "irreducible",
+  "b-sinh": "hal-rahena",
+  "bBa-sinh": "irreducible",
+  "bI-sinh": "ispilla-fused",
+  "bIi-sinh": "ispilla-fused",
+  "bhU-sinh": "u-special",
+  "bhUu-sinh": "u-special",
+  "c-sinh": "hal-rahena",
+  "cCa-sinh": "irreducible",
+  "cI-sinh": "ispilla-fused",
+  "cIi-sinh": "ispilla-fused",
+  "candrabindu-sinh": "irreducible",
+  "ch-sinh": "hal-ja",
+  "dDhI-sinh": "ispilla-fused",
+  "dDhIi-sinh": "ispilla-fused",
+  "dDha-sinh": "irreducible",
+  "dRaa._c-sinh": "irreducible",
+  "dU-sinh": "du-form",
+  "dUu-sinh": "du-form",
+  "dVI-sinh": "ispilla-fused",
+  "dVIi-sinh": "ispilla-fused",
+  "dVa-sinh": "irreducible",
+  "da_yansa_oosign-sinh": "irreducible",
+  "daa._c-sinh": "irreducible",
+  "daa_virama._c-sinh": "irreducible",
+  "daae._c-sinh": "irreducible",
+  "dae._c-sinh": "irreducible",
+  "dd-sinh": "hal-rahena",
+  "ddI-sinh": "ispilla-fused",
+  "ddIi-sinh": "ispilla-fused",
+  "ddh-sinh": "hal-trap",
+  "dh-sinh": "hal-rahena",
+  "dhI-sinh": "ispilla-fused",
+  "dhIi-sinh": "ispilla-fused",
+  "dvocalicr._c-sinh": "irreducible",
+  "dvocalicrr._c-sinh": "irreducible",
+  "dyU._c-sinh": "irreducible",
+  "dyUu._c-sinh": "irreducible",
+  "dya._c-sinh": "irreducible",
+  "dyaa._c-sinh": "irreducible",
+  "fa-sinh.hist": "irreducible",
+  "gDhI-sinh": "ispilla-fused",
+  "gDhIi-sinh": "ispilla-fused",
+  "gDha-sinh": "irreducible",
+  "gU-sinh": "u-special",
+  "gUu-sinh": "u-special",
+  "j-sinh": "hal-ja",
+  "jRa-sinh": "rakaransaya-exception",
+  "jh-sinh": "hal-rahena",
+  "jhI-sinh": "ispilla-fused",
+  "jhIi-sinh": "ispilla-fused",
+  "jnyRa-sinh": "rakaransaya-exception",
+  "jnyaa._c-sinh": "irreducible",
+  "jnyaa_virama._c-sinh": "irreducible",
+  "jnyaae._c-sinh": "irreducible",
+  "jnyae._c-sinh": "irreducible",
+  "kSsa-sinh": "irreducible",
+  "kU-sinh": "u-special",
+  "kUu-sinh": "u-special",
+  "kVI-sinh": "ispilla-fused",
+  "kVIi-sinh": "ispilla-fused",
+  "kVa-sinh": "irreducible",
+  "kh-sinh": "hal-rahena",
+  "khI-sinh": "ispilla-fused",
+  "khIi-sinh": "ispilla-fused",
+  "llU-sinh": "llu-form",
+  "llUu-sinh": "llu-form",
+  "m-sinh": "hal-rahena",
+  "mI-sinh": "ispilla-fused",
+  "mIi-sinh": "ispilla-fused",
+  "mb-sinh": "hal-rahena",
+  "mbI-sinh": "ispilla-fused",
+  "mbIi-sinh": "ispilla-fused",
+  "nDa-sinh": "irreducible",
+  "nDaa._c-sinh": "irreducible",
+  "nDaa_virama._c-sinh": "irreducible",
+  "nDaae._c-sinh": "irreducible",
+  "nDae._c-sinh": "irreducible",
+  "nDhI-sinh": "ispilla-fused",
+  "nDhIi-sinh": "ispilla-fused",
+  "nDha-sinh": "irreducible",
+  "nTha-sinh": "irreducible",
+  "nVI-sinh": "ispilla-fused",
+  "nVIi-sinh": "ispilla-fused",
+  "nVa-sinh": "irreducible",
+  "ndRa-sinh": "rakaransaya-exception",
+  "ndRaa._c-sinh": "irreducible",
+  "ndaa._c-sinh": "irreducible",
+  "ndaa_virama._c-sinh": "irreducible",
+  "ndaae._c-sinh": "irreducible",
+  "ndae._c-sinh": "irreducible",
+  "ng-sinh": "hal-rahena",
+  "ngI-sinh": "ispilla-fused",
+  "ngIi-sinh": "ispilla-fused",
+  "nnI-sinh": "ispilla-fused",
+  "nnIi-sinh": "ispilla-fused",
+  "nndd-sinh": "hal-rahena",
+  "nnddI-sinh": "ispilla-fused",
+  "nnddIi-sinh": "ispilla-fused",
+  "nndda_repha-sinh": "repaya-exception",
+  "nngU-sinh": "u-special",
+  "nngUu-sinh": "u-special",
+  "nyCI-sinh": "ispilla-fused",
+  "nyCIi-sinh": "ispilla-fused",
+  "nyCa-sinh": "irreducible",
+  "nyCha-sinh": "irreducible",
+  "nyRa-sinh": "rakaransaya-exception",
+  "nya_repha-sinh": "repaya-exception",
+  "nyaa._c-sinh": "irreducible",
+  "nyaa_virama._c-sinh": "irreducible",
+  "nyaae._c-sinh": "irreducible",
+  "nyae._c-sinh": "irreducible",
+  "nyj-sinh": "hal-ja",
+  "ph-sinh": "hal-trap",
+  "r-sinh": "ra-forms",
+  "rAae-sinh": "irreducible",
+  "rAe-sinh": "irreducible",
+  "rI-sinh": "ispilla-fused",
+  "rIi-sinh": "ispilla-fused",
+  "rU-sinh": "ra-forms",
+  "rUu-sinh": "ra-forms",
+  "ra_repha-sinh": "repaya-exception",
+  "rasign-sinh": "irreducible",
+  "repha-sinh": "irreducible",
+  "shU-sinh": "u-special",
+  "shUu-sinh": "u-special",
+  "tTha-sinh": "irreducible",
+  "tU-sinh": "u-special",
+  "tUu-sinh": "u-special",
+  "tVI-sinh": "ispilla-fused",
+  "tVIi-sinh": "ispilla-fused",
+  "tVa-sinh": "irreducible",
+  "th-sinh": "hal-trap",
+  "tt-sinh": "hal-rahena",
+  "ttI-sinh": "ispilla-fused",
+  "ttIi-sinh": "ispilla-fused",
+  "ttTtha-sinh": "irreducible",
+  "tth-sinh": "hal-trap",
+  "usign.rasign-sinh": "irreducible",
+  "uusign.rasign-sinh": "irreducible",
+  "v-sinh": "hal-rahena",
+  "vI-sinh": "ispilla-fused",
+  "vIi-sinh": "ispilla-fused",
+  "yI-sinh": "ispilla-fused",
+  "yIi-sinh": "ispilla-fused",
+  "yasign-sinh": "irreducible",
+  "yasign_iisign-sinh": "irreducible",
+  "yasign_isign-sinh": "irreducible",
+  "yasign_usign-sinh": "irreducible",
+  "yasign_uusign-sinh": "irreducible",
+  "yasign_virama-sinh": "irreducible"
+ },
+ "review": {
+  "anusvarayaSh-sinh": [
+   "anusvarayaSha-sinh",
+   "virama-sinh"
+  ],
+  "anusvarayaShU-sinh": [
+   "anusvarayaSha-sinh",
+   "usign-sinh"
+  ],
+  "anusvarayaShUu-sinh": [
+   "anusvarayaSha-sinh",
+   "uusign-sinh"
+  ],
+  "bB-sinh": [
+   "bBa-sinh",
+   "virama-sinh"
+  ],
+  "bBU-sinh": [
+   "bBa-sinh",
+   "usign-sinh"
+  ],
+  "bBUu-sinh": [
+   "bBa-sinh",
+   "uusign-sinh"
+  ],
+  "bR-sinh": [
+   "bRa-sinh",
+   "virama-sinh"
+  ],
+  "bhR-sinh": [
+   "bhRa-sinh",
+   "virama-sinh"
+  ],
+  "cC-sinh": [
+   "cCa-sinh",
+   "virama-sinh"
+  ],
+  "cCU-sinh": [
+   "cCa-sinh",
+   "usign-sinh"
+  ],
+  "cCUu-sinh": [
+   "cCa-sinh",
+   "uusign-sinh"
+  ],
+  "cR-sinh": [
+   "cRa-sinh",
+   "virama-sinh"
+  ],
+  "candrabindu-sinh.001": [
+   "candrabindu-sinh",
+   "virama-sinh"
+  ],
+  "dDh-sinh": [
+   "dDha-sinh",
+   "virama-sinh"
+  ],
+  "dDhU-sinh": [
+   "dDha-sinh",
+   "usign-sinh.medium"
+  ],
+  "dDhUu-sinh": [
+   "dDha-sinh",
+   "uusign-sinh.medium"
+  ],
+  "dR-sinh": [
+   "dRa-sinh",
+   "virama-sinh"
+  ],
+  "dV-sinh": [
+   "dVa-sinh",
+   "virama-sinh"
+  ],
+  "dVU-sinh": [
+   "dVa-sinh",
+   "usign-sinh.tta"
+  ],
+  "dVUu-sinh": [
+   "dVa-sinh",
+   "uusign-sinh.tta"
+  ],
+  "ddR-sinh": [
+   "ddRa-sinh",
+   "virama-sinh"
+  ],
+  "dhR-sinh": [
+   "dhRa-sinh",
+   "virama-sinh"
+  ],
+  "fR-sinh": [
+   "fRa-sinh",
+   "virama-sinh"
+  ],
+  "fR-sinh.hist": [
+   "fRa-sinh",
+   "virama-sinh"
+  ],
+  "gDh-sinh": [
+   "gDha-sinh",
+   "virama-sinh"
+  ],
+  "gDhU-sinh": [
+   "gDha-sinh",
+   "usign-sinh.long"
+  ],
+  "gDhUu-sinh": [
+   "gDha-sinh",
+   "uusign-sinh.long"
+  ],
+  "gR-sinh": [
+   "gRa-sinh",
+   "virama-sinh"
+  ],
+  "ghR-sinh": [
+   "ghRa-sinh",
+   "virama-sinh"
+  ],
+  "hR-sinh": [
+   "hRa-sinh",
+   "virama-sinh"
+  ],
+  "jR-sinh": [
+   "jRa-sinh",
+   "virama-sinh"
+  ],
+  "jhR-sinh": [
+   "jhRa-sinh",
+   "virama-sinh"
+  ],
+  "jnyR-sinh": [
+   "jnyRa-sinh",
+   "virama-sinh"
+  ],
+  "kR-sinh": [
+   "kRa-sinh",
+   "virama-sinh"
+  ],
+  "kSs-sinh": [
+   "kSsa-sinh",
+   "virama-sinh"
+  ],
+  "kSsU-sinh": [
+   "kSsa-sinh",
+   "usign-sinh.long"
+  ],
+  "kSsUu-sinh": [
+   "kSsa-sinh",
+   "uusign-sinh.long"
+  ],
+  "kV-sinh": [
+   "kVa-sinh",
+   "virama-sinh"
+  ],
+  "kVU-sinh": [
+   "kVa-sinh",
+   "usign-sinh.long"
+  ],
+  "kVUu-sinh": [
+   "kVa-sinh",
+   "uusign-sinh.long"
+  ],
+  "khR-sinh": [
+   "khRa-sinh",
+   "virama-sinh"
+  ],
+  "mR-sinh": [
+   "mRa-sinh",
+   "virama-sinh"
+  ],
+  "nD-sinh": [
+   "nDa-sinh",
+   "virama-sinh"
+  ],
+  "nDRa-sinh": [
+   "nDa-sinh",
+   "rasign-sinh"
+  ],
+  "nDU-sinh": [
+   "nDa-sinh",
+   "usign-sinh.long"
+  ],
+  "nDUu-sinh": [
+   "nDa-sinh",
+   "uusign-sinh.long"
+  ],
+  "nDh-sinh": [
+   "nDha-sinh",
+   "virama-sinh"
+  ],
+  "nDhU-sinh": [
+   "nDha-sinh",
+   "usign-sinh.long"
+  ],
+  "nDhUu-sinh": [
+   "nDha-sinh",
+   "uusign-sinh.long"
+  ],
+  "nTh-sinh": [
+   "nTha-sinh",
+   "virama-sinh"
+  ],
+  "nThU-sinh": [
+   "nTha-sinh",
+   "usign-sinh.long"
+  ],
+  "nThUu-sinh": [
+   "nTha-sinh",
+   "uusign-sinh.long"
+  ],
+  "nV-sinh": [
+   "nVa-sinh",
+   "virama-sinh"
+  ],
+  "nVU-sinh": [
+   "nVa-sinh",
+   "usign-sinh.long"
+  ],
+  "nVUu-sinh": [
+   "nVa-sinh",
+   "uusign-sinh.long"
+  ],
+  "nyC-sinh": [
+   "nyCa-sinh",
+   "virama-sinh"
+  ],
+  "nyCU-sinh": [
+   "nyCa-sinh",
+   "usign-sinh.tta"
+  ],
+  "nyCUu-sinh": [
+   "nyCa-sinh",
+   "uusign-sinh.tta"
+  ],
+  "nyCh-sinh": [
+   "nyCha-sinh",
+   "virama-sinh"
+  ],
+  "nyChU-sinh": [
+   "nyCha-sinh",
+   "usign-sinh"
+  ],
+  "nyChUu-sinh": [
+   "nyCha-sinh",
+   "uusign-sinh"
+  ],
+  "nyR-sinh": [
+   "nyRa-sinh",
+   "virama-sinh"
+  ],
+  "nyjR-sinh": [
+   "nyjRa-sinh",
+   "virama-sinh"
+  ],
+  "pR-sinh": [
+   "pRa-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.001": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.002": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.003": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.004": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.005": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.006": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.007": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.008": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.009": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "repha-sinh.010": [
+   "repha-sinh",
+   "virama-sinh"
+  ],
+  "sR-sinh": [
+   "sRa-sinh",
+   "virama-sinh"
+  ],
+  "shR-sinh": [
+   "shRa-sinh",
+   "virama-sinh"
+  ],
+  "ssR-sinh": [
+   "ssRa-sinh",
+   "virama-sinh"
+  ],
+  "tR-sinh": [
+   "tRa-sinh",
+   "virama-sinh"
+  ],
+  "tTh-sinh": [
+   "tTha-sinh",
+   "virama-sinh"
+  ],
+  "tThU-sinh": [
+   "tTha-sinh",
+   "usign-sinh.long"
+  ],
+  "tThUu-sinh": [
+   "tTha-sinh",
+   "uusign-sinh.long"
+  ],
+  "tV-sinh": [
+   "tVa-sinh",
+   "virama-sinh"
+  ],
+  "tVU-sinh": [
+   "tVa-sinh",
+   "usign-sinh.long"
+  ],
+  "tVUu-sinh": [
+   "tVa-sinh",
+   "uusign-sinh.long"
+  ],
+  "ttR-sinh": [
+   "ttRa-sinh",
+   "virama-sinh"
+  ],
+  "ttTth-sinh": [
+   "ttTtha-sinh",
+   "virama-sinh"
+  ],
+  "ttTthU-sinh": [
+   "ttTtha-sinh",
+   "usign-sinh.medium"
+  ],
+  "ttTthUu-sinh": [
+   "ttTtha-sinh",
+   "uusign-sinh.medium"
+  ],
+  "vR-sinh": [
+   "vRa-sinh",
+   "virama-sinh"
+  ]
+ }
+}

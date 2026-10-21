@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinhala Test Generator</title>
+  <link rel="stylesheet" href="../_shared/bw.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <h1>Test generator</h1>
+    <span class="sub" id="corpusInfo">loading corpus…</span>
+  </div>
+
+  <div class="group">
+    <label class="btn" title="Use your own words for Word list, Lines of words and the Unlock / Coverage panels. The text modes always use the data bundle.">
+      Load word list…
+      <input type="file" id="corpusInput" accept=".txt,.md,text/plain" multiple hidden>
+    </label>
+    <button class="btn small" id="corpusReset" hidden title="Go back to the words of the data bundle">bundle words</button>
+  </div>
+
+  <div class="group">
+    <label class="btn primary">
+      Load font…
+      <input type="file" id="fontInput" accept=".ttf,.otf,.woff,.woff2" hidden>
+    </label>
+    <span id="fontName" class="muted">system font — drop a font anywhere</span>
+  </div>
+
+  <div class="group">
+    <label>Size <input type="range" id="size" min="14" max="160" value="40"> <span id="sizeOut">40</span></label>
+    <label>Leading <input type="range" id="leading" min="1" max="2.6" step="0.05" value="1.6"></label>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <section>
+      <h2>Graphemes</h2>
+      <p class="hint">Glyph names (<code>ttI-sinh</code>, <code>ka</code>) or Sinhala text — text is split into graphemes.</p>
+      <div class="row">
+        <select id="preset" title="Fill the set with what a font has reached by a design stage, or by a glyphset level">
+          <option value="">Preset: stage or level…</option>
+        </select>
+        <span class="muted" id="presetInfo"></span>
+      </div>
+      <textarea id="setInput" rows="5" spellcheck="false"></textarea>
+      <div id="unknown" class="warn" hidden></div>
+      <label class="check" title="ටු counts as available when ටු is listed, or when ට and ු are both listed.">
+        <input type="checkbox" id="fromParts"> also build from parts <span class="muted">(ට + ු → ටු)</span>
+      </label>
+      <div id="partsHint" class="hint" hidden></div>
+      <div id="chips" class="chips"></div>
+    </section>
+
+    <section>
+      <h2>Must include</h2>
+      <div class="row">
+        <input type="text" id="mustInput" placeholder="e.g. ඪි or usign" spellcheck="false">
+        <select id="mustMode">
+          <option value="any">any of</option>
+          <option value="all">all of</option>
+        </select>
+      </div>
+      <p class="hint">Word list and Lines: every word must contain these graphemes (a sign such as <code>usign</code> matches every grapheme built with it). Targeted sentences: the target — graphemes, signs, or <code>rakar</code> <code>yansa</code> <code>repha</code> <code>conjunct</code>.</p>
+    </section>
+
+    <section>
+      <h2>Output</h2>
+      <div class="grid">
+        <label>Format <select id="format"></select></label>
+        <label><span id="countLabel">Words</span> <input type="number" id="count" min="0" value="80" title="0 = every match (word list)"></label>
+        <label data-for="templates sentences targeted">Layout
+          <select id="layout">
+            <option value="flow">paragraph</option>
+            <option value="lines">one per line</option>
+          </select>
+        </label>
+        <label data-for="lines">Per line <input type="number" id="perLine" min="1" value="6"></label>
+        <label data-for="list">Sort
+          <select id="sort">
+            <option value="alpha">A–Z</option>
+            <option value="length">length</option>
+            <option value="shuffle">shuffle</option>
+          </select>
+        </label>
+        <label data-for="lines list">Min graphemes <input type="number" id="minLen" min="1" value="1"></label>
+        <label data-for="lines list">Max graphemes <input type="number" id="maxLen" min="1" value="12"></label>
+      </div>
+
+      <div data-for="templates chain pseudo">
+        <label class="slider" title="Natural follows the corpus; coverage pulls toward graphemes not shown yet.">
+          <span>Natural ↔ coverage</span>
+          <input type="range" id="coverage" min="0" max="100" value="50"> <output id="coverageOut">50</output>
+        </label>
+      </div>
+      <div data-for="templates chain">
+        <div class="row">
+          <select id="inventMode" title="When needed: invent only if real words cannot supply length or graphemes. Share: always invent that share of the words.">
+            <option value="auto">Invent when needed, at most</option>
+            <option value="share">Invent a share of</option>
+          </select>
+          <input type="range" id="inventPct" min="0" max="100" value="40"> <output id="inventOut">40</output>%
+        </div>
+        <p class="hint" data-for="templates">In template sentences the words the font cannot show are always replaced; the cap picks sentences that need fewest.</p>
+      </div>
+
+      <label class="check"><input type="checkbox" id="cover" checked> <span id="coverLabel">show every grapheme at least once</span></label>
+      <label class="check" data-for="templates chain sentences targeted pseudo"><input type="checkbox" id="markInv" checked> underline invented words <span class="muted">(not in Copy / Download)</span></label>
+      <label class="check"><input type="checkbox" id="showNames"> show grapheme names</label>
+      <div class="row">
+        <button class="btn primary" id="regen">New text</button>
+        <span class="muted">seed <span id="seedOut"></span></span>
+      </div>
+    </section>
+
+    <section data-for="templates chain sentences targeted">
+      <h2>Numerals &amp; punctuation</h2>
+      <div class="checks">
+        <label class="check"><input type="checkbox" id="exNumber"> Numbers</label>
+        <label class="check"><input type="checkbox" id="exDate"> Dates</label>
+        <label class="check"><input type="checkbox" id="exTime"> Times</label>
+        <label class="check"><input type="checkbox" id="exPunct"> Punctuation</label>
+      </div>
+      <div class="grid">
+        <label>Digits
+          <select id="exScript">
+            <option value="latin">0 1 2 3</option>
+            <option value="sinhala">෦ ෧ ෨ ෩</option>
+            <option value="mixed">mixed</option>
+          </select>
+        </label>
+        <label>Where
+          <select id="exPlace">
+            <option value="between">between lines</option>
+            <option value="within">inside sentences</option>
+          </select>
+        </label>
+      </div>
+      <label class="slider" title="Share of sentences that get an item.">
+        <span>How often</span>
+        <input type="range" id="exRate" min="5" max="100" value="40"> <output id="exRateOut">40</output>%
+      </label>
+      <p class="hint">Adds digits and marks only, never letters, so the grapheme set still holds. Not in Word list, Lines of words or Invented words.</p>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <div class="checks" data-for="templates sentences targeted">
+        <label class="check"><input type="checkbox" id="srcNews" checked> News sentences</label>
+        <label class="check"><input type="checkbox" id="srcOther" checked> Other (parallel, NER, glosses)</label>
+        <label class="check"><input type="checkbox" id="srcHeads" checked> Headlines</label>
+      </div>
+      <div class="checks">
+        <label class="check"><input type="checkbox" id="srcNames" checked> Names as words</label>
+        <label class="check"><input type="checkbox" id="srcDict" checked> Dictionary words</label>
+        <label class="check"><input type="checkbox" id="srcLatin"> Latin text</label>
+        <label class="check"><input type="checkbox" id="srcZwnj"> Explicit ZWNJ <span class="muted">(ස්‌ට)</span></label>
+      </div>
+      <p class="hint">Real words need to occur at least 3 times in news text (rarer ones are mostly typos) unless a dictionary or name list has them. Digits and punctuation in sentences are kept.</p>
+    </section>
+  </aside>
+
+  <main class="main">
+    <div class="statusline">
+      <span id="stats"></span>
+      <span class="spacer"></span>
+      <button class="btn small" id="copyBtn">Copy</button>
+      <button class="btn small" id="downloadBtn">Download .txt</button>
+    </div>
+
+    <div id="output" class="output" lang="si"></div>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="unlock" class="active">Unlock</button>
+      <button role="tab" data-tab="coverage">Coverage</button>
+      <button role="tab" data-tab="corpus">Corpus graphemes</button>
+      <button role="tab" data-tab="analyse">Analyse text</button>
+    </div>
+
+    <section class="panel" data-panel="unlock">
+      <p class="hint">Words that are one grapheme short. Adding the grapheme unlocks them. Click to add.</p>
+      <div id="unlockList" class="gtable"></div>
+    </section>
+
+    <section class="panel" data-panel="coverage" hidden>
+      <p class="hint">Matching words per listed grapheme. Graphemes with no words can only show up in synthetic strings.</p>
+      <div id="coverageList" class="gtable"></div>
+    </section>
+
+    <section class="panel" data-panel="corpus" hidden>
+      <div class="row">
+        <input type="text" id="corpusFilter" placeholder="filter by name or text" spellcheck="false">
+        <span class="muted" id="corpusCount"></span>
+      </div>
+      <div id="corpusList" class="gtable"></div>
+    </section>
+
+    <section class="panel" data-panel="analyse" hidden>
+      <p class="hint">Paste any Sinhala text to see its graphemes.</p>
+      <textarea id="analyseInput" rows="4" spellcheck="false"></textarea>
+      <div class="row">
+        <button class="btn small" id="analyseUse">Use as grapheme set</button>
+        <button class="btn small" id="analyseNames">Copy names</button>
+        <span class="muted" id="analyseCount"></span>
+      </div>
+      <div id="analyseList" class="gtable"></div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="../glyphname-unicode-converter/lankaglyphset-map.js"></script>
+<script src="graphemes.js"></script>
+<script src="textgen.js"></script>
+<script src="extras.js"></script>
+<script src="presets.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

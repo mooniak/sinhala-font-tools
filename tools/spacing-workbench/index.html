@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinhala Spacing Workbench</title>
+  <link rel="stylesheet" href="../_shared/bw.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <h1>Spacing workbench</h1>
+    <span class="sub" id="schemeInfo"></span>
+  </div>
+
+  <div class="fontbox" id="fontBox">
+    <label class="btn primary">
+      Load font…
+      <input type="file" id="fontInput" accept=".ttf,.otf" hidden>
+    </label>
+    <span id="fontName" class="muted">no font — drop a .ttf/.otf anywhere</span>
+  </div>
+
+  <div class="unitbox" id="unitBox" title="spacing_unit in font units. Defaults to the sidebearings of ට, the glyph the model says defines the unit.">
+    <span class="label">unit</span>
+    <label>L <input type="number" id="unitLeft" step="1" disabled></label>
+    <label>R <input type="number" id="unitRight" step="1" disabled></label>
+    <button class="btn small" id="unitReset" disabled title="Reset to ට's measured sidebearings">from ට</button>
+  </div>
+
+  <div class="actions">
+    <label class="btn">
+      Import YAML…
+      <input type="file" id="yamlInput" accept=".yaml,.yml" hidden>
+    </label>
+    <button class="btn" id="exportBtn">Export <span class="badge" id="changeCount" hidden></span></button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidetabs" role="tablist">
+      <button role="tab" data-side="right" class="active">Right sidebearings</button>
+      <button role="tab" data-side="left">Left sidebearings</button>
+    </div>
+
+    <section id="inspector" class="inspector" hidden></section>
+
+    <div class="sidebar-tools">
+      <button class="btn small" id="fillValues" disabled title="Set every unset class value to the multiple measured in this font">Fill unset values from font</button>
+      <label class="check"><input type="checkbox" id="showForms"> show fused forms</label>
+    </div>
+
+    <div id="classList" class="class-list"></div>
+
+    <form class="add-class" id="addClassForm">
+      <input type="text" id="newClassName" placeholder="new class name, e.g. R-hook" pattern="[A-Za-z][A-Za-z0-9-]*" required>
+      <button class="btn small" type="submit">Add class</button>
+    </form>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <label>Text
+        <select id="preset">
+          <option value="class">Control strings — selected class</option>
+          <option value="spacing">Spacing string</option>
+          <option value="pangram">Pangram</option>
+          <option value="prose">Prose</option>
+          <option value="letters">Every letter between ට</option>
+          <option value="forms">Every fused form between ට</option>
+          <option value="custom">Custom</option>
+        </select>
+      </label>
+      <label>Show
+        <select id="mode">
+          <option value="both">Font + scheme (stacked)</option>
+          <option value="scheme">Scheme applied</option>
+          <option value="font">Font as-is</option>
+        </select>
+      </label>
+      <label>Size <input type="range" id="size" min="20" max="160" value="56"> <span id="sizeOut">56</span></label>
+      <label class="check"><input type="checkbox" id="guides" checked> sidebearing guides</label>
+    </div>
+
+    <textarea id="text" rows="3" spellcheck="false"></textarea>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="preview"></canvas>
+      <div class="drop-hint" id="dropHint">
+        <p>Drop a <b>.ttf</b> or <b>.otf</b> here to preview spacing.</p>
+        <p class="muted">The class editor on the left works without a font.</p>
+      </div>
+      <div class="tooltip" id="tooltip" hidden></div>
+    </div>
+
+    <footer class="status" id="status"></footer>
+  </main>
+</div>
+
+<dialog id="exportDialog" class="export">
+  <form method="dialog" class="export-head">
+    <h2>Export</h2>
+    <div class="tabs" role="tablist">
+      <button type="button" data-tab="scheme" class="active">Scheme YAML</button>
+      <button type="button" data-tab="values">Font values</button>
+      <button type="button" data-tab="model">Model changes</button>
+    </div>
+    <button class="btn" value="close">Close</button>
+  </form>
+  <p class="export-note" id="exportNote"></p>
+  <textarea id="exportText" readonly spellcheck="false"></textarea>
+  <div class="export-foot">
+    <button class="btn danger" id="discardBtn" type="button">Discard all edits</button>
+    <span class="spacer"></span>
+    <button class="btn" id="copyBtn" type="button">Copy</button>
+    <button class="btn primary" id="downloadBtn" type="button">Download</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script src="../_generated/sinhala-spacing.js"></script>
+<script src="shaper.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

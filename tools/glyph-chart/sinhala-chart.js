@@ -20,7 +20,7 @@ function renderChart() {
     const th = document.createElement("th");
     th.textContent = mark || "(none)";
     const btn = document.createElement("button");
-    btn.innerHTML = "📋";
+    btn.textContent = "⧉";
     btn.className = "copy-btn";
     btn.onclick = (e) => {
       e.stopPropagation();
@@ -49,7 +49,7 @@ function renderChart() {
     const th = document.createElement("th");
     th.textContent = base;
     const btn = document.createElement("button");
-    btn.innerHTML = "📋";
+    btn.textContent = "⧉";
     btn.className = "copy-btn";
     btn.onclick = (e) => {
       e.stopPropagation();
@@ -67,8 +67,7 @@ function renderChart() {
         if (rakaransayaExceptions.has(base)) {
           if (showExceptions) {
             td.textContent = "×";
-            td.style.color = "#ef4444"; // Bright red for exceptions
-            td.style.fontWeight = "bold";
+            td.classList.add("exception-x");
             skip = true;
           } else {
             combo = base + mark;
@@ -82,8 +81,7 @@ function renderChart() {
         if (repayaExceptions.has(base)) {
           if (showExceptions) {
             td.textContent = "×";
-            td.style.color = "#ef4444"; // Bright red for exceptions
-            td.style.fontWeight = "bold";
+            td.classList.add("exception-x");
             skip = true;
           } else {
             combo = mark + base;
@@ -97,8 +95,7 @@ function renderChart() {
         if (yansayaExceptions.has(base)) {
           if (showExceptions) {
             td.textContent = "×";
-            td.style.color = "#ef4444"; // Bright red for exceptions
-            td.style.fontWeight = "bold";
+            td.classList.add("exception-x");
             skip = true;
           } else {
             combo = base + mark;
@@ -134,8 +131,7 @@ function renderChart() {
           ((mark === "්‍ර" && rakaransayaExceptions.has(base)) ||
             (mark === "ර්‍" && repayaExceptions.has(base)) ||
             (mark === "්‍ය" && yansayaExceptions.has(base)))) {
-          span.style.color = "#ef4444";
-          span.style.fontWeight = "bold";
+          span.classList.add("exception");
         }
 
         const tooltip = document.createElement("div");
@@ -392,9 +388,9 @@ document.addEventListener('click', function (e) {
   if (comboSpan) {
     const text = comboSpan.textContent;
     navigator.clipboard.writeText(text).then(() => {
-      comboSpan.style.backgroundColor = '#dcfce7';
+      comboSpan.classList.add('copied');
       setTimeout(() => {
-        comboSpan.style.backgroundColor = '';
+        comboSpan.classList.remove('copied');
       }, 500);
     });
   }

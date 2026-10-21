@@ -5,18 +5,18 @@ meta:
   counts:
     composites: 300
     by_tier:
-      0: 18
-      1: 102
-      2: 56
+      0: 14
+      1: 105
+      2: 57
       3: 124
-    review: 93
+    review: 89
     keep_drawn: 171
     keep_drawn_by_reason:
       du-form: 2
-      hal-ja: 2
+      hal-ja: 3
       hal-rahena: 12
       hal-trap: 4
-      irreducible: 81
+      irreducible: 80
       ispilla-fused: 46
       llu-form: 2
       ra-forms: 3
@@ -53,6 +53,7 @@ atoms:
   - nndda-sinh
   - nnga-sinh
   - nya-sinh
+  - nyja-sinh
   - pa-sinh
   - pha-sinh
   - ra-sinh
@@ -103,6 +104,51 @@ atoms:
   - isign-sinh.alt7
   - isign-sinh.alt8
   - isign-sinh.alt9
+  sign_variants:
+    rasign-sinh.alone:
+      sign: rasign-sinh
+      slot: alone
+      noto: rasign-sinh.alone
+    rasign-sinh.long:
+      sign: rasign-sinh
+      slot: long
+      noto: rasign-sinh.alt3
+    rasign-sinh.medium:
+      sign: rasign-sinh
+      slot: medium
+      noto: rasign-sinh.alt2
+    rasign-sinh.pa:
+      sign: rasign-sinh
+      slot: pa
+      noto: rasign-sinh.alt1
+    rasign-sinh.short:
+      sign: rasign-sinh
+      slot: short
+      noto: rasign-sinh.alt4
+    usign-sinh.long:
+      sign: usign-sinh
+      slot: long
+      noto: usign-sinh.alt3
+    usign-sinh.medium:
+      sign: usign-sinh
+      slot: medium
+      noto: usign-sinh.alt2
+    usign-sinh.tta:
+      sign: usign-sinh
+      slot: tta
+      noto: usign-sinh.alt1
+    uusign-sinh.long:
+      sign: uusign-sinh
+      slot: long
+      noto: uusign-sinh.alt3
+    uusign-sinh.medium:
+      sign: uusign-sinh
+      slot: medium
+      noto: uusign-sinh.alt2
+    uusign-sinh.tta:
+      sign: uusign-sinh
+      slot: tta
+      noto: uusign-sinh.alt1
 anchors:
   base_anchor_frequency:
     alSign: 39
@@ -130,21 +176,31 @@ anchors:
     isign-sinh.alt8: iVowel
     isign-sinh.alt9: iVowel
     rasign-sinh: rakar
+    rasign-sinh.long: rakar
+    rasign-sinh.medium: rakar
+    rasign-sinh.pa: rakar
+    rasign-sinh.short: rakar
     repha-sinh: repaya
     usign-sinh: uvowel
+    usign-sinh.long: uvowel
+    usign-sinh.medium: uvowel
+    usign-sinh.tta: uvowel
     uusign-sinh: uvowel
+    uusign-sinh.long: uvowel
+    uusign-sinh.medium: uvowel
+    uusign-sinh.tta: uvowel
     virama-sinh: alSign
 composites:
   aa-sinh:
     components:
-    - aasign-sinh
     - a-sinh
+    - aasign-sinh
     tier: 0
     source: inventory-existing
   aae-sinh:
     components:
-    - aaesign-sinh
     - a-sinh
+    - aaesign-sinh
     tier: 0
     source: inventory-existing
   aasign_virama-sinh:
@@ -173,15 +229,8 @@ composites:
     source: noto-ispilla
   au-sinh:
     components:
-    - vocaliclsign-sinh
     - o-sinh
-    tier: 0
-    source: inventory-existing
-  ausign-sinh:
-    components:
-    - esign-sinh
     - vocaliclsign-sinh
-    - bullet
     tier: 0
     source: inventory-existing
   bBI-sinh:
@@ -223,19 +272,19 @@ composites:
   bU-sinh:
     components:
     - ba-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   bUu-sinh:
     components:
     - ba-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ba_repha-sinh:
     components:
-    - repha-sinh
     - ba-sinh
+    - repha-sinh
     tier: 0
     source: inventory-existing
   bh-sinh:
@@ -271,9 +320,9 @@ composites:
   bhRa-sinh:
     components:
     - bha-sinh
-    - rasign-sinh
+    - rasign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   bha_repha-sinh:
     components:
     - bha-sinh
@@ -313,21 +362,21 @@ composites:
   cRa-sinh:
     components:
     - ca-sinh
-    - rasign-sinh
+    - rasign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   cU-sinh:
     components:
     - ca-sinh
-    - usign-sinh
+    - usign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   cUu-sinh:
     components:
     - ca-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ca_repha-sinh:
     components:
     - ca-sinh
@@ -439,15 +488,15 @@ composites:
   ddU-sinh:
     components:
     - dda-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ddUu-sinh:
     components:
     - dda-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   dda_repha-sinh:
     components:
     - dda-sinh
@@ -469,15 +518,15 @@ composites:
   ddhU-sinh:
     components:
     - ddha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ddhUu-sinh:
     components:
     - ddha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ddha_repha-sinh:
     components:
     - ddha-sinh
@@ -505,15 +554,15 @@ composites:
   dhU-sinh:
     components:
     - dha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   dhUu-sinh:
     components:
     - dha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   dha_repha-sinh:
     components:
     - dha-sinh
@@ -583,13 +632,13 @@ composites:
   fRa-sinh:
     components:
     - fa-sinh
-    - rasign-sinh
+    - rasign-sinh.pa
     tier: 1
-    source: grammar
+    source: noto-signvariant
   fRa-sinh.hist:
     components:
     - fa-sinh
-    - rasign-sinh
+    - rasign-sinh.pa
     tier: 2
     source: grammar-classify
   fU-sinh:
@@ -624,10 +673,10 @@ composites:
     source: grammar
   fa_repha-sinh.hist:
     components:
-    - fa-sinh.hist
+    - fa-sinh
     - repha-sinh
-    tier: 0
-    source: inventory-existing
+    tier: 2
+    source: grammar-classify
   g-sinh:
     components:
     - ga-sinh
@@ -667,13 +716,13 @@ composites:
   gRa-sinh:
     components:
     - ga-sinh
-    - rasign-sinh
+    - rasign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ga_repha-sinh:
     components:
-    - repha-sinh
     - ga-sinh
+    - repha-sinh
     tier: 0
     source: inventory-existing
   gh-sinh:
@@ -709,21 +758,21 @@ composites:
   ghRa-sinh:
     components:
     - gha-sinh
-    - rasign-sinh
+    - rasign-sinh.short
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ghU-sinh:
     components:
     - gha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ghUu-sinh:
     components:
     - gha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   gha_repha-sinh:
     components:
     - gha-sinh
@@ -763,21 +812,21 @@ composites:
   hRa-sinh:
     components:
     - ha-sinh
-    - rasign-sinh
+    - rasign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   hU-sinh:
     components:
     - ha-sinh
-    - usign-sinh
+    - usign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   hUu-sinh:
     components:
     - ha-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ha_repha-sinh:
     components:
     - ha-sinh
@@ -847,15 +896,15 @@ composites:
   jhU-sinh:
     components:
     - jha-sinh
-    - usign-sinh
+    - usign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   jhUu-sinh:
     components:
     - jha-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   jha_repha-sinh:
     components:
     - jha-sinh
@@ -943,9 +992,9 @@ composites:
   kRa-sinh:
     components:
     - ka-sinh
-    - rasign-sinh
+    - rasign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   kSsI-sinh:
     components:
     - kSsa-sinh
@@ -972,8 +1021,8 @@ composites:
     source: grammar-classify
   ka_repha-sinh:
     components:
-    - repha-sinh
     - ka-sinh
+    - repha-sinh
     tier: 0
     source: inventory-existing
   khRI-sinh:
@@ -997,15 +1046,15 @@ composites:
   khU-sinh:
     components:
     - kha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   khUu-sinh:
     components:
     - kha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   kha_repha-sinh:
     components:
     - kha-sinh
@@ -1093,15 +1142,15 @@ composites:
   mU-sinh:
     components:
     - ma-sinh
-    - usign-sinh
+    - usign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   mUu-sinh:
     components:
     - ma-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ma_repha-sinh:
     components:
     - ma-sinh
@@ -1111,15 +1160,15 @@ composites:
   mbU-sinh:
     components:
     - mba-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   mbUu-sinh:
     components:
     - mba-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   mba_repha-sinh:
     components:
     - mba-sinh
@@ -1201,15 +1250,15 @@ composites:
   nU-sinh:
     components:
     - na-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   nUu-sinh:
     components:
     - na-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   nVa_repha-sinh:
     components:
     - nVa-sinh
@@ -1273,15 +1322,15 @@ composites:
   nnU-sinh:
     components:
     - nna-sinh
-    - usign-sinh
+    - usign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   nnUu-sinh:
     components:
     - nna-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   nna_repha-sinh:
     components:
     - nna-sinh
@@ -1291,15 +1340,15 @@ composites:
   nnddU-sinh:
     components:
     - nndda-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   nnddUu-sinh:
     components:
     - nndda-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   nng-sinh:
     components:
     - nnga-sinh
@@ -1402,26 +1451,30 @@ composites:
     - iisign-sinh
     tier: 3
     source: noto-ispilla
+  nyjRa-sinh:
+    components:
+    - nyja-sinh
+    - rasign-sinh
+    tier: 1
+    source: grammar
+  nyjU-sinh:
+    components:
+    - nyja-sinh
+    - usign-sinh
+    tier: 1
+    source: grammar
+  nyjUu-sinh:
+    components:
+    - nyja-sinh
+    - uusign-sinh
+    tier: 1
+    source: grammar
   nyja_repha-sinh:
     components:
     - nyja-sinh
     - repha-sinh
     tier: 2
-    source: grammar-classify
-  oosign-sinh:
-    components:
-    - esign-sinh
-    - aasign_virama-sinh
-    - bullet
-    tier: 0
-    source: inventory-existing
-  osign-sinh:
-    components:
-    - esign-sinh
-    - aasign-sinh
-    - bullet
-    tier: 0
-    source: inventory-existing
+    source: grammar
   p-sinh:
     components:
     - pa-sinh
@@ -1455,9 +1508,9 @@ composites:
   pRa-sinh:
     components:
     - pa-sinh
-    - rasign-sinh
+    - rasign-sinh.pa
     tier: 1
-    source: grammar
+    source: noto-signvariant
   pU-sinh:
     components:
     - pa-sinh
@@ -1491,15 +1544,15 @@ composites:
   phU-sinh:
     components:
     - pha-sinh
-    - usign-sinh
+    - usign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   phUu-sinh:
     components:
     - pha-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   pha_repha-sinh:
     components:
     - pha-sinh
@@ -1539,21 +1592,21 @@ composites:
   sRa-sinh:
     components:
     - sa-sinh
-    - rasign-sinh
+    - rasign-sinh.short
     tier: 1
-    source: grammar
+    source: noto-signvariant
   sU-sinh:
     components:
     - sa-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   sUu-sinh:
     components:
     - sa-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   sa_repha-sinh:
     components:
     - sa-sinh
@@ -1593,9 +1646,9 @@ composites:
   shRa-sinh:
     components:
     - sha-sinh
-    - rasign-sinh
+    - rasign-sinh.long
     tier: 1
-    source: grammar
+    source: noto-signvariant
   sha_repha-sinh:
     components:
     - sha-sinh
@@ -1635,9 +1688,9 @@ composites:
   ssRa-sinh:
     components:
     - ssa-sinh
-    - rasign-sinh
+    - rasign-sinh.pa
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ssU-sinh:
     components:
     - ssa-sinh
@@ -1737,15 +1790,15 @@ composites:
   thU-sinh:
     components:
     - tha-sinh
-    - usign-sinh
+    - usign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   thUu-sinh:
     components:
     - tha-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   tha_repha-sinh:
     components:
     - tha-sinh
@@ -1767,9 +1820,9 @@ composites:
   ttRa-sinh:
     components:
     - tta-sinh
-    - rasign-sinh
+    - rasign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ttTthI-sinh:
     components:
     - ttTtha-sinh
@@ -1791,15 +1844,15 @@ composites:
   ttU-sinh:
     components:
     - tta-sinh
-    - usign-sinh
+    - usign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ttUu-sinh:
     components:
     - tta-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   tta_repha-sinh:
     components:
     - tta-sinh
@@ -1821,15 +1874,15 @@ composites:
   tthU-sinh:
     components:
     - ttha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   tthUu-sinh:
     components:
     - ttha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ttha_repha-sinh:
     components:
     - ttha-sinh
@@ -1857,21 +1910,21 @@ composites:
   vRa-sinh:
     components:
     - va-sinh
-    - rasign-sinh
+    - rasign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   vU-sinh:
     components:
     - va-sinh
-    - usign-sinh
+    - usign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   vUu-sinh:
     components:
     - va-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     tier: 1
-    source: grammar
+    source: noto-signvariant
   va_repha-sinh:
     components:
     - va-sinh
@@ -1899,15 +1952,15 @@ composites:
   yU-sinh:
     components:
     - ya-sinh
-    - usign-sinh
+    - usign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   yUu-sinh:
     components:
     - ya-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     tier: 1
-    source: grammar
+    source: noto-signvariant
   ya_repha-sinh:
     components:
     - ya-sinh
@@ -2027,13 +2080,13 @@ review:
     class: mixed
     guess:
     - dDha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   dDhUu-sinh:
     class: mixed
     guess:
     - dDha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   dR-sinh:
     class: mixed
@@ -2051,13 +2104,13 @@ review:
     class: atomic
     guess:
     - dVa-sinh
-    - usign-sinh
+    - usign-sinh.tta
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   dVUu-sinh:
     class: atomic
     guess:
     - dVa-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   ddR-sinh:
     class: mixed
@@ -2093,13 +2146,13 @@ review:
     class: mixed
     guess:
     - gDha-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   gDhUu-sinh:
     class: mixed
     guess:
     - gDha-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   gR-sinh:
     class: mixed
@@ -2153,13 +2206,13 @@ review:
     class: mixed
     guess:
     - kSsa-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   kSsUu-sinh:
     class: mixed
     guess:
     - kSsa-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   kV-sinh:
     class: atomic
@@ -2171,13 +2224,13 @@ review:
     class: mixed
     guess:
     - kVa-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   kVUu-sinh:
     class: mixed
     guess:
     - kVa-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   khR-sinh:
     class: atomic
@@ -2207,13 +2260,13 @@ review:
     class: atomic
     guess:
     - nDa-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nDUu-sinh:
     class: atomic
     guess:
     - nDa-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nDh-sinh:
     class: atomic
@@ -2225,13 +2278,13 @@ review:
     class: mixed
     guess:
     - nDha-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nDhUu-sinh:
     class: mixed
     guess:
     - nDha-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nTh-sinh:
     class: mixed
@@ -2243,13 +2296,13 @@ review:
     class: mixed
     guess:
     - nTha-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nThUu-sinh:
     class: mixed
     guess:
     - nTha-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nV-sinh:
     class: atomic
@@ -2261,13 +2314,13 @@ review:
     class: mixed
     guess:
     - nVa-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nVUu-sinh:
     class: mixed
     guess:
     - nVa-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nyC-sinh:
     class: mixed
@@ -2279,13 +2332,13 @@ review:
     class: mixed
     guess:
     - nyCa-sinh
-    - usign-sinh
+    - usign-sinh.tta
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nyCUu-sinh:
     class: mixed
     guess:
     - nyCa-sinh
-    - uusign-sinh
+    - uusign-sinh.tta
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   nyCh-sinh:
     class: mixed
@@ -2311,35 +2364,11 @@ review:
     - nyRa-sinh
     - virama-sinh
     note: sign form on a conjunct base the family model does not cover — confirm before applying
-  nyj-sinh:
-    class: mixed
-    guess:
-    - nyja-sinh
-    - virama-sinh
-    note: sign form on a conjunct base the family model does not cover — confirm before applying
   nyjR-sinh:
     class: mixed
     guess:
     - nyjRa-sinh
     - virama-sinh
-    note: sign form on a conjunct base the family model does not cover — confirm before applying
-  nyjRa-sinh:
-    class: mixed
-    guess:
-    - nyja-sinh
-    - rasign-sinh
-    note: sign form on a conjunct base the family model does not cover — confirm before applying
-  nyjU-sinh:
-    class: mixed
-    guess:
-    - nyja-sinh
-    - usign-sinh
-    note: sign form on a conjunct base the family model does not cover — confirm before applying
-  nyjUu-sinh:
-    class: mixed
-    guess:
-    - nyja-sinh
-    - uusign-sinh
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   pR-sinh:
     class: mixed
@@ -2441,13 +2470,13 @@ review:
     class: mixed
     guess:
     - tTha-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   tThUu-sinh:
     class: mixed
     guess:
     - tTha-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   tV-sinh:
     class: atomic
@@ -2459,13 +2488,13 @@ review:
     class: mixed
     guess:
     - tVa-sinh
-    - usign-sinh
+    - usign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   tVUu-sinh:
     class: mixed
     guess:
     - tVa-sinh
-    - uusign-sinh
+    - uusign-sinh.long
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   ttR-sinh:
     class: mixed
@@ -2483,13 +2512,13 @@ review:
     class: atomic
     guess:
     - ttTtha-sinh
-    - usign-sinh
+    - usign-sinh.medium
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   ttTthUu-sinh:
     class: atomic
     guess:
     - ttTtha-sinh
-    - uusign-sinh
+    - uusign-sinh.medium
     note: sign form on a conjunct base the family model does not cover — confirm before applying
   vR-sinh:
     class: mixed
@@ -2630,7 +2659,7 @@ keep_drawn:
   nyaa_virama._c-sinh: irreducible
   nyaae._c-sinh: irreducible
   nyae._c-sinh: irreducible
-  nyja-sinh: irreducible
+  nyj-sinh: hal-ja
   ph-sinh: hal-trap
   r-sinh: ra-forms
   rAae-sinh: irreducible

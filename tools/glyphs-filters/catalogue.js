@@ -384,4 +384,4 @@ function familyFormsByStage(id) {
     Object.keys(spacing.flags || {}), 'sinhala-spacing.yaml flags');
 }
 
-module.exports = { sections };
+module.exports = { sections, stageChars, familyFormsByStage, conjunctFormsByEntry };

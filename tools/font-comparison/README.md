@@ -10,8 +10,12 @@ for the session (kept in `localStorage`, not uploaded anywhere).
 ## Default fonts
 
 [`default-fonts.js`](default-fonts.js) lists the fonts loaded automatically
-when the page opens. It ships with just the four system fonts (Arial, Times
-New Roman, Helvetica, Georgia) so the page works with nothing to set up.
+when the page opens. It ships with Hodipotha (the repo's reference font), Sinhala Sangam MN, and four
+Latin system fonts (Arial, Times New Roman, Helvetica, Georgia), so the page
+works with nothing to set up.
+
+Fonts are drawn by the browser's own text shaper (via `FontFace`), so Sinhala
+conjuncts, vowel signs and OpenType features render correctly.
 
 Most Sinhala comparison fonts are commercial or otherwise not freely
 redistributable, so they aren't vendored into this repo. To compare your own

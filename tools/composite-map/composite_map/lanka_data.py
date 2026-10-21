@@ -24,9 +24,17 @@ DEPENDENT_SIGNS = {
     "vocalicrrsign", "vocalicllsign", "vocaliclsign",
 }
 OTHER_MARKS = {"virama", "anusvaraya", "visargaya"}
-IGNORED = {"zerowidthjoiner"}
+# Signs that advance (Unicode Mc, as lanka-glyphsets' GlyphData marks them
+# "Spacing Combining"): Glyphs sets these after the base instead of attaching
+# them. ි ී ු ූ ් and the unencoded rasign/repha attach (Mn).
+NONSPACING_SIGNS = {"isign", "iisign", "usign", "uusign", "virama"}
+SPACING_SIGNS = sorted((DEPENDENT_SIGNS | {"anusvaraya", "visargaya"}) - NONSPACING_SIGNS)
+# Spacing signs written before the base (ෙ ෛ, and the first half of ේ ො ෝ ෞ).
+PREBASE_SIGNS = sorted({"esign", "aisign"})
+IGNORED = {"zerowidthjoiner", "kunddaliya"}
+NUMERAL_RE = re.compile(r"^(lith|archaic)")   # ෦–෯ and 𑇡–𑇴 numerals
 
-EXPECTED_CONSONANT_COUNT = 40
+EXPECTED_CONSONANT_COUNT = 41
 
 
 def load_letters():
@@ -40,7 +48,7 @@ def load_letters():
 
 def load_classification():
     letters = load_letters()
-    names = set(letters)
+    names = {n for n in letters if not NUMERAL_RE.match(n)}
     consonants = sorted(names - INDEPENDENT_VOWELS - DEPENDENT_SIGNS - OTHER_MARKS - IGNORED)
     if len(consonants) != EXPECTED_CONSONANT_COUNT:
         raise ValueError(

@@ -1,0 +1,299 @@
+{
+ "generator": "test-texts/corpus-build",
+ "source": "UCSC LTRL Sinhala corpora (LGPL-LR) — see README.md",
+ "options": {
+  "corpus": "test-texts/sinhala-corpora-master",
+  "out": "tools/test-generator/data",
+  "sentences": 150000,
+  "shard": 5000,
+  "templates": 20000,
+  "forcedMax": 2000,
+  "wordsMin": 2,
+  "vocabMin": 5,
+  "pairMin": 4,
+  "maxSucc": 60,
+  "modelMin": 3,
+  "seed": 1
+ },
+ "maskBits": {
+  "person": 1,
+  "place": 2,
+  "water": 4,
+  "dict": 8,
+  "func": 16
+ },
+ "counts": {
+  "distinctWords": 286314,
+  "wordsShipped": 160138,
+  "pairVocabulary": 60655,
+  "wordPairs": 144727,
+  "candidateSentences": 358640,
+  "sentencesShipped": 150056,
+  "perRarestGraphemeCap": 415,
+  "templates": 20000,
+  "names": 20297,
+  "graphemes": 892
+ },
+ "coverageByTopGraphemes": {
+  "40": {
+   "shipped": 18,
+   "available": 18
+  },
+  "60": {
+   "shipped": 220,
+   "available": 220
+  },
+  "80": {
+   "shipped": 1217,
+   "available": 1217
+  },
+  "100": {
+   "shipped": 5279,
+   "available": 5390
+  },
+  "120": {
+   "shipped": 12855,
+   "available": 14162
+  },
+  "160": {
+   "shipped": 29301,
+   "available": 52418
+  },
+  "200": {
+   "shipped": 46135,
+   "available": 112404
+  },
+  "300": {
+   "shipped": 88303,
+   "available": 266991
+  },
+  "400": {
+   "shipped": 129012,
+   "available": 337596
+  }
+ },
+ "cleaning": {
+  "runs-rejected": 3934,
+  "bad:double-sign": 2438,
+  "fixed:zwnj-dropped": 67537,
+  "bad:starts-with-sign": 912,
+  "bad:hal-hal": 195,
+  "bad:hal-sign": 164,
+  "fixed:zwj-dropped": 1032,
+  "bad:unassigned": 56,
+  "bad:sign-after-vowel": 158,
+  "fixed:zwj-before-hal": 2860,
+  "bad:sign-after-anusvara": 11
+ },
+ "sentenceRejects": {
+  "length": 79042,
+  "no-terminal": 2228,
+  "unbalanced": 12886,
+  "malformed-token": 3651,
+  "few-words": 3338,
+  "charset": 4628,
+  "duplicate": 13140,
+  "not-sinhala": 4962,
+  "start": 2099,
+  "names": 4
+ },
+ "perSource": {
+  "n1:lines": 131993,
+  "n1:sentences": 200113,
+  "n2:lines": 101798,
+  "n2:sentences": 151403,
+  "p:lines": 12903,
+  "p:sentences": 3876,
+  "e:lines": 3247,
+  "e:sentences": 2577,
+  "dict:lines": 103480,
+  "g:lines": 1075,
+  "g:sentences": 671,
+  "place:lines": 10271,
+  "person:lines": 5860,
+  "water:lines": 4715,
+  "func:lines": 858
+ },
+ "files": [
+  {
+   "file": "words.txt",
+   "bytes": 4372598,
+   "gzip": 871819
+  },
+  {
+   "file": "bigrams.json",
+   "bytes": 1077682,
+   "gzip": 388720
+  },
+  {
+   "file": "model.json",
+   "bytes": 192580,
+   "gzip": 37424
+  },
+  {
+   "file": "templates.txt",
+   "bytes": 3611866,
+   "gzip": 887719
+  },
+  {
+   "file": "names.txt",
+   "bytes": 713545,
+   "gzip": 107490
+  },
+  {
+   "file": "sentences/s-00.txt",
+   "bytes": 543383,
+   "gzip": 120577
+  },
+  {
+   "file": "sentences/s-01.txt",
+   "bytes": 667315,
+   "gzip": 146854
+  },
+  {
+   "file": "sentences/s-02.txt",
+   "bytes": 712714,
+   "gzip": 157521
+  },
+  {
+   "file": "sentences/s-03.txt",
+   "bytes": 745062,
+   "gzip": 167277
+  },
+  {
+   "file": "sentences/s-04.txt",
+   "bytes": 830216,
+   "gzip": 182862
+  },
+  {
+   "file": "sentences/s-05.txt",
+   "bytes": 881107,
+   "gzip": 201073
+  },
+  {
+   "file": "sentences/s-06.txt",
+   "bytes": 946158,
+   "gzip": 215874
+  },
+  {
+   "file": "sentences/s-07.txt",
+   "bytes": 1000775,
+   "gzip": 223567
+  },
+  {
+   "file": "sentences/s-08.txt",
+   "bytes": 1100989,
+   "gzip": 248190
+  },
+  {
+   "file": "sentences/s-09.txt",
+   "bytes": 1168727,
+   "gzip": 263050
+  },
+  {
+   "file": "sentences/s-10.txt",
+   "bytes": 1243353,
+   "gzip": 282984
+  },
+  {
+   "file": "sentences/s-11.txt",
+   "bytes": 1216463,
+   "gzip": 276279
+  },
+  {
+   "file": "sentences/s-12.txt",
+   "bytes": 1379868,
+   "gzip": 317476
+  },
+  {
+   "file": "sentences/s-13.txt",
+   "bytes": 1383846,
+   "gzip": 317256
+  },
+  {
+   "file": "sentences/s-14.txt",
+   "bytes": 1415202,
+   "gzip": 328172
+  },
+  {
+   "file": "sentences/s-15.txt",
+   "bytes": 1603294,
+   "gzip": 362175
+  },
+  {
+   "file": "sentences/s-16.txt",
+   "bytes": 1497626,
+   "gzip": 341588
+  },
+  {
+   "file": "sentences/s-17.txt",
+   "bytes": 1538653,
+   "gzip": 354292
+  },
+  {
+   "file": "sentences/s-18.txt",
+   "bytes": 1582281,
+   "gzip": 362396
+  },
+  {
+   "file": "sentences/s-19.txt",
+   "bytes": 1616366,
+   "gzip": 365762
+  },
+  {
+   "file": "sentences/s-20.txt",
+   "bytes": 1624031,
+   "gzip": 375608
+  },
+  {
+   "file": "sentences/s-21.txt",
+   "bytes": 1759844,
+   "gzip": 392012
+  },
+  {
+   "file": "sentences/s-22.txt",
+   "bytes": 1751780,
+   "gzip": 399661
+  },
+  {
+   "file": "sentences/s-23.txt",
+   "bytes": 1751666,
+   "gzip": 397987
+  },
+  {
+   "file": "sentences/s-24.txt",
+   "bytes": 1630483,
+   "gzip": 376445
+  },
+  {
+   "file": "sentences/s-25.txt",
+   "bytes": 1703027,
+   "gzip": 384589
+  },
+  {
+   "file": "sentences/s-26.txt",
+   "bytes": 1765258,
+   "gzip": 403899
+  },
+  {
+   "file": "sentences/s-27.txt",
+   "bytes": 1783328,
+   "gzip": 401650
+  },
+  {
+   "file": "sentences/s-28.txt",
+   "bytes": 1818628,
+   "gzip": 414081
+  },
+  {
+   "file": "sentences/s-29.txt",
+   "bytes": 740974,
+   "gzip": 175932
+  },
+  {
+   "file": "sentences/index.json",
+   "bytes": 15869,
+   "gzip": 4619
+  }
+ ]
+}

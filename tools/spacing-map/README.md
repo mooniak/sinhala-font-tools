@@ -161,13 +161,38 @@ that does name things differently, `--names <yaml>` maps entries by hand:
 ඨී: ThIi-sinh
 ```
 
+## `export-js` — data for the spacing workbench
+
+```sh
+./venv/bin/python -m spacing_map export-js          # write tools/_generated/sinhala-spacing.js
+./venv/bin/python -m spacing_map export-js --check  # fail if it is stale
+```
+
+Run it after every change to `sinhala-spacing.yaml`. The browser tool that
+authors values and previews the scheme on a font is
+[`tools/spacing-workbench`](../spacing-workbench/).
+
+## Glyphs plugin
+
+[`glyphs-plugin/`](glyphs-plugin/) packages the scheme as a Glyphs 3 plugin
+that writes the metrics keys live in the open font: automatically onto newly
+added glyphs (toggle, on by default), or across the whole font on demand.
+Existing keys are never overwritten; ones that disagree with the map are
+flagged. The key decisions live in `spacing_map/keyplan.py`, shared with this
+CLI and vendored into the bundle by:
+
+```sh
+./venv/bin/python -m spacing_map build-plugin          # refresh the bundled scheme + code
+./venv/bin/python -m spacing_map build-plugin --check  # fail if it is stale
+```
+
+Run it after every change to `sinhala-spacing.yaml`, as with `export-js`.
+
 ## Roadmap
 
 - `apply --font <pkg> [--apply]` — write `leftMetricsKey`/`rightMetricsKey`
   on member glyphs (dry-run by default, surgical per-glyph-file writes as in
   `tools/composite-map/composite_map/packageio.py`).
-- `export-js` — vendored `tools/_generated/sinhala-spacing.js` for the
-  spacing workbench (browser authoring/preview tool).
 
 Like `tools/composite-map`, the default naming convention is lanka-glyphsets'
 (chars in the scheme, `name-sinh` in fonts) — but only fused forms depend on

@@ -9,6 +9,7 @@ class FontComparison {
         this.tileSpacing = 20;
         this.showFontNames = true;
         this.canvasSize = 200;
+        this.faceCount = 0;
         
         this.initializeElements();
         this.loadFromLocalStorage();
@@ -160,6 +161,11 @@ class FontComparison {
         });
     }
 
+    // Canvas colours follow the black-and-white palette (../_shared/bw.css), light or dark.
+    cssColor(name, fallback) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+    }
+
     getCanvasSize() {
         // Dynamic canvas size based on font size
         const baseSize = 200;
@@ -193,15 +199,8 @@ class FontComparison {
         for (const file of fontFiles) {
             try {
                 const arrayBuffer = await file.arrayBuffer();
-                const font = opentype.parse(arrayBuffer);
-                
-                const fontData = {
-                    name: font.names.fullName?.en || font.names.fontFamily?.en || file.name,
-                    font: font,
-                    file: file,
-                    systemFont: false
-                };
-
+                const fontData = await this.registerFont(arrayBuffer, file.name.replace(/\.[^.]+$/, ''));
+                fontData.file = file;
                 this.fonts.push(fontData);
                 this.updateFontList();
                 this.renderCurrentView();
@@ -209,6 +208,25 @@ class FontComparison {
                 console.error(`Error loading font ${file.name}:`, error);
             }
         }
+    }
+
+    // Hand the font to the browser (FontFace) so canvas text goes through the
+    // normal text shaper: conjuncts, vowel signs and other OpenType features
+    // render as they do on a web page. opentype.js is only used for the
+    // display name, and only if it loaded.
+    async registerFont(arrayBuffer, fallbackName) {
+        let name = fallbackName;
+        try {
+            if (typeof opentype !== 'undefined') {
+                const names = opentype.parse(arrayBuffer).names;
+                name = names.fullName?.en || names.fontFamily?.en || fallbackName;
+            }
+        } catch (e) { /* keep the file name */ }
+        const family = `cmp-font-${++this.faceCount}`;
+        const face = new FontFace(family, arrayBuffer);
+        await face.load();
+        document.fonts.add(face);
+        return { name, family: `"${family}"`, systemFont: false, loaded: true };
     }
 
     async loadDefaultFonts() {
@@ -221,15 +239,9 @@ class FontComparison {
             if (fontData.url && !fontData.systemFont) {
                 try {
                     const response = await fetch(fontData.url);
-                    const arrayBuffer = await response.arrayBuffer();
-                    const font = opentype.parse(arrayBuffer);
-                    
-                    const loadedFont = {
-                        name: fontData.name,
-                        font: font,
-                        url: fontData.url,
-                        systemFont: false
-                    };
+                    const loadedFont = await this.registerFont(await response.arrayBuffer(), fontData.name);
+                    loadedFont.name = fontData.name;
+                    loadedFont.url = fontData.url;
                     this.fonts.push(loadedFont);
                 } catch (error) {
                     console.error(`Error loading font ${fontData.name}:`, error);
@@ -333,21 +345,20 @@ class FontComparison {
         const ctx = canvas.getContext('2d');
         
         const canvasSize = this.getCanvasSize();
+        // Text longer than the square tile gets a wider canvas instead of being clipped.
+        const width = Math.max(canvasSize, Math.ceil(this.measureText(fontData, size)) + 40);
         const scale = window.devicePixelRatio || 1;
-        canvas.width = canvasSize * scale;
+        canvas.width = width * scale;
         canvas.height = canvasSize * scale;
-        canvas.style.width = `${canvasSize}px`;
+        canvas.style.width = `${width}px`;
         canvas.style.height = `${canvasSize}px`;
-        
-        ctx.scale(scale, scale);
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvasSize, canvasSize);
+        canvas.style.maxWidth = '100%';
 
-        if (fontData.systemFont) {
-            this.renderSystemFont(ctx, fontData, size, canvasSize);
-        } else {
-            this.renderOpenTypeFont(ctx, fontData, size, canvasSize);
-        }
+        ctx.scale(scale, scale);
+        ctx.fillStyle = this.cssColor('--bg', '#ffffff');
+        ctx.fillRect(0, 0, width, canvasSize);
+
+        this.renderText(ctx, fontData, size, width, canvasSize);
 
         const nameDiv = document.createElement('div');
         nameDiv.className = 'font-name';
@@ -363,75 +374,24 @@ class FontComparison {
         return container;
     }
 
-    renderSystemFont(ctx, fontData, size, canvasSize) {
-        ctx.font = `${size}px ${fontData.family}`;
-        ctx.fillStyle = '#000000';
+    applyTextStyle(ctx, fontData, size) {
+        ctx.font = `${size}px ${fontData.family}, sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        
-        const x = canvasSize / 2;
-        const y = canvasSize / 2;
-        
-        if (this.currentSpacing !== 0) {
-            // Manual letter spacing for system fonts
-            const chars = Array.from(this.currentText);
-            const totalWidth = ctx.measureText(this.currentText).width + (this.currentSpacing * (chars.length - 1));
-            let currentX = x - totalWidth / 2;
-            
-            chars.forEach(char => {
-                ctx.fillText(char, currentX, y);
-                currentX += ctx.measureText(char).width + this.currentSpacing;
-            });
-        } else {
-            ctx.fillText(this.currentText, x, y);
-        }
+        // Letter spacing is applied by the browser, so shaping is untouched.
+        if ('letterSpacing' in ctx) ctx.letterSpacing = `${this.currentSpacing}px`;
     }
 
-    renderOpenTypeFont(ctx, fontData, size, canvasSize) {
-        const font = fontData.font;
-        const x = canvasSize / 2;
-        const baseline = canvasSize * 0.6;
-        
-        try {
-            const unitsPerEm = font.unitsPerEm || 1000;
-            const scale = size / unitsPerEm;
-            
-            let totalWidth = 0;
-            const chars = Array.from(this.currentText);
-            
-            chars.forEach((char, index) => {
-                const glyph = font.charToGlyph(char);
-                if (glyph) {
-                    totalWidth += (glyph.advanceWidth || 0) * scale;
-                    if (index < chars.length - 1) {
-                        totalWidth += this.currentSpacing;
-                    }
-                }
-            });
+    measureText(fontData, size) {
+        const ctx = document.createElement('canvas').getContext('2d');
+        this.applyTextStyle(ctx, fontData, size);
+        return ctx.measureText(this.currentText).width;
+    }
 
-            let currentX = x - totalWidth / 2;
-
-            chars.forEach((char, index) => {
-                const glyph = font.charToGlyph(char);
-                if (glyph) {
-                    const path = glyph.getPath(currentX, baseline, size);
-                    path.fill = '#000000';
-                    path.draw(ctx);
-                    currentX += (glyph.advanceWidth || 0) * scale;
-                    if (index < chars.length - 1) {
-                        currentX += this.currentSpacing;
-                    }
-                }
-            });
-
-        } catch (error) {
-            console.error('Error rendering font:', error);
-            ctx.font = `${size}px Arial`;
-            ctx.fillStyle = '#ff0000';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('Error', x, canvasSize / 2);
-        }
+    renderText(ctx, fontData, size, width, height) {
+        this.applyTextStyle(ctx, fontData, size);
+        ctx.fillStyle = this.cssColor('--fg', '#000000');
+        ctx.fillText(this.currentText, width / 2, height / 2);
     }
 
     navigateGallery(direction) {

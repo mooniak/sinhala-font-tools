@@ -17,7 +17,6 @@ Open `index.html` in a browser — no server, no build step.
 | `sinhala-sorting.js` | Sorting orders — default, alphabetical, frequency, phonetic, uMatra, custom. |
 | `sinhala-chart.js` | Chart renderer and UI logic — grid, copy actions, font drag-and-drop, sidebar. |
 | `index.html` | Shell — CSS, sidebar filters, sort dropdown. |
-| `font-tester.html` / `font-tester.js` | A separate, simpler font-testing tool that shares `sinhala-definitions.js`. |
 | `generate-glyphnames.js` | Node script — enumerates every possible composite glyph name a designer might need to draw. |
 
 ## Data dependency

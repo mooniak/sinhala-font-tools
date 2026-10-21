@@ -19,6 +19,24 @@ If you add, edit, or remove a file here, copy the change into both consumers
 by hand (there's no automated sync yet) — see the README in each of those
 directories for the exact mapping.
 
+## Generated text
+
+[`generated/`](generated/) holds realistic text written by
+[`tools/test-generator/make-test-texts.js`](../tools/test-generator/make-test-texts.js)
+from the UCSC corpora: text for a font at each design stage or glyphset level,
+and real sentences dense in rakaransaya, yansaya, repaya, conjuncts, each vowel
+sign and the rare letters. It is a subfolder so the proof-PDF tool does not pick
+it up on its own; copy files to the two consumers when you want them there. Do not
+edit it by hand — rerun the script. Its own README lists what each file holds and
+how much of each section is invented.
+
+## Word list
+
+[`wordlist/si.txt`](wordlist/si.txt) is a plain Sinhala word list, one word per
+line. To search it for words containing given graphemes or signs, load it into
+[test-generator](../tools/test-generator/) with **Load word list…** and use
+**Must include** with the *Word list* format.
+
 ## File format
 
 Most files carry YAML frontmatter (`title`, `credits`, `license`, ...)

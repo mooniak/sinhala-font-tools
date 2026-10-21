@@ -1,0 +1,7 @@
+{
+  "name": "sinhala-font-tools",
+  "private": true,
+  "description": "Hub for the Sinhala font design tools",
+  "scripts": { "start": "node serve.js" },
+  "license": "GPL-3.0"
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinhala Font Tools</title>
+<link rel="stylesheet" href="tools/_shared/bw.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; height:100vh; display:flex; font-size:14px; line-height:1.5; }
+  nav { width:250px; flex:none; border-right:1px solid var(--fg); overflow-y:auto; padding:16px 0; }
+  nav h1 { font-size:15px; margin:0 16px 12px; }
+  nav h2 { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:16px 16px 4px; }
+  nav a { display:block; padding:6px 16px; text-decoration:none; border-left:3px solid transparent; }
+  nav a:hover { background:var(--soft); }
+  nav a.active { border-left-color:var(--fg); font-weight:600; }
+  main { flex:1; min-width:0; display:flex; flex-direction:column; }
+  .bar { display:flex; gap:12px; align-items:center; padding:8px 16px; border-bottom:1px solid var(--fg); }
+  .bar b { flex:1; }
+  .bar small { font-weight:400; color:var(--muted); }
+  .bar a { text-decoration:underline; text-underline-offset:2px; }
+  iframe { flex:1; border:0; width:100%; background:var(--bg); }
+  .page { padding:24px 32px; max-width:760px; overflow-y:auto; }
+  .page p { color:var(--muted); }
+  pre { font-family:var(--font-mono); background:var(--soft); border:1px solid var(--line); padding:12px; overflow-x:auto; }
+  button { font:inherit; border:1px solid var(--fg); background:var(--bg); color:inherit; padding:2px 10px; cursor:pointer; }
+  button:hover { background:var(--fg); color:var(--bg); }
+  @media (max-width:700px) { body { flex-direction:column; } nav { width:100%; max-height:40vh; border-right:0; border-bottom:1px solid var(--fg); } }
+</style>
+</head>
+<body>
+<nav id="nav"><h1>Sinhala Font Tools</h1></nav>
+<main id="main"></main>
+<script>
+(async () => {
+  const nav = document.getElementById('nav'), main = document.getElementById('main');
+  let manifest;
+  try {
+    manifest = await (await fetch('tools/tools.json')).json();
+  } catch (e) {
+    main.innerHTML = '<div class="page"><h2>Run this from the local server</h2><p>The hub loads its tool list with fetch(), which browsers block on file://.</p><pre>npm start</pre></div>';
+    return;
+  }
+  const byId = Object.fromEntries(manifest.tools.map(t => [t.id, t]));
+  const links = {};
+  for (const g of manifest.groups) {
+    const items = manifest.tools.filter(t => t.group === g.id);
+    if (!items.length) continue;
+    nav.insertAdjacentHTML('beforeend', `<h2>${g.title}</h2>`);
+    for (const t of items) {
+      const a = document.createElement('a');
+      a.href = '#' + t.id;
+      a.textContent = t.title;
+      links[t.id] = a;
+      nav.appendChild(a);
+    }
+  }
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  function show() {
+    const id = location.hash.slice(1);
+    const t = byId[id] || manifest.tools[0];
+    for (const [k, a] of Object.entries(links)) a.classList.toggle('active', k === t.id);
+    document.title = t.title + ' — Sinhala Font Tools';
+    const readme = t.readme ? `<a href="${t.readme}" target="_blank">README</a>` : '';
+    if (t.type === 'web') {
+      main.innerHTML = `<div class="bar"><b>${esc(t.title)} <small>${esc(t.desc)}</small></b>${readme}<a href="${t.path}" target="_blank">Open in new tab ↗</a></div><iframe src="${t.path}" title="${esc(t.title)}"></iframe>`;
+    } else {
+      const cmds = t.commands.join('\n');
+      main.innerHTML = `<div class="bar"><b>${esc(t.title)}</b>${readme}</div><div class="page"><p>${esc(t.desc)}</p><p>This tool runs on the command line (from the repo root unless a <code>cd</code> is shown).</p><pre id="cmd">${esc(cmds)}</pre><button id="copy">Copy</button></div>`;
+      document.getElementById('copy').onclick = e => { navigator.clipboard.writeText(cmds); e.target.textContent = 'Copied'; setTimeout(() => e.target.textContent = 'Copy', 1200); };
+    }
+  }
+  addEventListener('hashchange', show);
+  show();
+})();
+</script>
+</body>
+</html>

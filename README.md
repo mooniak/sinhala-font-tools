@@ -51,10 +51,20 @@ here disagrees with lanka-glyphsets, lanka-glyphsets wins.
   from the stages model and audits a font's sidebearings against it (writing
   metrics keys into `.glyphspackage` sources is on its roadmap).
 - **[tools/composite-map/](tools/composite-map/)** — builds the composite map
-  and rebuilds atomic glyphs into proper composites in Glyphs sources.
+  and rebuilds atomic glyphs into proper composites in Glyphs sources; its
+  **Sinhala Glyph Builder** Glyphs plugin adds glyphs from a visual catalogue
+  of every stage glyph and attested grapheme (draw, composite or features),
+  parents first.
 - **[tools/glyphs-filters/](tools/glyphs-filters/)** — generates Glyphs 3
   sidebar filters from these models, so a working font's sidebar is a live view
   of the model. Output in [filters/](filters/).
+- **[tools/test-generator/](tools/test-generator/)** — adhesiontext-style test
+  text generator: list the graphemes a font has (ටු, කෝ, ක්‍රි… as units, drawn
+  or composed) and get real words and running text that use only those.
+- **[test-texts/corpus-build/](test-texts/corpus-build/)** — builds, from the raw UCSC
+  Sinhala corpora (not in the repo), the data bundle `test-generator` loads:
+  cleaned words and frequencies, word pairs, a word-building model and ~150k real
+  sentences sharded by rarest grapheme.
 - **[tools/font-comparison/](tools/font-comparison/)** — side-by-side rendering
   comparison across fonts. Ships with just the system fonts; see its README
   to set up your own default collection.
@@ -66,10 +76,10 @@ here disagrees with lanka-glyphsets, lanka-glyphsets wins.
   Moved here from lanka-glyphsets so that repo holds only the standard; it
   reads the glyphset YAMLs from a sibling `lanka-glyphsets` checkout.
 - **[tools/glyphname-unicode-converter/](tools/glyphname-unicode-converter/)** —
-  vendored copy of lanka-glyphsets' glyph name ↔ Unicode library, used by
-  glyph-chart and glyphs-filters (not a standalone tool).
-- **[tools/wordlist/](tools/wordlist/)** — regex search over a Sinhala word
-  list (`si.txt`) for Unicode sequences such as ZWJ conjuncts.
+  glyph name ↔ Unicode converter: paste Sinhala clusters to get LankaGlyphset
+  names, or names to get the Unicode. Vendored from lanka-glyphsets, web tool
+  and engine; the engine (`lankaglyphset-map.js`) is also used by glyph-chart,
+  glyphs-filters and test-generator.
 
 ### Reference material
 
@@ -88,6 +98,10 @@ Most of the browser tools are static — open the `index.html` and drop a font i
 no build step. The Python tools (`spacing-map`, `composite-map`) each have their
 own README with setup instructions. `tools/glyphs-filters` reuses `js-yaml` from
 `sinhala-design-stages/node_modules`.
+
+All the browser tools share one black-and-white palette,
+[`tools/_shared/bw.css`](tools/_shared/bw.css). Use its tokens rather than
+colours: show differences with fill, weight and solid/dashed borders, not hue.
 
 If you are **starting a Sinhala font**, the order is roughly:
 
@@ -110,6 +124,6 @@ Some vendored and reference content carries its own licence instead:
 | [`resources/Hodipotha-9.ttf`](resources/Hodipotha-9.ttf) | © ICTA 2014, CC BY-ND 4.0 — see [`resources/README.md`](resources/README.md) |
 | [`resources/sinhala-frequency-analysis/sinhala/Corpus/`](resources/sinhala-frequency-analysis/) | Sinhala newspaper text (e.g. Silumina, ANCL, 2004); no licence recorded — check redistribution terms before reuse |
 | [`sinhala-design-stages/docs/sinhala.min.yaml`](sinhala-design-stages/docs/sinhala.min.yaml) | Extracted from Noto Sans Sinhala (OFL-1.1); regenerated locally, not vendored |
-| [`tools/_generated/lanka-glyph-data.js`](tools/_generated/), [`shaping-exceptions.js`](tools/_generated/), [`tools/glyphname-unicode-converter/lankaglyphset-map.js`](tools/glyphname-unicode-converter/) | Vendored from [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets); see that repo's licence |
+| [`tools/_generated/lanka-glyph-data.js`](tools/_generated/), [`shaping-exceptions.js`](tools/_generated/), [`tools/glyphname-unicode-converter/`](tools/glyphname-unicode-converter/) (`index.html`, `converter.js`, `lankaglyphset-map.js`) | Vendored from [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets); see that repo's licence |
 
 When in doubt about a specific file, check its own header/frontmatter first — it overrides this table.

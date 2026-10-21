@@ -1,4 +1,4 @@
 {
   "private": true,
-  "description": "Vendored copy of lanka-glyphsets/tools/glyphname-unicode-converter/lankaglyphset-map.js — do not edit here. Used by ../glyph-chart/generate-glyphnames.js. Regenerate/sync from lanka-glyphsets when the standard changes."
+  "description": "Vendored copy of lanka-glyphsets/tools/glyphname-unicode-converter (web tool + lankaglyphset-map.js engine) — do not edit here. CommonJS scope so require() works for ../glyph-chart, ../glyphs-filters and ../test-generator. Sync from lanka-glyphsets when the standard changes; see README.md."
 }

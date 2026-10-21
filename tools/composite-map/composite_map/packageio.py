@@ -7,8 +7,10 @@ glyphsLib can *read* a .glyphspackage but its GSFont.save() only writes a single
 
 Each layer entry in a v2/v3 glyph file carries `paths` and/or `components`
 arrays plus its own `width`. To turn a drawn glyph into a composite we drop
-`paths`, set `components`, and keep the existing `width` (drawn Sinhala base+mark
-forms already advance by the base width, so the width is already correct).
+`paths`, set `components`, and keep the existing `width` (the drawn glyph's
+advance, which its metrics keys then maintain). With `base_aligned=False` the
+base component is written with `alignment = -1` (automatic alignment off; the
+signs stay anchored), see buildplan.alignment().
 Output uses indent=0, which reproduces the Glyphs-native one-entry-per-line
 layout and alphabetical key order.
 """
@@ -47,13 +49,15 @@ def _read_glyphname(glyph_file):
     return data.get("glyphname")
 
 
-def rewrite_as_composite(glyph_file, components):
+def rewrite_as_composite(glyph_file, components, base_aligned=True):
     """Replace every layer's drawn contours with the given component references.
     Returns the number of layers changed."""
     with open(glyph_file, "r", encoding="utf-8") as fh:
         data = openstep_plist.load(fh, use_numbers=True)
 
     comp_entries = [{"name": c} for c in components]
+    if not base_aligned:
+        comp_entries[0] = {"alignment": -1, "name": components[0]}
     changed = 0
     for layer in data.get("layers", []):
         had = ("paths" in layer) or ("shapes" in layer) or ("components" in layer)

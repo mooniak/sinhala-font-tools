@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LankaGlyphset ⇄ Unicode Converter</title>
+  <link rel="stylesheet" href="../_shared/bw.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { line-height: 1.5; padding: 1.5rem; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    header { margin-bottom: 1.25rem; }
+    h1 { font-size: 1.5rem; font-weight: 650; }
+    header p { color: var(--muted); margin-top: 0.35rem; font-size: 0.92rem; }
+    code { font-family: var(--font-mono); background: var(--soft); padding: 0.05rem 0.3rem; font-size: 0.85em; }
+
+    .tabs { display: flex; border-bottom: 1px solid var(--fg); margin-bottom: 1rem; }
+    .tab { padding: 0.5rem 1rem; cursor: pointer; font-size: 0.9rem; font-weight: 550;
+      color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+    .tab:hover { color: var(--fg); }
+    .tab.active { color: var(--fg); border-bottom-color: var(--fg); }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em;
+      display: block; margin-bottom: 0.4rem; }
+    textarea { width: 100%; min-height: 120px; resize: vertical; padding: 0.7rem;
+      border: 1px solid var(--fg); font-family: var(--font-mono); font-size: 1rem;
+      background: var(--bg); color: var(--fg); }
+    textarea.sinhala { font-size: 1.4rem; line-height: 1.8; }
+
+    .toolbar { display: flex; align-items: center; gap: 0.6rem; margin: 0.75rem 0; flex-wrap: wrap; }
+    button.act { padding: 0.45rem 0.9rem; border: 1px solid var(--fg); background: var(--fg); color: var(--bg);
+      font: inherit; font-weight: 600; cursor: pointer; font-size: 0.88rem; }
+    button.act.ghost { background: var(--bg); color: var(--fg); }
+    button.act:hover, button.act.ghost:hover { background: var(--fg); color: var(--bg); }
+    .summary { font-size: 0.85rem; color: var(--muted); margin-left: auto; }
+    .summary b { color: var(--fg); }
+
+    table { width: 100%; border-collapse: collapse; border-top: 1px solid var(--fg); }
+    th, td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--line);
+      font-size: 0.9rem; vertical-align: middle; }
+    th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+      border-bottom-color: var(--fg); }
+    td.glyph { font-size: 1.6rem; text-align: center; width: 3rem; }
+    td.mono, th.mono { font-family: var(--font-mono); font-size: 0.85rem; }
+    td .name { font-family: var(--font-mono); font-weight: 600; }
+    td.cp { color: var(--muted); font-family: var(--font-mono); font-size: 0.78rem; }
+    tr.copyable { cursor: pointer; }
+    tr.copyable:hover td { background: var(--soft); }
+
+    /* Status badges: filled = in the glyphset, outlined = derived, dashed = error. */
+    .badge { display: inline-block; padding: 0.05rem 0.45rem; border: 1px solid var(--fg);
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .badge.canon { background: var(--fg); color: var(--bg); }
+    .badge.flag { background: var(--bg); color: var(--fg); }
+    .badge.err { background: var(--bg); color: var(--fg); border-style: dashed; }
+    .note { color: var(--muted); font-size: 0.78rem; }
+    .empty { color: var(--muted); padding: 1rem; text-align: center; font-style: italic; }
+    footer { margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted); }
+    #toast { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+      background: var(--fg); color: var(--bg); padding: 0.55rem 1rem;
+      font-size: 0.85rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>LankaGlyphset ⇄ Unicode Converter</h1>
+      <p>Convert LankaGlyphset glyph names (e.g. <code>kRa-sinh</code>) to their Sinhala Unicode
+        string and back. Paste entries on one line or many, separated by spaces, commas, or nothing at all. Enumerated glyphs show their glyphset tier
+        <span class="badge canon">kernel</span>; well-formed names not enumerated in the glyphset
+        are marked <span class="badge flag">derived</span>.</p>
+    </header>
+
+    <div class="tabs">
+      <div class="tab active" data-mode="uni2name">Unicode → Name</div>
+      <div class="tab" data-mode="name2uni">Name → Unicode</div>
+    </div>
+
+    <!-- Unicode -> Name -->
+    <div class="panel active" id="panel-uni2name">
+      <label for="in-uni">Sinhala Unicode strings (space, comma, or no separator)</label>
+      <textarea id="in-uni" class="sinhala" placeholder="කි&#10;ක්‍ර&#10;ක්‍ෂ&#10;දා"></textarea>
+      <div class="toolbar">
+        <button class="act ghost" data-sample="uni">Load sample</button>
+        <button class="act ghost" data-copy="names">Copy all names</button>
+        <span class="summary" id="sum-uni"></span>
+      </div>
+      <div id="out-uni"></div>
+    </div>
+
+    <!-- Name -> Unicode -->
+    <div class="panel" id="panel-name2uni">
+      <label for="in-name">LankaGlyphset names (space, comma, or newline separated; <code>-sinh</code> optional)</label>
+      <textarea id="in-name" placeholder="kRa-sinh&#10;kSsa-sinh&#10;ka&#10;daa._c-sinh"></textarea>
+      <div class="toolbar">
+        <button class="act ghost" data-sample="name">Load sample</button>
+        <button class="act ghost" data-copy="strings">Copy all strings</button>
+        <span class="summary" id="sum-name"></span>
+      </div>
+      <div id="out-name"></div>
+    </div>
+
+    <footer>
+      Glyphset tiers (<code>kernel · core · plus · pro</code>), Unicode and naming
+      rules follow the LankaGlyphset standard
+      (<code>sinhala-{0-kernel,1-core,2-plus,3-pro}.yaml</code>). Engine:
+      <code>lankaglyphset-map.js</code> (reusable in the browser and Node).
+    </footer>
+  </div>
+  <div id="toast"></div>
+
+  <script src="lankaglyphset-map.js"></script>
+  <script src="converter.js"></script>
+</body>
+</html>

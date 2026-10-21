@@ -1,0 +1,37 @@
+/*
+ * bw.css — the shared black-and-white palette for every web tool in this repo.
+ *
+ * Link it before a tool's own stylesheet and use these tokens instead of
+ * colours. Meaning is carried by weight, fill, and border style (solid /
+ * dashed / dotted), never by hue. Dark mode is the same palette inverted.
+ */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #666666;
+  --line: #d6d6d6;      /* hairline dividers */
+  --soft: #f2f2f2;      /* hover, panels, quiet fills */
+  --soft-2: #e4e4e4;    /* a second, stronger fill */
+  --tint: rgba(0, 0, 0, 0.14);  /* translucent overlays (canvas highlights) */
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --line: #333333;
+    --soft: #141414;
+    --soft-2: #262626;
+    --tint: rgba(255, 255, 255, 0.2);
+  }
+}
+
+body { background: var(--bg); color: var(--fg); font-family: var(--font-ui); }
+a { color: inherit; }
+::selection { background: var(--fg); color: var(--bg); }
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 1px; }
+input, select, textarea, button { accent-color: var(--fg); }

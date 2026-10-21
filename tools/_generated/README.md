@@ -7,6 +7,11 @@ Two provenances live here:
 - **Generated locally** by a tool in this repo: `sinhala-composites.js`, emitted
   by [`tools/composite-map`](../composite-map/) from `sinhala-composites.yaml`.
   Regenerate with `python -m composite_map export-js`; do not edit by hand.
+- `sinhala-glyph-catalogue.json`, emitted by
+  [`tools/composite-map/glyph-catalogue/build.js`](../composite-map/glyph-catalogue/)
+  from the design model, the corpus graphemes and the composite map, for the
+  Sinhala Glyph Builder plugin. Regenerate with
+  `node tools/composite-map/glyph-catalogue/build.js`; do not edit by hand.
 - `sinhala-spacing.js`, emitted by [`tools/spacing-map`](../spacing-map/) from
   `sinhala-spacing.yaml` for `tools/spacing-workbench/`. Regenerate with
   `python -m spacing_map export-js`; do not edit by hand.

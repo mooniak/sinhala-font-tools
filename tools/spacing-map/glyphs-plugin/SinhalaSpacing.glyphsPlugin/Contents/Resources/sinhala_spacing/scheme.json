@@ -1,0 +1,1340 @@
+{
+ "meta": {
+  "version": 1,
+  "generated_by": "tools/spacing-map (python -m spacing_map build-map)",
+  "model": "sinhala-design-stages/sinhala-design-dependencies.yaml",
+  "model_version": "0.2.0",
+  "unit": "spacing_unit",
+  "description": "Sinhala spacing scheme. Each class: `rep` sets the sidebearing, `members` inherit it (applied as Glyphs metrics keys), `value` is the rep's sidebearing target as a multiple of the font's spacing_unit metric (null = not yet authored). `forms` are the fused form-family glyphs (ටි ම් කු …): each maps to the class whose rep it copies per side — per-form override > family form_spacing > inherited from its host. `flags` collect the model's provisional spacing_note markers awaiting the designer. `nonspacing` combining marks carry no sidebearings. Relationships are rebuilt from the model; values/notes/exceptions survive rebuilds.",
+  "counts": {
+   "classes": {
+    "right": 11,
+    "left": 13
+   },
+   "members": {
+    "right": 75,
+    "left": 75
+   },
+   "forms": 128
+  }
+ },
+ "classes": {
+  "right": {
+   "R-bowl": {
+    "rep": "ට",
+    "members": [
+     "ට",
+     "ච",
+     "ධ",
+     "ව",
+     "ඩ",
+     "ඣ",
+     "ඞ"
+    ],
+    "value": 1.0
+   },
+   "R-trap": {
+    "rep": "ඪ",
+    "members": [
+     "ඨ",
+     "ථ",
+     "එ",
+     "ඪ",
+     "ඵ",
+     "ඡ",
+     "ඒ",
+     "ඓ"
+    ],
+    "value": null
+   },
+   "R-pa": {
+    "rep": "ස",
+    "members": [
+     "ප",
+     "ය",
+     "ඝ",
+     "ස",
+     "ෂ"
+    ],
+    "value": null
+   },
+   "R-arch": {
+    "rep": "ග",
+    "members": [
+     "ක",
+     "ත",
+     "ග",
+     "ඟ",
+     "ණ",
+     "න",
+     "භ",
+     "ශ",
+     "හ",
+     "ෆ",
+     "ඉ",
+     "ා",
+     "ෘ",
+     "ෟ",
+     "ආ",
+     "ො",
+     "ෝ",
+     "ඕ",
+     "ෲ",
+     "ෳ",
+     "ෞ",
+     "ඍ",
+     "ඎ",
+     "ඖ"
+    ],
+    "value": null
+   },
+   "R-diag": {
+    "rep": "ර",
+    "members": [
+     "ජ",
+     "ඦ",
+     "ර",
+     "ඊ"
+    ],
+    "value": null
+   },
+   "R-a": {
+    "rep": "අ",
+    "members": [
+     "අ",
+     "ල",
+     "ළ"
+    ],
+    "value": null
+   },
+   "R-u": {
+    "rep": "ද",
+    "members": [
+     "උ",
+     "ද",
+     "ඤ",
+     "ඥ",
+     "ඳ",
+     "ැ",
+     "ෑ",
+     "ඇ",
+     "ඈ",
+     "ඌ",
+     "ඏ",
+     "ඐ"
+    ],
+    "value": null
+   },
+   "R-round": {
+    "rep": "ඔ",
+    "members": [
+     "ඔ",
+     "ඛ",
+     "බ",
+     "ම",
+     "ඹ",
+     "ඬ"
+    ],
+    "value": null,
+    "note": "Source also lists ධ ච ඩ ඣ here; their primary class is R-bowl. ඕ also came from this source group, but its right edge is the ා stroke (ඕ = ඔ + ා), so its primary class is R-arch — see glyphs.ඕ."
+   },
+   "R-kombu": {
+    "rep": "ෙ",
+    "members": [
+     "ෙ",
+     "ෛ",
+     "ේ"
+    ],
+    "value": null,
+    "note": "PROPOSED: the pre-base kombuwa's right sidebearing — the gap to the following base. ෛ (kombu deka) shares the same trailing curl."
+   },
+   "R-ring": {
+    "rep": "ං",
+    "members": [
+     "ං",
+     "ඃ"
+    ],
+    "value": null,
+    "note": "PROPOSED: the dot/ring signs. ඃ is two ං dots stacked, same right profile. A small round shape needs more optical sidebearing than the big R-round letters, hence its own class."
+   },
+   "R-spiral": {
+    "rep": "෴",
+    "members": [
+     "෴"
+    ],
+    "value": null,
+    "note": "PROPOSED: kunddaliya section mark; punctuation-scale spacing, singleton."
+   }
+  },
+  "left": {
+   "L-tta": {
+    "rep": "ට",
+    "members": [
+     "ට",
+     "ධ",
+     "ඛ",
+     "බ",
+     "ඞ"
+    ],
+    "value": 1.0
+   },
+   "L-e": {
+    "rep": "ස",
+    "members": [
+     "එ",
+     "ච",
+     "ඩ",
+     "ඝ",
+     "ඪ",
+     "භ",
+     "ස",
+     "ඒ",
+     "ඓ"
+    ],
+    "value": null,
+    "note": "ස also appears in L-pa in the source; primary here."
+   },
+   "L-ja": {
+    "rep": "ය",
+    "members": [
+     "ජ",
+     "ඨ",
+     "ථ",
+     "ය",
+     "ර",
+     "ඊ",
+     "ල",
+     "ඉ",
+     "ළ",
+     "ෆ",
+     "ඍ",
+     "ඎ"
+    ],
+    "value": null
+   },
+   "L-pa": {
+    "rep": "ප",
+    "members": [
+     "අ",
+     "උ",
+     "ප",
+     "ඡ",
+     "ද",
+     "ව",
+     "හ",
+     "ඵ",
+     "ෂ",
+     "ආ",
+     "ඇ",
+     "ඈ",
+     "ඌ"
+    ],
+    "value": null
+   },
+   "L-ka": {
+    "rep": "ත",
+    "members": [
+     "ක",
+     "ත",
+     "ණ",
+     "න",
+     "ඣ"
+    ],
+    "value": null
+   },
+   "L-ga": {
+    "rep": "ග",
+    "members": [
+     "ග",
+     "ඟ",
+     "ඤ",
+     "ඥ",
+     "ඦ",
+     "ශ",
+     "ඬ",
+     "ඳ",
+     "ඏ",
+     "ෙ",
+     "ේ",
+     "ො",
+     "ෝ",
+     "ෛ",
+     "ෞ",
+     "ඐ"
+    ],
+    "value": null
+   },
+   "L-o": {
+    "rep": "ඔ",
+    "members": [
+     "ඔ",
+     "ඕ",
+     "ම",
+     "ඹ",
+     "ඖ"
+    ],
+    "value": null
+   },
+   "L-aela": {
+    "rep": "ා",
+    "members": [
+     "ා"
+    ],
+    "value": null,
+    "note": "PROPOSED: the ා stem's left profile; singleton until ෘ-family entries prove to match."
+   },
+   "L-aeda": {
+    "rep": "ැ",
+    "members": [
+     "ැ",
+     "ෑ"
+    ],
+    "value": null,
+    "note": "PROPOSED: the aeda-pilla hook entry; ෑ doubles the hook but enters identically."
+   },
+   "L-gaetta": {
+    "rep": "ෘ",
+    "members": [
+     "ෘ",
+     "ෲ"
+    ],
+    "value": null,
+    "note": "PROPOSED: the gaetta-pilla loop entry, attaching low under the base. May merge with L-gaya after visual check."
+   },
+   "L-gaya": {
+    "rep": "ෟ",
+    "members": [
+     "ෟ",
+     "ෳ"
+    ],
+    "value": null,
+    "note": "PROPOSED: the gayanukitta entry at baseline. May merge with L-gaetta after visual check."
+   },
+   "L-ring": {
+    "rep": "ං",
+    "members": [
+     "ං",
+     "ඃ"
+    ],
+    "value": null,
+    "note": "PROPOSED: mirror of R-ring."
+   },
+   "L-spiral": {
+    "rep": "෴",
+    "members": [
+     "෴"
+    ],
+    "value": null,
+    "note": "PROPOSED: mirror of R-spiral."
+   }
+  }
+ },
+ "forms": {
+  "fam-i-tti": {
+   "glyphs": {
+    "ටි": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ටී": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "චි": {
+     "left": "L-e",
+     "right": "R-bowl"
+    },
+    "චී": {
+     "left": "L-e",
+     "right": "R-bowl"
+    },
+    "ඩි": {
+     "left": "L-e",
+     "right": "R-bowl"
+    },
+    "ඩී": {
+     "left": "L-e",
+     "right": "R-bowl"
+    }
+   }
+  },
+  "fam-i-tthi": {
+   "glyphs": {
+    "ඨි": {
+     "left": "L-ja",
+     "right": "R-trap"
+    },
+    "ඨී": {
+     "left": "L-ja",
+     "right": "R-trap"
+    },
+    "ඪි": {
+     "left": "L-e",
+     "right": "R-trap"
+    },
+    "ඪී": {
+     "left": "L-e",
+     "right": "R-trap"
+    },
+    "ථි": {
+     "left": "L-ja",
+     "right": "R-trap"
+    },
+    "ථී": {
+     "left": "L-ja",
+     "right": "R-trap"
+    },
+    "ඵි": {
+     "left": "L-pa",
+     "right": "R-trap"
+    },
+    "ඵී": {
+     "left": "L-pa",
+     "right": "R-trap"
+    },
+    "ට්‍ඨි": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ට්‍ඨී": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ත්‍ථි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "ත්‍ථී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "න්‍ථි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "න්‍ථී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    }
+   }
+  },
+  "fam-i-term": {
+   "note": "FLAG: the wrap can push past the host's right extreme on narrow terminals — verify per host and add form_overrides if the workbench disagrees.",
+   "glyphs": {
+    "යි": {
+     "left": "L-ja",
+     "right": "R-pa"
+    },
+    "යී": {
+     "left": "L-ja",
+     "right": "R-pa"
+    },
+    "වි": {
+     "left": "L-pa",
+     "right": "R-bowl"
+    },
+    "වී": {
+     "left": "L-pa",
+     "right": "R-bowl"
+    },
+    "මි": {
+     "left": "L-o",
+     "right": "R-round"
+    },
+    "මී": {
+     "left": "L-o",
+     "right": "R-round"
+    },
+    "බි": {
+     "left": "L-tta",
+     "right": "R-round"
+    },
+    "බී": {
+     "left": "L-tta",
+     "right": "R-round"
+    },
+    "ඛි": {
+     "left": "L-tta",
+     "right": "R-round"
+    },
+    "ඛී": {
+     "left": "L-tta",
+     "right": "R-round"
+    },
+    "ධි": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ධී": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ණි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "ණී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "ඹි": {
+     "left": "L-o",
+     "right": "R-round"
+    },
+    "ඹී": {
+     "left": "L-o",
+     "right": "R-round"
+    },
+    "ඬි": {
+     "left": "L-ga",
+     "right": "R-round"
+    },
+    "ඬී": {
+     "left": "L-ga",
+     "right": "R-round"
+    },
+    "ඣි": {
+     "left": "L-ka",
+     "right": "R-bowl"
+    },
+    "ඣී": {
+     "left": "L-ka",
+     "right": "R-bowl"
+    },
+    "ඞි": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ඞී": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    }
+   }
+  },
+  "fam-i-ghi": {
+   "glyphs": {
+    "ඝි": {
+     "left": "L-e",
+     "right": "R-pa"
+    },
+    "ඝී": {
+     "left": "L-e",
+     "right": "R-pa"
+    },
+    "සි": {
+     "left": "L-e",
+     "right": "R-pa"
+    },
+    "සී": {
+     "left": "L-e",
+     "right": "R-pa"
+    }
+   }
+  },
+  "hal-rahena": {
+   "note": "FLAG: assumes the wrap rides above the body and the host's right edge stands — verify the narrow bowls (ට් ව්) first.",
+   "glyphs": {
+    "ට්": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ඩ්": {
+     "left": "L-e",
+     "right": "R-bowl"
+    },
+    "ඬ්": {
+     "left": "L-ga",
+     "right": "R-round"
+    },
+    "ච්": {
+     "left": "L-e",
+     "right": "R-bowl"
+    },
+    "ධ්": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    },
+    "ඛ්": {
+     "left": "L-tta",
+     "right": "R-round"
+    },
+    "බ්": {
+     "left": "L-tta",
+     "right": "R-round"
+    },
+    "ම්": {
+     "left": "L-o",
+     "right": "R-round"
+    },
+    "ඹ්": {
+     "left": "L-o",
+     "right": "R-round"
+    },
+    "ව්": {
+     "left": "L-pa",
+     "right": "R-bowl"
+    },
+    "ඣ්": {
+     "left": "L-ka",
+     "right": "R-bowl"
+    },
+    "ඞ්": {
+     "left": "L-tta",
+     "right": "R-bowl"
+    }
+   }
+  },
+  "ra-forms": {
+   "note": "FLAG: රි රී ර් keep ර's classes (L-ja/R-diag); රැ රු රූ end in the ැ-style hook, hence R-u. The ර් wrap and රී tail right extremes need a visual check.",
+   "glyphs": {
+    "රි": {
+     "left": "L-ja",
+     "right": "R-diag"
+    },
+    "රී": {
+     "left": "L-ja",
+     "right": "R-diag"
+    },
+    "ර්": {
+     "left": "L-ja",
+     "right": "R-diag"
+    },
+    "රැ": {
+     "left": "L-ja",
+     "right": "R-u"
+    },
+    "රු": {
+     "left": "L-ja",
+     "right": "R-u"
+    },
+    "රූ": {
+     "left": "L-ja",
+     "right": "R-u"
+    }
+   }
+  },
+  "fam-i-ki": {
+   "glyphs": {
+    "කි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "කී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "ති": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "තී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "නි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "නී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    }
+   }
+  },
+  "fam-i-gi": {
+   "glyphs": {
+    "ගි": {
+     "left": "L-ga",
+     "right": "R-arch"
+    },
+    "ගී": {
+     "left": "L-ga",
+     "right": "R-arch"
+    },
+    "ඟි": {
+     "left": "L-ga",
+     "right": "R-arch"
+    },
+    "ඟී": {
+     "left": "L-ga",
+     "right": "R-arch"
+    },
+    "ශි": {
+     "left": "L-ga",
+     "right": "R-arch"
+    },
+    "ශී": {
+     "left": "L-ga",
+     "right": "R-arch"
+    },
+    "ෆි": {
+     "left": "L-ja",
+     "right": "R-arch"
+    },
+    "ෆී": {
+     "left": "L-ja",
+     "right": "R-arch"
+    }
+   }
+  },
+  "fam-i-di": {
+   "glyphs": {
+    "දි": {
+     "left": "L-pa",
+     "right": "R-u"
+    },
+    "දී": {
+     "left": "L-pa",
+     "right": "R-u"
+    },
+    "ද්‍රි": {
+     "left": "L-pa",
+     "right": "R-u"
+    },
+    "ද්‍රී": {
+     "left": "L-pa",
+     "right": "R-u"
+    }
+   }
+  },
+  "fam-i-li": {
+   "glyphs": {
+    "ලි": {
+     "left": "L-ja",
+     "right": "R-a"
+    },
+    "ලී": {
+     "left": "L-ja",
+     "right": "R-a"
+    },
+    "ළි": {
+     "left": "L-ja",
+     "right": "R-a"
+    },
+    "ළී": {
+     "left": "L-ja",
+     "right": "R-a"
+    }
+   }
+  },
+  "fam-i-pi": {
+   "glyphs": {
+    "පි": {
+     "left": "L-pa",
+     "right": "R-pa"
+    },
+    "පී": {
+     "left": "L-pa",
+     "right": "R-pa"
+    },
+    "ෂි": {
+     "left": "L-pa",
+     "right": "R-pa"
+    },
+    "ෂී": {
+     "left": "L-pa",
+     "right": "R-pa"
+    }
+   }
+  },
+  "u-special": {
+   "note": "FLAG: the fused right-joined ු hook takes over the right edge; mapped to R-u on the assumption it shares the ද/ැ hook rhythm — split into a dedicated class if the workbench disagrees. Covers the ූ doubled hook too.",
+   "glyphs": {
+    "කු": {
+     "left": "L-ka",
+     "right": "R-u"
+    },
+    "කූ": {
+     "left": "L-ka",
+     "right": "R-u"
+    },
+    "ගු": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ගූ": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "තු": {
+     "left": "L-ka",
+     "right": "R-u"
+    },
+    "තූ": {
+     "left": "L-ka",
+     "right": "R-u"
+    },
+    "භු": {
+     "left": "L-e",
+     "right": "R-u"
+    },
+    "භූ": {
+     "left": "L-e",
+     "right": "R-u"
+    },
+    "ශු": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ශූ": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඟු": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඟූ": {
+     "left": "L-ga",
+     "right": "R-u"
+    }
+   }
+  },
+  "du-form": {
+   "note": "FLAG: fused hook → R-u like u-special; verify දූ's doubled loop separately.",
+   "glyphs": {
+    "දු": {
+     "left": "L-pa",
+     "right": "R-u"
+    },
+    "දූ": {
+     "left": "L-pa",
+     "right": "R-u"
+    }
+   }
+  },
+  "fam-i-ji": {
+   "glyphs": {
+    "ජි": {
+     "left": "L-ja",
+     "right": "R-diag"
+    },
+    "ජී": {
+     "left": "L-ja",
+     "right": "R-diag"
+    },
+    "ඡි": {
+     "left": "L-pa",
+     "right": "R-trap"
+    },
+    "ඡී": {
+     "left": "L-pa",
+     "right": "R-trap"
+    },
+    "ඦි": {
+     "left": "L-ga",
+     "right": "R-diag"
+    },
+    "ඦී": {
+     "left": "L-ga",
+     "right": "R-diag"
+    }
+   }
+  },
+  "fam-i-bhi": {
+   "glyphs": {
+    "භි": {
+     "left": "L-e",
+     "right": "R-arch"
+    },
+    "භී": {
+     "left": "L-e",
+     "right": "R-arch"
+    },
+    "හි": {
+     "left": "L-pa",
+     "right": "R-arch"
+    },
+    "හී": {
+     "left": "L-pa",
+     "right": "R-arch"
+    }
+   }
+  },
+  "llu-form": {
+   "note": "Right R-trap is the model's own check (spaces with the trap family, not with ළ). FLAG: left L-e follows the එ-archetype body — verify the entry stroke.",
+   "glyphs": {
+    "ළු": {
+     "left": "L-e",
+     "right": "R-trap"
+    },
+    "ළූ": {
+     "left": "L-e",
+     "right": "R-trap"
+    }
+   }
+  },
+  "fam-i-ndi": {
+   "glyphs": {
+    "ඳි": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඳී": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඳ්‍රි": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඳ්‍රී": {
+     "left": "L-ga",
+     "right": "R-u"
+    }
+   }
+  },
+  "fam-i-nyi": {
+   "glyphs": {
+    "ඤි": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඤී": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඥි": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "ඥී": {
+     "left": "L-ga",
+     "right": "R-u"
+    },
+    "න්‍දි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "න්‍දී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "න්‍ද්‍රි": {
+     "left": "L-ka",
+     "right": "R-arch"
+    },
+    "න්‍ද්‍රී": {
+     "left": "L-ka",
+     "right": "R-arch"
+    }
+   }
+  }
+ },
+ "exceptions": {},
+ "lgs_names": {
+  "‍": "zerowidthjoiner",
+  "අ": "a",
+  "ආ": "aa",
+  "ඇ": "ae",
+  "ඈ": "aae",
+  "ඉ": "i",
+  "ඊ": "ii",
+  "උ": "u",
+  "ඌ": "uu",
+  "එ": "e",
+  "ඒ": "ee",
+  "ඓ": "ai",
+  "ඔ": "o",
+  "ඕ": "oo",
+  "ඖ": "au",
+  "ක": "ka",
+  "ඛ": "kha",
+  "ග": "ga",
+  "ඝ": "gha",
+  "ඞ": "nga",
+  "ඟ": "nnga",
+  "ච": "ca",
+  "ඡ": "cha",
+  "ජ": "ja",
+  "ඣ": "jha",
+  "ඤ": "nya",
+  "ට": "tta",
+  "ඨ": "ttha",
+  "ඩ": "dda",
+  "ඪ": "ddha",
+  "ණ": "nna",
+  "ඬ": "nndda",
+  "ත": "ta",
+  "ථ": "tha",
+  "ද": "da",
+  "ධ": "dha",
+  "න": "na",
+  "ඳ": "nda",
+  "ප": "pa",
+  "ඵ": "pha",
+  "බ": "ba",
+  "භ": "bha",
+  "ම": "ma",
+  "ඹ": "mba",
+  "ය": "ya",
+  "ර": "ra",
+  "ල": "la",
+  "ව": "va",
+  "ශ": "sha",
+  "ෂ": "ssa",
+  "ස": "sa",
+  "හ": "ha",
+  "ළ": "lla",
+  "ෆ": "fa",
+  "ා": "aasign",
+  "ැ": "aesign",
+  "ෑ": "aaesign",
+  "ි": "isign",
+  "ී": "iisign",
+  "ු": "usign",
+  "ූ": "uusign",
+  "ෘ": "vocalicrsign",
+  "ෳ": "vocalicllsign",
+  "ෟ": "vocaliclsign",
+  "ෲ": "vocalicrrsign",
+  "ෙ": "esign",
+  "ේ": "eesign",
+  "ො": "osign",
+  "ෝ": "oosign",
+  "ෛ": "aisign",
+  "ෞ": "ausign",
+  "්": "virama",
+  "ං": "anusvaraya",
+  "ඃ": "visargaya",
+  "෴": "kunddaliya",
+  "ඍ": "vocalicr",
+  "ඎ": "vocalicrr",
+  "ඏ": "vocalicl",
+  "ඐ": "vocalicll",
+  "ඥ": "jnya",
+  "ඦ": "nyja",
+  "෦": "lithzero",
+  "෧": "lithone",
+  "෨": "lithtwo",
+  "෩": "liththree",
+  "෪": "lithfour",
+  "෫": "lithfive",
+  "෬": "lithsix",
+  "෭": "lithseven",
+  "෮": "litheight",
+  "෯": "lithnine",
+  "𑇡": "archaicone",
+  "𑇢": "archaictwo",
+  "𑇣": "archaicthree",
+  "𑇤": "archaicfour",
+  "𑇥": "archaicfive",
+  "𑇦": "archaicsix",
+  "𑇧": "archaicseven",
+  "𑇨": "archaiceight",
+  "𑇩": "archaicnine",
+  "𑇪": "archaicten",
+  "𑇫": "archaictwenty",
+  "𑇬": "archaicthirty",
+  "𑇭": "archaicforty",
+  "𑇮": "archaicfifty",
+  "𑇯": "archaicsixty",
+  "𑇰": "archaicseventy",
+  "𑇱": "archaiceighty",
+  "𑇲": "archaicninety",
+  "𑇳": "archaiconehundred",
+  "𑇴": "archaiconethousand"
+ },
+ "composites": {
+  "aa-sinh": "a-sinh",
+  "aae-sinh": "a-sinh",
+  "aasign_virama-sinh": "aasign-sinh",
+  "ae-sinh": "a-sinh",
+  "anusvarayaShI-sinh": "anusvarayaSha-sinh",
+  "anusvarayaShIi-sinh": "anusvarayaSha-sinh",
+  "au-sinh": "o-sinh",
+  "bBI-sinh": "bBa-sinh",
+  "bBIi-sinh": "bBa-sinh",
+  "bBa_repha-sinh": "bBa-sinh",
+  "bRI-sinh": "bRa-sinh",
+  "bRIi-sinh": "bRa-sinh",
+  "bRa-sinh": "ba-sinh",
+  "bU-sinh": "ba-sinh",
+  "bUu-sinh": "ba-sinh",
+  "ba_repha-sinh": "ba-sinh",
+  "bh-sinh": "bha-sinh",
+  "bhI-sinh": "bha-sinh",
+  "bhIi-sinh": "bha-sinh",
+  "bhRI-sinh": "bhRa-sinh",
+  "bhRIi-sinh": "bhRa-sinh",
+  "bhRa-sinh": "bha-sinh",
+  "bha_repha-sinh": "bha-sinh",
+  "cCI-sinh": "cCa-sinh",
+  "cCIi-sinh": "cCa-sinh",
+  "cCa_repha-sinh": "cCa-sinh",
+  "cRI-sinh": "cRa-sinh",
+  "cRIi-sinh": "cRa-sinh",
+  "cRa-sinh": "ca-sinh",
+  "cU-sinh": "ca-sinh",
+  "cUu-sinh": "ca-sinh",
+  "ca_repha-sinh": "ca-sinh",
+  "chI-sinh": "cha-sinh",
+  "chIi-sinh": "cha-sinh",
+  "chU-sinh": "cha-sinh",
+  "chUu-sinh": "cha-sinh",
+  "cha_repha-sinh": "cha-sinh",
+  "d-sinh": "da-sinh",
+  "dDha_repha-sinh": "dDha-sinh",
+  "dI-sinh": "da-sinh",
+  "dIi-sinh": "da-sinh",
+  "dRI-sinh": "dRa-sinh",
+  "dRIi-sinh": "dRa-sinh",
+  "dRa-sinh": "da-sinh",
+  "dVa_repha-sinh": "dVa-sinh",
+  "da_repha-sinh": "da-sinh",
+  "ddRI-sinh": "ddRa-sinh",
+  "ddRIi-sinh": "ddRa-sinh",
+  "ddRa-sinh": "dda-sinh",
+  "ddU-sinh": "dda-sinh",
+  "ddUu-sinh": "dda-sinh",
+  "dda_repha-sinh": "dda-sinh",
+  "ddhI-sinh": "ddha-sinh",
+  "ddhIi-sinh": "ddha-sinh",
+  "ddhU-sinh": "ddha-sinh",
+  "ddhUu-sinh": "ddha-sinh",
+  "ddha_repha-sinh": "ddha-sinh",
+  "dhRI-sinh": "dhRa-sinh",
+  "dhRIi-sinh": "dhRa-sinh",
+  "dhRa-sinh": "dha-sinh",
+  "dhU-sinh": "dha-sinh",
+  "dhUu-sinh": "dha-sinh",
+  "dha_repha-sinh": "dha-sinh",
+  "f-sinh": "fa-sinh",
+  "f-sinh.hist": "fa-sinh",
+  "fI-sinh": "fa-sinh",
+  "fI-sinh.hist": "fa-sinh",
+  "fIi-sinh": "fa-sinh",
+  "fIi-sinh.hist": "fa-sinh",
+  "fRI-sinh": "fRa-sinh",
+  "fRI-sinh.hist": "fRa-sinh",
+  "fRIi-sinh": "fRa-sinh",
+  "fRIi-sinh.hist": "fRa-sinh",
+  "fRa-sinh": "fa-sinh",
+  "fRa-sinh.hist": "fa-sinh",
+  "fU-sinh": "fa-sinh",
+  "fU-sinh.hist": "fa-sinh",
+  "fUu-sinh": "fa-sinh",
+  "fUu-sinh.hist": "fa-sinh",
+  "fa_repha-sinh": "fa-sinh",
+  "fa_repha-sinh.hist": "fa-sinh",
+  "g-sinh": "ga-sinh",
+  "gDha_repha-sinh": "gDha-sinh",
+  "gI-sinh": "ga-sinh",
+  "gIi-sinh": "ga-sinh",
+  "gRI-sinh": "gRa-sinh",
+  "gRIi-sinh": "gRa-sinh",
+  "gRa-sinh": "ga-sinh",
+  "ga_repha-sinh": "ga-sinh",
+  "gh-sinh": "gha-sinh",
+  "ghI-sinh": "gha-sinh",
+  "ghIi-sinh": "gha-sinh",
+  "ghRI-sinh": "ghRa-sinh",
+  "ghRIi-sinh": "ghRa-sinh",
+  "ghRa-sinh": "gha-sinh",
+  "ghU-sinh": "gha-sinh",
+  "ghUu-sinh": "gha-sinh",
+  "gha_repha-sinh": "gha-sinh",
+  "h-sinh": "ha-sinh",
+  "hI-sinh": "ha-sinh",
+  "hIi-sinh": "ha-sinh",
+  "hRI-sinh": "hRa-sinh",
+  "hRIi-sinh": "hRa-sinh",
+  "hRa-sinh": "ha-sinh",
+  "hU-sinh": "ha-sinh",
+  "hUu-sinh": "ha-sinh",
+  "ha_repha-sinh": "ha-sinh",
+  "jI-sinh": "ja-sinh",
+  "jIi-sinh": "ja-sinh",
+  "jRI-sinh": "jRa-sinh",
+  "jRIi-sinh": "jRa-sinh",
+  "jU-sinh": "ja-sinh",
+  "jUu-sinh": "ja-sinh",
+  "ja_repha-sinh": "ja-sinh",
+  "jhRI-sinh": "jhRa-sinh",
+  "jhRIi-sinh": "jhRa-sinh",
+  "jhRa-sinh": "jha-sinh",
+  "jhU-sinh": "jha-sinh",
+  "jhUu-sinh": "jha-sinh",
+  "jha_repha-sinh": "jha-sinh",
+  "jny-sinh": "jnya-sinh",
+  "jnyI-sinh": "jnya-sinh",
+  "jnyIi-sinh": "jnya-sinh",
+  "jnyRI-sinh": "jnyRa-sinh",
+  "jnyRIi-sinh": "jnyRa-sinh",
+  "jnyU-sinh": "jnya-sinh",
+  "jnyUu-sinh": "jnya-sinh",
+  "jnya_repha-sinh": "jnya-sinh",
+  "k-sinh": "ka-sinh",
+  "kI-sinh": "ka-sinh",
+  "kIi-sinh": "ka-sinh",
+  "kRI-sinh": "kRa-sinh",
+  "kRIi-sinh": "kRa-sinh",
+  "kRa-sinh": "ka-sinh",
+  "kSsI-sinh": "kSsa-sinh",
+  "kSsIi-sinh": "kSsa-sinh",
+  "kSsa_repha-sinh": "kSsa-sinh",
+  "kVa_repha-sinh": "kVa-sinh",
+  "ka_repha-sinh": "ka-sinh",
+  "khRI-sinh": "khRa-sinh",
+  "khRIi-sinh": "khRa-sinh",
+  "khRa-sinh": "kha-sinh",
+  "khU-sinh": "kha-sinh",
+  "khUu-sinh": "kha-sinh",
+  "kha_repha-sinh": "kha-sinh",
+  "l-sinh": "la-sinh",
+  "lI-sinh": "la-sinh",
+  "lIi-sinh": "la-sinh",
+  "lU-sinh": "la-sinh",
+  "lUu-sinh": "la-sinh",
+  "la_repha-sinh": "la-sinh",
+  "ll-sinh": "lla-sinh",
+  "llI-sinh": "lla-sinh",
+  "llIi-sinh": "lla-sinh",
+  "lla_repha-sinh": "lla-sinh",
+  "mRI-sinh": "mRa-sinh",
+  "mRIi-sinh": "mRa-sinh",
+  "mRa-sinh": "ma-sinh",
+  "mU-sinh": "ma-sinh",
+  "mUu-sinh": "ma-sinh",
+  "ma_repha-sinh": "ma-sinh",
+  "mbU-sinh": "mba-sinh",
+  "mbUu-sinh": "mba-sinh",
+  "mba_repha-sinh": "mba-sinh",
+  "n-sinh": "na-sinh",
+  "nDI-sinh": "nDa-sinh",
+  "nDIi-sinh": "nDa-sinh",
+  "nDRI-sinh": "nDRa-sinh",
+  "nDRIi-sinh": "nDRa-sinh",
+  "nDa_repha-sinh": "nDa-sinh",
+  "nDha_repha-sinh": "nDha-sinh",
+  "nI-sinh": "na-sinh",
+  "nIi-sinh": "na-sinh",
+  "nThI-sinh": "nTha-sinh",
+  "nThIi-sinh": "nTha-sinh",
+  "nTha_repha-sinh": "nTha-sinh",
+  "nU-sinh": "na-sinh",
+  "nUu-sinh": "na-sinh",
+  "nVa_repha-sinh": "nVa-sinh",
+  "na_repha-sinh": "na-sinh",
+  "nd-sinh": "nda-sinh",
+  "ndI-sinh": "nda-sinh",
+  "ndIi-sinh": "nda-sinh",
+  "ndU-sinh": "nda-sinh",
+  "ndUu-sinh": "nda-sinh",
+  "nda_repha-sinh": "nda-sinh",
+  "nga_repha-sinh": "nga-sinh",
+  "nn-sinh": "nna-sinh",
+  "nnU-sinh": "nna-sinh",
+  "nnUu-sinh": "nna-sinh",
+  "nna_repha-sinh": "nna-sinh",
+  "nnddU-sinh": "nndda-sinh",
+  "nnddUu-sinh": "nndda-sinh",
+  "nng-sinh": "nnga-sinh",
+  "nngI-sinh": "nnga-sinh",
+  "nngIi-sinh": "nnga-sinh",
+  "nnga_repha-sinh": "nnga-sinh",
+  "ny-sinh": "nya-sinh",
+  "nyCa_repha-sinh": "nyCa-sinh",
+  "nyChI-sinh": "nyCha-sinh",
+  "nyChIi-sinh": "nyCha-sinh",
+  "nyCha_repha-sinh": "nyCha-sinh",
+  "nyI-sinh": "nya-sinh",
+  "nyIi-sinh": "nya-sinh",
+  "nyRI-sinh": "nyRa-sinh",
+  "nyRIi-sinh": "nyRa-sinh",
+  "nyU-sinh": "nya-sinh",
+  "nyUu-sinh": "nya-sinh",
+  "nyjI-sinh": "nyja-sinh",
+  "nyjIi-sinh": "nyja-sinh",
+  "nyjRa-sinh": "nyja-sinh",
+  "nyjU-sinh": "nyja-sinh",
+  "nyjUu-sinh": "nyja-sinh",
+  "nyja_repha-sinh": "nyja-sinh",
+  "p-sinh": "pa-sinh",
+  "pI-sinh": "pa-sinh",
+  "pIi-sinh": "pa-sinh",
+  "pRI-sinh": "pRa-sinh",
+  "pRIi-sinh": "pRa-sinh",
+  "pRa-sinh": "pa-sinh",
+  "pU-sinh": "pa-sinh",
+  "pUu-sinh": "pa-sinh",
+  "pa_repha-sinh": "pa-sinh",
+  "phI-sinh": "pha-sinh",
+  "phIi-sinh": "pha-sinh",
+  "phU-sinh": "pha-sinh",
+  "phUu-sinh": "pha-sinh",
+  "pha_repha-sinh": "pha-sinh",
+  "s-sinh": "sa-sinh",
+  "sI-sinh": "sa-sinh",
+  "sIi-sinh": "sa-sinh",
+  "sRI-sinh": "sRa-sinh",
+  "sRIi-sinh": "sRa-sinh",
+  "sRa-sinh": "sa-sinh",
+  "sU-sinh": "sa-sinh",
+  "sUu-sinh": "sa-sinh",
+  "sa_repha-sinh": "sa-sinh",
+  "sh-sinh": "sha-sinh",
+  "shI-sinh": "sha-sinh",
+  "shIi-sinh": "sha-sinh",
+  "shRI-sinh": "shRa-sinh",
+  "shRIi-sinh": "shRa-sinh",
+  "shRa-sinh": "sha-sinh",
+  "sha_repha-sinh": "sha-sinh",
+  "ss-sinh": "ssa-sinh",
+  "ssI-sinh": "ssa-sinh",
+  "ssIi-sinh": "ssa-sinh",
+  "ssRI-sinh": "ssRa-sinh",
+  "ssRIi-sinh": "ssRa-sinh",
+  "ssRa-sinh": "ssa-sinh",
+  "ssU-sinh": "ssa-sinh",
+  "ssUu-sinh": "ssa-sinh",
+  "ssa_repha-sinh": "ssa-sinh",
+  "t-sinh": "ta-sinh",
+  "tI-sinh": "ta-sinh",
+  "tIi-sinh": "ta-sinh",
+  "tRI-sinh": "tRa-sinh",
+  "tRIi-sinh": "tRa-sinh",
+  "tRa-sinh": "ta-sinh",
+  "tThI-sinh": "tTha-sinh",
+  "tThIi-sinh": "tTha-sinh",
+  "tTha_repha-sinh": "tTha-sinh",
+  "tVa_repha-sinh": "tVa-sinh",
+  "ta_repha-sinh": "ta-sinh",
+  "thI-sinh": "tha-sinh",
+  "thIi-sinh": "tha-sinh",
+  "thU-sinh": "tha-sinh",
+  "thUu-sinh": "tha-sinh",
+  "tha_repha-sinh": "tha-sinh",
+  "ttRI-sinh": "ttRa-sinh",
+  "ttRIi-sinh": "ttRa-sinh",
+  "ttRa-sinh": "tta-sinh",
+  "ttTthI-sinh": "ttTtha-sinh",
+  "ttTthIi-sinh": "ttTtha-sinh",
+  "ttTtha_repha-sinh": "ttTtha-sinh",
+  "ttU-sinh": "tta-sinh",
+  "ttUu-sinh": "tta-sinh",
+  "tta_repha-sinh": "tta-sinh",
+  "tthI-sinh": "ttha-sinh",
+  "tthIi-sinh": "ttha-sinh",
+  "tthU-sinh": "ttha-sinh",
+  "tthUu-sinh": "ttha-sinh",
+  "ttha_repha-sinh": "ttha-sinh",
+  "uu-sinh": "u-sinh",
+  "vRI-sinh": "vRa-sinh",
+  "vRIi-sinh": "vRa-sinh",
+  "vRa-sinh": "va-sinh",
+  "vU-sinh": "va-sinh",
+  "vUu-sinh": "va-sinh",
+  "va_repha-sinh": "va-sinh",
+  "vocalicll-sinh": "vocalicl-sinh",
+  "vocalicrrsign-sinh": "vocalicrsign-sinh",
+  "y-sinh": "ya-sinh",
+  "yU-sinh": "ya-sinh",
+  "yUu-sinh": "ya-sinh",
+  "ya_repha-sinh": "ya-sinh",
+  "yasign_repha-sinh": "yasign-sinh",
+  "yasign_repha_aasign-sinh": "yasign_repha-sinh",
+  "yasign_repha_usign-sinh": "yasign-sinh",
+  "yasign_repha_uusign-sinh": "yasign-sinh"
+ }
+}

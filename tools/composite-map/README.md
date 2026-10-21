@@ -27,6 +27,8 @@ Mark attachment is not uniform (see
 | **්** (halkirima) | only the DEFAULT `kodiya` flag. `rahena` (ට් ම් …), `trap` (ඨ් ථ් …), `ja` (ජ්) alternates are fused — **kept drawn** |
 | **ිී** (ispilla) | Noto's **three-tier** system: **fused** ligatures (`yI` `khI` `ttI` …) are kept drawn; everything else is a composite of the base + the right i-sign — a per-class **contextual alternate** (`isign-sinh.altN`, from Noto's `iVowelAltN` classes: alt3 = ක ත න, alt6 = ල ළ …) or the **default** `isign-sinh` |
 
+| **ුූ / ්‍ර variants** | the sign is chosen by the base, mined from Noto's contextual GSUB (`sub @saShapeGroup usign-sinh' by usign-sinh.alt2;`) and given a canonical slot name: `usign-sinh.tta / .medium / .long`, `rasign-sinh.pa / .short / .medium / .long` (`atoms.sign_variants`, see `signvariants.py`) |
+
 So `kU-sinh` is **not** `ka + usign` (කු is a special right-joined form); it is
 recorded in `keep_drawn` with reason `u-special`. Only `sU-sinh` (regular join)
 is the composite `sa + usign`. And `kI-sinh` = `ka + isign-sinh.alt3` (ka is in
@@ -62,7 +64,7 @@ two references.
 
 | tier | meaning | auto-applied |
 |------|---------|--------------|
-| 0 | already a composite in the inventory source (harvested verbatim) | yes |
+| 0 | already a composite in the inventory source (canonical names only, reordered base-first) | yes |
 | 1 | deterministic consonant + shape-invariant mark (default u/uu/virama, rasign) | yes |
 | 2 | `X_repha` = base + repha (repaya anchor, any base) | yes |
 | 3 | ispilla ිී = base + `isign-sinh[.altN]` — needs the alternate i-signs in the target, so **opt-in** via `--tiers 0,1,2,3` | no (default) |
@@ -101,7 +103,10 @@ python -m composite_map export-js
 # 3. audit any target font against the map (read-only)
 python -m composite_map audit --font path/to/Source.glyphspackage -v
 
-# 4. rebuild drawn/mixed glyphs as composites — DRY-RUN by default
+# 4. refresh the Glyphs plugin's bundled map + glyph catalogue (see glyphs-plugin/README.md)
+python -m composite_map build-plugin
+
+# 5. rebuild drawn/mixed glyphs as composites — DRY-RUN by default
 python -m composite_map rebuild --font path/to/Source.glyphspackage
 #    write the changes (git is the undo; --backup also copies the source first)
 python -m composite_map rebuild --font path/to/Source.glyphspackage --apply
@@ -123,10 +128,13 @@ never modified.
   byte-for-byte identical.
 - A single **`.glyphs`** file is mutated and saved through `glyphsLib`.
 
-In both cases each rebuilt layer keeps its advance width (drawn Sinhala base+mark
-forms already advance by the base width) and gets component references with
-automatic (anchor-driven) alignment; positioning then relies on the target
-font's own base/mark anchors when opened in Glyphs.
+In both cases each rebuilt layer keeps its advance width and gets component
+references whose signs align by anchor; positioning then relies on the target
+font's own base/mark anchors when opened in Glyphs. The base component is
+written with automatic alignment off (`alignment = -1`), so metrics keys — not
+the base's width — govern the sidebearings, except when a sign advances
+(ා ැ ෑ ෟ …): those composites stay fully auto-aligned (see `buildplan.alignment`
+and the plugin README).
 
 ## Files
 
@@ -135,14 +143,46 @@ composite_map/
   lanka_data.py   canonical letter inventory + consonant/vowel/sign classification
   families.py     form-family / mark-system model (which forms are NOT composites)
   ispilla.py      Noto's three-tier ිී system, mined from the anchor reference
+  signvariants.py Noto's contextual ුූ/්‍ර variants -> canonical slot names
+  buildplan.py    pure build decisions (seed/create/update/skip), bundled in the plugin
+  catalogue.py    pure add-glyph decisions (modes, parents-first locking), bundled in the plugin
+  pluginbuild.py  refresh glyphs-plugin/SinhalaGlyphBuilder.glyphsPlugin's generated half
   grammar.py      family-grounded base+mark classification (composite/drawn/review)
   glyphsio.py     glyphsLib read/classification helpers
   mapbuild.py     derive the map from the two references + the family model
   packageio.py    surgical openstep-plist writer for .glyphspackage
   rebuild.py      audit / plan / apply engine (format-dispatching)
   jsexport.py     YAML map -> vendored JS module
-  cli.py          `build-map` · `export-js` · `audit` · `rebuild`
+  cli.py          `build-map` · `export-js` · `audit` · `rebuild` · `build-plugin`
+glyph-catalogue/
+  build.js        the glyph catalogue the plugin's Add Glyphs window offers
+glyphs-plugin/    the Sinhala Glyph Builder Glyphs 3 plugin
 ```
+
+## The glyph catalogue
+
+`glyph-catalogue/build.js` (Node, no install — it reuses `js-yaml` from
+`sinhala-design-stages`) writes `tools/_generated/sinhala-glyph-catalogue.json`:
+every glyph of the design stages, every grapheme attested in the corpus
+(`tools/test-generator/data`), the map's composites / keep-drawn / review
+glyphs and the sign variants — 1 292 glyphs. Per glyph it records the
+grapheme, stage (the model's, else the stage all its dependencies exist by),
+corpus frequency, groups, the modes it can be made in (draw / composite /
+features) and the recommended one, its components, and its parents (the stage
+model's design parents plus the parts it is made of).
+
+```bash
+node glyph-catalogue/build.js           # write
+node glyph-catalogue/build.js --check   # fail if stale
+node glyph-catalogue/build.js --list    # counts per group
+```
+
+Names are LankaGlyphSets, through the vendored converter, with two
+corrections so they match the map: repaya in logical order (ර්‍ක) is named
+`ka_repha-sinh` (the converter reads it as a ra-conjunct, `rKa`), and
+pre-base vowels on da-shaped bases are named like every other pre-base form
+(දෙ → `dE-sinh`, not the converter's below-base `de._c-sinh`). Both belong
+upstream in lanka-glyphsets' converter.
 
 The letter classification is validated against
 `tools/_generated/lanka-glyph-data.js` on every run; if lanka-glyphsets adds or

@@ -13,6 +13,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Stage 1 — Bootstrap</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -26,10 +28,10 @@
 							<string>ddhI-sinh</string>
 							<string>usign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 1 — Bootstrap</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 2 — Bowl derivatives</string>
 						<key>list</key>
 						<array>
 							<string>cI-sinh</string>
@@ -40,10 +42,10 @@
 							<string>yI-sinh</string>
 							<string>vI-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 2 — Bowl derivatives</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 3 — Arch family and spacing marks</string>
 						<key>list</key>
 						<array>
 							<string>virama-sinh</string>
@@ -60,10 +62,10 @@
 							<string>v-sinh</string>
 							<string>ddh-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 3 — Arch family and spacing marks</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 4 — High-frequency completion</string>
 						<key>list</key>
 						<array>
 							<string>ka-sinh</string>
@@ -97,10 +99,10 @@
 							<string>tU-sinh</string>
 							<string>dU-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 4 — High-frequency completion</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 5 — Loops, diagonals and long marks</string>
 						<key>list</key>
 						<array>
 							<string>ttIi-sinh</string>
@@ -151,10 +153,10 @@
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 5 — Loops, diagonals and long marks</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 6 — Aspirates and dense derivatives</string>
 						<key>list</key>
 						<array>
 							<string>phI-sinh</string>
@@ -209,10 +211,10 @@
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 6 — Aspirates and dense derivatives</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 7 — The hang system</string>
 						<key>list</key>
 						<array>
 							<string>nnddI-sinh</string>
@@ -242,10 +244,10 @@
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 7 — The hang system</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 8 — Completion sweep</string>
 						<key>list</key>
 						<array>
 							<string>vocalicrsign-sinh</string>
@@ -459,10 +461,10 @@
 							<string>ngUu-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 8 — Completion sweep</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 9 — Conjunct layer</string>
 						<key>list</key>
 						<array>
 							<string>ttTthI-sinh</string>
@@ -540,43 +542,43 @@
 							<string>nyjya-sinh</string>
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>kVa-sinh</string>
 							<string>gDha-sinh</string>
@@ -649,10 +651,10 @@
 							<string>sVa-sinh</string>
 							<string>hMa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 9 — Conjunct layer</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Stage 10 — Long tail and polish</string>
 						<key>list</key>
 						<array>
 							<string>ngI-sinh</string>
@@ -685,8 +687,6 @@
 							<string>vocalicrsign-sinh</string>
 							<string>vocaliclsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Stage 10 — Long tail and polish</string>
 					</dict>
 				</array>
 			</dict>
@@ -696,6 +696,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 1</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -709,10 +711,10 @@
 							<string>ddhI-sinh</string>
 							<string>usign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 1</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 2</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -733,10 +735,10 @@
 							<string>yI-sinh</string>
 							<string>vI-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 2</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 3</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -769,14 +771,11 @@
 							<string>c-sinh</string>
 							<string>v-sinh</string>
 							<string>ddh-sinh</string>
-							<string>cU-sinh</string>
-							<string>yU-sinh</string>
-							<string>vU-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 3</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 4</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -840,10 +839,10 @@
 							<string>tU-sinh</string>
 							<string>dU-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 4</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 5</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -954,10 +953,10 @@
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 5</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 6</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -1119,10 +1118,10 @@
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 6</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 7</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -1310,10 +1309,10 @@
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 7</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 8</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -1594,10 +1593,10 @@
 							<string>ngUu-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 8</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 9</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -1951,43 +1950,43 @@
 							<string>nyjya-sinh</string>
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>kVa-sinh</string>
 							<string>gDha-sinh</string>
@@ -2060,10 +2059,10 @@
 							<string>sVa-sinh</string>
 							<string>hMa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 9</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Through Stage 10</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -2417,43 +2416,43 @@
 							<string>nyjya-sinh</string>
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>kVa-sinh</string>
 							<string>gDha-sinh</string>
@@ -2535,8 +2534,6 @@
 							<string>visargaya-sinh</string>
 							<string>kunddaliya</string>
 						</array>
-						<key>name</key>
-						<string>Through Stage 10</string>
 					</dict>
 				</array>
 			</dict>
@@ -2553,6 +2550,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Bowl</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -2573,10 +2572,10 @@
 							<string>jha-sinh</string>
 							<string>nga-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Bowl</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Trap body</string>
 						<key>list</key>
 						<array>
 							<string>e-sinh</string>
@@ -2584,10 +2583,10 @@
 							<string>ttha-sinh</string>
 							<string>pha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Trap body</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Double bowl</string>
 						<key>list</key>
 						<array>
 							<string>pa-sinh</string>
@@ -2602,10 +2601,10 @@
 							<string>nyja-sinh</string>
 							<string>vocalicr-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Double bowl</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Arch</string>
 						<key>list</key>
 						<array>
 							<string>ga-sinh</string>
@@ -2620,10 +2619,10 @@
 							<string>nya-sinh</string>
 							<string>jnya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Arch</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>U-bottom</string>
 						<key>list</key>
 						<array>
 							<string>da-sinh</string>
@@ -2631,16 +2630,14 @@
 							<string>a-sinh</string>
 							<string>nda-sinh</string>
 						</array>
-						<key>name</key>
-						<string>U-bottom</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Diagonal</string>
 						<key>list</key>
 						<array>
 							<string>ra-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Diagonal</string>
 					</dict>
 				</array>
 			</dict>
@@ -2650,6 +2647,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Eye-line entry</string>
 						<key>list</key>
 						<array>
 							<string>sa-sinh</string>
@@ -2660,19 +2659,19 @@
 							<string>gha-sinh</string>
 							<string>ssa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Eye-line entry</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Tail</string>
 						<key>list</key>
 						<array>
 							<string>dda-sinh</string>
 							<string>nndda-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Tail</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Trap</string>
 						<key>list</key>
 						<array>
 							<string>ddha-sinh</string>
@@ -2682,10 +2681,10 @@
 							<string>ttha-sinh</string>
 							<string>pha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Trap</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Ka-eye</string>
 						<key>list</key>
 						<array>
 							<string>ta-sinh</string>
@@ -2694,28 +2693,28 @@
 							<string>bha-sinh</string>
 							<string>ha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Ka-eye</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Fork</string>
 						<key>list</key>
 						<array>
 							<string>ya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Fork</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Loop</string>
 						<key>list</key>
 						<array>
 							<string>o-sinh</string>
 							<string>ma-sinh</string>
 							<string>mba-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Loop</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Hang</string>
 						<key>list</key>
 						<array>
 							<string>nda-sinh</string>
@@ -2725,10 +2724,10 @@
 							<string>jnya-sinh</string>
 							<string>nyja-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Hang</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Diagonal stroke</string>
 						<key>list</key>
 						<array>
 							<string>ra-sinh</string>
@@ -2738,16 +2737,14 @@
 							<string>ii-sinh</string>
 							<string>nyja-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Diagonal stroke</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Twin body</string>
 						<key>list</key>
 						<array>
 							<string>jha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Twin body</string>
 					</dict>
 				</array>
 			</dict>
@@ -2764,6 +2761,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>L-tta</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -2789,10 +2788,10 @@
 							<string>b-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-tta</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-e</string>
 						<key>list</key>
 						<array>
 							<string>e-sinh</string>
@@ -2823,10 +2822,10 @@
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-e</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-ja</string>
 						<key>list</key>
 						<array>
 							<string>ja-sinh</string>
@@ -2862,10 +2861,10 @@
 							<string>jI-sinh</string>
 							<string>jIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-ja</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-pa</string>
 						<key>list</key>
 						<array>
 							<string>a-sinh</string>
@@ -2901,10 +2900,10 @@
 							<string>hI-sinh</string>
 							<string>hIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-pa</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-ka</string>
 						<key>list</key>
 						<array>
 							<string>ka-sinh</string>
@@ -2936,10 +2935,10 @@
 							<string>nDRI-sinh</string>
 							<string>nDRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-ka</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-ga</string>
 						<key>list</key>
 						<array>
 							<string>ga-sinh</string>
@@ -2984,10 +2983,10 @@
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-ga</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-o</string>
 						<key>list</key>
 						<array>
 							<string>o-sinh</string>
@@ -3002,60 +3001,58 @@
 							<string>m-sinh</string>
 							<string>mb-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-o</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-aela</string>
 						<key>list</key>
 						<array>
 							<string>aasign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-aela</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-aeda</string>
 						<key>list</key>
 						<array>
 							<string>aesign-sinh</string>
 							<string>aaesign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-aeda</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-gaetta</string>
 						<key>list</key>
 						<array>
 							<string>vocalicrsign-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-gaetta</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-gaya</string>
 						<key>list</key>
 						<array>
 							<string>vocaliclsign-sinh</string>
 							<string>vocalicllsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-gaya</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-ring</string>
 						<key>list</key>
 						<array>
 							<string>anusvaraya-sinh</string>
 							<string>visargaya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>L-ring</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>L-spiral</string>
 						<key>list</key>
 						<array>
 							<string>kunddaliya</string>
 						</array>
-						<key>name</key>
-						<string>L-spiral</string>
 					</dict>
 				</array>
 			</dict>
@@ -3065,6 +3062,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>R-bowl</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -3098,10 +3097,10 @@
 							<string>jh-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-bowl</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-trap</string>
 						<key>list</key>
 						<array>
 							<string>ttha-sinh</string>
@@ -3125,10 +3124,10 @@
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-trap</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-pa</string>
 						<key>list</key>
 						<array>
 							<string>pa-sinh</string>
@@ -3147,10 +3146,10 @@
 							<string>ssI-sinh</string>
 							<string>ssIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-pa</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-arch</string>
 						<key>list</key>
 						<array>
 							<string>ka-sinh</string>
@@ -3206,10 +3205,10 @@
 							<string>nDRI-sinh</string>
 							<string>nDRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-arch</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-diag</string>
 						<key>list</key>
 						<array>
 							<string>ja-sinh</string>
@@ -3224,10 +3223,10 @@
 							<string>nyjI-sinh</string>
 							<string>nyjIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-diag</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-a</string>
 						<key>list</key>
 						<array>
 							<string>a-sinh</string>
@@ -3238,10 +3237,10 @@
 							<string>llI-sinh</string>
 							<string>llIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-a</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-u</string>
 						<key>list</key>
 						<array>
 							<string>u-sinh</string>
@@ -3286,10 +3285,10 @@
 							<string>jnyI-sinh</string>
 							<string>jnyIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-u</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-round</string>
 						<key>list</key>
 						<array>
 							<string>o-sinh</string>
@@ -3314,35 +3313,33 @@
 							<string>m-sinh</string>
 							<string>mb-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-round</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-kombu</string>
 						<key>list</key>
 						<array>
 							<string>esign-sinh</string>
 							<string>aisign-sinh</string>
 							<string>eesign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-kombu</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-ring</string>
 						<key>list</key>
 						<array>
 							<string>anusvaraya-sinh</string>
 							<string>visargaya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>R-ring</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>R-spiral</string>
 						<key>list</key>
 						<array>
 							<string>kunddaliya</string>
 						</array>
-						<key>name</key>
-						<string>R-spiral</string>
 					</dict>
 				</array>
 			</dict>
@@ -3352,6 +3349,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Class representatives (bespoke spacing / kerning pass)</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -3373,10 +3372,10 @@
 							<string>vocalicrsign-sinh</string>
 							<string>vocaliclsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Class representatives (bespoke spacing / kerning pass)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Fused forms (inherit their host)</string>
 						<key>list</key>
 						<array>
 							<string>ttI-sinh</string>
@@ -3508,10 +3507,10 @@
 							<string>nDRI-sinh</string>
 							<string>nDRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Fused forms (inherit their host)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Nonspacing marks (never spaced)</string>
 						<key>list</key>
 						<array>
 							<string>isign-sinh</string>
@@ -3520,10 +3519,10 @@
 							<string>usign-sinh</string>
 							<string>uusign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Nonspacing marks (never spaced)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>FLAGGED — provisional spacing, needs the designer</string>
 						<key>list</key>
 						<array>
 							<string>osign-sinh</string>
@@ -3537,8 +3536,6 @@
 							<string>ai-sinh</string>
 							<string>au-sinh</string>
 						</array>
-						<key>name</key>
-						<string>FLAGGED — provisional spacing, needs the designer</string>
 					</dict>
 				</array>
 			</dict>
@@ -3555,6 +3552,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>fam-i-tti — ටි ඩි (ටී චී ඩී)</string>
 						<key>list</key>
 						<array>
 							<string>ttI-sinh</string>
@@ -3564,10 +3563,10 @@
 							<string>ddI-sinh</string>
 							<string>ddIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-tti — ටි ඩි (ටී චී ඩී)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-tthi — ඪි (ඨි ථි ඵි ට්‍ඨි ත්‍ථි න්‍ථි …)</string>
 						<key>list</key>
 						<array>
 							<string>tthI-sinh</string>
@@ -3585,10 +3584,10 @@
 							<string>nThI-sinh</string>
 							<string>nThIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-tthi — ඪි (ඨි ථි ඵි ට්‍ඨි ත්‍ථි න්‍ථි …)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-term — යි වි (මි බි ණි …)</string>
 						<key>list</key>
 						<array>
 							<string>yI-sinh</string>
@@ -3614,10 +3613,10 @@
 							<string>ngI-sinh</string>
 							<string>ngIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-term — යි වි (මි බි ණි …)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-ghi — සි (ඝි)</string>
 						<key>list</key>
 						<array>
 							<string>ghI-sinh</string>
@@ -3625,10 +3624,10 @@
 							<string>sI-sinh</string>
 							<string>sIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-ghi — සි (ඝි)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>ra-forms — රි ර් රැ (රී රූ)</string>
 						<key>list</key>
 						<array>
 							<string>rI-sinh</string>
@@ -3638,10 +3637,10 @@
 							<string>rU-sinh</string>
 							<string>rUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>ra-forms — රි ර් රැ (රී රූ)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-ki — කි ති නි (කී තී නී)</string>
 						<key>list</key>
 						<array>
 							<string>kI-sinh</string>
@@ -3651,10 +3650,10 @@
 							<string>nI-sinh</string>
 							<string>nIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-ki — කි ති නි (කී තී නී)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-gi — ගි (ඟි ශි ෆි …)</string>
 						<key>list</key>
 						<array>
 							<string>gI-sinh</string>
@@ -3666,10 +3665,10 @@
 							<string>fI-sinh</string>
 							<string>fIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-gi — ගි (ඟි ශි ෆි …)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-di — දි (දී ද්‍රි ද්‍රී)</string>
 						<key>list</key>
 						<array>
 							<string>dI-sinh</string>
@@ -3677,10 +3676,10 @@
 							<string>dRI-sinh</string>
 							<string>dRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-di — දි (දී ද්‍රි ද්‍රී)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-li — ලි (ළි ලී ළී)</string>
 						<key>list</key>
 						<array>
 							<string>lI-sinh</string>
@@ -3688,10 +3687,10 @@
 							<string>llI-sinh</string>
 							<string>llIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-li — ලි (ළි ලී ළී)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-pi — පි (පී ෂි ක්‍ෂි)</string>
 						<key>list</key>
 						<array>
 							<string>pI-sinh</string>
@@ -3699,10 +3698,10 @@
 							<string>ssI-sinh</string>
 							<string>ssIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-pi — පි (පී ෂි ක්‍ෂි)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-ji — ජි ඡි (ජී ඡී ඦි)</string>
 						<key>list</key>
 						<array>
 							<string>jI-sinh</string>
@@ -3712,10 +3711,10 @@
 							<string>nyjI-sinh</string>
 							<string>nyjIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-ji — ජි ඡි (ජී ඡී ඦි)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-bhi — භි හි (භී හී)</string>
 						<key>list</key>
 						<array>
 							<string>bhI-sinh</string>
@@ -3723,10 +3722,10 @@
 							<string>hI-sinh</string>
 							<string>hIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-bhi — භි හි (භී හී)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-ndi — ඳි (ඳී ඳ්‍රි)</string>
 						<key>list</key>
 						<array>
 							<string>ndI-sinh</string>
@@ -3734,10 +3733,10 @@
 							<string>ndRI-sinh</string>
 							<string>ndRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-ndi — ඳි (ඳී ඳ්‍රි)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>fam-i-nyi — ඤි ඥි (ඤී ඥී න්‍දි න්‍ද්‍රි)</string>
 						<key>list</key>
 						<array>
 							<string>nyI-sinh</string>
@@ -3749,8 +3748,6 @@
 							<string>nDRI-sinh</string>
 							<string>nDRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>fam-i-nyi — ඤි ඥි (ඤී ඥී න්‍දි න්‍ද්‍රි)</string>
 					</dict>
 				</array>
 			</dict>
@@ -3760,6 +3757,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>u-special — කු ගු තු (භු ශු ඟු)</string>
 						<key>list</key>
 						<array>
 							<string>kU-sinh</string>
@@ -3775,26 +3774,24 @@
 							<string>nngU-sinh</string>
 							<string>nngUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>u-special — කු ගු තු (භු ශු ඟු)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>du-form — දු (දූ)</string>
 						<key>list</key>
 						<array>
 							<string>dU-sinh</string>
 							<string>dUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>du-form — දු (දූ)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>llu-form — ළු (ළූ)</string>
 						<key>list</key>
 						<array>
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>llu-form — ළු (ළූ)</string>
 					</dict>
 				</array>
 			</dict>
@@ -3804,6 +3801,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>hal-rahena — ට් ඩ් (ම් බ් …)</string>
 						<key>list</key>
 						<array>
 							<string>tt-sinh</string>
@@ -3819,10 +3818,10 @@
 							<string>jh-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>hal-rahena — ට් ඩ් (ම් බ් …)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>hal-trap — ඪ් (ඨ් ථ් ඵ්)</string>
 						<key>list</key>
 						<array>
 							<string>tth-sinh</string>
@@ -3830,18 +3829,16 @@
 							<string>th-sinh</string>
 							<string>ph-sinh</string>
 						</array>
-						<key>name</key>
-						<string>hal-trap — ඪ් (ඨ් ථ් ඵ්)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>hal-ja — ජ් (ඡ් ඦ්)</string>
 						<key>list</key>
 						<array>
 							<string>ch-sinh</string>
 							<string>j-sinh</string>
 							<string>nyj-sinh</string>
 						</array>
-						<key>name</key>
-						<string>hal-ja — ජ් (ඡ් ඦ්)</string>
 					</dict>
 				</array>
 			</dict>
@@ -3851,6 +3848,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>All ි forms</string>
 						<key>list</key>
 						<array>
 							<string>ttI-sinh</string>
@@ -3954,10 +3953,10 @@
 							<string>nDRI-sinh</string>
 							<string>nDRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>All ි forms</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>All ් forms</string>
 						<key>list</key>
 						<array>
 							<string>tt-sinh</string>
@@ -3980,10 +3979,10 @@
 							<string>j-sinh</string>
 							<string>nyj-sinh</string>
 						</array>
-						<key>name</key>
-						<string>All ් forms</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>All ු forms</string>
 						<key>list</key>
 						<array>
 							<string>kU-sinh</string>
@@ -4003,10 +4002,10 @@
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>All ු forms</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>every base + ් (hal-sweep)</string>
 						<key>list</key>
 						<array>
 							<string>tt-sinh</string>
@@ -4051,10 +4050,10 @@
 							<string>jh-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>every base + ් (hal-sweep)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>base × ි ී ු ූ ් grid (completion-sweep)</string>
 						<key>list</key>
 						<array>
 							<string>ttI-sinh</string>
@@ -4263,8 +4262,6 @@
 							<string>ngUu-sinh</string>
 							<string>ng-sinh</string>
 						</array>
-						<key>name</key>
-						<string>base × ි ී ු ූ ් grid (completion-sweep)</string>
 					</dict>
 				</array>
 			</dict>
@@ -4281,6 +4278,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>tier 0</string>
 						<key>list</key>
 						<array>
 							<string>aa-sinh</string>
@@ -4288,24 +4287,20 @@
 							<string>aasign_virama-sinh</string>
 							<string>ae-sinh</string>
 							<string>au-sinh</string>
-							<string>ausign-sinh</string>
 							<string>ba_repha-sinh</string>
 							<string>cCa_repha-sinh</string>
-							<string>fa_repha-sinh.hist</string>
 							<string>ga_repha-sinh</string>
 							<string>ka_repha-sinh</string>
 							<string>kha_repha-sinh</string>
-							<string>oosign-sinh</string>
-							<string>osign-sinh</string>
 							<string>uu-sinh</string>
 							<string>vocalicll-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 							<string>yasign_repha_aasign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>tier 0</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>tier 1</string>
 						<key>list</key>
 						<array>
 							<string>bRa-sinh</string>
@@ -4379,6 +4374,9 @@
 							<string>ny-sinh</string>
 							<string>nyU-sinh</string>
 							<string>nyUu-sinh</string>
+							<string>nyjRa-sinh</string>
+							<string>nyjU-sinh</string>
+							<string>nyjUu-sinh</string>
 							<string>p-sinh</string>
 							<string>pRa-sinh</string>
 							<string>pU-sinh</string>
@@ -4411,10 +4409,10 @@
 							<string>yU-sinh</string>
 							<string>yUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>tier 1</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>tier 2</string>
 						<key>list</key>
 						<array>
 							<string>bBa_repha-sinh</string>
@@ -4432,6 +4430,7 @@
 							<string>fU-sinh.hist</string>
 							<string>fUu-sinh.hist</string>
 							<string>fa_repha-sinh</string>
+							<string>fa_repha-sinh.hist</string>
 							<string>gDha_repha-sinh</string>
 							<string>gha_repha-sinh</string>
 							<string>ha_repha-sinh</string>
@@ -4474,10 +4473,10 @@
 							<string>yasign_repha_usign-sinh</string>
 							<string>yasign_repha_uusign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>tier 2</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>tier 3</string>
 						<key>list</key>
 						<array>
 							<string>anusvarayaShI-sinh</string>
@@ -4605,8 +4604,6 @@
 							<string>vRI-sinh</string>
 							<string>vRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>tier 3</string>
 					</dict>
 				</array>
 			</dict>
@@ -4616,6 +4613,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>inventory-existing</string>
 						<key>list</key>
 						<array>
 							<string>aa-sinh</string>
@@ -4623,24 +4622,20 @@
 							<string>aasign_virama-sinh</string>
 							<string>ae-sinh</string>
 							<string>au-sinh</string>
-							<string>ausign-sinh</string>
 							<string>ba_repha-sinh</string>
 							<string>cCa_repha-sinh</string>
-							<string>fa_repha-sinh.hist</string>
 							<string>ga_repha-sinh</string>
 							<string>ka_repha-sinh</string>
 							<string>kha_repha-sinh</string>
-							<string>oosign-sinh</string>
-							<string>osign-sinh</string>
 							<string>uu-sinh</string>
 							<string>vocalicll-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 							<string>yasign_repha_aasign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>inventory-existing</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>noto-ispilla</string>
 						<key>list</key>
 						<array>
 							<string>anusvarayaShI-sinh</string>
@@ -4768,10 +4763,10 @@
 							<string>vRI-sinh</string>
 							<string>vRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>noto-ispilla</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>grammar-classify</string>
 						<key>list</key>
 						<array>
 							<string>bBa_repha-sinh</string>
@@ -4781,6 +4776,7 @@
 							<string>fRa-sinh.hist</string>
 							<string>fU-sinh.hist</string>
 							<string>fUu-sinh.hist</string>
+							<string>fa_repha-sinh.hist</string>
 							<string>gDha_repha-sinh</string>
 							<string>kSsa_repha-sinh</string>
 							<string>kVa_repha-sinh</string>
@@ -4790,7 +4786,6 @@
 							<string>nVa_repha-sinh</string>
 							<string>nyCa_repha-sinh</string>
 							<string>nyCha_repha-sinh</string>
-							<string>nyja_repha-sinh</string>
 							<string>tTha_repha-sinh</string>
 							<string>tVa_repha-sinh</string>
 							<string>ttTtha_repha-sinh</string>
@@ -4798,21 +4793,15 @@
 							<string>yasign_repha_usign-sinh</string>
 							<string>yasign_repha_uusign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>grammar-classify</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>grammar</string>
 						<key>list</key>
 						<array>
 							<string>bRa-sinh</string>
-							<string>bU-sinh</string>
-							<string>bUu-sinh</string>
 							<string>bh-sinh</string>
-							<string>bhRa-sinh</string>
 							<string>bha_repha-sinh</string>
-							<string>cRa-sinh</string>
-							<string>cU-sinh</string>
-							<string>cUu-sinh</string>
 							<string>ca_repha-sinh</string>
 							<string>chU-sinh</string>
 							<string>chUu-sinh</string>
@@ -4821,49 +4810,30 @@
 							<string>dRa-sinh</string>
 							<string>da_repha-sinh</string>
 							<string>ddRa-sinh</string>
-							<string>ddU-sinh</string>
-							<string>ddUu-sinh</string>
 							<string>dda_repha-sinh</string>
-							<string>ddhU-sinh</string>
-							<string>ddhUu-sinh</string>
 							<string>ddha_repha-sinh</string>
 							<string>dhRa-sinh</string>
-							<string>dhU-sinh</string>
-							<string>dhUu-sinh</string>
 							<string>dha_repha-sinh</string>
 							<string>f-sinh</string>
-							<string>fRa-sinh</string>
 							<string>fU-sinh</string>
 							<string>fUu-sinh</string>
 							<string>fa_repha-sinh</string>
 							<string>g-sinh</string>
-							<string>gRa-sinh</string>
 							<string>gh-sinh</string>
-							<string>ghRa-sinh</string>
-							<string>ghU-sinh</string>
-							<string>ghUu-sinh</string>
 							<string>gha_repha-sinh</string>
 							<string>h-sinh</string>
-							<string>hRa-sinh</string>
-							<string>hU-sinh</string>
-							<string>hUu-sinh</string>
 							<string>ha_repha-sinh</string>
 							<string>jU-sinh</string>
 							<string>jUu-sinh</string>
 							<string>ja_repha-sinh</string>
 							<string>jhRa-sinh</string>
-							<string>jhU-sinh</string>
-							<string>jhUu-sinh</string>
 							<string>jha_repha-sinh</string>
 							<string>jny-sinh</string>
 							<string>jnyU-sinh</string>
 							<string>jnyUu-sinh</string>
 							<string>jnya_repha-sinh</string>
 							<string>k-sinh</string>
-							<string>kRa-sinh</string>
 							<string>khRa-sinh</string>
-							<string>khU-sinh</string>
-							<string>khUu-sinh</string>
 							<string>l-sinh</string>
 							<string>lU-sinh</string>
 							<string>lUu-sinh</string>
@@ -4871,15 +4841,9 @@
 							<string>ll-sinh</string>
 							<string>lla_repha-sinh</string>
 							<string>mRa-sinh</string>
-							<string>mU-sinh</string>
-							<string>mUu-sinh</string>
 							<string>ma_repha-sinh</string>
-							<string>mbU-sinh</string>
-							<string>mbUu-sinh</string>
 							<string>mba_repha-sinh</string>
 							<string>n-sinh</string>
-							<string>nU-sinh</string>
-							<string>nUu-sinh</string>
 							<string>na_repha-sinh</string>
 							<string>nd-sinh</string>
 							<string>ndU-sinh</string>
@@ -4887,61 +4851,101 @@
 							<string>nda_repha-sinh</string>
 							<string>nga_repha-sinh</string>
 							<string>nn-sinh</string>
-							<string>nnU-sinh</string>
-							<string>nnUu-sinh</string>
 							<string>nna_repha-sinh</string>
-							<string>nnddU-sinh</string>
-							<string>nnddUu-sinh</string>
 							<string>nng-sinh</string>
 							<string>nnga_repha-sinh</string>
 							<string>ny-sinh</string>
 							<string>nyU-sinh</string>
 							<string>nyUu-sinh</string>
+							<string>nyjRa-sinh</string>
+							<string>nyjU-sinh</string>
+							<string>nyjUu-sinh</string>
+							<string>nyja_repha-sinh</string>
 							<string>p-sinh</string>
-							<string>pRa-sinh</string>
 							<string>pU-sinh</string>
 							<string>pUu-sinh</string>
 							<string>pa_repha-sinh</string>
-							<string>phU-sinh</string>
-							<string>phUu-sinh</string>
 							<string>pha_repha-sinh</string>
 							<string>s-sinh</string>
-							<string>sRa-sinh</string>
-							<string>sU-sinh</string>
-							<string>sUu-sinh</string>
 							<string>sa_repha-sinh</string>
 							<string>sh-sinh</string>
-							<string>shRa-sinh</string>
 							<string>sha_repha-sinh</string>
 							<string>ss-sinh</string>
-							<string>ssRa-sinh</string>
 							<string>ssU-sinh</string>
 							<string>ssUu-sinh</string>
 							<string>ssa_repha-sinh</string>
 							<string>t-sinh</string>
 							<string>tRa-sinh</string>
 							<string>ta_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>y-sinh</string>
+							<string>ya_repha-sinh</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>noto-signvariant</string>
+						<key>list</key>
+						<array>
+							<string>bU-sinh</string>
+							<string>bUu-sinh</string>
+							<string>bhRa-sinh</string>
+							<string>cRa-sinh</string>
+							<string>cU-sinh</string>
+							<string>cUu-sinh</string>
+							<string>ddU-sinh</string>
+							<string>ddUu-sinh</string>
+							<string>ddhU-sinh</string>
+							<string>ddhUu-sinh</string>
+							<string>dhU-sinh</string>
+							<string>dhUu-sinh</string>
+							<string>fRa-sinh</string>
+							<string>gRa-sinh</string>
+							<string>ghRa-sinh</string>
+							<string>ghU-sinh</string>
+							<string>ghUu-sinh</string>
+							<string>hRa-sinh</string>
+							<string>hU-sinh</string>
+							<string>hUu-sinh</string>
+							<string>jhU-sinh</string>
+							<string>jhUu-sinh</string>
+							<string>kRa-sinh</string>
+							<string>khU-sinh</string>
+							<string>khUu-sinh</string>
+							<string>mU-sinh</string>
+							<string>mUu-sinh</string>
+							<string>mbU-sinh</string>
+							<string>mbUu-sinh</string>
+							<string>nU-sinh</string>
+							<string>nUu-sinh</string>
+							<string>nnU-sinh</string>
+							<string>nnUu-sinh</string>
+							<string>nnddU-sinh</string>
+							<string>nnddUu-sinh</string>
+							<string>pRa-sinh</string>
+							<string>phU-sinh</string>
+							<string>phUu-sinh</string>
+							<string>sRa-sinh</string>
+							<string>sU-sinh</string>
+							<string>sUu-sinh</string>
+							<string>shRa-sinh</string>
+							<string>ssRa-sinh</string>
 							<string>thU-sinh</string>
 							<string>thUu-sinh</string>
-							<string>tha_repha-sinh</string>
 							<string>ttRa-sinh</string>
 							<string>ttU-sinh</string>
 							<string>ttUu-sinh</string>
-							<string>tta_repha-sinh</string>
 							<string>tthU-sinh</string>
 							<string>tthUu-sinh</string>
-							<string>ttha_repha-sinh</string>
 							<string>vRa-sinh</string>
 							<string>vU-sinh</string>
 							<string>vUu-sinh</string>
-							<string>va_repha-sinh</string>
-							<string>y-sinh</string>
 							<string>yU-sinh</string>
 							<string>yUu-sinh</string>
-							<string>ya_repha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>grammar</string>
 					</dict>
 				</array>
 			</dict>
@@ -4951,6 +4955,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>irreducible</string>
 						<key>list</key>
 						<array>
 							<string>anusvarayaSha-sinh</string>
@@ -5018,7 +5024,6 @@
 							<string>nyaa_virama._c-sinh</string>
 							<string>nyaae._c-sinh</string>
 							<string>nyae._c-sinh</string>
-							<string>nyja-sinh</string>
 							<string>rAae-sinh</string>
 							<string>rAe-sinh</string>
 							<string>rasign-sinh</string>
@@ -5035,10 +5040,10 @@
 							<string>yasign_uusign-sinh</string>
 							<string>yasign_virama-sinh</string>
 						</array>
-						<key>name</key>
-						<string>irreducible</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>ispilla-fused</string>
 						<key>list</key>
 						<array>
 							<string>bI-sinh</string>
@@ -5088,10 +5093,10 @@
 							<string>yI-sinh</string>
 							<string>yIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>ispilla-fused</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>hal-rahena</string>
 						<key>list</key>
 						<array>
 							<string>b-sinh</string>
@@ -5107,10 +5112,10 @@
 							<string>tt-sinh</string>
 							<string>v-sinh</string>
 						</array>
-						<key>name</key>
-						<string>hal-rahena</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>u-special</string>
 						<key>list</key>
 						<array>
 							<string>bhU-sinh</string>
@@ -5126,10 +5131,10 @@
 							<string>tU-sinh</string>
 							<string>tUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>u-special</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>hal-trap</string>
 						<key>list</key>
 						<array>
 							<string>ddh-sinh</string>
@@ -5137,10 +5142,10 @@
 							<string>th-sinh</string>
 							<string>tth-sinh</string>
 						</array>
-						<key>name</key>
-						<string>hal-trap</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>rakaransaya-exception</string>
 						<key>list</key>
 						<array>
 							<string>jRa-sinh</string>
@@ -5148,59 +5153,60 @@
 							<string>ndRa-sinh</string>
 							<string>nyRa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>rakaransaya-exception</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>hal-ja</string>
+						<key>list</key>
+						<array>
+							<string>ch-sinh</string>
+							<string>j-sinh</string>
+							<string>nyj-sinh</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>repaya-exception</string>
 						<key>list</key>
 						<array>
 							<string>nndda_repha-sinh</string>
 							<string>nya_repha-sinh</string>
 							<string>ra_repha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>repaya-exception</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>ra-forms</string>
 						<key>list</key>
 						<array>
 							<string>r-sinh</string>
 							<string>rU-sinh</string>
 							<string>rUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>ra-forms</string>
 					</dict>
 					<dict>
-						<key>list</key>
-						<array>
-							<string>ch-sinh</string>
-							<string>j-sinh</string>
-						</array>
 						<key>name</key>
-						<string>hal-ja</string>
-					</dict>
-					<dict>
+						<string>du-form</string>
 						<key>list</key>
 						<array>
 							<string>dU-sinh</string>
 							<string>dUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>du-form</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>llu-form</string>
 						<key>list</key>
 						<array>
 							<string>llU-sinh</string>
 							<string>llUu-sinh</string>
 						</array>
-						<key>name</key>
-						<string>llu-form</string>
 					</dict>
 				</array>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>REVIEW — composite guess needs confirming</string>
 				<key>list</key>
 				<array>
 					<string>anusvarayaSh-sinh</string>
@@ -5265,11 +5271,7 @@
 					<string>nyChU-sinh</string>
 					<string>nyChUu-sinh</string>
 					<string>nyR-sinh</string>
-					<string>nyj-sinh</string>
 					<string>nyjR-sinh</string>
-					<string>nyjRa-sinh</string>
-					<string>nyjU-sinh</string>
-					<string>nyjUu-sinh</string>
 					<string>pR-sinh</string>
 					<string>repha-sinh.001</string>
 					<string>repha-sinh.002</string>
@@ -5297,8 +5299,6 @@
 					<string>ttTthUu-sinh</string>
 					<string>vR-sinh</string>
 				</array>
-				<key>name</key>
-				<string>REVIEW — composite guess needs confirming</string>
 			</dict>
 		</array>
 	</dict>
@@ -5308,6 +5308,8 @@
 		<key>subGroup</key>
 		<array>
 			<dict>
+				<key>name</key>
+				<string>Rakaransaya ්‍ර — applies</string>
 				<key>list</key>
 				<array>
 					<string>ttRa-sinh</string>
@@ -5333,10 +5335,10 @@
 					<string>nyjRa-sinh</string>
 					<string>jhRa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Rakaransaya ්‍ර — applies</string>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>Rakaransaya ්‍ර — EXCLUDED hosts</string>
 				<key>list</key>
 				<array>
 					<string>nga-sinh</string>
@@ -5360,55 +5362,55 @@
 					<string>lla-sinh</string>
 					<string>ngGa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Rakaransaya ්‍ර — EXCLUDED hosts</string>
 			</dict>
 			<dict>
-				<key>list</key>
-				<array>
-					<string>rTta-sinh</string>
-					<string>rSa-sinh</string>
-					<string>rPa-sinh</string>
-					<string>rDda-sinh</string>
-					<string>rDdha-sinh</string>
-					<string>rCa-sinh</string>
-					<string>rya-sinh</string>
-					<string>rVa-sinh</string>
-					<string>rGa-sinh</string>
-					<string>rTa-sinh</string>
-					<string>rNa-sinh</string>
-					<string>rKa-sinh</string>
-					<string>rDa-sinh</string>
-					<string>rLa-sinh</string>
-					<string>rMa-sinh</string>
-					<string>rNna-sinh</string>
-					<string>rTha-sinh</string>
-					<string>rTtha-sinh</string>
-					<string>rJa-sinh</string>
-					<string>rCha-sinh</string>
-					<string>rDha-sinh</string>
-					<string>rBa-sinh</string>
-					<string>rKha-sinh</string>
-					<string>rMba-sinh</string>
-					<string>rBha-sinh</string>
-					<string>rHa-sinh</string>
-					<string>rSha-sinh</string>
-					<string>rGha-sinh</string>
-					<string>rSsa-sinh</string>
-					<string>rLla-sinh</string>
-					<string>rFa-sinh</string>
-					<string>rPha-sinh</string>
-					<string>rNda-sinh</string>
-					<string>rNnga-sinh</string>
-					<string>rJnya-sinh</string>
-					<string>rNyja-sinh</string>
-					<string>rJha-sinh</string>
-					<string>rNga-sinh</string>
-				</array>
 				<key>name</key>
 				<string>Repaya ර්‍ — applies</string>
+				<key>list</key>
+				<array>
+					<string>tta_repha-sinh</string>
+					<string>sa_repha-sinh</string>
+					<string>pa_repha-sinh</string>
+					<string>dda_repha-sinh</string>
+					<string>ddha_repha-sinh</string>
+					<string>ca_repha-sinh</string>
+					<string>rya-sinh</string>
+					<string>va_repha-sinh</string>
+					<string>ga_repha-sinh</string>
+					<string>ta_repha-sinh</string>
+					<string>na_repha-sinh</string>
+					<string>ka_repha-sinh</string>
+					<string>da_repha-sinh</string>
+					<string>la_repha-sinh</string>
+					<string>ma_repha-sinh</string>
+					<string>nna_repha-sinh</string>
+					<string>tha_repha-sinh</string>
+					<string>ttha_repha-sinh</string>
+					<string>ja_repha-sinh</string>
+					<string>cha_repha-sinh</string>
+					<string>dha_repha-sinh</string>
+					<string>ba_repha-sinh</string>
+					<string>kha_repha-sinh</string>
+					<string>mba_repha-sinh</string>
+					<string>bha_repha-sinh</string>
+					<string>ha_repha-sinh</string>
+					<string>sha_repha-sinh</string>
+					<string>gha_repha-sinh</string>
+					<string>ssa_repha-sinh</string>
+					<string>lla_repha-sinh</string>
+					<string>fa_repha-sinh</string>
+					<string>pha_repha-sinh</string>
+					<string>nda_repha-sinh</string>
+					<string>nnga_repha-sinh</string>
+					<string>jnya_repha-sinh</string>
+					<string>nyja_repha-sinh</string>
+					<string>jha_repha-sinh</string>
+					<string>nga_repha-sinh</string>
+				</array>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>Repaya ර්‍ — EXCLUDED hosts</string>
 				<key>list</key>
 				<array>
 					<string>nya-sinh</string>
@@ -5417,10 +5419,10 @@
 					<string>kSsa-sinh</string>
 					<string>ngGa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Repaya ර්‍ — EXCLUDED hosts</string>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>Yansaya ්‍ය — applies</string>
 				<key>list</key>
 				<array>
 					<string>ttya-sinh</string>
@@ -5463,28 +5465,28 @@
 					<string>jhya-sinh</string>
 					<string>ngya-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Yansaya ්‍ය — applies</string>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>Yansaya ්‍ය — EXCLUDED hosts</string>
 				<key>list</key>
 				<array>
 					<string>jnya-sinh</string>
 					<string>mba-sinh</string>
 					<string>nyJa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Yansaya ්‍ය — EXCLUDED hosts</string>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>ක්‍ෂ ligature</string>
 				<key>list</key>
 				<array>
 					<string>kSsa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>ක්‍ෂ ligature</string>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>Classic conjuncts</string>
 				<key>list</key>
 				<array>
 					<string>kVa-sinh</string>
@@ -5509,10 +5511,10 @@
 					<string>bBa-sinh</string>
 					<string>mBa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Classic conjuncts</string>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>Touching clusters</string>
 				<key>list</key>
 				<array>
 					<string>kKa-sinh</string>
@@ -5581,8 +5583,6 @@
 					<string>sVa-sinh</string>
 					<string>hMa-sinh</string>
 				</array>
-				<key>name</key>
-				<string>Touching clusters</string>
 			</dict>
 		</array>
 	</dict>
@@ -5597,196 +5597,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
-						<key>list</key>
-						<array>
-							<string>tta-sinh</string>
-							<string>sa-sinh</string>
-							<string>pa-sinh</string>
-							<string>dda-sinh</string>
-							<string>ddha-sinh</string>
-							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
-							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
-							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
-							<string>ca-sinh</string>
-							<string>e-sinh</string>
-							<string>ya-sinh</string>
-							<string>va-sinh</string>
-							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
-							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
-							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
-							<string>tt-sinh</string>
-							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
-							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
-							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
-							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
-							<string>la-sinh</string>
-							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
-							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
-							<string>o-sinh</string>
-							<string>ma-sinh</string>
-							<string>i-sinh</string>
-							<string>tha-sinh</string>
-							<string>ttha-sinh</string>
-							<string>ja-sinh</string>
-							<string>cha-sinh</string>
-							<string>jI-sinh</string>
-							<string>jIi-sinh</string>
-							<string>chI-sinh</string>
-							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
-							<string>ch-sinh</string>
-							<string>j-sinh</string>
-							<string>nyj-sinh</string>
-							<string>dha-sinh</string>
-							<string>ba-sinh</string>
-							<string>kha-sinh</string>
-							<string>oo-sinh</string>
-							<string>mba-sinh</string>
-							<string>bha-sinh</string>
-							<string>gha-sinh</string>
-							<string>ssa-sinh</string>
-							<string>lla-sinh</string>
-							<string>fa-sinh</string>
-							<string>pha-sinh</string>
-							<string>ee-sinh</string>
-							<string>ii-sinh</string>
-							<string>bhI-sinh</string>
-							<string>bhIi-sinh</string>
-							<string>hI-sinh</string>
-							<string>hIi-sinh</string>
-							<string>llU-sinh</string>
-							<string>llUu-sinh</string>
-							<string>nndda-sinh</string>
-							<string>nyja-sinh</string>
-							<string>jha-sinh</string>
-							<string>ttya-sinh</string>
-							<string>sya-sinh</string>
-							<string>pya-sinh</string>
-							<string>ddya-sinh</string>
-							<string>ddhya-sinh</string>
-							<string>cya-sinh</string>
-							<string>yya-sinh</string>
-							<string>vya-sinh</string>
-							<string>gya-sinh</string>
-							<string>tya-sinh</string>
-							<string>nya-sinh</string>
-							<string>kya-sinh</string>
-							<string>dya-sinh</string>
-							<string>rya-sinh</string>
-							<string>lya-sinh</string>
-							<string>mya-sinh</string>
-							<string>nnya-sinh</string>
-							<string>thya-sinh</string>
-							<string>tthya-sinh</string>
-							<string>jya-sinh</string>
-							<string>chya-sinh</string>
-							<string>dhya-sinh</string>
-							<string>bya-sinh</string>
-							<string>khya-sinh</string>
-							<string>bhya-sinh</string>
-							<string>hya-sinh</string>
-							<string>shya-sinh</string>
-							<string>ghya-sinh</string>
-							<string>ssya-sinh</string>
-							<string>llya-sinh</string>
-							<string>fya-sinh</string>
-							<string>phya-sinh</string>
-							<string>ndya-sinh</string>
-							<string>nnddya-sinh</string>
-							<string>nngya-sinh</string>
-							<string>nyya-sinh</string>
-							<string>nyjya-sinh</string>
-							<string>jhya-sinh</string>
-							<string>ngya-sinh</string>
-							<string>kSsa-sinh</string>
-							<string>kVa-sinh</string>
-							<string>gDha-sinh</string>
-							<string>ngGa-sinh</string>
-							<string>cCa-sinh</string>
-							<string>nyCa-sinh</string>
-							<string>nyCha-sinh</string>
-							<string>nyJa-sinh</string>
-							<string>ttTtha-sinh</string>
-							<string>ddDha-sinh</string>
-							<string>nnDda-sinh</string>
-							<string>tTha-sinh</string>
-							<string>tVa-sinh</string>
-							<string>dDha-sinh</string>
-							<string>dVa-sinh</string>
-							<string>nTha-sinh</string>
-							<string>nDa-sinh</string>
-							<string>nDha-sinh</string>
-							<string>nVa-sinh</string>
-							<string>bBa-sinh</string>
-							<string>mBa-sinh</string>
-							<string>vocalicr-sinh</string>
-							<string>vocalicrr-sinh</string>
-							<string>nga-sinh</string>
-							<string>ai-sinh</string>
-							<string>au-sinh</string>
-						</array>
 						<key>name</key>
 						<string>Reopens if base_height changes — Base height</string>
-					</dict>
-					<dict>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -5973,10 +5785,200 @@
 							<string>ai-sinh</string>
 							<string>au-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if stroke changes — Stroke weight &amp; contrast</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Reopens if stroke changes — Stroke weight &amp; contrast</string>
+						<key>list</key>
+						<array>
+							<string>tta-sinh</string>
+							<string>sa-sinh</string>
+							<string>pa-sinh</string>
+							<string>dda-sinh</string>
+							<string>ddha-sinh</string>
+							<string>ttI-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cI-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddI-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhI-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>ttTthI-sinh</string>
+							<string>ttTthIi-sinh</string>
+							<string>tThI-sinh</string>
+							<string>tThIi-sinh</string>
+							<string>nThI-sinh</string>
+							<string>nThIi-sinh</string>
+							<string>ca-sinh</string>
+							<string>e-sinh</string>
+							<string>ya-sinh</string>
+							<string>va-sinh</string>
+							<string>yI-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vI-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>ngI-sinh</string>
+							<string>ngIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>sI-sinh</string>
+							<string>sIi-sinh</string>
+							<string>tt-sinh</string>
+							<string>dd-sinh</string>
+							<string>nndd-sinh</string>
+							<string>c-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>m-sinh</string>
+							<string>mb-sinh</string>
+							<string>v-sinh</string>
+							<string>jh-sinh</string>
+							<string>ng-sinh</string>
+							<string>tth-sinh</string>
+							<string>ddh-sinh</string>
+							<string>th-sinh</string>
+							<string>ph-sinh</string>
+							<string>la-sinh</string>
+							<string>lI-sinh</string>
+							<string>lIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>pI-sinh</string>
+							<string>pIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>o-sinh</string>
+							<string>ma-sinh</string>
+							<string>i-sinh</string>
+							<string>tha-sinh</string>
+							<string>ttha-sinh</string>
+							<string>ja-sinh</string>
+							<string>cha-sinh</string>
+							<string>jI-sinh</string>
+							<string>jIi-sinh</string>
+							<string>chI-sinh</string>
+							<string>chIi-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>ch-sinh</string>
+							<string>j-sinh</string>
+							<string>nyj-sinh</string>
+							<string>dha-sinh</string>
+							<string>ba-sinh</string>
+							<string>kha-sinh</string>
+							<string>oo-sinh</string>
+							<string>mba-sinh</string>
+							<string>bha-sinh</string>
+							<string>gha-sinh</string>
+							<string>ssa-sinh</string>
+							<string>lla-sinh</string>
+							<string>fa-sinh</string>
+							<string>pha-sinh</string>
+							<string>ee-sinh</string>
+							<string>ii-sinh</string>
+							<string>bhI-sinh</string>
+							<string>bhIi-sinh</string>
+							<string>hI-sinh</string>
+							<string>hIi-sinh</string>
+							<string>llU-sinh</string>
+							<string>llUu-sinh</string>
+							<string>nndda-sinh</string>
+							<string>nyja-sinh</string>
+							<string>jha-sinh</string>
+							<string>ttya-sinh</string>
+							<string>sya-sinh</string>
+							<string>pya-sinh</string>
+							<string>ddya-sinh</string>
+							<string>ddhya-sinh</string>
+							<string>cya-sinh</string>
+							<string>yya-sinh</string>
+							<string>vya-sinh</string>
+							<string>gya-sinh</string>
+							<string>tya-sinh</string>
+							<string>nya-sinh</string>
+							<string>kya-sinh</string>
+							<string>dya-sinh</string>
+							<string>rya-sinh</string>
+							<string>lya-sinh</string>
+							<string>mya-sinh</string>
+							<string>nnya-sinh</string>
+							<string>thya-sinh</string>
+							<string>tthya-sinh</string>
+							<string>jya-sinh</string>
+							<string>chya-sinh</string>
+							<string>dhya-sinh</string>
+							<string>bya-sinh</string>
+							<string>khya-sinh</string>
+							<string>bhya-sinh</string>
+							<string>hya-sinh</string>
+							<string>shya-sinh</string>
+							<string>ghya-sinh</string>
+							<string>ssya-sinh</string>
+							<string>llya-sinh</string>
+							<string>fya-sinh</string>
+							<string>phya-sinh</string>
+							<string>ndya-sinh</string>
+							<string>nnddya-sinh</string>
+							<string>nngya-sinh</string>
+							<string>nyya-sinh</string>
+							<string>nyjya-sinh</string>
+							<string>jhya-sinh</string>
+							<string>ngya-sinh</string>
+							<string>kSsa-sinh</string>
+							<string>kVa-sinh</string>
+							<string>gDha-sinh</string>
+							<string>ngGa-sinh</string>
+							<string>cCa-sinh</string>
+							<string>nyCa-sinh</string>
+							<string>nyCha-sinh</string>
+							<string>nyJa-sinh</string>
+							<string>ttTtha-sinh</string>
+							<string>ddDha-sinh</string>
+							<string>nnDda-sinh</string>
+							<string>tTha-sinh</string>
+							<string>tVa-sinh</string>
+							<string>dDha-sinh</string>
+							<string>dVa-sinh</string>
+							<string>nTha-sinh</string>
+							<string>nDa-sinh</string>
+							<string>nDha-sinh</string>
+							<string>nVa-sinh</string>
+							<string>bBa-sinh</string>
+							<string>mBa-sinh</string>
+							<string>vocalicr-sinh</string>
+							<string>vocalicrr-sinh</string>
+							<string>nga-sinh</string>
+							<string>ai-sinh</string>
+							<string>au-sinh</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Reopens if counter changes — Counter model</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -6165,200 +6167,10 @@
 							<string>anusvaraya-sinh</string>
 							<string>visargaya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if counter changes — Counter model</string>
 					</dict>
 					<dict>
-						<key>list</key>
-						<array>
-							<string>tta-sinh</string>
-							<string>sa-sinh</string>
-							<string>pa-sinh</string>
-							<string>dda-sinh</string>
-							<string>ddha-sinh</string>
-							<string>ttI-sinh</string>
-							<string>ttIi-sinh</string>
-							<string>cI-sinh</string>
-							<string>cIi-sinh</string>
-							<string>ddI-sinh</string>
-							<string>ddIi-sinh</string>
-							<string>tthI-sinh</string>
-							<string>tthIi-sinh</string>
-							<string>ddhI-sinh</string>
-							<string>ddhIi-sinh</string>
-							<string>thI-sinh</string>
-							<string>thIi-sinh</string>
-							<string>phI-sinh</string>
-							<string>phIi-sinh</string>
-							<string>ttTthI-sinh</string>
-							<string>ttTthIi-sinh</string>
-							<string>tThI-sinh</string>
-							<string>tThIi-sinh</string>
-							<string>nThI-sinh</string>
-							<string>nThIi-sinh</string>
-							<string>ca-sinh</string>
-							<string>e-sinh</string>
-							<string>ya-sinh</string>
-							<string>va-sinh</string>
-							<string>yI-sinh</string>
-							<string>yIi-sinh</string>
-							<string>vI-sinh</string>
-							<string>vIi-sinh</string>
-							<string>mI-sinh</string>
-							<string>mIi-sinh</string>
-							<string>bI-sinh</string>
-							<string>bIi-sinh</string>
-							<string>khI-sinh</string>
-							<string>khIi-sinh</string>
-							<string>dhI-sinh</string>
-							<string>dhIi-sinh</string>
-							<string>nnI-sinh</string>
-							<string>nnIi-sinh</string>
-							<string>mbI-sinh</string>
-							<string>mbIi-sinh</string>
-							<string>nnddI-sinh</string>
-							<string>nnddIi-sinh</string>
-							<string>jhI-sinh</string>
-							<string>jhIi-sinh</string>
-							<string>ngI-sinh</string>
-							<string>ngIi-sinh</string>
-							<string>ghI-sinh</string>
-							<string>ghIi-sinh</string>
-							<string>sI-sinh</string>
-							<string>sIi-sinh</string>
-							<string>tt-sinh</string>
-							<string>dd-sinh</string>
-							<string>nndd-sinh</string>
-							<string>c-sinh</string>
-							<string>dh-sinh</string>
-							<string>kh-sinh</string>
-							<string>b-sinh</string>
-							<string>m-sinh</string>
-							<string>mb-sinh</string>
-							<string>v-sinh</string>
-							<string>jh-sinh</string>
-							<string>ng-sinh</string>
-							<string>tth-sinh</string>
-							<string>ddh-sinh</string>
-							<string>th-sinh</string>
-							<string>ph-sinh</string>
-							<string>la-sinh</string>
-							<string>lI-sinh</string>
-							<string>lIi-sinh</string>
-							<string>llI-sinh</string>
-							<string>llIi-sinh</string>
-							<string>pI-sinh</string>
-							<string>pIi-sinh</string>
-							<string>ssI-sinh</string>
-							<string>ssIi-sinh</string>
-							<string>o-sinh</string>
-							<string>ma-sinh</string>
-							<string>i-sinh</string>
-							<string>tha-sinh</string>
-							<string>ttha-sinh</string>
-							<string>ja-sinh</string>
-							<string>cha-sinh</string>
-							<string>jI-sinh</string>
-							<string>jIi-sinh</string>
-							<string>chI-sinh</string>
-							<string>chIi-sinh</string>
-							<string>nyjI-sinh</string>
-							<string>nyjIi-sinh</string>
-							<string>ch-sinh</string>
-							<string>j-sinh</string>
-							<string>nyj-sinh</string>
-							<string>dha-sinh</string>
-							<string>ba-sinh</string>
-							<string>kha-sinh</string>
-							<string>oo-sinh</string>
-							<string>mba-sinh</string>
-							<string>bha-sinh</string>
-							<string>gha-sinh</string>
-							<string>ssa-sinh</string>
-							<string>lla-sinh</string>
-							<string>fa-sinh</string>
-							<string>pha-sinh</string>
-							<string>ee-sinh</string>
-							<string>ii-sinh</string>
-							<string>bhI-sinh</string>
-							<string>bhIi-sinh</string>
-							<string>hI-sinh</string>
-							<string>hIi-sinh</string>
-							<string>llU-sinh</string>
-							<string>llUu-sinh</string>
-							<string>nndda-sinh</string>
-							<string>nyja-sinh</string>
-							<string>jha-sinh</string>
-							<string>ttya-sinh</string>
-							<string>sya-sinh</string>
-							<string>pya-sinh</string>
-							<string>ddya-sinh</string>
-							<string>ddhya-sinh</string>
-							<string>cya-sinh</string>
-							<string>yya-sinh</string>
-							<string>vya-sinh</string>
-							<string>gya-sinh</string>
-							<string>tya-sinh</string>
-							<string>nya-sinh</string>
-							<string>kya-sinh</string>
-							<string>dya-sinh</string>
-							<string>rya-sinh</string>
-							<string>lya-sinh</string>
-							<string>mya-sinh</string>
-							<string>nnya-sinh</string>
-							<string>thya-sinh</string>
-							<string>tthya-sinh</string>
-							<string>jya-sinh</string>
-							<string>chya-sinh</string>
-							<string>dhya-sinh</string>
-							<string>bya-sinh</string>
-							<string>khya-sinh</string>
-							<string>bhya-sinh</string>
-							<string>hya-sinh</string>
-							<string>shya-sinh</string>
-							<string>ghya-sinh</string>
-							<string>ssya-sinh</string>
-							<string>llya-sinh</string>
-							<string>fya-sinh</string>
-							<string>phya-sinh</string>
-							<string>ndya-sinh</string>
-							<string>nnddya-sinh</string>
-							<string>nngya-sinh</string>
-							<string>nyya-sinh</string>
-							<string>nyjya-sinh</string>
-							<string>jhya-sinh</string>
-							<string>ngya-sinh</string>
-							<string>kSsa-sinh</string>
-							<string>kVa-sinh</string>
-							<string>gDha-sinh</string>
-							<string>ngGa-sinh</string>
-							<string>cCa-sinh</string>
-							<string>nyCa-sinh</string>
-							<string>nyCha-sinh</string>
-							<string>nyJa-sinh</string>
-							<string>ttTtha-sinh</string>
-							<string>ddDha-sinh</string>
-							<string>nnDda-sinh</string>
-							<string>tTha-sinh</string>
-							<string>tVa-sinh</string>
-							<string>dDha-sinh</string>
-							<string>dVa-sinh</string>
-							<string>nTha-sinh</string>
-							<string>nDa-sinh</string>
-							<string>nDha-sinh</string>
-							<string>nVa-sinh</string>
-							<string>bBa-sinh</string>
-							<string>mBa-sinh</string>
-							<string>vocalicr-sinh</string>
-							<string>vocalicrr-sinh</string>
-							<string>nga-sinh</string>
-							<string>ai-sinh</string>
-							<string>au-sinh</string>
-						</array>
 						<key>name</key>
 						<string>Reopens if spacing_unit changes — Spacing unit</string>
-					</dict>
-					<dict>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -6545,10 +6357,200 @@
 							<string>ai-sinh</string>
 							<string>au-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if overshoot changes — Overshoot</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Reopens if overshoot changes — Overshoot</string>
+						<key>list</key>
+						<array>
+							<string>tta-sinh</string>
+							<string>sa-sinh</string>
+							<string>pa-sinh</string>
+							<string>dda-sinh</string>
+							<string>ddha-sinh</string>
+							<string>ttI-sinh</string>
+							<string>ttIi-sinh</string>
+							<string>cI-sinh</string>
+							<string>cIi-sinh</string>
+							<string>ddI-sinh</string>
+							<string>ddIi-sinh</string>
+							<string>tthI-sinh</string>
+							<string>tthIi-sinh</string>
+							<string>ddhI-sinh</string>
+							<string>ddhIi-sinh</string>
+							<string>thI-sinh</string>
+							<string>thIi-sinh</string>
+							<string>phI-sinh</string>
+							<string>phIi-sinh</string>
+							<string>ttTthI-sinh</string>
+							<string>ttTthIi-sinh</string>
+							<string>tThI-sinh</string>
+							<string>tThIi-sinh</string>
+							<string>nThI-sinh</string>
+							<string>nThIi-sinh</string>
+							<string>ca-sinh</string>
+							<string>e-sinh</string>
+							<string>ya-sinh</string>
+							<string>va-sinh</string>
+							<string>yI-sinh</string>
+							<string>yIi-sinh</string>
+							<string>vI-sinh</string>
+							<string>vIi-sinh</string>
+							<string>mI-sinh</string>
+							<string>mIi-sinh</string>
+							<string>bI-sinh</string>
+							<string>bIi-sinh</string>
+							<string>khI-sinh</string>
+							<string>khIi-sinh</string>
+							<string>dhI-sinh</string>
+							<string>dhIi-sinh</string>
+							<string>nnI-sinh</string>
+							<string>nnIi-sinh</string>
+							<string>mbI-sinh</string>
+							<string>mbIi-sinh</string>
+							<string>nnddI-sinh</string>
+							<string>nnddIi-sinh</string>
+							<string>jhI-sinh</string>
+							<string>jhIi-sinh</string>
+							<string>ngI-sinh</string>
+							<string>ngIi-sinh</string>
+							<string>ghI-sinh</string>
+							<string>ghIi-sinh</string>
+							<string>sI-sinh</string>
+							<string>sIi-sinh</string>
+							<string>tt-sinh</string>
+							<string>dd-sinh</string>
+							<string>nndd-sinh</string>
+							<string>c-sinh</string>
+							<string>dh-sinh</string>
+							<string>kh-sinh</string>
+							<string>b-sinh</string>
+							<string>m-sinh</string>
+							<string>mb-sinh</string>
+							<string>v-sinh</string>
+							<string>jh-sinh</string>
+							<string>ng-sinh</string>
+							<string>tth-sinh</string>
+							<string>ddh-sinh</string>
+							<string>th-sinh</string>
+							<string>ph-sinh</string>
+							<string>la-sinh</string>
+							<string>lI-sinh</string>
+							<string>lIi-sinh</string>
+							<string>llI-sinh</string>
+							<string>llIi-sinh</string>
+							<string>pI-sinh</string>
+							<string>pIi-sinh</string>
+							<string>ssI-sinh</string>
+							<string>ssIi-sinh</string>
+							<string>o-sinh</string>
+							<string>ma-sinh</string>
+							<string>i-sinh</string>
+							<string>tha-sinh</string>
+							<string>ttha-sinh</string>
+							<string>ja-sinh</string>
+							<string>cha-sinh</string>
+							<string>jI-sinh</string>
+							<string>jIi-sinh</string>
+							<string>chI-sinh</string>
+							<string>chIi-sinh</string>
+							<string>nyjI-sinh</string>
+							<string>nyjIi-sinh</string>
+							<string>ch-sinh</string>
+							<string>j-sinh</string>
+							<string>nyj-sinh</string>
+							<string>dha-sinh</string>
+							<string>ba-sinh</string>
+							<string>kha-sinh</string>
+							<string>oo-sinh</string>
+							<string>mba-sinh</string>
+							<string>bha-sinh</string>
+							<string>gha-sinh</string>
+							<string>ssa-sinh</string>
+							<string>lla-sinh</string>
+							<string>fa-sinh</string>
+							<string>pha-sinh</string>
+							<string>ee-sinh</string>
+							<string>ii-sinh</string>
+							<string>bhI-sinh</string>
+							<string>bhIi-sinh</string>
+							<string>hI-sinh</string>
+							<string>hIi-sinh</string>
+							<string>llU-sinh</string>
+							<string>llUu-sinh</string>
+							<string>nndda-sinh</string>
+							<string>nyja-sinh</string>
+							<string>jha-sinh</string>
+							<string>ttya-sinh</string>
+							<string>sya-sinh</string>
+							<string>pya-sinh</string>
+							<string>ddya-sinh</string>
+							<string>ddhya-sinh</string>
+							<string>cya-sinh</string>
+							<string>yya-sinh</string>
+							<string>vya-sinh</string>
+							<string>gya-sinh</string>
+							<string>tya-sinh</string>
+							<string>nya-sinh</string>
+							<string>kya-sinh</string>
+							<string>dya-sinh</string>
+							<string>rya-sinh</string>
+							<string>lya-sinh</string>
+							<string>mya-sinh</string>
+							<string>nnya-sinh</string>
+							<string>thya-sinh</string>
+							<string>tthya-sinh</string>
+							<string>jya-sinh</string>
+							<string>chya-sinh</string>
+							<string>dhya-sinh</string>
+							<string>bya-sinh</string>
+							<string>khya-sinh</string>
+							<string>bhya-sinh</string>
+							<string>hya-sinh</string>
+							<string>shya-sinh</string>
+							<string>ghya-sinh</string>
+							<string>ssya-sinh</string>
+							<string>llya-sinh</string>
+							<string>fya-sinh</string>
+							<string>phya-sinh</string>
+							<string>ndya-sinh</string>
+							<string>nnddya-sinh</string>
+							<string>nngya-sinh</string>
+							<string>nyya-sinh</string>
+							<string>nyjya-sinh</string>
+							<string>jhya-sinh</string>
+							<string>ngya-sinh</string>
+							<string>kSsa-sinh</string>
+							<string>kVa-sinh</string>
+							<string>gDha-sinh</string>
+							<string>ngGa-sinh</string>
+							<string>cCa-sinh</string>
+							<string>nyCa-sinh</string>
+							<string>nyCha-sinh</string>
+							<string>nyJa-sinh</string>
+							<string>ttTtha-sinh</string>
+							<string>ddDha-sinh</string>
+							<string>nnDda-sinh</string>
+							<string>tTha-sinh</string>
+							<string>tVa-sinh</string>
+							<string>dDha-sinh</string>
+							<string>dVa-sinh</string>
+							<string>nTha-sinh</string>
+							<string>nDa-sinh</string>
+							<string>nDha-sinh</string>
+							<string>nVa-sinh</string>
+							<string>bBa-sinh</string>
+							<string>mBa-sinh</string>
+							<string>vocalicr-sinh</string>
+							<string>vocalicrr-sinh</string>
+							<string>nga-sinh</string>
+							<string>ai-sinh</string>
+							<string>au-sinh</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Reopens if mark_height changes — Above-mark zone</string>
 						<key>list</key>
 						<array>
 							<string>isign-sinh</string>
@@ -6758,43 +6760,43 @@
 							<string>nyjya-sinh</string>
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>kVa-sinh</string>
 							<string>gDha-sinh</string>
@@ -6867,10 +6869,10 @@
 							<string>sVa-sinh</string>
 							<string>hMa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if mark_height changes — Above-mark zone</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Reopens if mark_depth changes — Below-mark depth</string>
 						<key>list</key>
 						<array>
 							<string>usign-sinh</string>
@@ -6894,10 +6896,10 @@
 							<string>vocalicrsign-sinh</string>
 							<string>vocalicrrsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if mark_depth changes — Below-mark depth</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Reopens if tail_depth changes — Consonant tail depth</string>
 						<key>list</key>
 						<array>
 							<string>dda-sinh</string>
@@ -6960,10 +6962,10 @@
 							<string>mBa-sinh</string>
 							<string>ai-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if tail_depth changes — Consonant tail depth</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Reopens if hook_depth changes — Aeda-pilla depth</string>
 						<key>list</key>
 						<array>
 							<string>aesign-sinh</string>
@@ -6977,10 +6979,10 @@
 							<string>ae-sinh</string>
 							<string>aae-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if hook_depth changes — Aeda-pilla depth</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Reopens if conjunct_depth changes — Conjunct depth</string>
 						<key>list</key>
 						<array>
 							<string>ttRa-sinh</string>
@@ -7006,8 +7008,6 @@
 							<string>nyjRa-sinh</string>
 							<string>jhRa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Reopens if conjunct_depth changes — Conjunct depth</string>
 					</dict>
 				</array>
 			</dict>
@@ -7017,6 +7017,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ට (tta-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>sa-sinh</string>
@@ -7202,10 +7204,10 @@
 							<string>ai-sinh</string>
 							<string>au-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ට (tta-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of එ (e-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>tha-sinh</string>
@@ -7236,10 +7238,10 @@
 							<string>mBa-sinh</string>
 							<string>ai-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of එ (e-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ප (pa-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>ya-sinh</string>
@@ -7334,10 +7336,10 @@
 							<string>vocalicr-sinh</string>
 							<string>vocalicrr-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ප (pa-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ග (ga-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>aasign-sinh</string>
@@ -7419,10 +7421,10 @@
 							<string>bBa-sinh</string>
 							<string>mBa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ග (ga-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ද (da-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>u-sinh</string>
@@ -7482,10 +7484,10 @@
 							<string>bBa-sinh</string>
 							<string>mBa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ද (da-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ර (ra-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>rI-sinh</string>
@@ -7530,44 +7532,44 @@
 							<string>fRa-sinh</string>
 							<string>nyjRa-sinh</string>
 							<string>jhRa-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
 							<string>rya-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kVa-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>gDha-sinh</string>
@@ -7590,10 +7592,10 @@
 							<string>bBa-sinh</string>
 							<string>mBa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ර (ra-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ස (sa-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>pa-sinh</string>
@@ -7757,10 +7759,10 @@
 							<string>vocalicrr-sinh</string>
 							<string>ai-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ස (sa-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ඩ (dda-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>ddha-sinh</string>
@@ -7822,10 +7824,10 @@
 							<string>mBa-sinh</string>
 							<string>ai-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ඩ (dda-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ඪ (ddha-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>tthI-sinh</string>
@@ -7877,10 +7879,10 @@
 							<string>mBa-sinh</string>
 							<string>ai-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ඪ (ddha-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ත (ta-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>na-sinh</string>
@@ -7932,10 +7934,10 @@
 							<string>bBa-sinh</string>
 							<string>mBa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ත (ta-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ය (ya-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>yI-sinh</string>
@@ -8008,10 +8010,10 @@
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ය (ya-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ඔ (o-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>ma-sinh</string>
@@ -8019,10 +8021,10 @@
 							<string>mba-sinh</string>
 							<string>au-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ඔ (o-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ඳ (nda-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>ndI-sinh</string>
@@ -8030,10 +8032,10 @@
 							<string>ndRI-sinh</string>
 							<string>ndRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ඳ (nda-sinh)</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Descendants of ඣ (jha-sinh)</string>
 						<key>list</key>
 						<array>
 							<string>kVa-sinh</string>
@@ -8058,8 +8060,6 @@
 							<string>bBa-sinh</string>
 							<string>mBa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Descendants of ඣ (jha-sinh)</string>
 					</dict>
 				</array>
 			</dict>
@@ -8076,6 +8076,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>sinhala-0-kernel</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -8342,43 +8344,43 @@
 							<string>nyjya-sinh</string>
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>kVa-sinh</string>
 							<string>gDha-sinh</string>
@@ -8405,10 +8407,10 @@
 							<string>au-sinh</string>
 							<string>visargaya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>sinhala-0-kernel</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>sinhala-1-core</string>
 						<key>list</key>
 						<array>
 							<string>jnya-sinh</string>
@@ -8419,10 +8421,10 @@
 							<string>vocalicll-sinh</string>
 							<string>kunddaliya</string>
 						</array>
-						<key>name</key>
-						<string>sinhala-1-core</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>sinhala-2-plus</string>
 						<key>list</key>
 						<array>
 							<string>kKa-sinh</string>
@@ -8491,8 +8493,6 @@
 							<string>sVa-sinh</string>
 							<string>hMa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>sinhala-2-plus</string>
 					</dict>
 				</array>
 			</dict>
@@ -8502,6 +8502,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>medium</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -8528,10 +8530,10 @@
 							<string>nndda-sinh</string>
 							<string>nnga-sinh</string>
 						</array>
-						<key>name</key>
-						<string>medium</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>high</string>
 						<key>list</key>
 						<array>
 							<string>sa-sinh</string>
@@ -8566,10 +8568,10 @@
 							<string>ba-sinh</string>
 							<string>ha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>high</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>low</string>
 						<key>list</key>
 						<array>
 							<string>ddha-sinh</string>
@@ -8584,10 +8586,10 @@
 							<string>jnya-sinh</string>
 							<string>vocalicrsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>low</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>rare</string>
 						<key>list</key>
 						<array>
 							<string>nyja-sinh</string>
@@ -8606,8 +8608,6 @@
 							<string>visargaya-sinh</string>
 							<string>kunddaliya</string>
 						</array>
-						<key>name</key>
-						<string>rare</string>
 					</dict>
 				</array>
 			</dict>
@@ -8617,6 +8617,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>base</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -8661,10 +8663,10 @@
 							<string>jha-sinh</string>
 							<string>nga-sinh</string>
 						</array>
-						<key>name</key>
-						<string>base</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>mark</string>
 						<key>list</key>
 						<array>
 							<string>isign-sinh</string>
@@ -8681,10 +8683,10 @@
 							<string>vocaliclsign-sinh</string>
 							<string>vocalicllsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>mark</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>form-family</string>
 						<key>list</key>
 						<array>
 							<string>ttI-sinh</string>
@@ -8823,10 +8825,10 @@
 							<string>nDRI-sinh</string>
 							<string>nDRIi-sinh</string>
 						</array>
-						<key>name</key>
-						<string>form-family</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>vowel</string>
 						<key>list</key>
 						<array>
 							<string>e-sinh</string>
@@ -8842,20 +8844,20 @@
 							<string>ai-sinh</string>
 							<string>au-sinh</string>
 						</array>
-						<key>name</key>
-						<string>vowel</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>sign</string>
 						<key>list</key>
 						<array>
 							<string>anusvaraya-sinh</string>
 							<string>visargaya-sinh</string>
 							<string>kunddaliya</string>
 						</array>
-						<key>name</key>
-						<string>sign</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>composite</string>
 						<key>list</key>
 						<array>
 							<string>aa-sinh</string>
@@ -8870,10 +8872,10 @@
 							<string>uu-sinh</string>
 							<string>ausign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>composite</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>process</string>
 						<key>list</key>
 						<array>
 							<string>ttI-sinh</string>
@@ -9100,10 +9102,10 @@
 							<string>vocalicrsign-sinh</string>
 							<string>vocaliclsign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>process</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>conjunct-system</string>
 						<key>list</key>
 						<array>
 							<string>ttRa-sinh</string>
@@ -9167,43 +9169,43 @@
 							<string>nyjya-sinh</string>
 							<string>jhya-sinh</string>
 							<string>ngya-sinh</string>
-							<string>rTta-sinh</string>
-							<string>rSa-sinh</string>
-							<string>rPa-sinh</string>
-							<string>rDda-sinh</string>
-							<string>rDdha-sinh</string>
-							<string>rCa-sinh</string>
-							<string>rVa-sinh</string>
-							<string>rGa-sinh</string>
-							<string>rTa-sinh</string>
-							<string>rNa-sinh</string>
-							<string>rKa-sinh</string>
-							<string>rDa-sinh</string>
-							<string>rLa-sinh</string>
-							<string>rMa-sinh</string>
-							<string>rNna-sinh</string>
-							<string>rTha-sinh</string>
-							<string>rTtha-sinh</string>
-							<string>rJa-sinh</string>
-							<string>rCha-sinh</string>
-							<string>rDha-sinh</string>
-							<string>rBa-sinh</string>
-							<string>rKha-sinh</string>
-							<string>rMba-sinh</string>
-							<string>rBha-sinh</string>
-							<string>rHa-sinh</string>
-							<string>rSha-sinh</string>
-							<string>rGha-sinh</string>
-							<string>rSsa-sinh</string>
-							<string>rLla-sinh</string>
-							<string>rFa-sinh</string>
-							<string>rPha-sinh</string>
-							<string>rNda-sinh</string>
-							<string>rNnga-sinh</string>
-							<string>rJnya-sinh</string>
-							<string>rNyja-sinh</string>
-							<string>rJha-sinh</string>
-							<string>rNga-sinh</string>
+							<string>tta_repha-sinh</string>
+							<string>sa_repha-sinh</string>
+							<string>pa_repha-sinh</string>
+							<string>dda_repha-sinh</string>
+							<string>ddha_repha-sinh</string>
+							<string>ca_repha-sinh</string>
+							<string>va_repha-sinh</string>
+							<string>ga_repha-sinh</string>
+							<string>ta_repha-sinh</string>
+							<string>na_repha-sinh</string>
+							<string>ka_repha-sinh</string>
+							<string>da_repha-sinh</string>
+							<string>la_repha-sinh</string>
+							<string>ma_repha-sinh</string>
+							<string>nna_repha-sinh</string>
+							<string>tha_repha-sinh</string>
+							<string>ttha_repha-sinh</string>
+							<string>ja_repha-sinh</string>
+							<string>cha_repha-sinh</string>
+							<string>dha_repha-sinh</string>
+							<string>ba_repha-sinh</string>
+							<string>kha_repha-sinh</string>
+							<string>mba_repha-sinh</string>
+							<string>bha_repha-sinh</string>
+							<string>ha_repha-sinh</string>
+							<string>sha_repha-sinh</string>
+							<string>gha_repha-sinh</string>
+							<string>ssa_repha-sinh</string>
+							<string>lla_repha-sinh</string>
+							<string>fa_repha-sinh</string>
+							<string>pha_repha-sinh</string>
+							<string>nda_repha-sinh</string>
+							<string>nnga_repha-sinh</string>
+							<string>jnya_repha-sinh</string>
+							<string>nyja_repha-sinh</string>
+							<string>jha_repha-sinh</string>
+							<string>nga_repha-sinh</string>
 							<string>kSsa-sinh</string>
 							<string>kVa-sinh</string>
 							<string>gDha-sinh</string>
@@ -9276,8 +9278,6 @@
 							<string>sVa-sinh</string>
 							<string>hMa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>conjunct-system</string>
 					</dict>
 				</array>
 			</dict>
@@ -9287,6 +9287,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>high</string>
 						<key>list</key>
 						<array>
 							<string>i-sinh</string>
@@ -9299,20 +9301,20 @@
 							<string>mba-sinh</string>
 							<string>ssa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>high</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>medium</string>
 						<key>list</key>
 						<array>
 							<string>ka-sinh</string>
 							<string>ii-sinh</string>
 							<string>lla-sinh</string>
 						</array>
-						<key>name</key>
-						<string>medium</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>low</string>
 						<key>list</key>
 						<array>
 							<string>tta-sinh</string>
@@ -9322,10 +9324,10 @@
 							<string>u-sinh</string>
 							<string>pha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>low</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>UNCLASSIFIED bases (gap density-incomplete)</string>
 						<key>list</key>
 						<array>
 							<string>sa-sinh</string>
@@ -9357,8 +9359,6 @@
 							<string>jha-sinh</string>
 							<string>nga-sinh</string>
 						</array>
-						<key>name</key>
-						<string>UNCLASSIFIED bases (gap density-incomplete)</string>
 					</dict>
 				</array>
 			</dict>
@@ -9368,6 +9368,8 @@
 				<key>subGroup</key>
 				<array>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 1 test texts</string>
 						<key>list</key>
 						<array>
 							<string>sa-sinh</string>
@@ -9378,10 +9380,10 @@
 							<string>pa-sinh</string>
 							<string>usign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 1 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 2 test texts</string>
 						<key>list</key>
 						<array>
 							<string>va-sinh</string>
@@ -9392,10 +9394,10 @@
 							<string>sa-sinh</string>
 							<string>usign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 2 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 3 test texts</string>
 						<key>list</key>
 						<array>
 							<string>ga-sinh</string>
@@ -9413,10 +9415,10 @@
 							<string>ya-sinh</string>
 							<string>anusvaraya-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 3 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 4 test texts</string>
 						<key>list</key>
 						<array>
 							<string>a-sinh</string>
@@ -9444,10 +9446,10 @@
 							<string>e-sinh</string>
 							<string>osign-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 4 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 5 test texts</string>
 						<key>list</key>
 						<array>
 							<string>ma-sinh</string>
@@ -9477,10 +9479,10 @@
 							<string>da-sinh</string>
 							<string>cha-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 5 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 6 test texts</string>
 						<key>list</key>
 						<array>
 							<string>ba-sinh</string>
@@ -9517,10 +9519,10 @@
 							<string>a-sinh</string>
 							<string>pa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 6 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 7 test texts</string>
 						<key>list</key>
 						<array>
 							<string>ha-sinh</string>
@@ -9555,10 +9557,10 @@
 							<string>tta-sinh</string>
 							<string>pa-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 7 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 8 test texts</string>
 						<key>list</key>
 						<array>
 							<string>ka-sinh</string>
@@ -9579,10 +9581,10 @@
 							<string>tta-sinh</string>
 							<string>na-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 8 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 9 test texts</string>
 						<key>list</key>
 						<array>
 							<string>sha-sinh</string>
@@ -9611,10 +9613,10 @@
 							<string>dda-sinh</string>
 							<string>i-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 9 test texts</string>
 					</dict>
 					<dict>
+						<key>name</key>
+						<string>Exercised by Stage 10 test texts</string>
 						<key>list</key>
 						<array>
 							<string>vocalicr-sinh</string>
@@ -9637,12 +9639,12 @@
 							<string>osign-sinh</string>
 							<string>ra-sinh</string>
 						</array>
-						<key>name</key>
-						<string>Exercised by Stage 10 test texts</string>
 					</dict>
 				</array>
 			</dict>
 			<dict>
+				<key>name</key>
+				<string>OPEN — provisional spacing (gap rare-spacing-provisional)</string>
 				<key>list</key>
 				<array>
 					<string>osign-sinh</string>
@@ -9656,8 +9658,6 @@
 					<string>ai-sinh</string>
 					<string>au-sinh</string>
 				</array>
-				<key>name</key>
-				<string>OPEN — provisional spacing (gap rare-spacing-provisional)</string>
 			</dict>
 		</array>
 	</dict>

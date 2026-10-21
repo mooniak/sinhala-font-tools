@@ -17,6 +17,7 @@ grammar.py), so the map never claims e.g. `kU-sinh = ka + usign`.
 The output is a plain dict, serialised to YAML by cli/jsexport. It never mutates
 any font.
 """
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -24,20 +25,30 @@ from . import glyphsio
 from .families import Families
 from .grammar import Grammar
 from .ispilla import IspillaModel
+from .signvariants import SignVariants
 
 
-def _harvest_existing(font, master_id):
+_CANONICAL_RE = re.compile(r"^[A-Za-z_]+-sinh$")
+
+
+def _harvest_existing(font, master_id, sign_stems):
+    """The inventory's own composites, kept only where they are canonical:
+    every name a plain `-sinh` glyph (no `bullet` display glyphs, no `.hist`
+    style alternates), and reordered base-first, since Glyphs' automatic
+    alignment places components in order."""
     out = {}
     for glyph in font.glyphs:
-        if not glyphsio.is_sinhala(glyph.name):
+        if not _CANONICAL_RE.match(glyph.name):
             continue
         layer = glyphsio.master_layer(glyph, master_id)
-        if glyphsio.layer_class(layer) == "composite":
-            out[glyph.name] = {
-                "components": glyphsio.component_names(layer),
-                "tier": 0,
-                "source": "inventory-existing",
-            }
+        if glyphsio.layer_class(layer) != "composite":
+            continue
+        comps = glyphsio.component_names(layer)
+        if not all(_CANONICAL_RE.match(c) for c in comps):
+            continue
+        is_sign = lambda c: c[:-len("-sinh")].split("_")[0] in sign_stems
+        comps = [c for c in comps if not is_sign(c)] + [c for c in comps if is_sign(c)]
+        out[glyph.name] = {"components": comps, "tier": 0, "source": "inventory-existing"}
     return out
 
 
@@ -68,7 +79,8 @@ def build_map(inventory_path, anchor_path, classification):
     anchor_font = glyphsio.load_font(anchor_path)
     families = Families()
     ispilla = IspillaModel(anchor_font)
-    grammar = Grammar(classification, inv_names, families, ispilla)
+    variants = SignVariants(anchor_font)
+    grammar = Grammar(classification, inv_names, families, ispilla, variants)
 
     consonant_bases = {f"{c}-sinh" for c in classification["consonants"]}
     plain_letters = consonant_bases | {f"{v}-sinh" for v in classification["independent_vowels"]}
@@ -78,7 +90,9 @@ def build_map(inventory_path, anchor_path, classification):
     )
 
     composites = {}
-    composites.update(_harvest_existing(inv_font, inv_mid))              # tier 0
+    sign_stems = (set(classification["dependent_signs"]) | set(classification["other_marks"])
+                  | {"repha", "rasign", "yasign"})
+    composites.update(_harvest_existing(inv_font, inv_mid, sign_stems))  # tier 0
     comp_gen, drawn_gen = grammar.generate()                            # tier 1/2 + drawn
     for name, spec in comp_gen.items():
         composites.setdefault(name, spec)
@@ -121,9 +135,11 @@ def build_map(inventory_path, anchor_path, classification):
     used_components = set()
     for spec in composites.values():
         used_components.update(spec["components"])
-    sign_to_anchor = {
-        n: mark_anchors[n] for n in sorted(used_components) if n in mark_anchors
-    }
+    sign_to_anchor = {}
+    for n in sorted(used_components):
+        src = n if n in mark_anchors else variants.noto.get(n)
+        if src in mark_anchors:
+            sign_to_anchor[n] = mark_anchors[src]
 
     meta = {
         "inventory_reference": Path(inventory_path).name,
@@ -144,6 +160,7 @@ def build_map(inventory_path, anchor_path, classification):
             "base_letters": sorted(consonant_bases & set(inv_names)),
             "signs": sorted(sign_and_mark_glyphs & set(inv_names)),
             "ispilla_alternates": _ispilla_alternates(composites),
+            "sign_variants": variants.table(),
         },
         "anchors": {
             "base_anchor_frequency": base_anchor_freq,

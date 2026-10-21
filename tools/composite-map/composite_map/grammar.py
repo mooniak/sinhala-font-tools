@@ -5,7 +5,7 @@ Sinhala mark attachment is not uniform (see families.py), so a name like
 This grammar therefore classifies each compositional-looking glyph name using
 the family data:
 
-  composite      genuinely base + a shape-invariant, anchor-driven mark:
+  composite      genuinely base + an anchor-driven mark:
                    • rasign (rakaransaya)      — all hosts except rakaransaya exceptions
                    • repha                     — all hosts except repaya exceptions
                    • usign / uusign (papilla)  — DEFAULT below-join hosts only
@@ -13,6 +13,8 @@ the family data:
                    • ispilla (ිී) non-fused    — base + isign-sinh[.altN] (tier 3),
                      the alternate chosen from the anchor reference's iVowelAltN
                      classes (see ispilla.py)
+                 u/uu/rasign reference the base's contextual variant
+                 (usign-sinh.medium, rasign-sinh.long …, see signvariants.py)
   drawn          compositional by name but atomically designed or fused, so it
                  must stay drawn — carries the family as the reason:
                    • fused ispilla forms           → reason 'ispilla-fused'
@@ -53,10 +55,11 @@ def split_name(name):
 
 
 class Grammar:
-    def __init__(self, classification, glyph_names, families, ispilla):
+    def __init__(self, classification, glyph_names, families, ispilla, variants):
         self.names = set(glyph_names)
         self.fam = families
         self.ispilla = ispilla
+        self.variants = variants
         self.consonants = list(classification["consonants"])          # 'ka', 'kha'
         self.plain_bases = {f"{c}-sinh" for c in self.consonants}      # 'ka-sinh'
         self.independent = set(classification["independent_vowels"])
@@ -99,7 +102,9 @@ class Grammar:
             return
         verdict = self._verdict(base, sign)
         if verdict[0] == "composite":
-            composites[target] = {"components": [base, sign], "tier": 1, "source": "grammar"}
+            comp = self.variants.component(base, sign)
+            source = "noto-signvariant" if comp != sign else "grammar"
+            composites[target] = {"components": [base, comp], "tier": 1, "source": source}
         else:
             drawn[target] = {"reason": verdict[1], "components": [base, sign]}
 
@@ -181,10 +186,10 @@ class Grammar:
         if base in self.plain_bases:
             verdict = self._verdict(base, sign)
             if verdict[0] == "composite":
-                return ("composite", [base, sign])
+                return ("composite", [base, self.variants.component(base, sign)])
             return ("drawn", verdict[1], [base, sign])
         # u/uu/virama/rasign on a conjunct base: family model doesn't cover it
-        return ("review", [base, sign])
+        return ("review", [base, self.variants.component(base, sign)])
 
     @staticmethod
     def _stem_of(base):

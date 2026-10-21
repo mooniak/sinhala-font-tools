@@ -7,25 +7,26 @@
 <meta name="description" content="A dependency-based, staged development process for Sinhala fonts — generated from sinhala-design-dependencies.yaml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tools/_shared/bw.css">
 <style>
+/* Black-and-white palette: tokens from ../tools/_shared/bw.css. */
 :root{
-  --bg:#f5f6f8; --panel:#ffffff; --ink:#1a1c1e; --dim:#66707c; --line:#e7eaee;
-  --chip:#eef1f5; --accent:#cf4b34; --accent2:#345ddb; --metric:#9a7112;
-  --skeleton:#cf4b34; --element:#345ddb; --spacing:#1f9d63;
-  --accent-soft:rgba(207,75,52,.07); --accent-line:rgba(207,75,52,.18);
-  --shadow:0 1px 2px rgba(17,24,39,.04), 0 12px 28px -14px rgba(17,24,39,.14);
+  --panel:var(--bg); --ink:var(--fg); --dim:var(--muted);
+  --chip:var(--soft); --accent:var(--fg); --accent2:var(--fg); --metric:var(--fg);
+  --skeleton:var(--fg); --element:var(--fg); --spacing:var(--fg);
+  --accent-soft:var(--soft); --accent-line:var(--fg);
+  --shadow:none;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-family:var(--font-ui);
   font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 .sinh{font-family:"Abhaya Libre","Noto Sans Sinhala","Iskoola Pota",serif}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8em;background:var(--chip);color:var(--ink);padding:2px 6px;border-radius:6px;border:1px solid var(--line)}
+a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+code{font-family:var(--font-mono);font-size:.8em;background:var(--chip);color:var(--ink);padding:2px 6px;border:1px solid var(--line)}
 h2{font-size:1.8rem;margin:3.4rem 0 .7rem;font-weight:700;letter-spacing:-.01em}
 h2 small{display:block;font-weight:400;color:var(--dim);font-size:1rem;letter-spacing:0;margin-top:.15rem}
 h4{font-weight:700;font-size:1rem;margin:1.2rem 0 .4rem}
@@ -35,25 +36,25 @@ h4{font-weight:700;font-size:1rem;margin:1.2rem 0 .4rem}
 .hero p.sub{font-size:1.18rem;color:var(--dim);max-width:52rem;margin:.5rem 0}
 .hero .prov{font-size:.85rem;color:var(--dim);margin-top:1rem}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:1.2rem 0}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:0;padding:18px 20px;box-shadow:var(--shadow)}
 .card h4{margin:.1rem 0 .45rem;font-size:1.05rem}
 .card p{margin:.3rem 0;font-size:.92rem;color:var(--dim)}
 .card .showcase{font-size:2.6rem;line-height:1.2;margin-bottom:.3rem;color:var(--ink)}
 .dim{color:var(--dim)}
 ol.rules li,ul.plain li{margin:.5rem 0}
-section.stage{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin:1.4rem 0;box-shadow:var(--shadow)}
+section.stage{background:var(--panel);border:1px solid var(--line);border-radius:0;padding:24px 26px;margin:1.4rem 0;box-shadow:var(--shadow)}
 section.stage header{display:flex;gap:18px;align-items:flex-start}
 .snum{font-size:2rem;font-weight:800;color:var(--accent);min-width:2.6rem;height:2.6rem;
-  display:flex;align-items:center;justify-content:center;line-height:1;background:var(--accent-soft);border-radius:12px}
+  display:flex;align-items:center;justify-content:center;line-height:1;background:var(--accent-soft);border-radius:0}
 section.stage h3{margin:.15rem 0 .3rem;font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
 p.goal{margin:.2rem 0 .6rem;color:var(--dim);max-width:56rem}
 .badges{display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 .9rem}
 .badge{font-size:.72rem;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:var(--panel)}
 .b-metric{color:var(--metric)} .b-skeleton{color:var(--skeleton)} .b-element{color:var(--element)} .b-spacing{color:var(--spacing)}
 .flow{display:flex;flex-wrap:wrap;gap:10px;margin:.9rem 0}
-.tile{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px 8px;min-width:96px;
+.tile{background:var(--bg);border:1px solid var(--line);border-radius:0;padding:10px 12px 8px;min-width:96px;
   display:flex;flex-direction:column;align-items:center;gap:2px;transition:box-shadow .15s,transform .15s}
-.tile:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.tile:hover{border-color:var(--fg)}
 .tile .g,.tile .from{font-family:"Abhaya Libre","Noto Sans Sinhala","Iskoola Pota",serif}
 .tile .g{font-size:2.3rem;line-height:1.15;font-weight:500}
 .tile .ord{font-size:.68rem;color:var(--dim);align-self:flex-start;font-family:ui-monospace,monospace}
@@ -72,17 +73,17 @@ p.goal{margin:.2rem 0 .6rem;color:var(--dim);max-width:56rem}
 .texts p{margin:.25rem 0;font-size:1.75rem;line-height:1.5}
 .texts p.drill{color:var(--ink)}
 .texts p.sent{font-size:1.5rem}
-.gate{margin:1rem 0 .7rem;font-size:.95rem;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;padding:11px 15px;color:var(--ink)}
+.gate{margin:1rem 0 .7rem;font-size:.95rem;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:0;padding:11px 15px;color:var(--ink)}
 .bar{position:relative;height:24px;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:var(--bg)}
-.bar div{height:100%;background:var(--spacing);opacity:.28}
+.bar div{height:100%;background:var(--fg);opacity:.18}
 .bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--ink)}
-table{border-collapse:separate;border-spacing:0;width:100%;font-size:.92rem;margin:.9rem 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:.92rem;margin:.9rem 0;background:var(--panel);border:1px solid var(--line);border-radius:0;overflow:hidden}
 th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 tr:last-child td{border-bottom:none}
 th{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--dim);background:var(--chip);font-weight:700}
 td.big{font-size:1.5rem;line-height:1.3}
 .rep{color:var(--spacing);font-weight:700}
-.tablewrap{overflow-x:auto;border-radius:14px}
+.tablewrap{overflow-x:auto;border-radius:0}
 footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line);padding-top:1.4rem}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 @media(max-width:800px){.two{grid-template-columns:1fr}}
@@ -93,17 +94,17 @@ footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px s
 .tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
 [role="tabpanel"][hidden]{display:none}
 .ufilter{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2rem 0 .5rem}
-.ufilter input{font:inherit;flex:1 1 240px;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+.ufilter input{font:inherit;flex:1 1 240px;padding:9px 13px;border:1px solid var(--line);border-radius:0;background:var(--panel);color:var(--ink)}
 .ufilter .chip{font:inherit;font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer}
-.ufilter .chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.ufilter .chip[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
 .ucount{font-size:.85rem;color:var(--dim);margin:.2rem 0 0}
 .ustage h2{display:flex;align-items:center;gap:12px;font-size:1.4rem;margin:2.4rem 0 .6rem}
 .ustage h2 small{display:inline;margin:0}
-.ustage .snum{font-size:1.2rem;min-width:2rem;height:2rem;border-radius:9px}
+.ustage .snum{font-size:1.2rem;min-width:2rem;height:2rem;border-radius:0}
 .units{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
 @media(max-width:560px){.units{grid-template-columns:1fr}}
-.unit{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);scroll-margin-top:64px}
-.unit:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-line)}
+.unit{background:var(--panel);border:1px solid var(--line);border-radius:0;padding:18px 20px;box-shadow:var(--shadow);scroll-margin-top:64px}
+.unit:target{border-color:var(--fg);outline:2px solid var(--fg)}
 .unit.t-form-family,.unit.t-conjunct-system{border-style:dashed}
 .uhead{display:flex;gap:16px;align-items:flex-start}
 .ug{font-size:3rem;line-height:1.1;min-width:3.6rem;text-align:center;font-weight:500}
@@ -123,6 +124,20 @@ footer{margin:4.5rem 0 2.5rem;color:var(--dim);font-size:.85rem;border-top:1px s
 .unit h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin:.8rem 0 .2rem}
 ul.checks{margin:.2rem 0;padding-left:1.2rem;font-size:.88rem}
 ul.checks li{margin:.2rem 0}
+.lintro{margin:2rem 0 .5rem;color:var(--dim);max-width:56rem}
+.lstage{background:var(--panel);border:1px solid var(--line);border-radius:0;padding:18px 22px;margin:1.2rem 0;box-shadow:var(--shadow);scroll-margin-top:64px}
+.lstage h2{display:flex;align-items:center;gap:12px;font-size:1.3rem;margin:0 0 .4rem}
+.lstage .snum{font-size:1.2rem;min-width:2rem;height:2rem;border-radius:0}
+.copybox{margin:.8rem 0}
+.copyhead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.copyhead h4{margin:0;font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);font-weight:700}
+.copy{font:inherit;font-size:.8rem;font-weight:600;padding:5px 14px;border-radius:99px;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent);cursor:pointer}
+.copy:hover{border-color:var(--accent)}
+.copy.done{color:var(--bg);background:var(--fg)}
+.copybox pre{margin:.4rem 0 0;padding:10px 13px;background:var(--bg);border:1px solid var(--line);border-radius:0;
+  white-space:pre-wrap;word-break:break-word;max-height:16rem;overflow:auto}
+.copybox pre.names{font-family:ui-monospace,monospace;font-size:.8rem;line-height:1.6}
+.copybox pre.ltext{font-size:1.4rem;line-height:1.6}
 </style>
 </head>
 <body>
@@ -142,7 +157,232 @@ ul.checks li{margin:.2rem 0}
 <nav class="tabs" role="tablist"><div class="wrap">
   <button role="tab" id="tab-model" aria-controls="panel-model" aria-selected="true">Model &amp; stages</button>
   <button role="tab" id="tab-units" aria-controls="panel-units" aria-selected="false">Design units <span class="dim">109</span></button>
+  <button role="tab" id="tab-lists" aria-controls="panel-lists" aria-selected="false">Glyph lists &amp; texts</button>
 </div></nav>
+
+<div class="wrap" role="tabpanel" id="panel-lists" aria-labelledby="tab-lists" hidden>
+<p class="lintro">Per stage: the production glyph names (LankaGlyphSets <code>name-sinh</code>, identical to the
+Glyphs sidebar filters from <code>tools/glyphs-filters</code>) new in that stage and cumulative, plus every
+test text available by then — drills, words and sentences from stage 0 up to it. Paste names into
+<i>Glyph › Add Glyphs…</i> and texts into an Edit tab.</p>
+
+<section class="lstage" id="l-1"><h2><span class="snum">1</span> Bootstrap</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">10</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 1 <span class="dim">10</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–1 cumulative <span class="dim">3 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු</pre></div>
+</section>
+<section class="lstage" id="l-2"><h2><span class="snum">2</span> Bowl derivatives</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">7</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 2 <span class="dim">17</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–2 cumulative <span class="dim">4 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස</pre></div>
+</section>
+<section class="lstage" id="l-3"><h2><span class="snum">3</span> Arch family and spacing marks</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">13</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 3 <span class="dim">30</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–3 cumulative <span class="dim">5 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව</pre></div>
+</section>
+<section class="lstage" id="l-4"><h2><span class="snum">4</span> High-frequency completion</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">30</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 4 <span class="dim">60</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–4 cumulative <span class="dim">8 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.</pre></div>
+</section>
+<section class="lstage" id="l-5"><h2><span class="snum">5</span> Loops, diagonals and long marks</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">47</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 5 <span class="dim">107</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–5 cumulative <span class="dim">11 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.
+මම අම්මා ඔය ඉර ජලය සීනි ඉතිං මාමා ණය ගණන මිල ජාතික ගාථා කථාව පීඨය මොකද ඡායා
+අම්මා පොත කියවනවා.
+ඉර පායනවා.</pre></div>
+</section>
+<section class="lstage" id="l-6"><h2><span class="snum">6</span> Aspirates and dense derivatives</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">51</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">phI-sinh phIi-sinh bI-sinh bIi-sinh khI-sinh khIi-sinh dhI-sinh dhIi-sinh mbI-sinh mbIi-sinh ghI-sinh ghIi-sinh dh-sinh kh-sinh b-sinh mb-sinh ph-sinh shI-sinh shIi-sinh fI-sinh fIi-sinh llI-sinh llIi-sinh ssI-sinh ssIi-sinh bhU-sinh bhUu-sinh shU-sinh shUu-sinh dha-sinh ba-sinh kha-sinh oo-sinh mba-sinh bha-sinh ha-sinh sha-sinh gha-sinh ssa-sinh lla-sinh fa-sinh pha-sinh ee-sinh ii-sinh uu-sinh bhI-sinh bhIi-sinh hI-sinh hIi-sinh llU-sinh llUu-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 6 <span class="dim">158</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh phI-sinh phIi-sinh bI-sinh bIi-sinh khI-sinh khIi-sinh dhI-sinh dhIi-sinh mbI-sinh mbIi-sinh ghI-sinh ghIi-sinh dh-sinh kh-sinh b-sinh mb-sinh ph-sinh shI-sinh shIi-sinh fI-sinh fIi-sinh llI-sinh llIi-sinh ssI-sinh ssIi-sinh bhU-sinh bhUu-sinh shU-sinh shUu-sinh dha-sinh ba-sinh kha-sinh oo-sinh mba-sinh bha-sinh ha-sinh sha-sinh gha-sinh ssa-sinh lla-sinh fa-sinh pha-sinh ee-sinh ii-sinh uu-sinh bhI-sinh bhIi-sinh hI-sinh hIi-sinh llU-sinh llUu-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–6 cumulative <span class="dim">13 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.
+මම අම්මා ඔය ඉර ජලය සීනි ඉතිං මාමා ණය ගණන මිල ජාතික ගාථා කථාව පීඨය මොකද ඡායා
+අම්මා පොත කියවනවා.
+ඉර පායනවා.
+බත් බස් හතර හරි හිස භාෂාව ඔළුව ඕනෑ බඩු ඝෝෂාව ඵලය ඒක ඊයේ ඌරා ෆෝනය ශබ්දය
+ඊයේ හවස අපි බත් කෑවා.</pre></div>
+</section>
+<section class="lstage" id="l-7"><h2><span class="snum">7</span> The hang system</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">26</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">nnddI-sinh nnddIi-sinh jhI-sinh jhIi-sinh nndd-sinh jh-sinh nngI-sinh nngIi-sinh nngU-sinh nngUu-sinh nyjI-sinh nyjIi-sinh nyj-sinh nda-sinh nndda-sinh nnga-sinh nya-sinh jnya-sinh nyja-sinh jha-sinh ndI-sinh ndIi-sinh nyI-sinh nyIi-sinh jnyI-sinh jnyIi-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 7 <span class="dim">184</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh phI-sinh phIi-sinh bI-sinh bIi-sinh khI-sinh khIi-sinh dhI-sinh dhIi-sinh mbI-sinh mbIi-sinh ghI-sinh ghIi-sinh dh-sinh kh-sinh b-sinh mb-sinh ph-sinh shI-sinh shIi-sinh fI-sinh fIi-sinh llI-sinh llIi-sinh ssI-sinh ssIi-sinh bhU-sinh bhUu-sinh shU-sinh shUu-sinh dha-sinh ba-sinh kha-sinh oo-sinh mba-sinh bha-sinh ha-sinh sha-sinh gha-sinh ssa-sinh lla-sinh fa-sinh pha-sinh ee-sinh ii-sinh uu-sinh bhI-sinh bhIi-sinh hI-sinh hIi-sinh llU-sinh llUu-sinh nnddI-sinh nnddIi-sinh jhI-sinh jhIi-sinh nndd-sinh jh-sinh nngI-sinh nngIi-sinh nngU-sinh nngUu-sinh nyjI-sinh nyjIi-sinh nyj-sinh nda-sinh nndda-sinh nnga-sinh nya-sinh jnya-sinh nyja-sinh jha-sinh ndI-sinh ndIi-sinh nyI-sinh nyIi-sinh jnyI-sinh jnyIi-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–7 cumulative <span class="dim">15 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.
+මම අම්මා ඔය ඉර ජලය සීනි ඉතිං මාමා ණය ගණන මිල ජාතික ගාථා කථාව පීඨය මොකද ඡායා
+අම්මා පොත කියවනවා.
+ඉර පායනවා.
+බත් බස් හතර හරි හිස භාෂාව ඔළුව ඕනෑ බඩු ඝෝෂාව ඵලය ඒක ඊයේ ඌරා ෆෝනය ශබ්දය
+ඊයේ හවස අපි බත් කෑවා.
+හොඳ කඳ හඳ අඬනවා ළඟ ඉඟුරු දඬුවම ඥානය සංඥාව මඤ්ඤොක්කා බණ්ඩාරවෙල
+අද රෑ අහසේ හඳ හොඳට පේනවා.</pre></div>
+</section>
+<section class="lstage" id="l-8"><h2><span class="snum">8</span> Completion sweep</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">210</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">vocalicrsign-sinh vocalicrrsign-sinh vocaliclsign-sinh vocalicllsign-sinh ausign-sinh ttI-sinh ttIi-sinh ttU-sinh ttUu-sinh tt-sinh sI-sinh sIi-sinh sU-sinh sUu-sinh s-sinh pI-sinh pIi-sinh pU-sinh pUu-sinh p-sinh ddI-sinh ddIi-sinh ddU-sinh ddUu-sinh dd-sinh ddhI-sinh ddhIi-sinh ddhU-sinh ddhUu-sinh ddh-sinh cI-sinh cIi-sinh cU-sinh cUu-sinh c-sinh yI-sinh yIi-sinh yU-sinh yUu-sinh y-sinh vI-sinh vIi-sinh vU-sinh vUu-sinh v-sinh gI-sinh gIi-sinh gU-sinh gUu-sinh g-sinh tI-sinh tIi-sinh tU-sinh tUu-sinh t-sinh nI-sinh nIi-sinh nU-sinh nUu-sinh n-sinh kI-sinh kIi-sinh kU-sinh kUu-sinh k-sinh dI-sinh dIi-sinh dU-sinh dUu-sinh d-sinh rI-sinh rIi-sinh rU-sinh rUu-sinh r-sinh lI-sinh lIi-sinh lU-sinh lUu-sinh l-sinh mI-sinh mIi-sinh mU-sinh mUu-sinh m-sinh nnI-sinh nnIi-sinh nnU-sinh nnUu-sinh nn-sinh thI-sinh thIi-sinh thU-sinh thUu-sinh th-sinh tthI-sinh tthIi-sinh tthU-sinh tthUu-sinh tth-sinh jI-sinh jIi-sinh jU-sinh jUu-sinh j-sinh chI-sinh chIi-sinh chU-sinh chUu-sinh ch-sinh dhI-sinh dhIi-sinh dhU-sinh dhUu-sinh dh-sinh bI-sinh bIi-sinh bU-sinh bUu-sinh b-sinh khI-sinh khIi-sinh khU-sinh khUu-sinh kh-sinh mbI-sinh mbIi-sinh mbU-sinh mbUu-sinh mb-sinh bhI-sinh bhIi-sinh bhU-sinh bhUu-sinh bh-sinh hI-sinh hIi-sinh hU-sinh hUu-sinh h-sinh shI-sinh shIi-sinh shU-sinh shUu-sinh sh-sinh ghI-sinh ghIi-sinh ghU-sinh ghUu-sinh gh-sinh ssI-sinh ssIi-sinh ssU-sinh ssUu-sinh ss-sinh llI-sinh llIi-sinh llU-sinh llUu-sinh ll-sinh fI-sinh fIi-sinh fU-sinh fUu-sinh f-sinh phI-sinh phIi-sinh phU-sinh phUu-sinh ph-sinh ndI-sinh ndIi-sinh ndU-sinh ndUu-sinh nd-sinh nnddI-sinh nnddIi-sinh nnddU-sinh nnddUu-sinh nndd-sinh nngI-sinh nngIi-sinh nngU-sinh nngUu-sinh nng-sinh nyI-sinh nyIi-sinh nyU-sinh nyUu-sinh ny-sinh jnyI-sinh jnyIi-sinh jnyU-sinh jnyUu-sinh jny-sinh nyjI-sinh nyjIi-sinh nyjU-sinh nyjUu-sinh nyj-sinh jhI-sinh jhIi-sinh jhU-sinh jhUu-sinh jh-sinh ngI-sinh ngIi-sinh ngU-sinh ngUu-sinh ng-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 8 <span class="dim">277</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh phI-sinh phIi-sinh bI-sinh bIi-sinh khI-sinh khIi-sinh dhI-sinh dhIi-sinh mbI-sinh mbIi-sinh ghI-sinh ghIi-sinh dh-sinh kh-sinh b-sinh mb-sinh ph-sinh shI-sinh shIi-sinh fI-sinh fIi-sinh llI-sinh llIi-sinh ssI-sinh ssIi-sinh bhU-sinh bhUu-sinh shU-sinh shUu-sinh dha-sinh ba-sinh kha-sinh oo-sinh mba-sinh bha-sinh ha-sinh sha-sinh gha-sinh ssa-sinh lla-sinh fa-sinh pha-sinh ee-sinh ii-sinh uu-sinh bhI-sinh bhIi-sinh hI-sinh hIi-sinh llU-sinh llUu-sinh nnddI-sinh nnddIi-sinh jhI-sinh jhIi-sinh nndd-sinh jh-sinh nngI-sinh nngIi-sinh nngU-sinh nngUu-sinh nyjI-sinh nyjIi-sinh nyj-sinh nda-sinh nndda-sinh nnga-sinh nya-sinh jnya-sinh nyja-sinh jha-sinh ndI-sinh ndIi-sinh nyI-sinh nyIi-sinh jnyI-sinh jnyIi-sinh vocalicrsign-sinh vocalicrrsign-sinh vocaliclsign-sinh vocalicllsign-sinh ausign-sinh ttU-sinh ttUu-sinh sU-sinh sUu-sinh s-sinh pU-sinh pUu-sinh p-sinh ddU-sinh ddUu-sinh ddhU-sinh ddhUu-sinh cU-sinh cUu-sinh yU-sinh yUu-sinh y-sinh vU-sinh vUu-sinh g-sinh t-sinh nU-sinh nUu-sinh n-sinh k-sinh d-sinh lU-sinh lUu-sinh l-sinh mU-sinh mUu-sinh nnU-sinh nnUu-sinh nn-sinh thU-sinh thUu-sinh tthU-sinh tthUu-sinh jU-sinh jUu-sinh chU-sinh chUu-sinh dhU-sinh dhUu-sinh bU-sinh bUu-sinh khU-sinh khUu-sinh mbU-sinh mbUu-sinh bh-sinh hU-sinh hUu-sinh h-sinh sh-sinh ghU-sinh ghUu-sinh gh-sinh ssU-sinh ssUu-sinh ss-sinh ll-sinh fU-sinh fUu-sinh f-sinh phU-sinh phUu-sinh ndU-sinh ndUu-sinh nd-sinh nnddU-sinh nnddUu-sinh nng-sinh nyU-sinh nyUu-sinh ny-sinh jnyU-sinh jnyUu-sinh jny-sinh nyjU-sinh nyjUu-sinh jhU-sinh jhUu-sinh ngI-sinh ngIi-sinh ngU-sinh ngUu-sinh ng-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–8 cumulative <span class="dim">17 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.
+මම අම්මා ඔය ඉර ජලය සීනි ඉතිං මාමා ණය ගණන මිල ජාතික ගාථා කථාව පීඨය මොකද ඡායා
+අම්මා පොත කියවනවා.
+ඉර පායනවා.
+බත් බස් හතර හරි හිස භාෂාව ඔළුව ඕනෑ බඩු ඝෝෂාව ඵලය ඒක ඊයේ ඌරා ෆෝනය ශබ්දය
+ඊයේ හවස අපි බත් කෑවා.
+හොඳ කඳ හඳ අඬනවා ළඟ ඉඟුරු දඬුවම ඥානය සංඥාව මඤ්ඤොක්කා බණ්ඩාරවෙල
+අද රෑ අහසේ හඳ හොඳට පේනවා.
+කෘතිය පෘථිවිය ගෞරවය ගෞතම
+මේ කෘතිය ඉතා වටිනවා.</pre></div>
+</section>
+<section class="lstage" id="l-9"><h2><span class="snum">9</span> Conjunct layer</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">183</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">ttTthI-sinh ttTthIi-sinh tThI-sinh tThIi-sinh nThI-sinh nThIi-sinh dRI-sinh dRIi-sinh ndRI-sinh ndRIi-sinh nDI-sinh nDIi-sinh nDRI-sinh nDRIi-sinh ttRa-sinh sRa-sinh pRa-sinh ddRa-sinh cRa-sinh vRa-sinh gRa-sinh tRa-sinh kRa-sinh dRa-sinh mRa-sinh dhRa-sinh bRa-sinh khRa-sinh bhRa-sinh hRa-sinh shRa-sinh ghRa-sinh ssRa-sinh fRa-sinh nyjRa-sinh jhRa-sinh ttya-sinh sya-sinh pya-sinh ddya-sinh ddhya-sinh cya-sinh yya-sinh vya-sinh gya-sinh tya-sinh nya-sinh kya-sinh dya-sinh rya-sinh lya-sinh mya-sinh nnya-sinh thya-sinh tthya-sinh jya-sinh chya-sinh dhya-sinh bya-sinh khya-sinh bhya-sinh hya-sinh shya-sinh ghya-sinh ssya-sinh llya-sinh fya-sinh phya-sinh ndya-sinh nnddya-sinh nngya-sinh nyya-sinh nyjya-sinh jhya-sinh ngya-sinh rTta-sinh rSa-sinh rPa-sinh rDda-sinh rDdha-sinh rCa-sinh rVa-sinh rGa-sinh rTa-sinh rNa-sinh rKa-sinh rDa-sinh rLa-sinh rMa-sinh rNna-sinh rTha-sinh rTtha-sinh rJa-sinh rCha-sinh rDha-sinh rBa-sinh rKha-sinh rMba-sinh rBha-sinh rHa-sinh rSha-sinh rGha-sinh rSsa-sinh rLla-sinh rFa-sinh rPha-sinh rNda-sinh rNnga-sinh rJnya-sinh rNyja-sinh rJha-sinh rNga-sinh kSsa-sinh kVa-sinh gDha-sinh ngGa-sinh cCa-sinh nyCa-sinh nyCha-sinh nyJa-sinh ttTtha-sinh ddDha-sinh nnDda-sinh tTha-sinh tVa-sinh dDha-sinh dVa-sinh nTha-sinh nDa-sinh nDha-sinh nVa-sinh bBa-sinh mBa-sinh kKa-sinh kKha-sinh kTa-sinh kMa-sinh kNa-sinh gGa-sinh gGha-sinh ngNga-sinh ngKa-sinh ngGha-sinh cCha-sinh jJa-sinh jJha-sinh nyNya-sinh ttTta-sinh ddDda-sinh ddDdha-sinh nnNna-sinh nnTtha-sinh nnHa-sinh tTa-sinh tMa-sinh dDa-sinh nNa-sinh nTta-sinh nTa-sinh nHa-sinh pPa-sinh pTa-sinh pPha-sinh pBa-sinh pDa-sinh pHa-sinh bDa-sinh bBha-sinh mMa-sinh mHa-sinh mPha-sinh mVa-sinh mPa-sinh mDa-sinh mBha-sinh lLa-sinh lVa-sinh vHa-sinh shTta-sinh sSa-sinh sTa-sinh sVa-sinh hMa-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 9 <span class="dim">459</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh phI-sinh phIi-sinh bI-sinh bIi-sinh khI-sinh khIi-sinh dhI-sinh dhIi-sinh mbI-sinh mbIi-sinh ghI-sinh ghIi-sinh dh-sinh kh-sinh b-sinh mb-sinh ph-sinh shI-sinh shIi-sinh fI-sinh fIi-sinh llI-sinh llIi-sinh ssI-sinh ssIi-sinh bhU-sinh bhUu-sinh shU-sinh shUu-sinh dha-sinh ba-sinh kha-sinh oo-sinh mba-sinh bha-sinh ha-sinh sha-sinh gha-sinh ssa-sinh lla-sinh fa-sinh pha-sinh ee-sinh ii-sinh uu-sinh bhI-sinh bhIi-sinh hI-sinh hIi-sinh llU-sinh llUu-sinh nnddI-sinh nnddIi-sinh jhI-sinh jhIi-sinh nndd-sinh jh-sinh nngI-sinh nngIi-sinh nngU-sinh nngUu-sinh nyjI-sinh nyjIi-sinh nyj-sinh nda-sinh nndda-sinh nnga-sinh nya-sinh jnya-sinh nyja-sinh jha-sinh ndI-sinh ndIi-sinh nyI-sinh nyIi-sinh jnyI-sinh jnyIi-sinh vocalicrsign-sinh vocalicrrsign-sinh vocaliclsign-sinh vocalicllsign-sinh ausign-sinh ttU-sinh ttUu-sinh sU-sinh sUu-sinh s-sinh pU-sinh pUu-sinh p-sinh ddU-sinh ddUu-sinh ddhU-sinh ddhUu-sinh cU-sinh cUu-sinh yU-sinh yUu-sinh y-sinh vU-sinh vUu-sinh g-sinh t-sinh nU-sinh nUu-sinh n-sinh k-sinh d-sinh lU-sinh lUu-sinh l-sinh mU-sinh mUu-sinh nnU-sinh nnUu-sinh nn-sinh thU-sinh thUu-sinh tthU-sinh tthUu-sinh jU-sinh jUu-sinh chU-sinh chUu-sinh dhU-sinh dhUu-sinh bU-sinh bUu-sinh khU-sinh khUu-sinh mbU-sinh mbUu-sinh bh-sinh hU-sinh hUu-sinh h-sinh sh-sinh ghU-sinh ghUu-sinh gh-sinh ssU-sinh ssUu-sinh ss-sinh ll-sinh fU-sinh fUu-sinh f-sinh phU-sinh phUu-sinh ndU-sinh ndUu-sinh nd-sinh nnddU-sinh nnddUu-sinh nng-sinh nyU-sinh nyUu-sinh ny-sinh jnyU-sinh jnyUu-sinh jny-sinh nyjU-sinh nyjUu-sinh jhU-sinh jhUu-sinh ngI-sinh ngIi-sinh ngU-sinh ngUu-sinh ng-sinh ttTthI-sinh ttTthIi-sinh tThI-sinh tThIi-sinh nThI-sinh nThIi-sinh dRI-sinh dRIi-sinh ndRI-sinh ndRIi-sinh nDI-sinh nDIi-sinh nDRI-sinh nDRIi-sinh ttRa-sinh sRa-sinh pRa-sinh ddRa-sinh cRa-sinh vRa-sinh gRa-sinh tRa-sinh kRa-sinh dRa-sinh mRa-sinh dhRa-sinh bRa-sinh khRa-sinh bhRa-sinh hRa-sinh shRa-sinh ghRa-sinh ssRa-sinh fRa-sinh nyjRa-sinh jhRa-sinh ttya-sinh sya-sinh pya-sinh ddya-sinh ddhya-sinh cya-sinh yya-sinh vya-sinh gya-sinh tya-sinh kya-sinh dya-sinh rya-sinh lya-sinh mya-sinh nnya-sinh thya-sinh tthya-sinh jya-sinh chya-sinh dhya-sinh bya-sinh khya-sinh bhya-sinh hya-sinh shya-sinh ghya-sinh ssya-sinh llya-sinh fya-sinh phya-sinh ndya-sinh nnddya-sinh nngya-sinh nyya-sinh nyjya-sinh jhya-sinh ngya-sinh rTta-sinh rSa-sinh rPa-sinh rDda-sinh rDdha-sinh rCa-sinh rVa-sinh rGa-sinh rTa-sinh rNa-sinh rKa-sinh rDa-sinh rLa-sinh rMa-sinh rNna-sinh rTha-sinh rTtha-sinh rJa-sinh rCha-sinh rDha-sinh rBa-sinh rKha-sinh rMba-sinh rBha-sinh rHa-sinh rSha-sinh rGha-sinh rSsa-sinh rLla-sinh rFa-sinh rPha-sinh rNda-sinh rNnga-sinh rJnya-sinh rNyja-sinh rJha-sinh rNga-sinh kSsa-sinh kVa-sinh gDha-sinh ngGa-sinh cCa-sinh nyCa-sinh nyCha-sinh nyJa-sinh ttTtha-sinh ddDha-sinh nnDda-sinh tTha-sinh tVa-sinh dDha-sinh dVa-sinh nTha-sinh nDa-sinh nDha-sinh nVa-sinh bBa-sinh mBa-sinh kKa-sinh kKha-sinh kTa-sinh kMa-sinh kNa-sinh gGa-sinh gGha-sinh ngNga-sinh ngKa-sinh ngGha-sinh cCha-sinh jJa-sinh jJha-sinh nyNya-sinh ttTta-sinh ddDda-sinh ddDdha-sinh nnNna-sinh nnTtha-sinh nnHa-sinh tTa-sinh tMa-sinh dDa-sinh nNa-sinh nTta-sinh nTa-sinh nHa-sinh pPa-sinh pTa-sinh pPha-sinh pBa-sinh pDa-sinh pHa-sinh bDa-sinh bBha-sinh mMa-sinh mHa-sinh mPha-sinh mVa-sinh mPa-sinh mDa-sinh mBha-sinh lLa-sinh lVa-sinh vHa-sinh shTta-sinh sSa-sinh sTa-sinh sVa-sinh hMa-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–9 cumulative <span class="dim">19 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.
+මම අම්මා ඔය ඉර ජලය සීනි ඉතිං මාමා ණය ගණන මිල ජාතික ගාථා කථාව පීඨය මොකද ඡායා
+අම්මා පොත කියවනවා.
+ඉර පායනවා.
+බත් බස් හතර හරි හිස භාෂාව ඔළුව ඕනෑ බඩු ඝෝෂාව ඵලය ඒක ඊයේ ඌරා ෆෝනය ශබ්දය
+ඊයේ හවස අපි බත් කෑවා.
+හොඳ කඳ හඳ අඬනවා ළඟ ඉඟුරු දඬුවම ඥානය සංඥාව මඤ්ඤොක්කා බණ්ඩාරවෙල
+අද රෑ අහසේ හඳ හොඳට පේනවා.
+කෘතිය පෘථිවිය ගෞරවය ගෞතම
+මේ කෘතිය ඉතා වටිනවා.
+ශ්‍රී ක්‍රමය විද්‍යාව ප්‍රශ්නය ධර්‍මය සත්‍ය චන්ද්‍රයා ක්‍ෂණික
+ශ්‍රී ලංකාවේ ක්‍රිකට් ක්‍රීඩාව ඉතා ප්‍රසිද්ධයි.</pre></div>
+</section>
+<section class="lstage" id="l-10"><h2><span class="snum">10</span> Long tail and polish</h2>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — new in this stage <span class="dim">29</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">ngI-sinh ngIi-sinh ng-sinh vocalicr-sinh vocalicrr-sinh vocalicl-sinh vocalicll-sinh nga-sinh ai-sinh au-sinh visargaya-sinh kunddaliya tta-sinh ddha-sinh sa-sinh ga-sinh ra-sinh a-sinh da-sinh o-sinh esign-sinh anusvaraya-sinh ya-sinh pa-sinh ta-sinh aasign-sinh aesign-sinh vocalicrsign-sinh vocaliclsign-sinh</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Glyph names — through stage 10 <span class="dim">468</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="names">tta-sinh sa-sinh pa-sinh dda-sinh ddha-sinh isign-sinh ttI-sinh ddI-sinh ddhI-sinh usign-sinh cI-sinh ca-sinh e-sinh ya-sinh va-sinh yI-sinh vI-sinh virama-sinh ga-sinh aasign-sinh ta-sinh na-sinh esign-sinh anusvaraya-sinh sI-sinh tt-sinh dd-sinh c-sinh v-sinh ddh-sinh ka-sinh da-sinh u-sinh a-sinh ra-sinh la-sinh aesign-sinh aaesign-sinh rI-sinh r-sinh rAe-sinh rU-sinh aa-sinh ae-sinh aae-sinh eesign-sinh osign-sinh oosign-sinh aisign-sinh kI-sinh tI-sinh nI-sinh gI-sinh dI-sinh lI-sinh pI-sinh kU-sinh gU-sinh tU-sinh dU-sinh ttIi-sinh cIi-sinh ddIi-sinh tthI-sinh tthIi-sinh ddhIi-sinh thI-sinh thIi-sinh yIi-sinh vIi-sinh mI-sinh mIi-sinh nnI-sinh nnIi-sinh sIi-sinh m-sinh tth-sinh th-sinh rIi-sinh rUu-sinh kIi-sinh tIi-sinh nIi-sinh gIi-sinh dIi-sinh lIi-sinh pIi-sinh kUu-sinh gUu-sinh tUu-sinh dUu-sinh o-sinh ma-sinh nna-sinh i-sinh tha-sinh ttha-sinh ja-sinh cha-sinh iisign-sinh uusign-sinh jI-sinh jIi-sinh chI-sinh chIi-sinh ch-sinh j-sinh phI-sinh phIi-sinh bI-sinh bIi-sinh khI-sinh khIi-sinh dhI-sinh dhIi-sinh mbI-sinh mbIi-sinh ghI-sinh ghIi-sinh dh-sinh kh-sinh b-sinh mb-sinh ph-sinh shI-sinh shIi-sinh fI-sinh fIi-sinh llI-sinh llIi-sinh ssI-sinh ssIi-sinh bhU-sinh bhUu-sinh shU-sinh shUu-sinh dha-sinh ba-sinh kha-sinh oo-sinh mba-sinh bha-sinh ha-sinh sha-sinh gha-sinh ssa-sinh lla-sinh fa-sinh pha-sinh ee-sinh ii-sinh uu-sinh bhI-sinh bhIi-sinh hI-sinh hIi-sinh llU-sinh llUu-sinh nnddI-sinh nnddIi-sinh jhI-sinh jhIi-sinh nndd-sinh jh-sinh nngI-sinh nngIi-sinh nngU-sinh nngUu-sinh nyjI-sinh nyjIi-sinh nyj-sinh nda-sinh nndda-sinh nnga-sinh nya-sinh jnya-sinh nyja-sinh jha-sinh ndI-sinh ndIi-sinh nyI-sinh nyIi-sinh jnyI-sinh jnyIi-sinh vocalicrsign-sinh vocalicrrsign-sinh vocaliclsign-sinh vocalicllsign-sinh ausign-sinh ttU-sinh ttUu-sinh sU-sinh sUu-sinh s-sinh pU-sinh pUu-sinh p-sinh ddU-sinh ddUu-sinh ddhU-sinh ddhUu-sinh cU-sinh cUu-sinh yU-sinh yUu-sinh y-sinh vU-sinh vUu-sinh g-sinh t-sinh nU-sinh nUu-sinh n-sinh k-sinh d-sinh lU-sinh lUu-sinh l-sinh mU-sinh mUu-sinh nnU-sinh nnUu-sinh nn-sinh thU-sinh thUu-sinh tthU-sinh tthUu-sinh jU-sinh jUu-sinh chU-sinh chUu-sinh dhU-sinh dhUu-sinh bU-sinh bUu-sinh khU-sinh khUu-sinh mbU-sinh mbUu-sinh bh-sinh hU-sinh hUu-sinh h-sinh sh-sinh ghU-sinh ghUu-sinh gh-sinh ssU-sinh ssUu-sinh ss-sinh ll-sinh fU-sinh fUu-sinh f-sinh phU-sinh phUu-sinh ndU-sinh ndUu-sinh nd-sinh nnddU-sinh nnddUu-sinh nng-sinh nyU-sinh nyUu-sinh ny-sinh jnyU-sinh jnyUu-sinh jny-sinh nyjU-sinh nyjUu-sinh jhU-sinh jhUu-sinh ngI-sinh ngIi-sinh ngU-sinh ngUu-sinh ng-sinh ttTthI-sinh ttTthIi-sinh tThI-sinh tThIi-sinh nThI-sinh nThIi-sinh dRI-sinh dRIi-sinh ndRI-sinh ndRIi-sinh nDI-sinh nDIi-sinh nDRI-sinh nDRIi-sinh ttRa-sinh sRa-sinh pRa-sinh ddRa-sinh cRa-sinh vRa-sinh gRa-sinh tRa-sinh kRa-sinh dRa-sinh mRa-sinh dhRa-sinh bRa-sinh khRa-sinh bhRa-sinh hRa-sinh shRa-sinh ghRa-sinh ssRa-sinh fRa-sinh nyjRa-sinh jhRa-sinh ttya-sinh sya-sinh pya-sinh ddya-sinh ddhya-sinh cya-sinh yya-sinh vya-sinh gya-sinh tya-sinh kya-sinh dya-sinh rya-sinh lya-sinh mya-sinh nnya-sinh thya-sinh tthya-sinh jya-sinh chya-sinh dhya-sinh bya-sinh khya-sinh bhya-sinh hya-sinh shya-sinh ghya-sinh ssya-sinh llya-sinh fya-sinh phya-sinh ndya-sinh nnddya-sinh nngya-sinh nyya-sinh nyjya-sinh jhya-sinh ngya-sinh rTta-sinh rSa-sinh rPa-sinh rDda-sinh rDdha-sinh rCa-sinh rVa-sinh rGa-sinh rTa-sinh rNa-sinh rKa-sinh rDa-sinh rLa-sinh rMa-sinh rNna-sinh rTha-sinh rTtha-sinh rJa-sinh rCha-sinh rDha-sinh rBa-sinh rKha-sinh rMba-sinh rBha-sinh rHa-sinh rSha-sinh rGha-sinh rSsa-sinh rLla-sinh rFa-sinh rPha-sinh rNda-sinh rNnga-sinh rJnya-sinh rNyja-sinh rJha-sinh rNga-sinh kSsa-sinh kVa-sinh gDha-sinh ngGa-sinh cCa-sinh nyCa-sinh nyCha-sinh nyJa-sinh ttTtha-sinh ddDha-sinh nnDda-sinh tTha-sinh tVa-sinh dDha-sinh dVa-sinh nTha-sinh nDa-sinh nDha-sinh nVa-sinh bBa-sinh mBa-sinh kKa-sinh kKha-sinh kTa-sinh kMa-sinh kNa-sinh gGa-sinh gGha-sinh ngNga-sinh ngKa-sinh ngGha-sinh cCha-sinh jJa-sinh jJha-sinh nyNya-sinh ttTta-sinh ddDda-sinh ddDdha-sinh nnNna-sinh nnTtha-sinh nnHa-sinh tTa-sinh tMa-sinh dDa-sinh nNa-sinh nTta-sinh nTa-sinh nHa-sinh pPa-sinh pTa-sinh pPha-sinh pBa-sinh pDa-sinh pHa-sinh bDa-sinh bBha-sinh mMa-sinh mHa-sinh mPha-sinh mVa-sinh mPa-sinh mDa-sinh mBha-sinh lLa-sinh lVa-sinh vHa-sinh shTta-sinh sSa-sinh sTa-sinh sVa-sinh hMa-sinh vocalicr-sinh vocalicrr-sinh vocalicl-sinh vocalicll-sinh nga-sinh ai-sinh au-sinh visargaya-sinh kunddaliya</pre></div>
+  <div class="copybox">
+    <div class="copyhead"><h4>Test text — stages 0–10 cumulative <span class="dim">21 lines</span></h4><button class="copy" type="button">Copy</button></div>
+    <pre class="sinh ltext">සට සසඩඪ ටසඩි ඪිටඩසට ඩඪඩි සට ඩසට ඪඩිස ටඪඩඩි සඩඪ ඩටඪිස
+පට පස සප ටපස පඩට ඪප පසඩි පටඪ
+ටුසු ඩුසු සුටු ඩිටු ඪිසු පුසු ටුපු
+වට එය පය සුව වසු පසු පුස
+ගත ගස ගස් වත පත පාට සතා ගෙට නෙත වෙන සිට සිසු තට්ටුව වත්ත වසන්තය ගංගාව
+අද අත රට රටේ කරනවා අපේ ගෙදර කියනවා දැන් අවුරුදු අකුරු කුරුල්ලා ලංකාව වතුර දරුවා පාසල උදේ කවදා එදා දිය පොත ලොකු කැලේ
+අද උදේ අපේ දරුවා පාසලට ගියා.
+කිරි ටිකක් දෙන්න.
+මම අම්මා ඔය ඉර ජලය සීනි ඉතිං මාමා ණය ගණන මිල ජාතික ගාථා කථාව පීඨය මොකද ඡායා
+අම්මා පොත කියවනවා.
+ඉර පායනවා.
+බත් බස් හතර හරි හිස භාෂාව ඔළුව ඕනෑ බඩු ඝෝෂාව ඵලය ඒක ඊයේ ඌරා ෆෝනය ශබ්දය
+ඊයේ හවස අපි බත් කෑවා.
+හොඳ කඳ හඳ අඬනවා ළඟ ඉඟුරු දඬුවම ඥානය සංඥාව මඤ්ඤොක්කා බණ්ඩාරවෙල
+අද රෑ අහසේ හඳ හොඳට පේනවා.
+කෘතිය පෘථිවිය ගෞරවය ගෞතම
+මේ කෘතිය ඉතා වටිනවා.
+ශ්‍රී ක්‍රමය විද්‍යාව ප්‍රශ්නය ධර්‍මය සත්‍ය චන්ද්‍රයා ක්‍ෂණික
+ශ්‍රී ලංකාවේ ක්‍රිකට් ක්‍රීඩාව ඉතා ප්‍රසිද්ධයි.
+ඍතුව ඓතිහාසික ඖෂධ
+ඓතිහාසික ඖෂධ ගැන ඍජු තොරතුරු.</pre></div>
+</section>
+</div>
 
 <div class="wrap" role="tabpanel" id="panel-units" aria-labelledby="tab-units" hidden>
 <div class="ufilter">
@@ -2772,20 +3012,42 @@ level inventory is covered.”</p>
     }
     if (scroll) document.querySelector('.tabs').scrollIntoView();
   };
-  // a hash decides the tab: #units or #u-… opens units, anything else the model
+  // a hash decides the tab: #units or #u-… opens units, #lists or #l-… the
+  // lists, anything else the model
   const fromHash = () => {
     const h = decodeURIComponent(location.hash.slice(1));
-    if (h === 'units' || h.startsWith('u-')) {
+    if (h === 'lists' || h.startsWith('l-')) {
+      show('tab-lists');
+      const el = h.startsWith('l-') && document.getElementById(h);
+      if (el) el.scrollIntoView();
+    } else if (h === 'units' || h.startsWith('u-')) {
       show('tab-units');
       const el = h.startsWith('u-') && document.getElementById(h);
       if (el) { el.hidden = false; el.closest('.ustage').hidden = false; el.scrollIntoView(); }
     } else if (h) show('tab-model');
   };
   for (const t of tabs) t.addEventListener('click', () => {
-    history.replaceState(null, '', t.id === 'tab-units' ? '#units' : '#model');
+    history.replaceState(null, '', '#' + t.id.slice(4));
     show(t.id, window.scrollY > document.querySelector('.tabs').offsetTop);
   });
   window.addEventListener('hashchange', fromHash);
+
+  // clipboard API needs a secure context; fall back to execCommand for file://
+  const copyText = text => navigator.clipboard && window.isSecureContext
+    ? navigator.clipboard.writeText(text)
+    : new Promise((ok, fail) => {
+      const ta = Object.assign(document.createElement('textarea'), { value: text });
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      const r = document.execCommand('copy'); ta.remove();
+      r ? ok() : fail();
+    });
+  for (const b of document.querySelectorAll('.copy')) b.addEventListener('click', () => {
+    copyText(b.closest('.copybox').querySelector('pre').textContent).then(() => {
+      b.textContent = 'Copied'; b.classList.add('done');
+      setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('done'); }, 1400);
+    }, () => { b.textContent = 'Copy failed'; });
+  });
 
   const find = document.getElementById('ufind');
   const chips = [...document.querySelectorAll('.ufilter .chip')];

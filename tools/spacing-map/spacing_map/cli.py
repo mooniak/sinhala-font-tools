@@ -10,8 +10,13 @@ Subcommands:
   build-map   seed/refresh sinhala-spacing.yaml from the design-stages model
   audit       measure a font against the scheme (read-only): coverage, class
               drift, metrics keys, and the font's implied spacing unit
+  export-js   vendor the scheme as tools/_generated/sinhala-spacing.js for
+              the spacing workbench (tools/spacing-workbench)
+  build-plugin
+              refresh the scheme + shared code bundled in the Glyphs plugin
+              (glyphs-plugin/SinhalaSpacing.glyphsPlugin)
 
-Planned (see README.md): apply, export-js.
+Planned (see README.md): apply.
 """
 import argparse
 import sys
@@ -20,9 +25,10 @@ from pathlib import Path
 import yaml
 
 from . import audit as audit_mod
-from . import mapbuild, model
+from . import jsexport, mapbuild, model, pluginbuild
 
 DEFAULT_MAP_YAML = model.REPO_ROOT / "sinhala-spacing.yaml"
+DEFAULT_JS = model.REPO_ROOT / "tools" / "_generated" / "sinhala-spacing.js"
 
 
 def _print_report(report, x, limit):
@@ -155,6 +161,42 @@ def cmd_audit(args):
         print(f"\nwrote measured values to {args.emit_values} (master {first['name']})")
 
 
+def cmd_export_js(args):
+    with open(args.map, encoding="utf-8") as f:
+        scheme = yaml.safe_load(f)
+    out = Path(args.output)
+    js = jsexport.to_js(scheme)
+    if args.check:
+        current = out.read_text(encoding="utf-8") if out.exists() else None
+        if current == js:
+            print(f"{out.name} is up to date")
+            return
+        print(f"{out.name} is stale — run export-js", file=sys.stderr)
+        sys.exit(1)
+    out.write_text(js, encoding="utf-8")
+    print(f"wrote {out}")
+
+
+def cmd_build_plugin(args):
+    with open(args.map, encoding="utf-8") as f:
+        scheme = yaml.safe_load(f)
+    if args.check:
+        bad = pluginbuild.stale(scheme)
+        if not bad:
+            print(f"{pluginbuild.PLUGIN.name} is up to date")
+            return
+        for p in bad:
+            print(f"stale: {p.relative_to(pluginbuild.PLUGIN)}", file=sys.stderr)
+        print("run build-plugin, then restart Glyphs", file=sys.stderr)
+        sys.exit(1)
+    written = pluginbuild.write(scheme)
+    for p in written:
+        print(f"wrote {p.relative_to(pluginbuild.PLUGIN)}")
+    print(f"{pluginbuild.PLUGIN.name}: "
+          + (f"{len(written)} file(s) updated — restart Glyphs to load them"
+             if written else "already up to date"))
+
+
 def build_parser():
     p = argparse.ArgumentParser(prog="spacing-map", description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -187,6 +229,21 @@ def build_parser():
                     help="list every class and member, not just drift")
     au.add_argument("--limit", type=int, default=20)
     au.set_defaults(func=cmd_audit)
+
+    ej = sub.add_parser("export-js",
+                        help="vendor the scheme as a JS module for the spacing workbench")
+    ej.add_argument("--map", default=str(DEFAULT_MAP_YAML))
+    ej.add_argument("-o", "--output", default=str(DEFAULT_JS))
+    ej.add_argument("--check", action="store_true",
+                    help="exit non-zero if the JS file is out of date; do not write")
+    ej.set_defaults(func=cmd_export_js)
+
+    bp = sub.add_parser("build-plugin",
+                        help="refresh the scheme and shared code bundled in the Glyphs plugin")
+    bp.add_argument("--map", default=str(DEFAULT_MAP_YAML))
+    bp.add_argument("--check", action="store_true",
+                    help="exit non-zero if the bundled files are out of date; do not write")
+    bp.set_defaults(func=cmd_build_plugin)
 
     return p
 

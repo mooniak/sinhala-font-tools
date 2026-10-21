@@ -13,19 +13,19 @@
       "counts": {
         "composites": 300,
         "by_tier": {
-          "0": 18,
-          "1": 102,
-          "2": 56,
+          "0": 14,
+          "1": 105,
+          "2": 57,
           "3": 124
         },
-        "review": 93,
+        "review": 89,
         "keep_drawn": 171,
         "keep_drawn_by_reason": {
           "du-form": 2,
-          "hal-ja": 2,
+          "hal-ja": 3,
           "hal-rahena": 12,
           "hal-trap": 4,
-          "irreducible": 81,
+          "irreducible": 80,
           "ispilla-fused": 46,
           "llu-form": 2,
           "ra-forms": 3,
@@ -65,6 +65,7 @@
         "nndda-sinh",
         "nnga-sinh",
         "nya-sinh",
+        "nyja-sinh",
         "pa-sinh",
         "pha-sinh",
         "ra-sinh",
@@ -117,7 +118,64 @@
         "isign-sinh.alt7",
         "isign-sinh.alt8",
         "isign-sinh.alt9"
-      ]
+      ],
+      "sign_variants": {
+        "rasign-sinh.alone": {
+          "sign": "rasign-sinh",
+          "slot": "alone",
+          "noto": "rasign-sinh.alone"
+        },
+        "rasign-sinh.long": {
+          "sign": "rasign-sinh",
+          "slot": "long",
+          "noto": "rasign-sinh.alt3"
+        },
+        "rasign-sinh.medium": {
+          "sign": "rasign-sinh",
+          "slot": "medium",
+          "noto": "rasign-sinh.alt2"
+        },
+        "rasign-sinh.pa": {
+          "sign": "rasign-sinh",
+          "slot": "pa",
+          "noto": "rasign-sinh.alt1"
+        },
+        "rasign-sinh.short": {
+          "sign": "rasign-sinh",
+          "slot": "short",
+          "noto": "rasign-sinh.alt4"
+        },
+        "usign-sinh.long": {
+          "sign": "usign-sinh",
+          "slot": "long",
+          "noto": "usign-sinh.alt3"
+        },
+        "usign-sinh.medium": {
+          "sign": "usign-sinh",
+          "slot": "medium",
+          "noto": "usign-sinh.alt2"
+        },
+        "usign-sinh.tta": {
+          "sign": "usign-sinh",
+          "slot": "tta",
+          "noto": "usign-sinh.alt1"
+        },
+        "uusign-sinh.long": {
+          "sign": "uusign-sinh",
+          "slot": "long",
+          "noto": "uusign-sinh.alt3"
+        },
+        "uusign-sinh.medium": {
+          "sign": "uusign-sinh",
+          "slot": "medium",
+          "noto": "uusign-sinh.alt2"
+        },
+        "uusign-sinh.tta": {
+          "sign": "uusign-sinh",
+          "slot": "tta",
+          "noto": "uusign-sinh.alt1"
+        }
+      }
     },
     "anchors": {
       "base_anchor_frequency": {
@@ -147,20 +205,30 @@
         "isign-sinh.alt8": "iVowel",
         "isign-sinh.alt9": "iVowel",
         "rasign-sinh": "rakar",
+        "rasign-sinh.long": "rakar",
+        "rasign-sinh.medium": "rakar",
+        "rasign-sinh.pa": "rakar",
+        "rasign-sinh.short": "rakar",
         "repha-sinh": "repaya",
         "usign-sinh": "uvowel",
+        "usign-sinh.long": "uvowel",
+        "usign-sinh.medium": "uvowel",
+        "usign-sinh.tta": "uvowel",
         "uusign-sinh": "uvowel",
+        "uusign-sinh.long": "uvowel",
+        "uusign-sinh.medium": "uvowel",
+        "uusign-sinh.tta": "uvowel",
         "virama-sinh": "alSign"
       }
     },
     "composites": {
       "aa-sinh": [
-        "aasign-sinh",
-        "a-sinh"
+        "a-sinh",
+        "aasign-sinh"
       ],
       "aae-sinh": [
-        "aaesign-sinh",
-        "a-sinh"
+        "a-sinh",
+        "aaesign-sinh"
       ],
       "aasign_virama-sinh": [
         "aasign-sinh",
@@ -179,13 +247,8 @@
         "iisign-sinh"
       ],
       "au-sinh": [
-        "vocaliclsign-sinh",
-        "o-sinh"
-      ],
-      "ausign-sinh": [
-        "esign-sinh",
-        "vocaliclsign-sinh",
-        "bullet"
+        "o-sinh",
+        "vocaliclsign-sinh"
       ],
       "bBI-sinh": [
         "bBa-sinh",
@@ -213,15 +276,15 @@
       ],
       "bU-sinh": [
         "ba-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "bUu-sinh": [
         "ba-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "ba_repha-sinh": [
-        "repha-sinh",
-        "ba-sinh"
+        "ba-sinh",
+        "repha-sinh"
       ],
       "bh-sinh": [
         "bha-sinh",
@@ -245,7 +308,7 @@
       ],
       "bhRa-sinh": [
         "bha-sinh",
-        "rasign-sinh"
+        "rasign-sinh.long"
       ],
       "bha_repha-sinh": [
         "bha-sinh",
@@ -273,15 +336,15 @@
       ],
       "cRa-sinh": [
         "ca-sinh",
-        "rasign-sinh"
+        "rasign-sinh.medium"
       ],
       "cU-sinh": [
         "ca-sinh",
-        "usign-sinh"
+        "usign-sinh.tta"
       ],
       "cUu-sinh": [
         "ca-sinh",
-        "uusign-sinh"
+        "uusign-sinh.tta"
       ],
       "ca_repha-sinh": [
         "ca-sinh",
@@ -357,11 +420,11 @@
       ],
       "ddU-sinh": [
         "dda-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "ddUu-sinh": [
         "dda-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "dda_repha-sinh": [
         "dda-sinh",
@@ -377,11 +440,11 @@
       ],
       "ddhU-sinh": [
         "ddha-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "ddhUu-sinh": [
         "ddha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "ddha_repha-sinh": [
         "ddha-sinh",
@@ -401,11 +464,11 @@
       ],
       "dhU-sinh": [
         "dha-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "dhUu-sinh": [
         "dha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "dha_repha-sinh": [
         "dha-sinh",
@@ -453,11 +516,11 @@
       ],
       "fRa-sinh": [
         "fa-sinh",
-        "rasign-sinh"
+        "rasign-sinh.pa"
       ],
       "fRa-sinh.hist": [
         "fa-sinh",
-        "rasign-sinh"
+        "rasign-sinh.pa"
       ],
       "fU-sinh": [
         "fa-sinh",
@@ -480,7 +543,7 @@
         "repha-sinh"
       ],
       "fa_repha-sinh.hist": [
-        "fa-sinh.hist",
+        "fa-sinh",
         "repha-sinh"
       ],
       "g-sinh": [
@@ -509,11 +572,11 @@
       ],
       "gRa-sinh": [
         "ga-sinh",
-        "rasign-sinh"
+        "rasign-sinh.long"
       ],
       "ga_repha-sinh": [
-        "repha-sinh",
-        "ga-sinh"
+        "ga-sinh",
+        "repha-sinh"
       ],
       "gh-sinh": [
         "gha-sinh",
@@ -537,15 +600,15 @@
       ],
       "ghRa-sinh": [
         "gha-sinh",
-        "rasign-sinh"
+        "rasign-sinh.short"
       ],
       "ghU-sinh": [
         "gha-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "ghUu-sinh": [
         "gha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "gha_repha-sinh": [
         "gha-sinh",
@@ -573,15 +636,15 @@
       ],
       "hRa-sinh": [
         "ha-sinh",
-        "rasign-sinh"
+        "rasign-sinh.long"
       ],
       "hU-sinh": [
         "ha-sinh",
-        "usign-sinh"
+        "usign-sinh.long"
       ],
       "hUu-sinh": [
         "ha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.long"
       ],
       "ha_repha-sinh": [
         "ha-sinh",
@@ -629,11 +692,11 @@
       ],
       "jhU-sinh": [
         "jha-sinh",
-        "usign-sinh"
+        "usign-sinh.long"
       ],
       "jhUu-sinh": [
         "jha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.long"
       ],
       "jha_repha-sinh": [
         "jha-sinh",
@@ -693,7 +756,7 @@
       ],
       "kRa-sinh": [
         "ka-sinh",
-        "rasign-sinh"
+        "rasign-sinh.long"
       ],
       "kSsI-sinh": [
         "kSsa-sinh",
@@ -712,8 +775,8 @@
         "repha-sinh"
       ],
       "ka_repha-sinh": [
-        "repha-sinh",
-        "ka-sinh"
+        "ka-sinh",
+        "repha-sinh"
       ],
       "khRI-sinh": [
         "khRa-sinh",
@@ -729,11 +792,11 @@
       ],
       "khU-sinh": [
         "kha-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "khUu-sinh": [
         "kha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "kha_repha-sinh": [
         "kha-sinh",
@@ -793,11 +856,11 @@
       ],
       "mU-sinh": [
         "ma-sinh",
-        "usign-sinh"
+        "usign-sinh.tta"
       ],
       "mUu-sinh": [
         "ma-sinh",
-        "uusign-sinh"
+        "uusign-sinh.tta"
       ],
       "ma_repha-sinh": [
         "ma-sinh",
@@ -805,11 +868,11 @@
       ],
       "mbU-sinh": [
         "mba-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "mbUu-sinh": [
         "mba-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "mba_repha-sinh": [
         "mba-sinh",
@@ -865,11 +928,11 @@
       ],
       "nU-sinh": [
         "na-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "nUu-sinh": [
         "na-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "nVa_repha-sinh": [
         "nVa-sinh",
@@ -913,11 +976,11 @@
       ],
       "nnU-sinh": [
         "nna-sinh",
-        "usign-sinh"
+        "usign-sinh.long"
       ],
       "nnUu-sinh": [
         "nna-sinh",
-        "uusign-sinh"
+        "uusign-sinh.long"
       ],
       "nna_repha-sinh": [
         "nna-sinh",
@@ -925,11 +988,11 @@
       ],
       "nnddU-sinh": [
         "nndda-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "nnddUu-sinh": [
         "nndda-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "nng-sinh": [
         "nnga-sinh",
@@ -999,19 +1062,21 @@
         "nyja-sinh",
         "iisign-sinh"
       ],
+      "nyjRa-sinh": [
+        "nyja-sinh",
+        "rasign-sinh"
+      ],
+      "nyjU-sinh": [
+        "nyja-sinh",
+        "usign-sinh"
+      ],
+      "nyjUu-sinh": [
+        "nyja-sinh",
+        "uusign-sinh"
+      ],
       "nyja_repha-sinh": [
         "nyja-sinh",
         "repha-sinh"
-      ],
-      "oosign-sinh": [
-        "esign-sinh",
-        "aasign_virama-sinh",
-        "bullet"
-      ],
-      "osign-sinh": [
-        "esign-sinh",
-        "aasign-sinh",
-        "bullet"
       ],
       "p-sinh": [
         "pa-sinh",
@@ -1035,7 +1100,7 @@
       ],
       "pRa-sinh": [
         "pa-sinh",
-        "rasign-sinh"
+        "rasign-sinh.pa"
       ],
       "pU-sinh": [
         "pa-sinh",
@@ -1059,11 +1124,11 @@
       ],
       "phU-sinh": [
         "pha-sinh",
-        "usign-sinh"
+        "usign-sinh.tta"
       ],
       "phUu-sinh": [
         "pha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.tta"
       ],
       "pha_repha-sinh": [
         "pha-sinh",
@@ -1091,15 +1156,15 @@
       ],
       "sRa-sinh": [
         "sa-sinh",
-        "rasign-sinh"
+        "rasign-sinh.short"
       ],
       "sU-sinh": [
         "sa-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "sUu-sinh": [
         "sa-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "sa_repha-sinh": [
         "sa-sinh",
@@ -1127,7 +1192,7 @@
       ],
       "shRa-sinh": [
         "sha-sinh",
-        "rasign-sinh"
+        "rasign-sinh.long"
       ],
       "sha_repha-sinh": [
         "sha-sinh",
@@ -1155,7 +1220,7 @@
       ],
       "ssRa-sinh": [
         "ssa-sinh",
-        "rasign-sinh"
+        "rasign-sinh.pa"
       ],
       "ssU-sinh": [
         "ssa-sinh",
@@ -1223,11 +1288,11 @@
       ],
       "thU-sinh": [
         "tha-sinh",
-        "usign-sinh"
+        "usign-sinh.tta"
       ],
       "thUu-sinh": [
         "tha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.tta"
       ],
       "tha_repha-sinh": [
         "tha-sinh",
@@ -1243,7 +1308,7 @@
       ],
       "ttRa-sinh": [
         "tta-sinh",
-        "rasign-sinh"
+        "rasign-sinh.medium"
       ],
       "ttTthI-sinh": [
         "ttTtha-sinh",
@@ -1259,11 +1324,11 @@
       ],
       "ttU-sinh": [
         "tta-sinh",
-        "usign-sinh"
+        "usign-sinh.tta"
       ],
       "ttUu-sinh": [
         "tta-sinh",
-        "uusign-sinh"
+        "uusign-sinh.tta"
       ],
       "tta_repha-sinh": [
         "tta-sinh",
@@ -1279,11 +1344,11 @@
       ],
       "tthU-sinh": [
         "ttha-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "tthUu-sinh": [
         "ttha-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "ttha_repha-sinh": [
         "ttha-sinh",
@@ -1303,15 +1368,15 @@
       ],
       "vRa-sinh": [
         "va-sinh",
-        "rasign-sinh"
+        "rasign-sinh.medium"
       ],
       "vU-sinh": [
         "va-sinh",
-        "usign-sinh"
+        "usign-sinh.tta"
       ],
       "vUu-sinh": [
         "va-sinh",
-        "uusign-sinh"
+        "uusign-sinh.tta"
       ],
       "va_repha-sinh": [
         "va-sinh",
@@ -1331,11 +1396,11 @@
       ],
       "yU-sinh": [
         "ya-sinh",
-        "usign-sinh"
+        "usign-sinh.medium"
       ],
       "yUu-sinh": [
         "ya-sinh",
-        "uusign-sinh"
+        "uusign-sinh.medium"
       ],
       "ya_repha-sinh": [
         "ya-sinh",

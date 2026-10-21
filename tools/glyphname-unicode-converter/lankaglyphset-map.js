@@ -75,6 +75,10 @@
     0x0d82: "anusvaraya", 0x0d83: "visargaya", 0x0df4: "kunddaliya"
   };
 
+  // Vowel signs written before the base (ෙ ේ ෛ ො ෝ ෞ). They sit left of the
+  // base, so the below-base "._c" form never applies: දෙ is dE, like කෙ is kE.
+  var VSIGN_PRE = { 0x0dd9: 1, 0x0dda: 1, 0x0ddb: 1, 0x0ddc: 1, 0x0ddd: 1, 0x0dde: 1 };
+
   // Consonants whose cluster takes the below-base "._c" form when a
   // below/spacing vowel sign attaches. Keyed by the LEADING consonant.
   var DA_SHAPE_FIRST = { 0x0daf: 1, 0x0da4: 1, 0x0da5: 1, 0x0db3: 1 };
@@ -164,6 +168,18 @@
     if (cps[0] === AL && cps[1] === ZWJ && cps[2] === YA)
       return _yansaAlone(cps);
 
+    // Repaya in logical (Unicode) order:  ර ් ‍ + consonant  ->  <rest>_repha.
+    // The same sequence also reads as ra + conjunct, but ra-led conjuncts are
+    // always set as repaya, and the glyphset has none (rKa …). ra + ra / ya
+    // stay rakaransaya / yansaya on ra (rRa, rya).
+    if (cps[0] === RA && cps[1] === AL && cps[2] === ZWJ &&
+        isCons(cps[3]) && cps[3] !== RA && cps[3] !== YA) {
+      var inner = _clusterName(cps.slice(3));
+      if (!inner || /_repha$/.test(inner.stem)) return null;
+      return { stem: inner.stem + "_repha",
+               note: inner.note ? inner.note + "+repaya" : "repaya" };
+    }
+
     // Must start with a consonant from here on.
     if (!isCons(cps[0])) return null;
 
@@ -212,7 +228,7 @@
       stem = dropA(core) + VSIGN_LIG[vowel];
     } else if (vowel && VSIGN_BELOW[vowel]) {
       var low = VSIGN_BELOW[vowel][0], capv = VSIGN_BELOW[vowel][1];
-      if (daShape) { stem = dropA(core) + low; belowDa = true; note = "below-base da-form"; }
+      if (daShape && !VSIGN_PRE[vowel]) { stem = dropA(core) + low; belowDa = true; note = "below-base da-form"; }
       else if (raBase) { stem = dropA(core) + capv; note = "ra vowel ligature"; }
       else { stem = dropA(core) + capv; note = "spacing-vowel ligature (verify)"; }
     } else {
@@ -276,6 +292,7 @@
   var _RA = String.fromCodePoint(RA), _YA = String.fromCodePoint(YA);
   var _LIG = [0x0dd2, 0x0dd3, 0x0dd4, 0x0dd6];                 // I Ii U Uu
   var _BELOW = [0x0dcf, 0x0dd0, 0x0dd1, 0x0dd8, 0x0df2];       // aa ae aae vocalicr vocalicrr
+  var _PRE = [0x0dd9, 0x0dda, 0x0ddb, 0x0ddc, 0x0ddd, 0x0dde]; // e ee ai o oo au (pre-base)
 
   function _candidateSequences() {
     var out = [], cp, k;
@@ -286,6 +303,11 @@
     _pushCluster(out, _AL + _ZWJ + _YA);                        // yasign …
 
     var cons = Object.keys(CONS_STEM).map(Number);
+    // repaya in logical order first, so a *_repha name maps to ර්‍ + base
+    for (var r = 0; r < cons.length; r++) {
+      if (cons[r] === RA || cons[r] === YA) continue;
+      _pushCluster(out, _RA + _AL + _ZWJ + String.fromCodePoint(cons[r]));
+    }
     for (var a = 0; a < cons.length; a++) {
       var ch = String.fromCodePoint(cons[a]);
       _pushCluster(out, ch);                                    // base + all modifiers
@@ -314,6 +336,7 @@
       out.push(prefix + String.fromCodePoint(_BELOW[i]));
       out.push(prefix + String.fromCodePoint(_BELOW[i]) + _AL);
     }
+    for (i = 0; i < _PRE.length; i++) out.push(prefix + String.fromCodePoint(_PRE[i]));
   }
 
   var _corpus = null;

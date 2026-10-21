@@ -131,26 +131,27 @@ From sinhala-composites.yaml: what can be assembled from parts, what must stay d
 
 | Folder | Filter | Glyphs | Generated from |
 |---|---|---:|---|
-| By tier | Composite · tier 0 | 18 | `composites[].tier` |
-| By tier | Composite · tier 1 | 102 | `composites[].tier` |
-| By tier | Composite · tier 2 | 56 | `composites[].tier` |
+| By tier | Composite · tier 0 | 14 | `composites[].tier` |
+| By tier | Composite · tier 1 | 105 | `composites[].tier` |
+| By tier | Composite · tier 2 | 57 | `composites[].tier` |
 | By tier | Composite · tier 3 | 124 | `composites[].tier` |
-| By source | Source · inventory-existing | 18 | `composites[].source` |
+| By source | Source · inventory-existing | 14 | `composites[].source` |
 | By source | Source · noto-ispilla | 124 | `composites[].source` |
 | By source | Source · grammar-classify | 23 | `composites[].source` |
-| By source | Source · grammar | 135 | `composites[].source` |
-| Keep drawn — why | Keep drawn · irreducible | 81 | `keep_drawn` |
+| By source | Source · grammar | 84 | `composites[].source` |
+| By source | Source · noto-signvariant | 55 | `composites[].source` |
+| Keep drawn — why | Keep drawn · irreducible | 80 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · ispilla-fused | 46 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · hal-rahena | 12 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · u-special | 12 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · hal-trap | 4 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · rakaransaya-exception | 4 | `keep_drawn` |
+| Keep drawn — why | Keep drawn · hal-ja | 3 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · repaya-exception | 3 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · ra-forms | 3 | `keep_drawn` |
-| Keep drawn — why | Keep drawn · hal-ja | 2 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · du-form | 2 | `keep_drawn` |
 | Keep drawn — why | Keep drawn · llu-form | 2 | `keep_drawn` |
-| — | REVIEW — composite guess needs confirming | 93 | `review` |
+| — | REVIEW — composite guess needs confirming | 89 | `review` |
 
 ## Conjuncts
 

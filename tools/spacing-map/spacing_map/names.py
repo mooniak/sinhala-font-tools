@@ -117,15 +117,19 @@ class Resolver:
 
     HOWS = ("override", "unicode", "name", "missing", "unknown")
 
-    def __init__(self, font_names, unicode_to_name, overrides=None):
+    def __init__(self, font_names, unicode_to_name, overrides=None, lgs_names=None):
+        """`lgs_names` (char -> base name) replaces reading the vendored
+        lanka-glyphsets file — the Glyphs plugin passes its bundled copy."""
         self.names = set(font_names)
         self.by_unicode = dict(unicode_to_name)
         self.overrides = dict(overrides or {})
-        self.stems = self._build_stems()
+        self.stems = self._build_stems(lgs_names)
 
-    def _build_stems(self):
+    def _build_stems(self, lgs_names=None):
         """char -> stem, font's own naming preferred over vendored LGS data."""
-        stems = {ch: stem_of(n) for ch, n in lgs_char_to_name().items()}
+        if lgs_names is None:
+            lgs_names = lgs_char_to_name()
+        stems = {ch: stem_of(n) for ch, n in lgs_names.items()}
         for cp, gname in self.by_unicode.items():
             stems[chr(cp)] = stem_of(strip_suffix(gname))
         return stems

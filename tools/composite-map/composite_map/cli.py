@@ -6,14 +6,17 @@ Subcommands:
   audit       classify a target font's glyphs against the map (read-only)
   rebuild     replace atomically-drawn/mixed glyphs with composite references
               (dry-run by default; --apply to write)
+  build-plugin  refresh the Glyphs plugin's bundled map + planning code
 """
 import argparse
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
 import yaml
 
-from . import jsexport, mapbuild, rebuild
+from . import jsexport, mapbuild, pluginbuild, rebuild
 from .lanka_data import REPO_ROOT, load_classification
 
 # Workspace-relative defaults for the two documentation references. Override
@@ -92,6 +95,35 @@ def cmd_rebuild(args):
         print(f"  ... and {len(result['changed']) - args.limit} more")
 
 
+def _run_catalogue(check):
+    """Rebuild (or --check) the glyph catalogue with Node, if Node is here."""
+    node = shutil.which("node")
+    if node is None:
+        print("note: node not found — bundling the existing glyph catalogue as is")
+        return
+    cmd = [node, str(pluginbuild.CATALOGUE_JS)] + (["--check"] if check else [])
+    if subprocess.run(cmd).returncode != 0:
+        sys.exit(1)
+
+
+def cmd_build_plugin(args):
+    data = _load_map(args.map)
+    _run_catalogue(args.check)
+    if args.check:
+        stale = pluginbuild.stale(data)
+        for p in stale:
+            print(f"stale: {p}")
+        if stale:
+            sys.exit(1)
+        print("plugin bundle is up to date")
+        return
+    written = pluginbuild.write(data)
+    for p in written:
+        print(f"wrote {p}")
+    if not written:
+        print("plugin bundle already up to date")
+
+
 def build_parser():
     p = argparse.ArgumentParser(prog="composite-map", description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -126,6 +158,11 @@ def build_parser():
     rb.add_argument("--backup", action="store_true", help="copy the source before writing")
     rb.add_argument("--limit", type=int, default=40)
     rb.set_defaults(func=cmd_rebuild)
+
+    bp = sub.add_parser("build-plugin", help="refresh the Glyphs plugin bundle")
+    bp.add_argument("--map", default=str(DEFAULT_MAP_YAML))
+    bp.add_argument("--check", action="store_true", help="fail if the bundle is stale")
+    bp.set_defaults(func=cmd_build_plugin)
 
     return p
 

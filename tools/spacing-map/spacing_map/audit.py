@@ -16,34 +16,15 @@ glyph the model says defines the unit — and each class's measured sidebearing
 as a multiple of it. That turns a well-spaced existing font into candidate
 `value:` numbers for the scheme.
 """
-from . import fontio, names
+from . import fontio, keyplan, names
 
 UNIT_GLYPH = "ට"     # the model's unit-defining glyph (mapbuild.UNIT_DEFINING_REP)
 SIDE_SB = {"left": "lsb", "right": "rsb"}
 
 
-def _targets(scheme):
-    """Every (side, class, entry) the scheme asks a font to carry.
-
-    Entries are class members (single chars) and fused forms; a form is a
-    member of whatever class it maps to on that side.
-    """
-    out = []
-    for side, classes in scheme["classes"].items():
-        for cname, cls in classes.items():
-            for ch in cls["members"]:
-                out.append((side, cname, ch, "member"))
-    for fam in scheme.get("forms", {}).values():
-        for form, sides in fam["glyphs"].items():
-            for side, cname in sides.items():
-                if cname:
-                    out.append((side, cname, form, "form"))
-    return out
-
-
 def _resolve_all(scheme, resolver):
     """entry -> (glyph_name, how), plus a coverage summary."""
-    entries = sorted({e for _, _, e, _ in _targets(scheme)})
+    entries = sorted({e for _, _, e, _ in keyplan.targets(scheme)})
     resolved = {e: resolver.resolve(e) for e in entries}
     absent = {e: how for e, (_, how) in resolved.items() if how in ("missing", "unknown")}
     return resolved, {
@@ -60,7 +41,7 @@ def audit(font_path, scheme, tolerance=8, master_ids=None, overrides=None):
     resolved, coverage = _resolve_all(scheme, resolver)
 
     by_class = {}
-    for side, cname, entry, kind in _targets(scheme):
+    for side, cname, entry, kind in keyplan.targets(scheme):
         by_class.setdefault((side, cname), []).append((entry, kind))
 
     all_masters = fontio.masters(font)
@@ -114,7 +95,7 @@ def audit(font_path, scheme, tolerance=8, master_ids=None, overrides=None):
                         key_status = "rep"
                     elif key is None:
                         key_status = "missing"
-                    elif rep_name and key.lstrip("=") == rep_name:
+                    elif rep_name and keyplan.normalize(key) == rep_name:
                         key_status = "ok"
                     else:
                         key_status = "other"

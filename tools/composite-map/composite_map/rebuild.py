@@ -7,8 +7,10 @@ sign), it deletes the drawn contours and replaces them with the base + sign
 component references from the map, in every master layer.
 
 Positioning of sign components relies on the target font's own base/mark anchors
-(Glyphs auto-aligns matching anchor/_anchor pairs on open); the engine sets the
-layer advance width from the base glyph so metrics survive the swap.
+(Glyphs auto-aligns matching anchor/_anchor pairs on open). The base component
+is auto-aligned only when a sign advances (buildplan.alignment); otherwise it
+sits at the origin with alignment off and each layer keeps its drawn width, so
+metrics keys (not the base's width) govern the sidebearings.
 
 `audit()` is read-only. `plan()` computes the edits without writing. `apply()`
 performs them and saves.
@@ -19,7 +21,13 @@ from pathlib import Path
 
 from glyphsLib import GSComponent
 
-from . import glyphsio, packageio
+from . import buildplan, glyphsio, packageio
+from .lanka_data import PREBASE_SIGNS, SPACING_SIGNS
+
+
+def _base_aligned(components):
+    return (buildplan.alignment(components, SPACING_SIGNS, PREBASE_SIGNS)
+            == buildplan.ALIGN_ALL)
 
 
 def _target_class(font_glyphs_by_name, name, master_ids):
@@ -109,7 +117,8 @@ def _apply_package(font_path, edits):
         gf = name_to_file.get(e["name"])
         if gf is None:
             continue
-        layers = packageio.rewrite_as_composite(gf, e["components"])
+        layers = packageio.rewrite_as_composite(gf, e["components"],
+                                                base_aligned=_base_aligned(e["components"]))
         changed.append({"name": e["name"], "components": e["components"], "layers": layers})
     return changed
 
@@ -146,12 +155,11 @@ def _rebuild_layer(layer, comps):
     except (TypeError, AttributeError):
         for c in list(layer.components):
             layer.components.remove(c)
-    for comp_name in comps:
+    base_aligned = _base_aligned(comps)
+    for i, comp_name in enumerate(comps):
         component = GSComponent(comp_name)
-        try:
-            component.automaticAlignment = True  # anchor-driven mark alignment
-        except AttributeError:
-            pass
+        if i == 0 and not base_aligned:
+            component.alignment = -1  # base at the origin; keys space the glyph
         layer.components.append(component)
 
 
