@@ -65,6 +65,43 @@ def glyph_names(font):
     return {g.name for g in font.glyphs if g.name}
 
 
+# font.tempData keys: the glyph names a font had when last checked, and the
+# new glyphs still waiting for their rep
+KNOWN_KEY = PREFIX + ".knownGlyphs"
+PENDING_KEY = PREFIX + ".pendingGlyphs"
+
+
+def font_temp(font, key):
+    """A set kept in the font's own tempData (never saved, dies with the font),
+    or None if unset. Per-font state lives there so a font is only ever
+    compared with itself. Keying a dict by id(font) broke that: id() of a
+    transient PyObjC proxy gets reused, so a freshly opened font could be
+    diffed against another font's list, and every glyph the other font lacked
+    looked "new" and was keyed."""
+    try:
+        value = font.tempData[key]
+    except (KeyError, TypeError, AttributeError):
+        return None
+    return None if value is None else set(value)
+
+
+def set_font_temp(font, key, names):
+    font.tempData[key] = sorted(names)
+
+
+def event_font(notification):
+    """The font a document notification is about, rather than whichever font
+    happens to be frontmost when it arrives."""
+    try:
+        font = notification.object().font
+        font = font() if callable(font) else font
+        if font is not None:
+            return font
+    except Exception:
+        pass
+    return Glyphs.font
+
+
 def resolver_for(font, scheme):
     by_unicode = {}
     for g in font.glyphs:
@@ -183,9 +220,7 @@ class SinhalaSpacing(GeneralPlugin):
             self.scheme = None
             self._notify("Sinhala Spacing", "Could not load the bundled scheme "
                          "— see Macro Window.", detail=traceback.format_exc())
-        self._known = {}       # font id -> glyph names last seen
-        self._pending = {}     # font id -> new glyph names not yet keyed
-        self._last_poll = {}
+        self._last_poll = 0
         self._busy = False
 
         menu = NSMenu.alloc().initWithTitle_(self.name)
@@ -331,46 +366,45 @@ class SinhalaSpacing(GeneralPlugin):
         font = Glyphs.font
         if font is None or self._busy or self.scheme is None or not self._auto():
             return
-        key = id(font)
         now = time.time()
-        if now - self._last_poll.get(key, 0) < POLL_SECONDS:
+        if now - self._last_poll < POLL_SECONDS:
             return
-        self._last_poll[key] = now
+        self._last_poll = now
         self._check(font)
 
     def documentEvent_(self, notification):
-        font = Glyphs.font
+        font = event_font(notification)
         if font is not None and self.scheme is not None and self._auto():
             self._check(font)
 
     @objc.python_method
     def _baseline(self, font):
-        self._known[id(font)] = glyph_names(font)
-        self._pending[id(font)] = set()
+        set_font_temp(font, KNOWN_KEY, glyph_names(font))
+        set_font_temp(font, PENDING_KEY, ())
 
     @objc.python_method
     def _check(self, font):
-        key = id(font)
-        if key not in self._known:
+        known = font_temp(font, KNOWN_KEY)
+        if known is None:
             self._baseline(font)      # first sight: what exists is not new
             return
         current = glyph_names(font)
-        new = current - self._known[key]
-        self._known[key] = current
-        pending = (self._pending.get(key, set()) | new) & current
+        new = current - known
+        set_font_temp(font, KNOWN_KEY, current)
+        pending = ((font_temp(font, PENDING_KEY) or set()) | new) & current
         if not new or not pending:
             # pending glyphs wait for their rep; that only changes when the
             # glyph set does, so there is nothing to retry
-            self._pending[key] = pending
+            set_font_temp(font, PENDING_KEY, pending)
             return
         try:
             p = build_plan(font, self.scheme, only=pending)
         except Exception:
-            self._pending[key] = set()
+            set_font_temp(font, PENDING_KEY, ())
             return self._notify("Sinhala Spacing", "Key check failed — see Macro "
                                 "Window.", detail=traceback.format_exc())
         # keep only glyphs still waiting for a rep; the rest are settled
-        self._pending[key] = {w[0] for w in p["waiting"]}
+        set_font_temp(font, PENDING_KEY, {w[0] for w in p["waiting"]})
         if p["set"]:
             self._run(lambda: apply_keys(font, p["set"]))
             print("Sinhala Spacing — keys set:")

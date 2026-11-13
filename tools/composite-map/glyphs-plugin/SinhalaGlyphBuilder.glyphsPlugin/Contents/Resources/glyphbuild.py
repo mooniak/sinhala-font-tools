@@ -48,6 +48,30 @@ def glyph_names(font):
     return {g.name for g in font.glyphs if g.name}
 
 
+# font.tempData key: the glyph names a font had when last checked
+KNOWN_KEY = "com.mooniak.SinhalaGlyphBuilder.knownGlyphs"
+
+
+def known_names(font):
+    """The glyph names `font` had when last checked, or None on first sight.
+
+    Kept in the font's own tempData (never saved, dies with the font), so a
+    font is only ever compared with itself. Keying a dict by id(font) broke
+    that: id() of a transient PyObjC proxy gets reused, so a freshly opened
+    font could be diffed against another font's list, and every composite
+    the other font lacked looked "new" and was rebuilt."""
+    try:
+        names = font.tempData[KNOWN_KEY]
+    except (KeyError, TypeError, AttributeError):
+        return None
+    return None if names is None else set(names)
+
+
+def remember_names(font, names=None):
+    font.tempData[KNOWN_KEY] = sorted(glyph_names(font) if names is None
+                                      else names)
+
+
 def designed_names(font):
     """Glyphs with outlines on at least one master — their own, or through
     components (a composite of still-empty parts is not designed yet)."""

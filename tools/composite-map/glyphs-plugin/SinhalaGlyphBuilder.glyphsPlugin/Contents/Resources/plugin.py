@@ -61,11 +61,25 @@ if _RES not in sys.path:
 
 import glyphbuild  # noqa: E402
 from glyphbuild import (apply_plan, build_plan, describe, font_state,  # noqa: E402
-                        glyph_names, print_plan, summary)
+                        glyph_names, known_names, print_plan, remember_names,
+                        summary)
 
 PREFIX = "com.mooniak.SinhalaGlyphBuilder"
 AUTO_DEFAULT = PREFIX + ".auto"
 POLL_SECONDS = 0.5
+
+
+def event_font(notification):
+    """The font a document notification is about, rather than whichever font
+    happens to be frontmost when it arrives."""
+    try:
+        font = notification.object().font
+        font = font() if callable(font) else font
+        if font is not None:
+            return font
+    except Exception:
+        pass
+    return Glyphs.font
 
 
 def confirm(title, text, button):
@@ -112,8 +126,7 @@ class SinhalaGlyphBuilder(GeneralPlugin):
             self.cmap = self.cat = None
             self._notify("Could not load the bundled data — see Macro Window.",
                          detail=traceback.format_exc())
-        self._known = {}       # font id -> glyph names last seen
-        self._last_poll = {}
+        self._last_poll = 0
         self._busy = False
         self._picker = None
 
@@ -183,7 +196,7 @@ class SinhalaGlyphBuilder(GeneralPlugin):
         on = not self._auto()
         Glyphs.defaults[AUTO_DEFAULT] = on
         if on and Glyphs.font is not None:
-            self._known[id(Glyphs.font)] = glyph_names(Glyphs.font)
+            remember_names(Glyphs.font)
         self._notify("Auto-build %s." % ("on" if on else "off"))
 
     def buildByName_(self, sender):
@@ -250,27 +263,25 @@ class SinhalaGlyphBuilder(GeneralPlugin):
         font = Glyphs.font
         if font is None or self._busy or self.cmap is None or not self._auto():
             return
-        key = id(font)
         now = time.time()
-        if now - self._last_poll.get(key, 0) < POLL_SECONDS:
+        if now - self._last_poll < POLL_SECONDS:
             return
-        self._last_poll[key] = now
+        self._last_poll = now
         self._check(font)
 
     def documentEvent_(self, notification):
-        font = Glyphs.font
+        font = event_font(notification)
         if font is not None and self.cmap is not None and self._auto():
             self._check(font)
 
     @objc.python_method
     def _check(self, font):
-        key = id(font)
         current = glyph_names(font)
-        if key not in self._known:
-            self._known[key] = current      # first sight: what exists is not new
-            return
-        new = current - self._known[key]
-        self._known[key] = current
+        known = known_names(font)
+        remember_names(font, current)
+        if known is None:
+            return                          # first sight: what exists is not new
+        new = current - known
         new = [n for n in new if n in self.cmap["composites"]]
         if not new:
             return
@@ -295,7 +306,7 @@ class SinhalaGlyphBuilder(GeneralPlugin):
                                     detail=traceback.format_exc())
             finally:
                 self._busy = False
-                self._known[id(font)] = glyph_names(font)
+                remember_names(font)
         print("Sinhala Glyph Builder — built:")
         for row in p["build"]:
             print("  " + describe(row))

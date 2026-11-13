@@ -741,7 +741,7 @@ class AddGlyphsWindow(object):
         finally:
             if plugin is not None:
                 plugin._busy = False
-                plugin._known[id(self.font)] = glyphbuild.glyph_names(self.font)
+                glyphbuild.remember_names(self.font)
         self.checked = {}
         self.refresh_font()
         self.report(made)
