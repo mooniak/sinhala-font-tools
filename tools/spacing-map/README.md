@@ -1,8 +1,8 @@
 # spacing-map
 
 Builds and applies the Sinhala **spacing scheme**: a YAML map of sidebearing
-relationships derived from the design-stages model, ultimately written into
-`.glyphspackage` sources as Glyphs metrics keys.
+relationships derived from the design-stages model, written into Glyphs
+sources as metrics keys (today by the bundled plugin; a CLI `apply` is planned).
 
 The model (`model/sinhala-design-dependencies.yaml`) already
 treats spacing as inheritance — the first-designed member of a spacing class

@@ -25,6 +25,8 @@ try {
 }
 
 const LGS = require(path.join(REPO, 'tools/glyphname-unicode-converter/lankaglyphset-map.js'));
+const GRAPHEMES = require(path.join(REPO, 'tools/test-generator/graphemes.js'));
+const TESTTEXTS = require(path.join(REPO, 'tools/design-stages/testtexts.js'));
 const SHAPING = require(path.join(REPO, 'tools/_generated/shaping-exceptions.js'));
 const LANKA = require(path.join(REPO, 'tools/_generated/lanka-glyph-data.js'));
 
@@ -57,7 +59,32 @@ function name(seq) {
   return r.name;
 }
 
-const names = seqs => [...new Set(seqs.map(name).filter(Boolean))];
+/**
+ * Consonant (or conjunct) + prebase vowel sign: චෙ, කේ, ක්‍රෛ. Shaping places
+ * the sign beside its base, so these are never drawn glyphs and have no place
+ * in a sidebar filter. Only sign-final clusters match: ො ෝ ෞ end in a
+ * postbase mark and are left alone.
+ */
+const PREBASE_FUSED = /^[\u0D9A-\u0DC6](?:\u0DCA\u200D[\u0D9A-\u0DC6])*[\u0DD9-\u0DDB]$/u;
+const isPrebaseFused = seq => PREBASE_FUSED.test(seq);
+
+const names = seqs => [...new Set(seqs.filter(q => !isPrebaseFused(q)).map(name).filter(Boolean))];
+
+/**
+ * LGS names of every Sinhala grapheme cluster a stage's test texts exercise.
+ *
+ * The model composes ටු, සා, ස් with features, so they are not model entries —
+ * but a font may well draw them atomically, and then they belong in the
+ * stage's filter. The test texts are the honest inventory of which clusters a
+ * stage touches: by construction they only use what is scheduled by then.
+ * Segmentation (ZWJ conjuncts, rakaransaya, yansaya, repaya, signs) is
+ * graphemes.js's job; naming stays name()'s.
+ */
+function stageGraphemes(n) {
+  const text = TESTTEXTS.stageTexts(n).join(' ');
+  const clusters = GRAPHEMES.segment(text).filter(s => s.sinhala).map(s => s.g);
+  return names([...new Set(clusters)]);
+}
 
 /**
  * The fused glyphs of a form family, as characters. sinhala-spacing.yaml has
@@ -121,6 +148,6 @@ module.exports = {
   REPO, PATHS,
   model, spacing, composites,
   LGS, SHAPING, LANKA,
-  name, names, charsOf, formGlyphs, consonants, bases, descendants,
+  name, names, stageGraphemes, charsOf, formGlyphs, consonants, bases, descendants,
   unresolved,
 };

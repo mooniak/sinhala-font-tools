@@ -127,6 +127,13 @@ Glyphs auto-builds them from anchors at export.
   **natively** (`glyphspackage.py` owns the layout — `fontinfo.plist`,
   `order.plist`, capital-escaped `glyphs/*.glyph` — and delegates plist
   content to glyphsLib). `--glyphs-out X.glyphspackage` writes a real package.
+* **Non-exporting glyphs are ignored.** A glyph with Glyphs' *Export* switch off
+  (`export = 0;`) is not in the compiled font, so it is treated as absent: it
+  doesn't gate rules in, claim a codepoint, count as an `.altN` alternate, or
+  stay in a harvested class. The validator reports one that blocks rules as
+  "present in the source but marked non-exporting" rather than plain missing.
+  The Glyphs plugin applies the same rule to the open font and re-generates
+  (in auto mode) when you toggle Export.
 * **Preservation**: only features/prefixes carrying the ownership marker
   (`# lankafea:generated v1 …`) and classes listed in the `lankafea-manifest`
   prefix are replaced on rewrite. Everything hand-written survives

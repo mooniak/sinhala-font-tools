@@ -21,7 +21,8 @@ class FontInventory:
                  cmap_names: dict[int, str] | None = None,
                  anchors: dict[str, set[str]] | None = None,
                  source_classes: dict[str, list[str]] | None = None,
-                 glyph_info: dict[str, dict] | None = None):
+                 glyph_info: dict[str, dict] | None = None,
+                 non_exporting: set[str] | None = None):
         self.glyphs = glyphs
         self.cmap = cmap
         self.cmap_names = cmap_names or {}
@@ -30,6 +31,10 @@ class FontInventory:
         # glyph name -> {"category", "subCategory"} (Glyphs sources only; empty
         # for compiled binaries, which don't carry Glyphs' glyph info).
         self.glyph_info = glyph_info or {}
+        # Glyphs marked "Export: off" in the source. They are NOT in ``glyphs``
+        # (the compiled font won't contain them, so rules must not reference
+        # them) — kept here only so reports can say why a glyph counts as missing.
+        self.non_exporting = non_exporting or set()
 
     @classmethod
     def from_font(cls, path: Path | str) -> "FontInventory":

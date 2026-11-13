@@ -36,7 +36,10 @@ MARKER = "# lankafea:generated v1 — do not edit; regenerate with lankafea"
 MANIFEST_PREFIX = "lankafea-manifest"
 INJECTED_PREFIX = "lankafea-injected"
 
-DEFAULTS = {"auto": False, "script": "auto", "level": 3, "replace": ""}
+DEFAULTS = {"auto": False, "script": "auto", "level": 3, "replace": "",
+            # {"groups": [{"group", "to", "mode"}], "alts": {"2": "dlig"}} —
+            # see lankafea.assign. Saved in font.userData, i.e. in the file.
+            "assign": {}}
 USERDATA_KEY = "com.mooniak.lankafea"
 POLL_SECONDS = 1.0
 
@@ -69,9 +72,16 @@ def build_inventory(font):
     from lankafea.inventory import FontInventory
 
     names, cmap_names, anchors, glyph_info = set(), {}, {}, {}
+    non_exporting = set()
     master_id = font.masters[0].id if font.masters else None
     for g in font.glyphs:
         if not g.name:
+            continue
+        # The glyph's "Export" checkbox. Non-exporting glyphs aren't in the
+        # compiled font, so they must not gate rules in (same as
+        # lankafea.glyphsource.inventory_from_glyphs — keep in sync).
+        if not g.export:
+            non_exporting.add(g.name)
             continue
         names.add(g.name)
         glyph_info[g.name] = {"category": g.category, "subCategory": g.subCategory}
@@ -82,16 +92,18 @@ def build_inventory(font):
             if layer is not None and layer.anchors:
                 anchors[g.name] = {a.name for a in layer.anchors if a.name}
     owned = _owned_class_names(font)
-    classes = {c.name: (c.code or "").split()
+    classes = {c.name: [m for m in (c.code or "").split() if m not in non_exporting]
                for c in font.classes if c.name and c.name not in owned}
     return FontInventory(names, set(cmap_names), cmap_names, anchors, classes,
-                         glyph_info)
+                         glyph_info, non_exporting)
 
 
 def detect_script(font):
     """'sinhala' / 'tamil' by codepoint majority, or None."""
     sinh = tamil = 0
     for g in font.glyphs:
+        if not g.export:
+            continue
         for cp in _unicodes(g):
             if 0x0D80 <= cp <= 0x0DFF:
                 sinh += 1
@@ -103,10 +115,12 @@ def detect_script(font):
 
 
 def glyph_signature(font):
-    """Cheap fingerprint of what gating depends on: names + encodings."""
+    """Cheap fingerprint of what gating depends on: names, encodings, and the
+    Export switch (toggling it changes which glyphs the font will contain)."""
     h = hashlib.md5()
     for g in font.glyphs:
-        h.update(("%s|%s;" % (g.name, g.unicodes or "")).encode("utf-8"))
+        h.update(("%s|%s|%d;" % (g.name, g.unicodes or "",
+                                 1 if g.export else 0)).encode("utf-8"))
     return h.hexdigest()
 
 
@@ -209,6 +223,19 @@ def add_control_glyphs(font):
     return added
 
 
+def _plain(value):
+    """userData comes back as NSDictionary/NSArray proxies: make them plain."""
+    if isinstance(value, (bool, int, float)):
+        return value
+    if isinstance(value, str):
+        return str(value)
+    if hasattr(value, "keys"):
+        return {str(k): _plain(value[k]) for k in value.keys()}
+    if hasattr(value, "__iter__"):
+        return [_plain(v) for v in value]
+    return value
+
+
 # --------------------------------------------------------------------------- #
 # Plugin
 # --------------------------------------------------------------------------- #
@@ -241,6 +268,7 @@ class LankaFeatures(GeneralPlugin):
         add("auto", "Auto-Generate When Glyphs Change", "toggleAuto:")
         add("report", "Dependency Report (Macro Window)", "showReport:")
         add("replace", "Replace Hand-Written Features…", "setReplace:")
+        add("assign", "Feature Assignments (dlig / ss)…", "showAssignments:")
         add("zwj", "Add ZWJ / ZWNJ Control Glyphs", "addControlGlyphs:")
         menu.addItem_(NSMenuItem.separatorItem())
         for key, title, action in (
@@ -273,7 +301,7 @@ class LankaFeatures(GeneralPlugin):
         if stored:
             for k in DEFAULTS:
                 if k in stored:
-                    cfg[k] = stored[k]
+                    cfg[k] = _plain(stored[k])
         return cfg
 
     @objc.python_method
@@ -297,6 +325,10 @@ class LankaFeatures(GeneralPlugin):
         cfg = self._config(font)
         on = lambda b: NSOnState if b else NSOffState
         self._items["auto"].setState_(on(cfg["auto"]))
+        a = cfg["assign"] or {}
+        n = len(a.get("groups") or []) + len(a.get("alts") or {})
+        self._items["assign"].setTitle_(
+            "Feature Assignments (dlig / ss)…" + (" (%d)" % n if n else ""))
         for key in ("auto", "sinhala", "tamil"):
             self._items["s_" + key].setState_(on(cfg["script"] == key))
         for lvl in range(4):
@@ -348,6 +380,40 @@ class LankaFeatures(GeneralPlugin):
         if alert.runModal() == 1000:
             self._set(font, replace=str(field.stringValue()).strip())
             self.generate(font, announce=True)
+
+    def showAssignments_(self, sender):
+        font = self._font()
+        if font is None:
+            return
+        script = self._resolve_script(font)
+        if not script:
+            return self._notify("Lanka Features",
+                                "No Sinhala or Tamil glyphs found.")
+        cfg = self._config(font)
+        try:
+            from lankafea.api import describe_assignables
+            from assignments_ui import AssignmentsDialog
+            info = describe_assignables(script, build_inventory(font),
+                                        level=cfg["level"],
+                                        use_yaml=self._have_yaml())
+        except Exception:
+            return self._notify("Lanka Features",
+                                "Could not open Feature Assignments — see Macro Window.",
+                                detail=traceback.format_exc())
+        handwritten = {f.name for f in font.features
+                       if not (f.code or "").lstrip().startswith("# lankafea:generated")}
+
+        def on_save(plain, generate_now):
+            if font not in Glyphs.fonts:
+                return
+            self._set(font, assign=plain)
+            self._signatures.pop(id(font), None)
+            if generate_now or self._config(font)["auto"]:
+                self.generate(font, announce=True)
+
+        self._assign_dialog = AssignmentsDialog(
+            font.familyName or "Untitled", info, cfg["assign"], handwritten,
+            on_save)
 
     def addControlGlyphs_(self, sender):
         font = self._font()
@@ -440,7 +506,8 @@ class LankaFeatures(GeneralPlugin):
             try:
                 from lankafea.api import build_fea
                 result = build_fea(script=script, inventory=inventory,
-                                   level=cfg["level"], use_yaml=use_yaml)
+                                   level=cfg["level"], use_yaml=use_yaml,
+                                   assign=cfg["assign"] or None)
                 err = None
             except Exception:
                 result, err = None, traceback.format_exc()
@@ -488,7 +555,14 @@ class LankaFeatures(GeneralPlugin):
                 msg += " Kept your hand-written: " + ", ".join(kept) + "."
             if not used_yaml:
                 msg += " (PyYAML missing: used built-in tables.)"
-            self._notify("Lanka Features", msg)
+            notes = list(getattr(result, "assign_warnings", None) or [])
+            if notes:
+                msg += " %d assignment note(s) — see Macro Window." % len(notes)
+                self._notify("Lanka Features", msg,
+                             detail="Lanka Features — feature assignment notes:\n  "
+                                    + "\n  ".join(notes))
+            else:
+                self._notify("Lanka Features", msg)
 
     # -- helpers -------------------------------------------------------------- #
 

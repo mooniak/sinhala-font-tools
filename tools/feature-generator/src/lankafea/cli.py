@@ -92,6 +92,7 @@ def _cmd_generate(args) -> int:
             prefer_feacomposer=args.feacomposer,
             validate=not args.no_validate,
             use_yaml=not args.no_yaml,
+            assign=_load_assign(args.assign),
         )
     except Exception as exc:  # feaLib syntax error, missing YAML, etc.
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
@@ -248,6 +249,14 @@ def _cmd_fix_source(args) -> int:
     return _fix_one_source(args.font, args.dry_run)
 
 
+def _load_assign(path):
+    """--assign FILE.json: {"groups": [...], "alts": {...}} (see lankafea.assign)."""
+    if not path:
+        return None
+    import json
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def _cmd_validate(args) -> int:
     if not args.font.exists():
         print(f"error: font not found: {args.font}", file=sys.stderr)
@@ -262,6 +271,7 @@ def _cmd_validate(args) -> int:
             level=args.level,
             inject_paths=inject_paths or None,
             use_yaml=not args.no_yaml,
+            assign=_load_assign(args.assign),
         )
     except Exception as exc:
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
@@ -302,6 +312,10 @@ def main(argv: list[str] | None = None) -> int:
     val = sub.add_parser("validate",
                          help="dependency report: satisfiable rules, blockers, orphans")
     _add_common_args(val)
+    val.add_argument("--assign", type=Path, metavar="FILE.json",
+                     help="route rule groups / alternates to dlig, ssNN... "
+                          '(JSON: {"groups": [{"group": "TouchLigatures", "to": "dlig"}], '
+                          '"alts": {"2": "ss07"}})')
     val.add_argument("--json", type=Path, metavar="OUT.json",
                      help="also write the machine-readable report here")
     val.add_argument("--verbose", action="store_true",
@@ -329,6 +343,10 @@ def main(argv: list[str] | None = None) -> int:
     gen.add_argument("--glyphs-out", type=Path, metavar="OUT.glyphs",
                      help="strip & write features back into a Glyphs source "
                           "(requires --font to be a .glyphs/.glyphspackage)")
+    gen.add_argument("--assign", type=Path, metavar="FILE.json",
+                     help="route rule groups / alternates to dlig, ssNN... "
+                          '(JSON: {"groups": [{"group": "TouchLigatures", "to": "dlig"}], '
+                          '"alts": {"2": "ss07"}})')
     gen.add_argument("--feacomposer", action="store_true",
                      help="author rules via tptq-feacomposer (default: built-in text backend)")
     gen.add_argument("--no-validate", action="store_true",

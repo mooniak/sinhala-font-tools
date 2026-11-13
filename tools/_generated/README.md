@@ -31,7 +31,7 @@ checkout of lanka-glyphsets:
 
 ```bash
 npm run build && node dist/cli/index.js export-json --format js -o tools/_generated/lanka-glyph-data.js
-node tools/_generated/build-shaping-exceptions.js
 ```
 
-then copy both files into this directory and verify with `diff -q`.
+(`shaping-exceptions.js` is built by lanka-glyphsets' own tooling; see that
+repo.) Then copy both files into this directory and verify with `diff -q`.

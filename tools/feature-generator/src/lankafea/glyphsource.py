@@ -46,9 +46,16 @@ def inventory_from_glyphs(path: Path | str) -> FontInventory:
     cmap_names: dict[int, str] = {}
     anchors: dict[str, set[str]] = {}
     glyph_info: dict[str, dict] = {}
+    non_exporting: set[str] = set()
     first_master = font.masters[0].id if font.masters else None
     for g in font.glyphs:
         if not g.name:
+            continue
+        # Glyphs' per-glyph "Export" switch (`export = 0;` in the file). Such a
+        # glyph won't exist in the compiled font, so it must not gate rules in,
+        # claim a codepoint, or be offered as an alternate.
+        if not g.export:
+            non_exporting.add(g.name)
             continue
         names.add(g.name)
         # Category/Subcategory as stored in the source (None when the designer
@@ -66,10 +73,13 @@ def inventory_from_glyphs(path: Path | str) -> FontInventory:
                 anchors[g.name] = {a.name for a in layer.anchors if a.name}
     # Harvest the source's own glyph classes (shape groups etc.) so generated
     # contextual rules can reference them (Noto model).
-    source_classes = {c.name: (c.code or "").split()
+    # Members that don't export are dropped, or the class would reference
+    # glyphs the compiled font lacks.
+    source_classes = {c.name: [m for m in (c.code or "").split()
+                               if m not in non_exporting]
                       for c in font.classes if c.name}
     return FontInventory(names, set(cmap_names.keys()), cmap_names, anchors,
-                         source_classes, glyph_info)
+                         source_classes, glyph_info, non_exporting)
 
 
 def _owned_class_names(font) -> set[str]:

@@ -23,6 +23,7 @@ covered.
 |---|---|
 | [`../model/sinhala-design-dependencies.yaml`](../model/sinhala-design-dependencies.yaml) | **Source of truth** (lives in `model/`; this folder only renders it). The whole model: metrics, skeletons, elements, spacing classes, mark systems, stages, every glyph with its parents and schedule, AI guidance, open gaps. |
 | `build.js` | Validator + generator. Checks the graph, validates/generates test texts, writes `index.html` and `stages.json`. |
+| `testtexts.js` | The model index, the test-text schedule check (`validateText`) and the deterministic drill generator (`genDrills`), plus `stageTexts(n)` — every line a stage exercises. Requiring it has no side effects, so `tools/glyphs-filters` uses it to harvest the graphemes a stage's texts touch without running a build. Structural validation stays in `build.js`. |
 | `index.html` | **Generated** visual explainer (Abhaya Libre). Never hand-edit. Three tabs: *Model & stages*; *Design units* — a searchable card per unit (construction, parents/children, skeleton, elements, metrics, spacing, family members by stage, checks); link a unit with `#u-<id>`; and *Glyph lists & texts* — per stage, copyable glyph names (new and cumulative, taken from the `tools/glyphs-filters` Stages catalogue so they match the sidebar filters) and the cumulative test text; link a stage with `#l-<n>`. |
 | `stages.json` | **Generated** machine view for other tools (chart tool, test-string generators, AI agents). |
 
@@ -142,15 +143,21 @@ taxonomy gap stays visible until it is resolved (currently none).
 
 ## Relationship to the other tools
 
-- [`tools/glyph-chart/`](../tools/glyph-chart/) — the base × mark grid used
+- [`tools/glyph-chart/`](../glyph-chart/) — the base × mark grid used
   as the Stage 8 completion-sweep gate; its planned shape-group filters share
   the same taxonomy.
-- [`tools/composite-map/`](../tools/composite-map/) — reads
+- [`tools/composite-map/`](../composite-map/) — reads
   `model/sinhala-design-dependencies.yaml` directly as its `family_model` to decide
   which consonant+mark forms are genuinely compositional vs. fused/kept-drawn;
   writes `model/sinhala-composites.yaml`.
-- `tools/feature-generator/`, in the
-  [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) repo —
-  OpenType feature generation for the Stage 9 conjunct layer.
+- [`tools/feature-generator/`](../feature-generator/) — OpenType feature
+  generation (from the
+  [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets) standard) for
+  the Stage 9 conjunct layer.
+- [`tools/glyphs-filters/`](../glyphs-filters/) — two-way: `build.js` takes its
+  per-stage glyph *names* from that tool's Stages catalogue, and that tool
+  requires `testtexts.js` to learn which graphemes each stage's test texts
+  exercise (so composed clusters like සු become stage filter members). The
+  coupling is through modules, not generated files, so neither can go stale.
 - `stages.json` is the integration point: per-stage glyph lists, generated
   drills and cumulative counts, consumable by any of the above.

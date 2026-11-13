@@ -19,6 +19,19 @@ If you add, edit, or remove a file here, copy the change into both consumers
 by hand (there's no automated sync yet) — see the README in each of those
 directories for the exact mapping.
 
+## Tamil
+
+The `tamil-*.md` files (`tamil-alphabet`, `tamil-numerals`, `tamil-prose`, `tamil-kern-pairs`, plus the older
+`tamil-pangram`) are Tamil test text. They live here, not in a repo of their own, so they ride the same vendor path to
+the two consumers above. The proof tool shows them only to fonts that cover Tamil — see
+`mnik/tools/proofpdf/gates.json` (`scripts`) in font-repos; it needs no change when a Tamil file is edited, only when
+one is added (list it there).
+
+Imported from [enathu/tamil-font-testing-page](https://github.com/enathu/tamil-font-testing-page) (Niram; itself
+derived from Pablo Impallari's Font Testing Page): the akshara lettering sheet, prose, layout article and Tamil kern
+strings, with the markup stripped. Its Latin text, hinting charset, world-script blocks and Latin kerning strings were
+not imported. Credits are in each file's frontmatter (`source:` is the upstream repo).
+
 ## Generated text
 
 [`generated/`](generated/) holds realistic text written by

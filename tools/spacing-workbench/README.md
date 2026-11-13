@@ -17,8 +17,8 @@ Serve the repo root and open the page (a plain `file://` open also works in
 most browsers):
 
 ```sh
-python3 -m http.server 8000      # from the repo root
-open http://localhost:8000/tools/spacing-workbench/
+npm start                        # from the repo root, opens the tools hub
+# or: python3 -m http.server 8000 && open http://localhost:8000/tools/spacing-workbench/
 ```
 
 Drop a `.ttf`/`.otf` anywhere on the page. Shaping uses HarfBuzz

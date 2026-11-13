@@ -9,7 +9,9 @@ becomes a live view of the model instead of a hand-curated list that drifts.
 sinhala-design-dependencies.yaml ┐
 sinhala-spacing.yaml             ├─►  build.js  ─►  filters/CustomFilter*.plist
 sinhala-composites.yaml          │                  filters/manifest.json
-tools/_generated/*.js            ┘                  filters/README.md
+tools/_generated/*.js            │                  filters/README.md
+design-stages/testtexts.js       ┤   (per-stage test texts)
+test-generator/graphemes.js      ┘   (cluster segmentation)
 ```
 
 ## Usage
@@ -67,14 +69,38 @@ One file, `CustomFilter MNIK Sinhala.plist`, holding eight folders:
 
 | Folder | What it slices by | Subfolders |
 |---|---|---|
-| Stages | design schedule | by stage · cumulative |
+| Stages | design schedule | by stage · cumulative · composable graphemes (×2) |
 | Structure | skeletons and structural elements | skeletons · elements |
 | Spacing | sidebearing classes | left · right · work sets |
 | Mark forms | the 20 form families and the Stage 8 sweeps | ි · ු · ් · roll-ups |
 | Composites | build vs keep-drawn decisions | tier · source · keep-drawn reason |
 | Conjuncts | rakaransaya/repaya/yansaya — applies *and* excluded | — |
 | Dependencies | what reopens when a decision changes | metric closures · archetype descendants |
-| Inventory | level, frequency, density, type, coverage, gaps | six |
+| Inventory | level, frequency, density, type, gaps | five |
+
+### Why the stage filters hold composed graphemes
+
+The model schedules *design units*: letters, and the form families where a
+mark fuses irregularly. It says nothing about ටු, සා or ස්, because those are
+feature output — the shaper composes them at run time, so there is no glyph to
+schedule.
+
+A real font routinely disagrees. Draw සු as its own glyph and the model has no
+name for the thing you just drew, so the sidebar can't show it to you.
+
+So each stage's filters also carry **every Sinhala grapheme cluster that
+stage's test texts exercise** — the authored `teststrings` plus the
+deterministic drills, read through `tools/design-stages/testtexts.js`. That set
+is the honest inventory of what the stage touches, because the build already
+guarantees a stage's texts use nothing scheduled later. Clusters are segmented
+by `tools/test-generator/graphemes.js` (ZWJ conjuncts, rakaransaya, yansaya,
+repaya, then signs) and named by the usual `name()` in `sources.js`.
+
+This is additive and safe: a Glyphs list filter silently ignores entries the
+font has no glyph for, so `Stage 1 — Bootstrap` shows `sU-sinh` only in a font
+that actually drew it. The `Composable graphemes` subfolders hold the cluster
+names on their own, for when you want to see just those rather than the
+must-draw core mixed in.
 
 `--split` writes them as eight separate `CustomFilter<Section>.plist` files
 instead (eight sidebar headings, no top-level folder); `--flat` drops the
@@ -107,5 +133,5 @@ fam-i-ndi, fam-i-nyi and fam-i-tthi's `conjunct_hosts` (see gap
 |---|---|
 | `build.js` | CLI: report, render, `plutil -lint`, write |
 | `catalogue.js` | **The catalogue.** Every filter, its members and its provenance |
-| `sources.js` | Loads the YAMLs + generated JS; character sequence → LGS name |
+| `sources.js` | Loads the YAMLs + generated JS; character sequence → LGS name; `stageGraphemes(n)` |
 | `plist.js` | Minimal `CustomFilter*.plist` writer + glyph-name sanity check |

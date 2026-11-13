@@ -149,16 +149,40 @@ function familyFormsByStage(id) {
     }
   }
   const stageNums = [...byStage.keys()].sort((a, b) => a - b);
+
+  // The clusters each stage's test texts exercise. The model composes ටු, සා,
+  // ස් with features, so they are not entries — but a font may draw them
+  // atomically, and then they belong in the stage's filter. Glyphs ignores
+  // list entries the font has no glyph for, so this is purely additive.
+  const graphemesOf = new Map(stageNums.map(n => [n, S.stageGraphemes(n)]));
+
   sec.group('By stage');
   for (const n of stageNums) {
     const st = model.stages.find(s => s.n === n) || {};
-    sec.add(`Stage ${n} — ${st.name || ''}`.trim(), byStage.get(n), 'glyphs[].stage');
+    sec.addNames(`Stage ${n} — ${st.name || ''}`.trim(),
+      [...S.names(byStage.get(n)), ...graphemesOf.get(n)],
+      'glyphs[].stage + stages[].teststrings graphemes');
   }
   sec.group('Cumulative — what should exist by now');
   let cum = [];
   for (const n of stageNums) {
-    cum = cum.concat(byStage.get(n));
-    sec.add(`Through Stage ${n}`, cum.slice(), 'glyphs[].stage (cumulative)');
+    cum = cum.concat(S.names(byStage.get(n)), graphemesOf.get(n));
+    sec.addNames(`Through Stage ${n}`, cum.slice(),
+      'glyphs[].stage + stages[].teststrings graphemes (cumulative)');
+  }
+  // Stage 0 has no test text; an empty filter is a signal, not a member.
+  const stagesWithText = stageNums.filter(n => graphemesOf.get(n).length);
+  sec.group('Composable graphemes — may be drawn atomically');
+  for (const n of stagesWithText) {
+    sec.addNames(`Stage ${n} graphemes`, graphemesOf.get(n),
+      'stages[].teststrings + generated drills');
+  }
+  sec.group('Composable graphemes — cumulative');
+  let cumG = [];
+  for (const n of stagesWithText) {
+    cumG = cumG.concat(graphemesOf.get(n));
+    sec.addNames(`Through Stage ${n} graphemes`, cumG.slice(),
+      'stages[].teststrings + generated drills (cumulative)');
   }
 }
 
@@ -369,16 +393,9 @@ function familyFormsByStage(id) {
   sec.add('Density · UNCLASSIFIED bases (gap density-incomplete)',
     S.bases().filter(b => !classified.has(b)), 'density vs glyphs[type=base]');
 
-  sec.group('Test-text coverage');
-  const SINHALA = /[඀-෿]/;
-  for (const st of model.stages) {
-    const t = st.teststrings || {};
-    const text = [...(t.drills || []), ...(t.words || []), ...(t.sentences || [])].join(' ');
-    const chars = [...new Set([...text].filter(c => SINHALA.test(c)))];
-    if (chars.length) {
-      sec.add(`Exercised by Stage ${st.n} test texts`, chars, 'stages[].teststrings');
-    }
-  }
+  // Test-text coverage used to live here as per-character "Exercised by Stage
+  // N" filters. Stages → Composable graphemes supersedes them: same source,
+  // but grapheme clusters rather than bare characters.
   sec.group(null);
   sec.add('OPEN — provisional spacing (gap rare-spacing-provisional)',
     Object.keys(spacing.flags || {}), 'sinhala-spacing.yaml flags');

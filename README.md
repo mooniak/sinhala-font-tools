@@ -5,8 +5,7 @@ Design research, design processes and design-side tooling for Sinhala type, by
 
 This repo answers **how to design a Sinhala typeface** — anatomy, what order to
 draw glyphs in, how spacing inherits, which forms are composites, what to test
-with, and the browser tools to look at all of it. It deliberately stops where
-engineering begins.
+with, and the browser tools to look at all of it. 
 
 > **Renaming.** This repository is being renamed from `sinhala-font-tools` to
 > **`sinhala-font-design`** to match that scope. Existing clone URLs will keep
@@ -50,9 +49,14 @@ All three live in [model/](model/); see [model/README.md](model/README.md).
 
 - **[tools/glyph-chart/](tools/glyph-chart/)** — browser font tester: a grid of
   base letters × vowel marks/compound signs. Drop in a `.ttf`/`.otf`/`.woff`.
+- **[tools/spacing-workbench/](tools/spacing-workbench/)** — browser tool for
+  authoring the spacing scheme against a real font: edit classes and values,
+  preview the font with the scheme applied, export the scheme and per-font values.
 - **[tools/spacing-map/](tools/spacing-map/)** — builds `model/sinhala-spacing.yaml`
-  from the stages model and audits a font's sidebearings against it (writing
-  metrics keys into `.glyphspackage` sources is on its roadmap).
+  from the stages model, audits a font's sidebearings against it, and feeds the
+  workbench. Its **Sinhala Spacing** Glyphs plugin writes the scheme into the
+  open font as metrics keys (a CLI `apply` for `.glyphspackage` sources is
+  still on the roadmap).
 - **[tools/composite-map/](tools/composite-map/)** — builds the composite map
   and rebuilds atomic glyphs into proper composites in Glyphs sources; its
   **Sinhala Glyph Builder** Glyphs plugin adds glyphs from a visual catalogue
@@ -97,8 +101,11 @@ All three live in [model/](model/); see [model/README.md](model/README.md).
 
 ## Getting started
 
-Most of the browser tools are static — open the `index.html` and drop a font in,
-no build step. The Python tools (`spacing-map`, `composite-map`) each have their
+The tools are listed on a hub page. Run `npm start` (zero-dependency
+[serve.js](serve.js), http://localhost:8000) and open any tool from it; the
+catalogue is [tools/tools.json](tools/tools.json), so add new tools there. Most
+browser tools are static — open the `index.html` and drop a font in, no build
+step (a few fetch data and need to be served, which `npm start` does). The Python tools (`spacing-map`, `composite-map`) each have their
 own README with setup instructions. `tools/glyphs-filters` reuses `js-yaml` from
 `tools/design-stages/node_modules`.
 
@@ -113,6 +120,24 @@ If you are **starting a Sinhala font**, the order is roughly:
 3. Apply spacing and composites with the tools above.
 4. Generate features and validate with lanka-glyphsets (`mnik-lankafea`).
 5. Build, QA, proof and release with [`mnik`](https://github.com/mooniak/mooniak-font-tools).
+
+## Installing the Glyphs plugins
+
+Three plugins work on the open font in Glyphs 3: **Sinhala Glyph Builder**
+(add glyphs from the visual catalogue, build composites), **Sinhala Spacing**
+(apply the spacing scheme as metrics keys) and **Lanka Features** (generate
+OpenType features). Install all three from the repo root with:
+
+```sh
+./install-glyphs-plugins.sh
+```
+
+then restart Glyphs; they appear in the **Glyph** menu. The plugins are
+symlinked into `~/Library/Application Support/Glyphs 3/Plugins/`, so a
+`git pull` takes effect on the next restart. Use `--copy` for standalone
+copies that don't depend on this checkout (re-run it to update), and
+`--uninstall` to remove them. Each plugin's own README is under its tool's
+`glyphs-plugin/` folder.
 
 ## Licence
 

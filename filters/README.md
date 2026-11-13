@@ -15,26 +15,46 @@ The design schedule from sinhala-design-dependencies.yaml. The cumulative filter
 
 | Folder | Filter | Glyphs | Generated from |
 |---|---|---:|---|
-| By stage | Stage 1 — Bootstrap | 10 | `glyphs[].stage` |
-| By stage | Stage 2 — Bowl derivatives | 7 | `glyphs[].stage` |
-| By stage | Stage 3 — Arch family and spacing marks | 13 | `glyphs[].stage` |
-| By stage | Stage 4 — High-frequency completion | 30 | `glyphs[].stage` |
-| By stage | Stage 5 — Loops, diagonals and long marks | 47 | `glyphs[].stage` |
-| By stage | Stage 6 — Aspirates and dense derivatives | 51 | `glyphs[].stage` |
-| By stage | Stage 7 — The hang system | 26 | `glyphs[].stage` |
-| By stage | Stage 8 — Completion sweep | 210 | `glyphs[].stage` |
-| By stage | Stage 9 — Conjunct layer | 183 | `glyphs[].stage` |
-| By stage | Stage 10 — Long tail and polish | 29 | `glyphs[].stage` |
-| Cumulative — what should exist by now | Through Stage 1 | 10 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 2 | 17 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 3 | 30 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 4 | 60 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 5 | 107 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 6 | 158 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 7 | 184 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 8 | 277 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 9 | 459 | `glyphs[].stage (cumulative)` |
-| Cumulative — what should exist by now | Through Stage 10 | 468 | `glyphs[].stage (cumulative)` |
+| By stage | Stage 1 — Bootstrap | 15 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 2 — Bowl derivatives | 15 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 3 — Arch family and spacing marks | 35 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 4 — High-frequency completion | 79 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 5 — Loops, diagonals and long marks | 120 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 6 — Aspirates and dense derivatives | 130 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 7 — The hang system | 96 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 8 — Completion sweep | 251 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 9 — Conjunct layer | 210 | `glyphs[].stage + stages[].teststrings graphemes` |
+| By stage | Stage 10 — Long tail and polish | 54 | `glyphs[].stage + stages[].teststrings graphemes` |
+| Cumulative — what should exist by now | Through Stage 1 | 15 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 2 | 25 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 3 | 53 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 4 | 120 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 5 | 220 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 6 | 331 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 7 | 404 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 8 | 446 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 9 | 632 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Cumulative — what should exist by now | Through Stage 10 | 653 | `glyphs[].stage + stages[].teststrings graphemes (cumulative)` |
+| Composable graphemes — may be drawn atomically | Stage 1 graphemes | 13 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 2 graphemes | 15 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 3 graphemes | 32 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 4 graphemes | 69 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 5 graphemes | 118 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 6 graphemes | 130 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 7 graphemes | 96 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 8 graphemes | 45 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 9 graphemes | 33 | `stages[].teststrings + generated drills` |
+| Composable graphemes — may be drawn atomically | Stage 10 graphemes | 37 | `stages[].teststrings + generated drills` |
+| Composable graphemes — cumulative | Through Stage 1 graphemes | 13 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 2 graphemes | 23 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 3 graphemes | 48 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 4 graphemes | 105 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 5 graphemes | 203 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 6 graphemes | 314 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 7 graphemes | 387 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 8 graphemes | 419 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 9 graphemes | 429 | `stages[].teststrings + generated drills (cumulative)` |
+| Composable graphemes — cumulative | Through Stage 10 graphemes | 453 | `stages[].teststrings + generated drills (cumulative)` |
 
 ## Structure
 
@@ -225,14 +245,4 @@ Shipping targets and qualitative tags, plus what the stage test texts actually e
 | Density | Density · medium | 3 | `density` |
 | Density | Density · low | 6 | `density` |
 | Density | Density · UNCLASSIFIED bases (gap density-incomplete) | 28 | `density vs glyphs[type=base]` |
-| Test-text coverage | Exercised by Stage 1 test texts | 7 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 2 test texts | 7 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 3 test texts | 14 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 4 test texts | 24 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 5 test texts | 26 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 6 test texts | 33 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 7 test texts | 31 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 8 test texts | 17 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 9 test texts | 25 | `stages[].teststrings` |
-| Test-text coverage | Exercised by Stage 10 test texts | 19 | `stages[].teststrings` |
 | — | OPEN — provisional spacing (gap rare-spacing-provisional) | 10 | `sinhala-spacing.yaml flags` |

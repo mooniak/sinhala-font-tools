@@ -9,7 +9,7 @@ from . import generators, injection as inj_mod
 from .assembler import assemble
 from .inventory import FontInventory
 from .scripts import ScriptProfile, get_profile
-from .validation import ValidationReport, analyze, gate, summarize
+from .validation import ValidationReport, analyze, flag_non_exporting, gate, summarize
 from .verify import check_syntax
 from .yamlloader import load_specs, synth_specs
 
@@ -22,6 +22,7 @@ class BuildResult:
     profile: ScriptProfile
     doc: "object" = None            # the gated FeatureDoc (for Glyphs-source writeback)
     raw_snippets: list[str] = field(default_factory=list)
+    assign_warnings: list[str] = field(default_factory=list)
 
 
 def build_fea(
@@ -32,13 +33,19 @@ def build_fea(
     prefer_feacomposer: bool = False,
     validate: bool = True,
     use_yaml: bool = True,
+    assign=None,
 ) -> BuildResult:
+    """``assign`` — optional feature assignments (see ``lankafea.assign``): a plain
+    dict ``{"groups": [...], "alts": {...}}`` or an ``Assign``."""
+    from . import assign as assign_mod
+    asg = assign if isinstance(assign, assign_mod.Assign) else assign_mod.parse_assign(assign)
     profile = get_profile(script, level=level)
     # use_yaml=False runs standalone: specs come from the built-in codepoint tables
     # and alternates from the font inventory, with no glyphset YAML at all.
     specs = load_specs(profile) if use_yaml else synth_specs(profile)
 
-    doc = generators.generate(specs, alt_names=inventory.glyphs)
+    doc = generators.generate(specs, alt_names=inventory.glyphs,
+                              alt_targets=assign_mod.alt_targets(asg))
 
     raw_snips: list[str] = []
     if inject_paths:
@@ -50,13 +57,20 @@ def build_fea(
     from .adaptation import add_variant_selection
     variant_findings = add_variant_selection(doc, profile, inventory)
 
+    # User routing of rule groups into dlig / ssNN / ... (after every generator
+    # and injection has contributed, so any group can be addressed).
+    group_warnings, moved = assign_mod.apply_groups(doc, asg)
+
     # Adopt the font's own names for control glyphs (e.g. U+200D encoded as
     # 'zwj') before gating, so a nonstandard name doesn't kill the rules.
     from .aliases import apply_aliases, compute_aliases
     apply_aliases(doc, compute_aliases(inventory))
 
     doc, report = gate(doc, inventory.glyphs)
+    flag_non_exporting(report, inventory.non_exporting)
     report.anchor_findings.extend(variant_findings)
+    assign_warnings = (list(asg.warnings) + group_warnings
+                       + assign_mod.consumer_warnings(doc, moved))
 
     fea = assemble(doc, profile.language_systems, prefer_feacomposer=prefer_feacomposer)
     if raw_snips:
@@ -66,7 +80,8 @@ def build_fea(
         check_syntax(fea, inventory.glyphs)
 
     return BuildResult(fea=fea, report=report, inventory=inventory,
-                       profile=profile, doc=doc, raw_snippets=raw_snips)
+                       profile=profile, doc=doc, raw_snippets=raw_snips,
+                       assign_warnings=assign_warnings)
 
 
 def validate_font(
@@ -75,6 +90,7 @@ def validate_font(
     level: int = 3,
     inject_paths: list[Path] | None = None,
     use_yaml: bool = True,
+    assign=None,
 ) -> ValidationReport:
     """Dependency validation only: generate candidates, analyze, report.
 
@@ -84,7 +100,10 @@ def validate_font(
     profile = get_profile(script, level=level)
     specs = load_specs(profile) if use_yaml else synth_specs(profile)
 
-    doc = generators.generate(specs, alt_names=inventory.glyphs)
+    from . import assign as assign_mod
+    asg = assign if isinstance(assign, assign_mod.Assign) else assign_mod.parse_assign(assign)
+    doc = generators.generate(specs, alt_names=inventory.glyphs,
+                              alt_targets=assign_mod.alt_targets(asg))
     if inject_paths:
         injection = inj_mod.load_injection(inject_paths, profile)
         inj_mod.merge(doc, injection)
@@ -92,12 +111,14 @@ def validate_font(
     from .adaptation import (add_variant_selection, anchor_findings,
                              satisfied_sign_counts)
     variant_findings = add_variant_selection(doc, profile, inventory)
+    assign_mod.apply_groups(doc, asg)
 
     from .aliases import apply_aliases, compute_aliases
     apply_aliases(doc, compute_aliases(inventory))
 
     checks, live_class_members = analyze(doc, inventory.glyphs)
     report = summarize(checks, live_class_members)
+    flag_non_exporting(report, inventory.non_exporting)
     report.anchor_findings = variant_findings + anchor_findings(
         inventory, satisfied_sign_counts(checks, profile), profile)
 
@@ -112,3 +133,54 @@ def validate_font(
     report.glyph_info_present = gi["present"]
     report.glyph_info_findings = gi["findings"]
     return report
+
+
+@dataclass
+class Assignables:
+    """What the assignment dialog can offer for one font."""
+    groups: list = field(default_factory=list)     # assign.GroupInfo
+    alts: list = field(default_factory=list)       # AltInfo
+
+
+@dataclass
+class AltInfo:
+    index: int
+    count: int
+    examples: list[str]
+    default_tag: str
+
+
+def describe_assignables(
+    script: str,
+    inventory: FontInventory,
+    level: int = 3,
+    use_yaml: bool = True,
+) -> Assignables:
+    """List the rule groups and alternate indices the user may route to dlig/ssNN.
+
+    Groups are the generator's lookups *before* the user's own routing, with
+    ``present`` = how many of their rules the font can actually satisfy.
+    """
+    import copy
+    from . import assign as assign_mod
+    from .adaptation import add_variant_selection
+    from .aliases import apply_aliases, compute_aliases
+
+    profile = get_profile(script, level=level)
+    specs = load_specs(profile) if use_yaml else synth_specs(profile)
+    doc = generators.generate(specs, alt_names=inventory.glyphs)
+    add_variant_selection(doc, profile, inventory)
+    apply_aliases(doc, compute_aliases(inventory))
+
+    groups = assign_mod.list_groups(doc)
+    gated, _ = gate(copy.deepcopy(doc), inventory.glyphs)
+    kept = {lk.name: len(lk.rules) for f in gated.features for lk in f.lookups}
+    for g in groups:
+        g.present = kept.get(g.name, 0)
+
+    alts = [
+        AltInfo(idx, len(bases), bases[:6], assign_mod.default_alt_tag(idx))
+        for idx, bases in generators.alt_index_counts(
+            generators.alt_groups(specs, inventory.glyphs)).items()
+    ]
+    return Assignables(groups=groups, alts=alts)

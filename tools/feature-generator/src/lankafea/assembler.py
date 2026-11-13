@@ -9,7 +9,7 @@ from .feacomposer_adapter import get_backend, TextBackend
 FEATURE_ORDER = [
     "ccmp", "locl", "akhn", "rphf", "blwf", "half", "pstf", "vatu", "cjct",
     "pres", "abvs", "blws", "psts", "haln", "calt", "dist",
-    "aalt",
+    "aalt", "liga", "clig", "dlig", "hlig",
     *[f"ss{n:02d}" for n in range(1, 21)],
 ]
 

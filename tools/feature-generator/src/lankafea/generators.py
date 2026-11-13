@@ -536,24 +536,20 @@ def _alt_base_and_index(name: str) -> tuple[str, int] | None:
     return None
 
 
-def build_alternates(specs: ScriptSpecs, names: set[str] | None = None) -> list[Feature]:
-    """aalt (access-all-alternates) + one ssNN per alternate index.
+def alt_groups(specs: ScriptSpecs, names: set[str] | None = None) -> dict[str, dict[int, str]]:
+    """base -> {alt index: alt glyph name (namespace stripped)}.
 
     Alternate glyphs are discovered from the YAML specs by default, or from ``names``
     (the font's own glyph inventory) when given — the latter is used in the YAML-free
     path so alternates come straight from the font. Names are matched with the
     namespace stripped so ``isign.alt1-sinh`` -> base ``isign``.
     """
-    profile = specs.profile
-    ns = profile.namespace
-    suffix = f"-{ns}"
-
+    suffix = f"-{specs.profile.namespace}"
     if names is not None:
         candidate_names = [n[:-len(suffix)] if n.endswith(suffix) else n for n in names]
     else:
         candidate_names = [g.name for g in specs.glyphs]
 
-    # Collect base -> {index: altname} from all glyphs carrying a .alt suffix.
     groups: dict[str, dict[int, str]] = {}
     for gname in candidate_names:
         parsed = _alt_base_and_index(gname)
@@ -561,35 +557,68 @@ def build_alternates(specs: ScriptSpecs, names: set[str] | None = None) -> list[
             continue
         base, idx = parsed
         groups.setdefault(base, {})[idx] = gname
+    return groups
+
+
+def alt_index_counts(groups: dict[str, dict[int, str]]) -> dict[int, list[str]]:
+    """alt index -> sorted base names that have an alternate at that index."""
+    out: dict[int, list[str]] = {}
+    for base, alts in groups.items():
+        for idx in alts:
+            out.setdefault(idx, []).append(base)
+    return {i: sorted(b) for i, b in sorted(out.items())}
+
+
+def build_alternates(specs: ScriptSpecs, names: set[str] | None = None,
+                     alt_targets: dict[int, str] | None = None) -> list[Feature]:
+    """aalt (access-all-alternates) + one feature per alternate index.
+
+    By default index N feeds ``ssNN``. ``alt_targets`` re-routes an index to another
+    tag (``{2: "dlig"}``) or, with ``"none"``, keeps it reachable through aalt only.
+    Several indices routed to one tag stay in separate lookups (lower index first,
+    so it wins for a base glyph both define).
+    """
+    ns = specs.profile.namespace
+    alt_targets = alt_targets or {}
+    groups = alt_groups(specs, names)
 
     features: list[Feature] = []
-    if groups:
-        aalt = Feature("aalt")
-        aalt_lk = Lookup("AllAlternates")
-        for base, alts in sorted(groups.items()):
-            members = [with_ns(base, ns)] + [
-                with_ns(alts[i], ns) for i in sorted(alts)
-            ]
-            aalt_lk.rules.append(Rule(
-                kind="alternate", inputs=[with_ns(base, ns)], output=members,
-                comment=f"alternates of {base}",
-            ))
-        aalt.lookups = [aalt_lk]
-        features.append(aalt)
+    if not groups:
+        return features
 
-        # ssNN: alt index N -> feature ssNN, single substitution from the default.
-        ss: dict[int, Lookup] = {}
-        for base, alts in sorted(groups.items()):
-            for idx, altname in alts.items():
-                lk = ss.setdefault(idx, Lookup(f"StylisticSet{idx:02d}"))
-                lk.rules.append(Rule(
-                    kind="single", inputs=[with_ns(base, ns)],
-                    output=with_ns(altname, ns), comment=f"{base} -> {altname}",
-                ))
-        for idx, lk in sorted(ss.items()):
-            f = Feature(f"ss{idx:02d}")
-            f.lookups = [lk]
+    aalt = Feature("aalt")
+    aalt_lk = Lookup("AllAlternates")
+    for base, alts in sorted(groups.items()):
+        members = [with_ns(base, ns)] + [with_ns(alts[i], ns) for i in sorted(alts)]
+        aalt_lk.rules.append(Rule(
+            kind="alternate", inputs=[with_ns(base, ns)], output=members,
+            comment=f"alternates of {base}",
+        ))
+    aalt.lookups = [aalt_lk]
+    features.append(aalt)
+
+    per_index: dict[int, Lookup] = {}
+    for base, alts in sorted(groups.items()):
+        for idx, altname in alts.items():
+            tag = alt_targets.get(idx, f"ss{idx:02d}")
+            if tag == "none":
+                continue
+            name = (f"StylisticSet{idx:02d}" if tag == f"ss{idx:02d}"
+                    else f"Alternates{idx:02d}_{tag}")
+            lk = per_index.setdefault(idx, Lookup(name))
+            lk.rules.append(Rule(
+                kind="single", inputs=[with_ns(base, ns)],
+                output=with_ns(altname, ns), comment=f"{base} -> {altname}",
+            ))
+
+    by_tag: dict[str, Feature] = {}
+    for idx, lk in sorted(per_index.items()):
+        tag = alt_targets.get(idx, f"ss{idx:02d}")
+        f = by_tag.get(tag)
+        if f is None:
+            f = by_tag[tag] = Feature(tag)
             features.append(f)
+        f.lookups.append(lk)
     return features
 
 
@@ -597,7 +626,8 @@ def build_alternates(specs: ScriptSpecs, names: set[str] | None = None) -> list[
 # Top-level assembly of all generated features
 # --------------------------------------------------------------------------- #
 
-def generate(specs: ScriptSpecs, alt_names: set[str] | None = None) -> FeatureDoc:
+def generate(specs: ScriptSpecs, alt_names: set[str] | None = None,
+             alt_targets: dict[int, str] | None = None) -> FeatureDoc:
     doc = FeatureDoc()
     akhn_feat, halant_lookups = build_akhn(specs)
     doc.features.append(akhn_feat)
@@ -630,7 +660,8 @@ def generate(specs: ScriptSpecs, alt_names: set[str] | None = None) -> FeatureDo
     dist = build_dist(specs)
     if dist:
         doc.features.append(dist)
-    doc.features.extend(build_alternates(specs, names=alt_names))
+    doc.features.extend(build_alternates(specs, names=alt_names,
+                                         alt_targets=alt_targets))
     # Drop any feature that ended up with no lookups/rules.
     doc.features = [f for f in doc.features if any(lk.rules for lk in f.lookups)]
     return doc

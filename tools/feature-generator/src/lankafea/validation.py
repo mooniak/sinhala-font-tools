@@ -28,6 +28,24 @@ HINTS = {
 }
 
 
+NON_EXPORTING_HINT = (
+    "present in the source but marked non-exporting — turn Export on for it "
+    "in Glyphs if rules should use it"
+)
+
+
+def flag_non_exporting(report: "ValidationReport", non_exporting: set[str]) -> None:
+    """Re-label blockers that are in the source but set not to export.
+
+    The inventory leaves such glyphs out, so they surface as ordinary missing
+    glyphs; without this the report says "missing" about a glyph the designer
+    can plainly see in the font window.
+    """
+    for b in report.blockers:
+        if b.glyph in non_exporting:
+            b.hint = NON_EXPORTING_HINT
+
+
 def _is_class_ref(token: str) -> bool:
     return token.startswith("@")
 
