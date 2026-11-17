@@ -1,6 +1,6 @@
-"""Rename a Tamil Glyphs package to the standard's glyph and anchor names.
+"""Rename a Tamil Glyphs source (.glyphspackage or .glyphs) to the standard's glyph and anchor names.
 
-    python -m lankafea.migrate SOURCE.glyphspackage [--aliases FILE]
+    python -m lankafea.migrate SOURCE.glyphspackage | SOURCE.glyphs [--aliases FILE]
                                [--adopt-legacy-names] [--apply]
 
 Without --apply nothing is written: the report lists every rename, how many places each
@@ -54,7 +54,8 @@ def glyph_file(name: str) -> str:
 
 def _token_regex(names) -> re.Pattern:
     alt = "|".join(re.escape(n) for n in sorted(names, key=len, reverse=True))
-    return re.compile(rf"(?<!{NAME_CHARS})({alt})(?!{NAME_CHARS})")
+    # a name may also follow the escaped newline (\012) a .glyphs file uses inside code strings
+    return re.compile(rf"(?:(?<!{NAME_CHARS})|(?<=\\012))({alt})(?!{NAME_CHARS})")
 
 
 def plan_glyph_renames(inv, aliases: dict[str, str]) -> tuple[dict[str, str], list[str]]:
@@ -82,11 +83,17 @@ def plan_glyph_renames(inv, aliases: dict[str, str]) -> tuple[dict[str, str], li
 
 # --- anchors ------------------------------------------------------------------------------
 
-ANCHOR_BLOCK = re.compile(r'\{\nname = "(?P<name>[^"\n]+)";(?:\npos = \((?P<pos>[^)\n]*)\);)?\n\}')
+# A package/v3 anchor is `pos = (x,y);`, a v2 .glyphs one `position = "{x, y}";`; either may be
+# absent (a mark anchor at 0,0). The position line is carried over verbatim.
+ANCHOR_BLOCK = re.compile(r'\{\nname = "(?P<name>[^"\n]+)";(?P<pos>\n(?:pos|position) = [^\n]*;)?\n\}')
 
 
 def _anchors(text: str):
     return [(m.group("name"), m.group("pos")) for m in ANCHOR_BLOCK.finditer(text)]
+
+
+def is_tamil(name: str) -> bool:
+    return name.endswith("-taml") or "-taml." in name
 
 
 def plan_anchor_renames(glyph_texts: dict[str, str], names_after: dict[str, str]):
@@ -98,6 +105,8 @@ def plan_anchor_renames(glyph_texts: dict[str, str], names_after: dict[str, str]
     problems: list[str] = []
     for gname, text in glyph_texts.items():
         std = names_after.get(gname, gname)
+        if not is_tamil(std):
+            continue
         sign = SIGN_ANCHOR.get(std)
         if sign is None:
             m = ALT_RE.match(std)
@@ -126,7 +135,7 @@ def rewrite_anchors(text: str, mapping: dict[str, list[str]], is_sign: bool,
     name, the first); a base's ``legacy`` becomes every name for it."""
     def repl(m: re.Match) -> str:
         name, pos = m.group("name"), m.group("pos")
-        posline = f"\npos = ({pos});" if pos is not None else ""
+        posline = pos or ""
         under = name.startswith("_")
         key = name[1:] if under else name
         if key not in mapping:
@@ -141,8 +150,65 @@ def rewrite_anchors(text: str, mapping: dict[str, list[str]], is_sign: bool,
 
 # --- driver -------------------------------------------------------------------------------
 
+# A glyph's layers (and so its anchors) follow its `glyphname` line, whatever keys (category,
+# color ...) precede it, so a glyph's text is "from this glyphname to the next one".
+GLYPH_START = re.compile(r'^glyphname = "?([^";\n]+)"?;', re.M)
+
+
+def _migrate_file(path: Path, aliases_file, adopt_legacy, apply) -> int:
+    """A single .glyphs file: the same renames, done on glyph entries inside one text."""
+    inv = inventory_from_glyphs(str(path))
+    extra = load_alias_file(aliases_file) if aliases_file else None
+    aliases = compute_aliases(inv, extra=extra, legacy_tamil=adopt_legacy)
+    renames, problems = plan_glyph_renames(inv, aliases)
+
+    text = path.read_text(encoding="utf8")
+    starts = [(m.start(), m.group(1)) for m in GLYPH_START.finditer(text)]
+    head = text[:starts[0][0]] if starts else text
+    segs: dict[str, str] = {}
+    for i, (st, name) in enumerate(starts):
+        en = starts[i + 1][0] if i + 1 < len(starts) else len(text)
+        segs[name] = text[st:en]
+    amap, aproblems = plan_anchor_renames(segs, renames)
+    problems += aproblems
+
+    print(path.name)
+    print(f"  glyph renames: {len(renames)}")
+    for old, new in sorted(renames.items(), key=lambda kv: kv[1]):
+        print(f"    {old:28s} -> {new}")
+    print(f"  anchor renames: {len(amap)}")
+    for old, news in sorted(amap.items()):
+        print(f"    {old:12s} -> {' + '.join(news)}")
+    if problems:
+        print("  PROBLEMS:")
+        for p in problems:
+            print(f"    {p}")
+    if not apply:
+        print("  (dry run: nothing written; pass --apply)")
+        return 1 if problems else 0
+    if problems:
+        print("  not applying while there are problems", file=sys.stderr)
+        return 1
+
+    for name in segs:
+        std = renames.get(name, name)
+        if not is_tamil(std):
+            continue
+        is_sign = std in SIGN_ANCHOR or bool(ALT_RE.match(std))
+        segs[name] = rewrite_anchors(segs[name], amap, is_sign, [], name)
+    out = head + "".join(segs.values())
+    n_sub = 0
+    if renames:
+        out, n_sub = _token_regex(renames).subn(lambda m: renames[m.group(1)], out)
+    path.write_text(out, encoding="utf8")
+    print(f"  applied: {n_sub} name replacements, {len(renames)} glyphs renamed")
+    return 0
+
+
 def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: bool) -> int:
     package = Path(package)
+    if package.is_file() and package.suffix == ".glyphs":
+        return _migrate_file(package, aliases_file, adopt_legacy, apply)
     glyph_dir = package / "glyphs"
     if not glyph_dir.is_dir():
         print(f"{package}: not a .glyphspackage (no glyphs/ directory)", file=sys.stderr)
@@ -191,6 +257,8 @@ def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: 
     new_of = lambda n: renames.get(n, n)
     for gname, fname in by_name.items():
         std = new_of(gname)
+        if not is_tamil(std):
+            continue
         is_sign = std in SIGN_ANCHOR or bool(ALT_RE.match(std))
         texts[fname] = rewrite_anchors(texts[fname], amap, is_sign, [], gname)
 

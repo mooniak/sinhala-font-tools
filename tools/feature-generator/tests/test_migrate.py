@@ -43,3 +43,16 @@ def test_anchor_split_for_shared_u_sign_and_missing_pos():
     assert 'name = "usign";' in base and 'name = "uusign";' in base and "Anchor-2" not in base
     sign = rewrite_anchors(texts["usign-taml.alt1"], mapping, True, [], "usign-taml.alt1")
     assert 'name = "_usign";' in sign and "pos" not in sign       # no pos stays no pos
+
+
+def test_v2_glyphs_position_lines_are_carried_over():
+    # Vineetha.glyphs is the older text format: `position = "{x, y}";`, not `pos = (x,y);`
+    base = 'anchors = (\n{\nname = "Anchor-0";\nposition = "{328, 476}";\n}\n);'
+    out = rewrite_anchors(base, {"Anchor-0": ["virama"]}, False, [], "ka-taml")
+    assert out == base.replace("Anchor-0", "virama")
+
+
+def test_only_tamil_glyphs_have_anchors_renamed():
+    from lankafea.migrate import is_tamil
+    assert is_tamil("ka-taml") and is_tamil("isign-taml.pa")
+    assert not is_tamil("ka-sinh") and not is_tamil("dottedCircle")

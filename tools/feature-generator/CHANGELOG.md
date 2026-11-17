@@ -10,8 +10,9 @@ Conventional Commits — see [../../docs/versioning.md](../../docs/versioning.md
   and anchor names (dry run by default, `--apply` to write; undo with git). Glyph renames come
   from `--aliases` / `--adopt-legacy-names` and are applied by whole name across glyphs,
   components, classes, features and `order.plist`; legacy anchors (`Anchor-N`) become `virama`
-  / `isign` / `iisign` / `usign` / `uusign`, read from the sign glyphs themselves. First used
-  on Ralex.
+  / `isign` / `iisign` / `usign` / `uusign`, read from the sign glyphs themselves. Works on a
+  `.glyphspackage` or a single `.glyphs` file (both anchor formats); only Tamil glyphs have
+  anchors renamed. First used on Ralex and Vineetha.
 - **Fix:** writing features back into a package renamed every glyph whose name starts with a
   dot (`.part.al_comp` was saved as `.part.al_comp.glyph` instead of Glyphs' `_part.al_comp.glyph`),
   leaving a duplicate file in the source.
