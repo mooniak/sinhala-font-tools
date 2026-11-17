@@ -56,3 +56,10 @@ def test_only_tamil_glyphs_have_anchors_renamed():
     from lankafea.migrate import is_tamil
     assert is_tamil("ka-taml") and is_tamil("isign-taml.pa")
     assert not is_tamil("ka-sinh") and not is_tamil("dottedCircle")
+
+
+def test_uusign_keeps_its_own_name_when_it_shares_an_anchor_with_usign():
+    text = _glyph(("_Anchor-2", "-270,589"))
+    mapping = {"Anchor-2": ["usign", "uusign"]}
+    assert 'name = "_uusign";' in rewrite_anchors(text, mapping, True, [], "uusign-taml", "uusign")
+    assert 'name = "_usign";' in rewrite_anchors(text, mapping, True, [], "usign-taml", "usign")

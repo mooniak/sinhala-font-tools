@@ -13,6 +13,10 @@ Conventional Commits — see [../../docs/versioning.md](../../docs/versioning.md
   / `isign` / `iisign` / `usign` / `uusign`, read from the sign glyphs themselves. Works on a
   `.glyphspackage` or a single `.glyphs` file (both anchor formats); only Tamil glyphs have
   anchors renamed. First used on Ralex and Vineetha.
+  `--no-anchors` renames glyphs only. Anchor clashes (two legacy anchors that would become
+  the same name, as in Yaldevi) are reported as problems instead of written; a stylistic
+  alternate keeps its own anchor. **Fix:** `uusign` took `_usign` when it shared a legacy
+  anchor with `usign`; unquoted anchor names (`name = _MatraI.alt3;`) were not seen.
 - **Fix:** writing features back into a package renamed every glyph whose name starts with a
   dot (`.part.al_comp` was saved as `.part.al_comp.glyph` instead of Glyphs' `_part.al_comp.glyph`),
   leaving a duplicate file in the source.

@@ -85,7 +85,13 @@ def plan_glyph_renames(inv, aliases: dict[str, str]) -> tuple[dict[str, str], li
 
 # A package/v3 anchor is `pos = (x,y);`, a v2 .glyphs one `position = "{x, y}";`; either may be
 # absent (a mark anchor at 0,0). The position line is carried over verbatim.
-ANCHOR_BLOCK = re.compile(r'\{\nname = "(?P<name>[^"\n]+)";(?P<pos>\n(?:pos|position) = [^\n]*;)?\n\}')
+ANCHOR_BLOCK = re.compile(
+    r'\{\nname = (?P<q>"?)(?P<name>[^";\n]+)(?P=q);(?P<pos>\n(?:pos|position) = [^\n]*;)?\n\}')
+
+
+def _q(name: str, quoted: bool) -> str:
+    """Write an anchor name the way the file did (Glyphs quotes only names with odd characters)."""
+    return f'"{name}"' if quoted or not re.fullmatch(r"[A-Za-z0-9_.]+", name) else name
 
 
 def _anchors(text: str):
@@ -117,6 +123,8 @@ def plan_anchor_renames(glyph_texts: dict[str, str], names_after: dict[str, str]
             if not aname.startswith("_"):
                 continue
             legacy = aname[1:]
+            if "stylalt" in legacy:
+                continue                      # a stylistic alternate's own position
             if legacy in sign:
                 continue                      # already standard
             cur = mapping.setdefault(legacy, [])
@@ -129,12 +137,20 @@ def plan_anchor_renames(glyph_texts: dict[str, str], names_after: dict[str, str]
     return mapping, problems
 
 
+def sign_of(std_name: str) -> str | None:
+    """The sign a glyph is (virama-taml -> virama, usign-taml.pa -> usign), or None."""
+    if std_name in SIGN_ANCHOR:
+        return SIGN_ANCHOR[std_name][0]
+    m = ALT_RE.match(std_name)
+    return m.group(1) if m else None
+
+
 def rewrite_anchors(text: str, mapping: dict[str, list[str]], is_sign: bool,
-                    conflicts: list[str], gname: str) -> str:
+                    conflicts: list[str], gname: str, sign: str | None = None) -> str:
     """Rename anchors in one glyph file. A sign glyph's ``_legacy`` becomes ``_<sign>`` (one
     name, the first); a base's ``legacy`` becomes every name for it."""
     def repl(m: re.Match) -> str:
-        name, pos = m.group("name"), m.group("pos")
+        name, pos, quoted = m.group("name"), m.group("pos"), bool(m.group("q"))
         posline = pos or ""
         under = name.startswith("_")
         key = name[1:] if under else name
@@ -142,10 +158,37 @@ def rewrite_anchors(text: str, mapping: dict[str, list[str]], is_sign: bool,
             return m.group(0)
         news = mapping[key]
         if under:
-            return f'{{\nname = "_{news[0]}";{posline}\n}}'
-        return ",\n".join(f'{{\nname = "{n}";{posline}\n}}' for n in news)
+            # a sign glyph takes ITS sign's name, even when two signs shared one legacy anchor
+            pick = sign if sign in news else news[0]
+            return f'{{\nname = {_q("_" + pick, quoted)};{posline}\n}}'
+        return ",\n".join(f'{{\nname = {_q(n, quoted)};{posline}\n}}' for n in news)
 
     return ANCHOR_BLOCK.sub(repl, text)
+
+
+def anchor_collisions(glyph_texts: dict[str, str], mapping: dict[str, list[str]]) -> list[str]:
+    """Glyphs that would end up with two anchors of the same name after the rename.
+
+    A font whose bases carry several group-specific anchors for one sign (Yaldevi's
+    MatraI.alt1 ... alt8) cannot be collapsed to the standard's one anchor per sign without
+    a design decision; say so instead of writing duplicates."""
+    out = []
+    for gname, text in glyph_texts.items():
+        if not is_tamil(gname) and not any(k.lstrip("_") in mapping for k, _ in _anchors(text)):
+            continue
+        # one `anchors = ( ... );` block per layer (master): clashes are within a layer
+        for block in re.findall(r"anchors = \(\n(.*?)\n\);", text, re.S):
+            seen: dict[str, set[str]] = {}
+            for aname, _ in _anchors(block):
+                key = aname.lstrip("_")
+                for n in mapping.get(key, [key]):
+                    seen.setdefault(("_" if aname.startswith("_") else "") + n, set()).add(aname)
+            for n, srcs in seen.items():
+                if len(srcs) > 1:
+                    msg = f"anchor clash on {gname}: {', '.join(sorted(srcs))} would all become {n}"
+                    if msg not in out:
+                        out.append(msg)
+    return out
 
 
 # --- driver -------------------------------------------------------------------------------
@@ -155,7 +198,7 @@ def rewrite_anchors(text: str, mapping: dict[str, list[str]], is_sign: bool,
 GLYPH_START = re.compile(r'^glyphname = "?([^";\n]+)"?;', re.M)
 
 
-def _migrate_file(path: Path, aliases_file, adopt_legacy, apply) -> int:
+def _migrate_file(path: Path, aliases_file, adopt_legacy, apply, anchors=True) -> int:
     """A single .glyphs file: the same renames, done on glyph entries inside one text."""
     inv = inventory_from_glyphs(str(path))
     extra = load_alias_file(aliases_file) if aliases_file else None
@@ -169,8 +212,11 @@ def _migrate_file(path: Path, aliases_file, adopt_legacy, apply) -> int:
     for i, (st, name) in enumerate(starts):
         en = starts[i + 1][0] if i + 1 < len(starts) else len(text)
         segs[name] = text[st:en]
-    amap, aproblems = plan_anchor_renames(segs, renames)
-    problems += aproblems
+    if anchors:
+        amap, aproblems = plan_anchor_renames(segs, renames)
+        problems += aproblems + anchor_collisions(segs, amap)
+    else:
+        amap = {}
 
     print(path.name)
     print(f"  glyph renames: {len(renames)}")
@@ -195,7 +241,7 @@ def _migrate_file(path: Path, aliases_file, adopt_legacy, apply) -> int:
         if not is_tamil(std):
             continue
         is_sign = std in SIGN_ANCHOR or bool(ALT_RE.match(std))
-        segs[name] = rewrite_anchors(segs[name], amap, is_sign, [], name)
+        segs[name] = rewrite_anchors(segs[name], amap, is_sign, [], name, sign_of(std))
     out = head + "".join(segs.values())
     n_sub = 0
     if renames:
@@ -205,10 +251,11 @@ def _migrate_file(path: Path, aliases_file, adopt_legacy, apply) -> int:
     return 0
 
 
-def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: bool) -> int:
+def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: bool,
+            anchors: bool = True) -> int:
     package = Path(package)
     if package.is_file() and package.suffix == ".glyphs":
-        return _migrate_file(package, aliases_file, adopt_legacy, apply)
+        return _migrate_file(package, aliases_file, adopt_legacy, apply, anchors)
     glyph_dir = package / "glyphs"
     if not glyph_dir.is_dir():
         print(f"{package}: not a .glyphspackage (no glyphs/ directory)", file=sys.stderr)
@@ -232,8 +279,11 @@ def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: 
         if m:
             by_name[m.group(1)] = fname
 
-    amap, aproblems = plan_anchor_renames({n: texts[f] for n, f in by_name.items()}, renames)
-    problems += aproblems
+    if anchors:
+        amap, aproblems = plan_anchor_renames({n: texts[f] for n, f in by_name.items()}, renames)
+        problems += aproblems + anchor_collisions({n: texts[f] for n, f in by_name.items()}, amap)
+    else:
+        amap = {}
 
     print(f"{package.name}")
     print(f"  glyph renames: {len(renames)}")
@@ -260,7 +310,7 @@ def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: 
         if not is_tamil(std):
             continue
         is_sign = std in SIGN_ANCHOR or bool(ALT_RE.match(std))
-        texts[fname] = rewrite_anchors(texts[fname], amap, is_sign, [], gname)
+        texts[fname] = rewrite_anchors(texts[fname], amap, is_sign, [], gname, sign_of(std))
 
     # 2. glyph names everywhere (glyph files, order.plist, fontinfo.plist, kerning ...)
     rx = _token_regex(renames) if renames else None
@@ -305,8 +355,10 @@ def main(argv=None) -> int:
     ap.add_argument("--aliases")
     ap.add_argument("--adopt-legacy-names", action="store_true")
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--no-anchors", action="store_true",
+                    help="rename glyphs only; leave anchor names as they are")
     a = ap.parse_args(argv)
-    return migrate(Path(a.package), a.aliases, a.adopt_legacy_names, a.apply)
+    return migrate(Path(a.package), a.aliases, a.adopt_legacy_names, a.apply, not a.no_anchors)
 
 
 if __name__ == "__main__":
