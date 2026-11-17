@@ -147,14 +147,39 @@ class ValidationReport:
     glyph_info_findings: list[dict] = field(default_factory=list)
     glyph_info_present: int = 0
     glyph_info_available: bool = False
+    # Tamil: one entry per form the standard requires at `forms_level`, saying how
+    # it is met ("glyph", "alternate" or None); empty for Sinhala.
+    forms: list[dict] = field(default_factory=list)
+    forms_level: int | None = None
     # legacy count API (cli.py / api.py compatibility)
     kept_rules: int = 0
     dropped_rules: int = 0
     dropped_lookups: int = 0
     dropped_features: int = 0
 
+    @property
+    def forms_unmet(self) -> list[dict]:
+        return [f for f in self.forms if f["met"] is None]
+
+    def _forms_json(self) -> dict:
+        return {
+            "level": self.forms_level,
+            "required": len(self.forms),
+            "met_by_glyph": sum(1 for f in self.forms if f["met"] == "glyph"),
+            "met_by_alternate": sum(1 for f in self.forms if f["met"] == "alternate"),
+            "unmet": [f["form"] for f in self.forms_unmet],
+            "forms": self.forms,
+        }
+
     def to_json(self) -> str:
-        return json.dumps({
+        out = self._to_plain()
+        # Only Tamil has forms; leaving the key out keeps Sinhala's report unchanged.
+        if self.forms:
+            out["forms"] = self._forms_json()
+        return json.dumps(out, indent=2, ensure_ascii=False)
+
+    def _to_plain(self) -> dict:
+        return ({
             "per_feature": {
                 tag: {"candidates": s.candidates, "satisfiable": s.satisfiable,
                       "blocked": s.blocked}
@@ -180,7 +205,7 @@ class ValidationReport:
                 "dropped_lookups": self.dropped_lookups,
                 "dropped_features": self.dropped_features,
             },
-        }, indent=2, ensure_ascii=False)
+        })
 
     def to_text(self, verbose: bool = False) -> str:
         lines: list[str] = []
@@ -193,6 +218,20 @@ class ValidationReport:
             mark = "ok " if s.blocked == 0 else ("--" if s.satisfiable == 0 else "! ")
             lines.append(f"  [{mark:>3}] {tag:<5} {s.satisfiable:>6}/{s.candidates:<6}"
                          f" satisfiable")
+        if self.forms:
+            f = self._forms_json()
+            lines.append("")
+            lines.append(
+                f"Tamil forms required at level {f['level']}: {f['required']} — "
+                f"{f['met_by_glyph']} by their own glyph, "
+                f"{f['met_by_alternate']} by a shape-group alternate, "
+                f"{len(f['unmet'])} unmet")
+            n = len(self.forms_unmet) if verbose else min(10, len(self.forms_unmet))
+            for item in self.forms_unmet[:n]:
+                alt = f" (or {item['alternate']})" if item["alternate"] else ""
+                lines.append(f"  unmet: {item['form']}{alt}")
+            if len(self.forms_unmet) > n:
+                lines.append(f"  … {len(self.forms_unmet) - n} more (use --verbose)")
         if self.glyph_info_available:
             lines.append("")
             findings = self.glyph_info_findings
@@ -286,6 +325,10 @@ def summarize(checks: list[RuleCheck],
     feat_counts: dict[str, FeatureStats] = defaultdict(FeatureStats)
 
     for check in checks:
+        # An optional rule the font cannot satisfy is neither a candidate nor a
+        # blocker: the standard does not require its glyph (see tamil.py).
+        if check.rule.optional and not check.satisfiable:
+            continue
         stats = feat_counts[check.feature]
         stats.candidates += 1
         if check.satisfiable:
@@ -295,6 +338,8 @@ def summarize(checks: list[RuleCheck],
         report.dropped_rules += 1
         for g in dict.fromkeys(check.missing):   # dedupe, keep order
             b = blocker_map.setdefault(g, Blocker(glyph=g, hint=HINTS.get(g)))
+            if b.hint is None and check.rule.hint:
+                b.hint = check.rule.hint
             b.blocked_rules += 1
             b.features[check.feature] = b.features.get(check.feature, 0) + 1
             if len(b.samples) < sample_limit:

@@ -21,6 +21,20 @@ class ShapeResult:
     glyphs: list[str]
 
 
+def shape_names(font_path: Path | str, text: str,
+                features: dict[str, bool] | None = None) -> list[str]:
+    """The glyph names HarfBuzz shapes ``text`` into, with the given OpenType
+    features switched on or off (e.g. ``{"ss09": True}``)."""
+    import uharfbuzz as hb
+
+    font = hb.Font(hb.Face(hb.Blob.from_file_path(str(font_path))))
+    buf = hb.Buffer()
+    buf.add_str(text)
+    buf.guess_segment_properties()
+    hb.shape(font, buf, features or {})
+    return [font.glyph_to_string(i.codepoint) for i in buf.glyph_infos]
+
+
 def check_syntax(fea_text: str, glyph_names: set[str]) -> None:
     """Parse the .fea against a glyph set; raises FeatureLibError on bad syntax."""
     from fontTools.feaLib.parser import Parser

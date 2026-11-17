@@ -3,7 +3,7 @@ Sinhala/Tamil divergence.
 
 The Sinhala tables mirror ``tools/glyphname-unicode-converter/lankaglyphset-map.js``
 and ``tools/font-coverage/font_coverage.py`` (the repo's existing sources of truth);
-the Tamil tables follow ``glyphsets/tamil.yaml``. Keeping them here — rather than
+the Tamil tables follow ``glyphsets/tamil-{0-kernel,1-core,2-pro}.yaml``. Keeping them here — rather than
 re-deriving from the YAML — means the naming logic in :mod:`lankafea.names` has one
 authoritative codepoint→role mapping to consult.
 """
@@ -108,7 +108,7 @@ SINHALA = ScriptTables(
 
 
 # --------------------------------------------------------------------------- #
-# Tamil  (U+0B80–U+0BFF; see glyphsets/tamil.yaml)
+# Tamil  (U+0B80–U+0BFF; see glyphsets/tamil-*.yaml)
 # --------------------------------------------------------------------------- #
 
 TAMIL = ScriptTables(
@@ -117,7 +117,7 @@ TAMIL = ScriptTables(
     ya=0x0BAF,
     consonants={
         0x0B95: "k", 0x0B99: "ng", 0x0B9A: "c", 0x0B9C: "j", 0x0B9E: "ny",
-        0x0B9F: "tt", 0x0BA3: "nn", 0x0BA4: "t", 0x0BA8: "n", 0x0BA9: "nna2",
+        0x0B9F: "tt", 0x0BA3: "nn", 0x0BA4: "t", 0x0BA8: "n", 0x0BA9: "nnna",
         0x0BAA: "p", 0x0BAE: "m", 0x0BAF: "y", 0x0BB0: "r", 0x0BB1: "rr",
         0x0BB2: "l", 0x0BB3: "ll", 0x0BB4: "zh", 0x0BB5: "v",
         0x0BB6: "sh", 0x0BB7: "ss", 0x0BB8: "s", 0x0BB9: "h",
@@ -141,6 +141,27 @@ TAMIL = ScriptTables(
 )
 
 
+# Built-in copy of what the Tamil glyphsets define beyond the glyph inventory, used
+# only by the YAML-free (--no-yaml) path. tests/test_tamil_model.py keeps it equal to
+# the YAML, so it cannot drift. sign -> group -> consonants; the alternate is
+# "<sign>-taml.<group>".
+TAMIL_GROUPS: dict[str, dict[str, list[str]]] = {
+    "usign": {"pa": ["nga", "pa", "ya", "va"]},
+    "isign": {
+        "ka": ["ka", "ta"], "ca": ["ca"], "na": ["nya", "na"],
+        "pa": ["nga", "pa", "ya", "va"],
+        "ma": ["ja", "ma", "rra", "zha", "sha", "ha"],
+        "la": ["la", "sa"], "ssa": ["ssa", "kSsa"],
+    },
+    "iisign": {"la": ["la", "sa"]},
+    "aisign": {"la": ["nna", "nnna", "la", "lla"]},
+}
+# Forms of the traditional (pre-1978) orthography: routed to the ss09 set, never to
+# the default features, so modern text keeps its modern shapes.
+TAMIL_TRADITIONAL_FORMS = ("nnAa", "nnnAa", "rrAa", "nnAi", "nnnAi", "lAi", "llAi")
+TAMIL_GRANTHA = ("ja", "sha", "ssa", "sa", "ha")
+
+
 @dataclass(frozen=True)
 class ScriptProfile:
     """Everything the pipeline needs to know about one script."""
@@ -162,6 +183,19 @@ class ScriptProfile:
     form_rakar: bool = True
     form_yansa: bool = True
     form_touch: bool = True
+    # Which candidate model builds the rules. "indic" is the Sinhala model; "tamil"
+    # is the Tamil one (tamil.py): forms met by a ligature OR a shape-group alternate.
+    model: str = "indic"
+    # Where a dot-suffix goes (docs/naming-standard.md): isign-taml.ka (True) or the
+    # legacy usign.rasign-sinh (False, what the Sinhala data still produces).
+    dot_suffix_after: bool = False
+    max_level: int = 3
+    # The highest level whose forms are REQUIRED (Tamil: 0 Kernel, 1 Core, 2 Pro).
+    # Candidates are always generated from every level; the level only decides what
+    # the validator reports as missing versus optional.
+    level: int = 3
+    # Stylistic set that carries the traditional orthography (D6).
+    traditional_feature: str = "ss09"
 
     def yaml_paths(self) -> list[Path]:
         base = glyphsets_dir()
@@ -178,6 +212,12 @@ _SIGN_FEATURE = {
     "esign": "pres", "eesign": "pres", "aisign": "pres",
     "osign": "psts", "oosign": "psts", "ausign": "psts",
 }
+
+TAMIL_LEVELS = (
+    "tamil-0-kernel.yaml",
+    "tamil-1-core.yaml",
+    "tamil-2-pro.yaml",
+)
 
 SINHALA_LEVELS = (
     "sinhala-0-kernel.yaml",
@@ -198,15 +238,19 @@ def sinhala_profile(level: int = 3) -> ScriptProfile:
         sign_feature=dict(_SIGN_FEATURE),
         touch_strategy="gpos",
         has_reference=True,
+        level=level,
     )
 
 
-def tamil_profile() -> ScriptProfile:
+def tamil_profile(level: int = 2) -> ScriptProfile:
+    level = max(0, min(2, level))
     return ScriptProfile(
         key="tamil",
         namespace="taml",
         tables=TAMIL,
-        yaml_files=("tamil.yaml",),
+        # Every level is always loaded: candidates come from the whole standard, and
+        # `level` only decides which forms count as required.
+        yaml_files=TAMIL_LEVELS,
         # Cover both the legacy and OpenType-2 Tamil script tags.
         language_systems={"taml": ["dflt"], "tml2": ["dflt"]},
         sign_feature=dict(_SIGN_FEATURE),
@@ -217,6 +261,10 @@ def tamil_profile() -> ScriptProfile:
         form_rakar=False,
         form_yansa=False,
         form_touch=False,
+        model="tamil",
+        dot_suffix_after=True,
+        max_level=2,
+        level=level,
     )
 
 
@@ -225,5 +273,5 @@ def get_profile(script: str, level: int = 3) -> ScriptProfile:
     if s in ("sinhala", "sinh", "si"):
         return sinhala_profile(level)
     if s in ("tamil", "taml", "ta"):
-        return tamil_profile()
+        return tamil_profile(level)
     raise ValueError(f"unknown script: {script!r} (expected 'sinhala' or 'tamil')")

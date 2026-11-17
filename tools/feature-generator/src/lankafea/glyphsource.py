@@ -20,15 +20,19 @@ from pathlib import Path
 from .feacomposer_adapter import TextBackend
 from .inventory import FontInventory
 from .model import FeatureDoc
+from .ownership import (
+    INJECTED_PREFIX, LANGUAGESYSTEMS_PREFIX, MANIFEST_PREFIX, MARKER, SCRIPT_TAGS,
+    collides, header, is_generated, is_multi_script, manifest_code,
+    merge_languagesystems, owned_by, owned_class_names,
+)
 
 GLYPHS_SUFFIXES = {".glyphs", ".glyphspackage"}
 
-# Ownership marker: only features/prefixes whose code begins with this line are
-# lankafea's to strip and rewrite. Everything else is user content and survives
-# byte-identical. Classes cannot carry comments, so generated class names are
-# tracked in the manifest prefix instead.
-MARKER = "# lankafea:generated v1 — do not edit; regenerate with lankafea"
-MANIFEST_PREFIX = "lankafea-manifest"
+# Ownership marker (see ownership.py): only features/prefixes whose code begins with
+# MARKER are lankafea's to strip and rewrite — and, in a source that holds more than
+# one script, only those of the script being generated. Everything else is user
+# content and survives byte-identical. Classes cannot carry comments, so generated
+# class names are tracked in the manifest prefix instead.
 
 
 def is_glyphs_source(path: Path | str) -> bool:
@@ -75,21 +79,28 @@ def inventory_from_glyphs(path: Path | str) -> FontInventory:
     # contextual rules can reference them (Noto model).
     # Members that don't export are dropped, or the class would reference
     # glyphs the compiled font lacks.
+    # Classes lankafea wrote itself (listed in the manifest) are not the designer's:
+    # harvesting them would freeze last run's membership as if it were a decision.
+    owned = _owned_class_names(font)
     source_classes = {c.name: [m for m in (c.code or "").split()
                                if m not in non_exporting]
-                      for c in font.classes if c.name}
+                      for c in font.classes if c.name and c.name not in owned}
     return FontInventory(names, set(cmap_names.keys()), cmap_names, anchors,
                          source_classes, glyph_info, non_exporting)
 
 
-def _owned_class_names(font) -> set[str]:
-    """Class names recorded in the manifest prefix (ours to replace)."""
+def _manifest_code(font) -> str | None:
     for prefix in font.featurePrefixes:
         if prefix.name == MANIFEST_PREFIX:
-            for line in (prefix.code or "").splitlines():
-                if line.startswith("# classes:"):
-                    return set(line[len("# classes:"):].split())
-    return set()
+            return prefix.code
+    return None
+
+
+def _owned_class_names(font, script: str | None = None) -> set[str]:
+    """Class names recorded in the manifest prefix (ours to replace). With a script,
+    only that script's: another script's generated classes are not ours to touch."""
+    class_code = {c.name: (c.code or "") for c in font.classes if c.name}
+    return owned_class_names(_manifest_code(font), script, class_code)
 
 
 def write_features_to_glyphs(
@@ -101,6 +112,8 @@ def write_features_to_glyphs(
     replace_tags: set[str] | None = None,
     keep_tags: set[str] | None = None,
     resolve_collision=None,
+    script: str | None = None,
+    scope_scripts: bool | None = None,
 ) -> dict:
     """Replace lankafea-owned layout code in a Glyphs source; PRESERVE the rest.
 
@@ -109,6 +122,21 @@ def write_features_to_glyphs(
     a collision: resolution order is ``replace_tags`` > ``keep_tags`` >
     ``resolve_collision(tag) -> "keep"|"replace"`` callback > keep (default —
     never destroy designer work silently).
+
+    ``script`` ("sinhala" / "tamil") makes the write safe for a source that holds
+    both scripts, so they can be generated one after the other:
+
+    * only that script's generated code and classes are replaced;
+    * a hand-written feature collides only if it can affect that script (it is not
+      scoped by ``script taml;`` to another one), so ``--replace-tags akhn`` takes
+      out the Tamil ``akhn`` and leaves the Sinhala one;
+    * the shared ``Languagesystems`` prefix and the class manifest are merged, not
+      rewritten;
+    * with ``scope_scripts`` (default: on when the source has glyphs in both
+      scripts) generated code is wrapped in ``script taml; … script tml2; …``, so
+      Sinhala rules are not registered for Tamil and the other way round.
+
+    Without ``script`` every generated block is ours, as before.
 
     Returns a summary dict incl. per-tag collision outcomes.
     """
@@ -120,36 +148,60 @@ def write_features_to_glyphs(
     keep_tags = keep_tags or set()
     font = _load(src_path)
 
-    owned_classes = _owned_class_names(font)
-    is_ours_f = [f for f in font.features
-                 if (f.code or "").lstrip().startswith("# lankafea:generated")]
-    is_ours_p = [p for p in font.featurePrefixes
-                 if (p.code or "").lstrip().startswith("# lankafea:generated")
-                 or p.name == MANIFEST_PREFIX
-                 or p.name == "lankafea-injected"]
+    scoped = False
+    tags: list[str] | None = None
+    if script is not None:
+        scoped = (is_multi_script(g.name for g in font.glyphs if g.name)
+                  if scope_scripts is None else scope_scripts)
+        if scoped:
+            tags = sorted(SCRIPT_TAGS[script])        # taml before tml2
+
+    manifest_old = _manifest_code(font)
+    class_code = {c.name: (c.code or "") for c in font.classes if c.name}
+    owned_classes = owned_class_names(manifest_old, script, class_code)
+
+    mine_f = [f for f in font.features if owned_by(f.code, script)]
+    # Prefixes: our injected snippets and any other generated block; the manifest is
+    # rebuilt below. The Languagesystems prefix is shared, so with a script it is
+    # merged rather than stripped.
+    mine_p = []
+    for p in font.featurePrefixes:
+        if p.name == MANIFEST_PREFIX:
+            mine_p.append(p)
+        elif p.name == LANGUAGESYSTEMS_PREFIX:
+            if script is None and is_generated(p.code):
+                mine_p.append(p)
+        elif p.name.startswith(INJECTED_PREFIX) and owned_by(p.code, script):
+            mine_p.append(p)
+        elif is_generated(p.code) and owned_by(p.code, script):
+            mine_p.append(p)
     summary = {
-        "stripped_features": len(is_ours_f),
+        "stripped_features": len(mine_f),
         "stripped_classes": len([c for c in font.classes if c.name in owned_classes]),
-        "stripped_prefixes": len(is_ours_p),
-        "preserved_features": len(font.features) - len(is_ours_f),
-        "preserved_prefixes": len(font.featurePrefixes) - len(is_ours_p),
+        "stripped_prefixes": len(mine_p),
+        "preserved_features": len(font.features) - len(mine_f),
+        "preserved_prefixes": len(font.featurePrefixes) - len(mine_p),
         "collisions": {},
     }
 
-    font.features = [f for f in font.features if f not in is_ours_f]
-    font.featurePrefixes = [p for p in font.featurePrefixes if p not in is_ours_p]
+    font.features = [f for f in font.features if f not in mine_f]
+    font.featurePrefixes = [p for p in font.featurePrefixes if p not in mine_p]
     font.classes = [c for c in font.classes if c.name not in owned_classes]
 
-    user_tags = {f.name for f in font.features}
     user_class_names = {c.name for c in font.classes}
     text = TextBackend()
 
-    # Language systems prefix: only when the user has none of their own.
-    if not any(p.name == "Languagesystems" for p in font.featurePrefixes):
-        ls_lines = [f"languagesystem {s} {lang};"
-                    for s, langs in language_systems.items() for lang in langs]
+    # Language systems prefix. A user's own is never touched. Ours is created, and in
+    # script mode extended with this script's lines.
+    existing_ls = next((p for p in font.featurePrefixes
+                        if p.name == LANGUAGESYSTEMS_PREFIX), None)
+    if existing_ls is None:
+        lines = [f"languagesystem {s} {lang};"
+                 for s, langs in language_systems.items() for lang in langs]
         font.featurePrefixes.append(
-            GSFeaturePrefix("Languagesystems", MARKER + "\n" + "\n".join(ls_lines)))
+            GSFeaturePrefix(LANGUAGESYSTEMS_PREFIX, MARKER + "\n" + "\n".join(lines)))
+    elif script is not None and is_generated(existing_ls.code):
+        existing_ls.code = merge_languagesystems(existing_ls.code, language_systems)
 
     # Classes (skip names the user owns; record ours in the manifest).
     written_classes: list[str] = []
@@ -162,13 +214,16 @@ def write_features_to_glyphs(
         font.classes.append(GSClass(cls.name, " ".join(cls.members)))
         written_classes.append(cls.name)
 
-    # Features, with per-tag collision resolution.
+    # Features, with per-tag collision resolution. A hand-written feature of the same
+    # tag collides only if it can affect this script.
     written = 0
     for feature in doc.features:
-        body = text.emit_feature_body(feature)
+        body = text.emit_feature_body(feature, tags)
         if not body:
             continue
-        if feature.tag in user_tags:
+        clashing = [f for f in font.features
+                    if f.name == feature.tag and collides(f.code, script)]
+        if clashing:
             if feature.tag in replace_tags:
                 action = "replace"
             elif feature.tag in keep_tags:
@@ -180,18 +235,20 @@ def write_features_to_glyphs(
             summary["collisions"][feature.tag] = action
             if action != "replace":
                 continue
-            font.features = [f for f in font.features if f.name != feature.tag]
-        font.features.append(GSFeature(feature.tag, MARKER + "\n" + body))
+            font.features = [f for f in font.features if f not in clashing]
+        font.features.append(GSFeature(feature.tag, header(script, scoped) + "\n" + body))
         written += 1
 
     # Raw injected snippets -> marked prefix so they survive round-trips.
     if raw_snippets:
+        name = f"{INJECTED_PREFIX}-{script}" if scoped else INJECTED_PREFIX
         font.featurePrefixes.append(GSFeaturePrefix(
-            "lankafea-injected", MARKER + "\n" + "\n\n".join(raw_snippets)))
+            name, header(script, scoped) + "\n" + "\n\n".join(raw_snippets)))
 
-    # Manifest records which classes are ours to strip next run.
-    manifest = MARKER + "\n# classes: " + " ".join(written_classes)
-    font.featurePrefixes.append(GSFeaturePrefix(MANIFEST_PREFIX, manifest))
+    # Manifest records which classes are ours to strip next run (per script).
+    font.featurePrefixes.append(GSFeaturePrefix(
+        MANIFEST_PREFIX,
+        manifest_code(manifest_old, script, scoped, written_classes, class_code)))
 
     save_source(font, out_path)
     summary["written_features"] = written

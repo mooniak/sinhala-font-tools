@@ -31,7 +31,10 @@ def aggnni_like_extras(profile: ScriptProfile) -> list[str]:
 
 def build_test_font(profile: ScriptProfile, out_path: Path,
                     extra_glyphs: list[str] | None = None,
-                    with_zwj: bool = True) -> Path:
+                    with_zwj: bool = True,
+                    exclude_glyphs: set[str] | None = None) -> Path:
+    """``exclude_glyphs`` leaves named glyphs out of the font, e.g. to model a Tamil
+    font that draws ி with shape-group alternates instead of a glyph per consonant."""
     specs = load_specs(profile)
     t = profile.tables
     ns = profile.namespace
@@ -40,6 +43,7 @@ def build_test_font(profile: ScriptProfile, out_path: Path,
     # (The kernel YAML itself declares zerowidthjoiner, so the no-ZWJ variant
     # must actively exclude it.)
     skip = set() if with_zwj else {"zerowidthjoiner", "zerowidthnonjoiner"}
+    skip |= set(exclude_glyphs or ())
     glyph_names = [".notdef"]
     seen = {".notdef"}
     for g in specs.glyphs:
@@ -47,10 +51,11 @@ def build_test_font(profile: ScriptProfile, out_path: Path,
             seen.add(g.full_name)
             glyph_names.append(g.full_name)
     control = ["zerowidthjoiner"] if with_zwj else []
-    for name in [*control, with_ns("touch", ns),
-                 with_ns("rasign", ns), with_ns("repha", ns), with_ns("yasign", ns),
-                 *(extra_glyphs or [])]:
-        if name not in seen:
+    # touch / rasign / repha / yasign are Sinhala's; a Tamil font has none of them.
+    sinhala_only = ([with_ns("touch", ns), with_ns("rasign", ns), with_ns("repha", ns),
+                     with_ns("yasign", ns)] if profile.key == "sinhala" else [])
+    for name in [*control, *sinhala_only, *(extra_glyphs or [])]:
+        if name not in seen and name not in skip:
             seen.add(name)
             glyph_names.append(name)
 
@@ -68,6 +73,11 @@ def build_test_font(profile: ScriptProfile, out_path: Path,
         put(cp, with_ns(name, ns))
     for cp, alone in t.sign_alone.items():
         put(cp, with_ns(alone, ns))
+    # Every glyph the standard encodes (numerals, symbols, aytham …), not only the
+    # letters and signs the tables cover.
+    for g in specs.glyphs:
+        if g.unicode is not None:
+            put(g.unicode, g.full_name)
     if with_zwj:
         cmap[0x200D] = "zerowidthjoiner"
 

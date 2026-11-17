@@ -1,0 +1,11 @@
+# Yaldevi's Tamil shape groups (@TA_MATRA_I_1 … @TA_MATRA_I_7), in the older spelling with
+# the dot-suffix BEFORE the namespace. Same numbering as Ralex. Yaldevi's own classes are
+# narrower for ma (ma sha ha) and pa (nga pa va): it draws ja/rra/zha/ya as ligatures,
+# which win anyway, so the standard's wider groups give the same result.
+isign-taml.ssa: isign.alt1-taml
+isign-taml.ma: isign.alt2-taml
+isign-taml.la: isign.alt3-taml
+isign-taml.ca: isign.alt4-taml
+isign-taml.ka: isign.alt5-taml
+isign-taml.na: isign.alt6-taml
+isign-taml.pa: isign.alt7-taml

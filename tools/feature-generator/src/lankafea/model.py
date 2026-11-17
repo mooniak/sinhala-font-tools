@@ -36,6 +36,18 @@ class Rule:
     output: str | list[str] | None = None
     value: str | None = None          # for kind == "pos", e.g. "<0 0 -90 0>"
     comment: str | None = None
+    # Tamil: a form is met by its own glyph (a ligature rule) OR by the shape-group
+    # alternate of its sign (a class rule). `unit` names the form a ligature rule
+    # makes; `units` lists the forms a class rule can also meet; `route` is
+    # "ligature", "alternate" or "single". See tamil.py.
+    unit: str | None = None
+    units: list[str] | None = None
+    route: str | None = None
+    # A blocked optional rule is dropped without being reported: the standard does
+    # not require its glyph (a form needing no glyph of its own, or one met by the
+    # other route). It is still emitted when the font has the glyphs.
+    optional: bool = False
+    hint: str | None = None           # fix-it text for a blocker this rule causes
 
     def glyph_refs(self) -> list[str]:
         """Every glyph/class token this rule references."""
@@ -77,6 +89,9 @@ class FeatureDoc:
 
     classes: list[GlyphClass] = field(default_factory=list)
     features: list[Feature] = field(default_factory=list)
+    # Generator-side facts the validator needs but the .fea does not carry
+    # (Tamil: the forms and the level at which each is required).
+    meta: dict = field(default_factory=dict)
 
     def feature(self, tag: str) -> Feature:
         for f in self.features:

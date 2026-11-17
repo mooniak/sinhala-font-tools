@@ -106,7 +106,11 @@ def test_formed_sign_ligatures_shape(tmp_path, text, expect):
 def test_bundled_glyphsets_dir():
     from lankafea import scripts
     # Default resolution uses the bundled package data (self-contained install).
-    assert (scripts.glyphsets_dir() / "tamil.yaml").exists()
+    d = scripts.glyphsets_dir()
+    for name in scripts.TAMIL_LEVELS + scripts.SINHALA_LEVELS:
+        assert (d / name).exists(), name
+    # tamil.yaml became tamil-{0,1,2}-*.yaml in standard 1.0.0
+    assert not (d / "tamil.yaml").exists()
 
 
 @pytest.mark.parametrize("script,level,text,expect", [

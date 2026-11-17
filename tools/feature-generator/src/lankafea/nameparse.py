@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .names import split_ns
 from .scripts import ScriptTables
 
 
@@ -23,8 +24,13 @@ class ParsedName:
 
 
 def _strip_ns(name: str, namespace: str) -> str | None:
-    suffix = f"-{namespace}"
-    return name[: -len(suffix)] if name.endswith(suffix) else None
+    """The bare stem, with any dot-suffix, whichever side of the namespace it was on
+    (``a.alt-sinh`` and ``a-sinh.alt`` both give ``a.alt``)."""
+    parts = split_ns(name, namespace)
+    if parts is None:
+        return None
+    base, variant = parts
+    return f"{base}.{variant}" if variant else base
 
 
 def _vowel_suffixes(tables: ScriptTables) -> dict[str, str]:
@@ -51,7 +57,11 @@ def parse(glyph_name: str, tables: ScriptTables, namespace: str) -> ParsedName |
     if "." in stem:
         base, _, variant = stem.partition(".")
         inner = parse(f"{base}-{namespace}", tables, namespace)
-        desc = f"variant .{variant} of {base}"
+        if variant.isdigit():
+            desc = (f"numbered variant .{variant} of {base} — a contextual form, "
+                    f"normally hand-written")
+        else:
+            desc = f"variant .{variant} of {base}"
         if inner:
             desc += f" ({inner.description})"
         return ParsedName("alt", desc)

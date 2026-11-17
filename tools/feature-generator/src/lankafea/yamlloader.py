@@ -13,7 +13,10 @@ from pathlib import Path
 
 import yaml
 
-from .scripts import ScriptProfile
+from .names import with_ns
+from .scripts import (
+    ScriptProfile, TAMIL_GRANTHA, TAMIL_GROUPS, TAMIL_TRADITIONAL_FORMS,
+)
 
 
 @dataclass
@@ -29,6 +32,7 @@ class GlyphSpec:
     conjunct: list[str] | None = None
     touch: list[str] | None = None
     style_set: str | None = None  # e.g. "ss01 Da Forms" when nested
+    tier: int | None = None       # index of the YAML tier file it came from (0 = kernel)
 
 
 @dataclass
@@ -36,6 +40,9 @@ class ScriptSpecs:
     profile: ScriptProfile
     glyphs: list[GlyphSpec] = field(default_factory=list)
     by_name: dict[str, GlyphSpec] = field(default_factory=dict)   # keyed by bare name
+    # Tamil shape groups, merged across the tier files: sign -> group -> consonants.
+    groups: dict[str, dict[str, list[str]]] = field(default_factory=dict)
+    grantha: list[str] = field(default_factory=list)
 
     def consonants(self) -> list[GlyphSpec]:
         cps = self.profile.tables.consonants
@@ -64,7 +71,8 @@ def _parse_unicode(value) -> int | None:
 
 
 def _walk_category(category: str, node, use_ns: bool, namespace: str,
-                   style_set: str | None) -> list[GlyphSpec]:
+                   style_set: str | None, dot_after: bool = False,
+                   tier: int | None = None) -> list[GlyphSpec]:
     """Recurse one category dict, flattening nested ssNN sub-groups."""
     out: list[GlyphSpec] = []
     if not node:
@@ -75,10 +83,11 @@ def _walk_category(category: str, node, use_ns: bool, namespace: str,
         # A nested group (value is a dict WITHOUT glyph-metadata keys) is a
         # stylistic sub-category such as "ss01 Da Forms".
         if isinstance(meta, dict) and not _looks_like_metadata(meta):
-            out += _walk_category(category, meta, use_ns, namespace, style_set=key)
+            out += _walk_category(category, meta, use_ns, namespace, style_set=key,
+                                  dot_after=dot_after, tier=tier)
             continue
         meta = meta if isinstance(meta, dict) else None
-        full = f"{key}-{namespace}" if use_ns else key
+        full = with_ns(key, namespace, dot_after) if use_ns else key
         out.append(GlyphSpec(
             name=key,
             full_name=full,
@@ -89,6 +98,7 @@ def _walk_category(category: str, node, use_ns: bool, namespace: str,
             conjunct=meta.get("conjunct") if meta else None,
             touch=meta.get("touch") if meta else None,
             style_set=style_set,
+            tier=tier,
         ))
     return out
 
@@ -116,18 +126,39 @@ def synth_specs(profile: ScriptProfile) -> ScriptSpecs:
                       category="Letters", unicode=cp)
         specs.glyphs.append(g)
         specs.by_name[name] = g
+    if profile.model == "tamil":
+        # Groups and the traditional forms are what the Tamil model needs beyond the
+        # consonants; with no YAML there is no enumeration, so nothing is required
+        # (tier None) and the rules are only presence-gated.
+        specs.groups = {s: {g: list(m) for g, m in gs.items()}
+                        for s, gs in TAMIL_GROUPS.items()}
+        specs.grantha = list(TAMIL_GRANTHA)
+        for name in TAMIL_TRADITIONAL_FORMS + ("ra.alt",):
+            g = GlyphSpec(name=name,
+                          full_name=with_ns(name, profile.namespace, profile.dot_suffix_after),
+                          category="ss09 Traditional orthography")
+            specs.glyphs.append(g)
+            specs.by_name[name] = g
     return specs
 
 
 def load_specs(profile: ScriptProfile) -> ScriptSpecs:
     specs = ScriptSpecs(profile=profile)
-    for path in profile.yaml_paths():
+    for tier, path in enumerate(profile.yaml_paths()):
         definition = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         namespace = definition.get("namespace", profile.namespace)
         exclude = set(definition.get("Exclude namespace from", []) or [])
         for category, node in (definition.get("categories") or {}).items():
             use_ns = category not in exclude
-            for g in _walk_category(category, node, use_ns, namespace, style_set=None):
+            for g in _walk_category(category, node, use_ns, namespace, style_set=None,
+                                    dot_after=profile.dot_suffix_after, tier=tier):
                 specs.glyphs.append(g)
                 specs.by_name[g.name] = g
+        # Tamil: shape groups are listed per tier file; merge them (a group is
+        # defined once). `grantha:` lives in the kernel file.
+        for sign, groups in (definition.get("groups") or {}).items():
+            merged = specs.groups.setdefault(sign, {})
+            for group, members in groups.items():
+                merged[group] = list(members)
+        specs.grantha.extend(definition.get("grantha") or [])
     return specs

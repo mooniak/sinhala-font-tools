@@ -33,9 +33,36 @@ def is_consonant(tables: ScriptTables, cp: int) -> bool:
     return cp in tables.consonants
 
 
-def with_ns(stem: str, namespace: str) -> str:
-    """Apply the namespace suffix (ka -> ka-sinh)."""
+def with_ns(stem: str, namespace: str, dot_after: bool = False) -> str:
+    """Apply the namespace suffix (ka -> ka-sinh).
+
+    A stem with a dot-suffix is ``usign.rasign-sinh`` by default (the order the
+    Sinhala data produces). With ``dot_after`` the namespace goes before the first
+    dot, as docs/naming-standard.md says: ``isign.ka`` -> ``isign-taml.ka``.
+    """
+    dot = stem.find(".")
+    if dot_after and dot > 0:
+        return f"{stem[:dot]}-{namespace}{stem[dot:]}"
     return f"{stem}-{namespace}"
+
+
+def split_ns(name: str, namespace: str) -> tuple[str, str] | None:
+    """Split a namespaced glyph name into ``(base, variant)``, tolerating BOTH
+    positions of the dot-suffix; ``None`` if the name is not in the namespace.
+
+        ka-sinh            -> ("ka", "")
+        isign.alt3-sinh    -> ("isign", "alt3")     (suffix before the namespace)
+        isign-taml.ka      -> ("isign", "ka")       (suffix after: the standard)
+        ka_repha-sinh.001  -> ("ka_repha", "001")
+    """
+    suffix = f"-{namespace}"
+    if name.endswith(suffix):
+        base, _, variant = name[: -len(suffix)].partition(".")
+        return base, variant
+    at = name.find(suffix + ".")
+    if at > 0:
+        return name[:at], name[at + len(suffix) + 1:]
+    return None
 
 
 def glyph_for_codepoint(tables: ScriptTables, cp: int, namespace: str) -> str | None:

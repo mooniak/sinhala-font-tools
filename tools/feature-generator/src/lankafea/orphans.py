@@ -10,6 +10,7 @@ repha-ligature generators existed).
 from __future__ import annotations
 
 from .inventory import FontInventory
+from .names import split_ns
 from .scripts import ScriptProfile
 from .validation import Orphan, RuleCheck, _is_class_ref, _strip_marker
 
@@ -44,7 +45,6 @@ def find_orphans(inventory: FontInventory, checks: list[RuleCheck],
     ``extra_consumed`` lets callers whitelist glyphs referenced by injected or
     hand-authored feature code (scanned elsewhere).
     """
-    ns_suffix = f"-{profile.namespace}"
     consumed = _consumed_glyphs(checks, class_members)
     if extra_consumed:
         consumed |= extra_consumed
@@ -69,9 +69,10 @@ def find_orphans(inventory: FontInventory, checks: list[RuleCheck],
 
     orphans: list[Orphan] = []
     for name in sorted(inventory.glyphs):
-        if not name.endswith(ns_suffix):
+        parts = split_ns(name, profile.namespace)   # tolerates `a.alt-sinh` AND `a-sinh.alt`
+        if parts is None:
             continue
-        base = name[: -len(ns_suffix)]
+        base = parts[0] + (f".{parts[1]}" if parts[1] else "")
         if name in consumed or name in encoded:
             continue
         if base in _SERVICE_NAMES or any(base.startswith(p) for p in _SERVICE_PREFIXES):

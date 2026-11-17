@@ -1,0 +1,11 @@
+# Ralex's Tamil shape groups, before the font is migrated to the standard's names.
+# Verified against the classes in Ralex.glyphspackage (@MATRA_I_1 … @MATRA_I_7). The
+# other renames (nna2 -> nnna, usign.alt1, iisign.alt1, aisign.alt, the old-orthography
+# nnAa.alt …) are deterministic: --adopt-legacy-names finds them.
+isign-taml.ssa: isign-taml.alt1
+isign-taml.ma: isign-taml.alt2
+isign-taml.la: isign-taml.alt3
+isign-taml.ca: isign-taml.alt4
+isign-taml.ka: isign-taml.alt5
+isign-taml.na: isign-taml.alt6
+isign-taml.pa: isign-taml.alt7

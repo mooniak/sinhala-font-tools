@@ -18,6 +18,14 @@ Examples
     # Merge hand-authored shape-group / stylistic-set lookups:
     lankafea generate --script sinhala --font MyFont.ttf --inject inject/
 
+    # Tamil: a form is met by its own glyph OR a shape-group alternate; --level 0-2
+    # is how much of the standard the font must have (default: all):
+    lankafea validate --script tamil --level 1 --font MySource.glyphspackage
+
+    # A Tamil font not yet migrated to the standard's names: say which glyph is which
+    lankafea validate --script tamil --font Old.glyphspackage \\
+        --adopt-legacy-names --aliases old-names.yaml
+
     # Fix glyph-info (Mark/Spacing) + Mooniak metadata on one source, then validate:
     lankafea fix-source --font MySource.glyphspackage
 
@@ -93,6 +101,8 @@ def _cmd_generate(args) -> int:
             validate=not args.no_validate,
             use_yaml=not args.no_yaml,
             assign=_load_assign(args.assign),
+            aliases=_load_aliases(args),
+            adopt_legacy_names=args.adopt_legacy_names,
         )
     except Exception as exc:  # feaLib syntax error, missing YAML, etc.
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
@@ -148,7 +158,9 @@ def _cmd_generate(args) -> int:
             raw_snippets=result.raw_snippets,
             replace_tags=set(args.replace_tags.split(",")) if args.replace_tags else None,
             keep_tags=set(args.keep_tags.split(",")) if args.keep_tags else None,
-            resolve_collision=_ask)
+            resolve_collision=_ask,
+            script=result.profile.key,
+            scope_scripts={"auto": None, "on": True, "off": False}[args.scope_scripts])
         print(f"# wrote {args.glyphs_out} "
               f"(replaced {summary['stripped_features']} own features; preserved "
               f"{summary['preserved_features']} user features/"
@@ -249,6 +261,15 @@ def _cmd_fix_source(args) -> int:
     return _fix_one_source(args.font, args.dry_run)
 
 
+def _load_aliases(args):
+    """--aliases FILE: {standard name: font's name}; None when not given."""
+    path = getattr(args, "aliases", None)
+    if not path:
+        return None
+    from .aliases import load_alias_file
+    return load_alias_file(path)
+
+
 def _load_assign(path):
     """--assign FILE.json: {"groups": [...], "alts": {...}} (see lankafea.assign)."""
     if not path:
@@ -272,6 +293,8 @@ def _cmd_validate(args) -> int:
             inject_paths=inject_paths or None,
             use_yaml=not args.no_yaml,
             assign=_load_assign(args.assign),
+            aliases=_load_aliases(args),
+            adopt_legacy_names=args.adopt_legacy_names,
         )
     except Exception as exc:
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
@@ -289,12 +312,25 @@ def _cmd_validate(args) -> int:
     return 0
 
 
+_LEVEL_HELP = ("glyphset tier (default: all). Sinhala 0-3 picks which tiers are loaded. "
+               "Tamil 0-2 (a higher value means 2) only sets how much of the standard "
+               "is REQUIRED: the rules are always generated from every tier")
+
+
+def _add_alias_args(p) -> None:
+    p.add_argument("--aliases", type=Path, metavar="FILE",
+                   help="YAML/JSON table of standard glyph name -> this font's name, "
+                        "for a font not yet migrated to the standard's names")
+    p.add_argument("--adopt-legacy-names", action="store_true",
+                   help="Tamil: also adopt the deterministic pre-standard names "
+                        "(nna2 -> nnna, a dot-suffix before the namespace)")
+
+
 def _add_common_args(p) -> None:
     p.add_argument("--script", required=True, help="sinhala | tamil")
     p.add_argument("--font", type=Path, required=True,
                    help="target font: .ttf/.otf OR a .glyphs/.glyphspackage source")
-    p.add_argument("--level", type=int, default=3,
-                   help="Sinhala glyphset tier 0-3 (default 3; ignored for Tamil)")
+    p.add_argument("--level", type=int, default=3, help=_LEVEL_HELP)
     p.add_argument("--inject", type=Path, metavar="DIR",
                    help="directory of *.yaml/*.fea custom rules to merge")
     p.add_argument("--inject-file", type=Path, action="append", metavar="FILE",
@@ -302,6 +338,7 @@ def _add_common_args(p) -> None:
     p.add_argument("--no-yaml", action="store_true",
                    help="run standalone: derive everything from the built-in codepoint "
                         "tables + the font's glyphs, using no glyphset YAML")
+    _add_alias_args(p)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -331,8 +368,7 @@ def main(argv: list[str] | None = None) -> int:
     gen.add_argument("--script", required=True, help="sinhala | tamil")
     gen.add_argument("--font", type=Path, required=True,
                      help="target font: .ttf/.otf OR a .glyphs/.glyphspackage source")
-    gen.add_argument("--level", type=int, default=3,
-                     help="Sinhala glyphset tier 0-3 (default 3; ignored for Tamil)")
+    gen.add_argument("--level", type=int, default=3, help=_LEVEL_HELP)
     gen.add_argument("-o", "--output", type=Path, help="write features.fea here")
     gen.add_argument("--inject", type=Path, metavar="DIR",
                      help="directory of *.yaml/*.fea custom rules to merge")
@@ -354,11 +390,17 @@ def main(argv: list[str] | None = None) -> int:
     gen.add_argument("--no-yaml", action="store_true",
                      help="run standalone: derive everything from the built-in codepoint "
                           "tables + the font's glyphs, using no glyphset YAML")
+    _add_alias_args(gen)
     gen.add_argument("--quiet", action="store_true",
                      help="suppress the blocker summary")
     gen.add_argument("--fix-zwj", action="store_true",
                      help="add the bundled zerowidthjoiner/zerowidthnonjoiner "
                           "glyphs to the Glyphs source (in place) if missing")
+    gen.add_argument("--scope-scripts", choices=("auto", "on", "off"), default="auto",
+                     help="with --glyphs-out: wrap generated code in `script taml;` "
+                          "statements so scripts in one source don't register each "
+                          "other's rules (default auto: on when the source has "
+                          "glyphs in both scripts)")
     gen.add_argument("--replace-tags", metavar="a,b",
                      help="on --glyphs-out collision, replace these hand-written "
                           "feature tags with generated code")

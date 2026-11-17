@@ -31,10 +31,11 @@ _RES = os.path.dirname(os.path.abspath(__file__))
 if _RES not in sys.path:
     sys.path.insert(0, _RES)
 
-# Same ownership contract as lankafea.glyphsource — keep in sync.
-MARKER = "# lankafea:generated v1 — do not edit; regenerate with lankafea"
-MANIFEST_PREFIX = "lankafea-manifest"
-INJECTED_PREFIX = "lankafea-injected"
+# The ownership rules (what is ours to rewrite, per script) are lankafea.ownership's,
+# shared with lankafea.glyphsource; this file only applies them to the live font.
+from lankafea import ownership as own
+from lankafea.ownership import (INJECTED_PREFIX, LANGUAGESYSTEMS_PREFIX, MANIFEST_PREFIX,
+                                MARKER)
 
 DEFAULTS = {"auto": False, "script": "auto", "level": 3, "replace": "",
             # {"groups": [{"group", "to", "mode"}], "alts": {"2": "dlig"}} —
@@ -48,13 +49,17 @@ POLL_SECONDS = 1.0
 # Font <-> lankafea bridge (pure functions; no UI)
 # --------------------------------------------------------------------------- #
 
-def _owned_class_names(font):
+def _manifest_code(font):
     for prefix in font.featurePrefixes:
         if prefix.name == MANIFEST_PREFIX:
-            for line in (prefix.code or "").splitlines():
-                if line.startswith("# classes:"):
-                    return set(line[len("# classes:"):].split())
-    return set()
+            return prefix.code
+    return None
+
+
+def _owned_class_names(font, script=None):
+    """Classes lankafea wrote (per the manifest). With a script, only that script's."""
+    class_code = {c.name: (c.code or "") for c in font.classes if c.name}
+    return own.owned_class_names(_manifest_code(font), script, class_code)
 
 
 def _unicodes(glyph):
@@ -125,41 +130,66 @@ def glyph_signature(font):
 
 
 def write_features(font, doc, language_systems, raw_snippets=(),
-                   replace_tags=(), keep_tags=()):
+                   replace_tags=(), keep_tags=(), script=None, scope_scripts=None):
     """Replace lankafea-owned layout code in `font`; preserve everything else.
 
-    Mirrors lankafea.glyphsource.write_features_to_glyphs, on live GS objects.
+    Mirrors lankafea.glyphsource.write_features_to_glyphs, on live GS objects. With
+    `script`, a font that holds both Sinhala and Tamil can be generated one script at a
+    time: only that script's code and classes are replaced, a hand-written feature
+    collides only if it can affect that script, and the shared Languagesystems prefix
+    and the class manifest are merged. See lankafea.ownership.
     """
     from lankafea.feacomposer_adapter import TextBackend
 
-    owned_classes = _owned_class_names(font)
+    scoped = False
+    tags = None
+    if script is not None:
+        scoped = (own.is_multi_script(g.name for g in font.glyphs if g.name)
+                  if scope_scripts is None else scope_scripts)
+        if scoped:
+            tags = sorted(own.SCRIPT_TAGS[script])
+
+    manifest_old = _manifest_code(font)
+    class_code = {c.name: (c.code or "") for c in font.classes if c.name}
+    owned_classes = own.owned_class_names(manifest_old, script, class_code)
     summary = {"collisions": {}, "written_features": 0, "written_classes": 0}
 
-    def is_ours(code):
-        return (code or "").lstrip().startswith("# lankafea:generated")
-
     for i in reversed(range(len(font.features))):
-        if is_ours(font.features[i].code):
+        if own.owned_by(font.features[i].code, script):
             del font.features[i]
     for i in reversed(range(len(font.featurePrefixes))):
         p = font.featurePrefixes[i]
-        if is_ours(p.code) or p.name in (MANIFEST_PREFIX, INJECTED_PREFIX):
+        if p.name == MANIFEST_PREFIX:
+            ours = True
+        elif p.name == LANGUAGESYSTEMS_PREFIX:
+            ours = script is None and own.is_generated(p.code)
+        elif p.name.startswith(INJECTED_PREFIX):
+            ours = own.owned_by(p.code, script)
+        else:
+            ours = own.is_generated(p.code) and own.owned_by(p.code, script)
+        if ours:
             del font.featurePrefixes[i]
     for i in reversed(range(len(font.classes))):
         if font.classes[i].name in owned_classes:
             del font.classes[i]
 
-    user_tags = {f.name for f in font.features}
     user_classes = {c.name for c in font.classes}
     text = TextBackend()
 
-    if not any(p.name == "Languagesystems" for p in font.featurePrefixes):
+    existing_ls = None
+    for p in font.featurePrefixes:
+        if p.name == LANGUAGESYSTEMS_PREFIX:
+            existing_ls = p
+            break
+    if existing_ls is None:
         lines = ["languagesystem %s %s;" % (s, lang)
                  for s, langs in language_systems.items() for lang in langs]
         prefix = GSFeaturePrefix()
-        prefix.name = "Languagesystems"
+        prefix.name = LANGUAGESYSTEMS_PREFIX
         prefix.code = MARKER + "\n" + "\n".join(lines)
         font.featurePrefixes.append(prefix)
+    elif script is not None and own.is_generated(existing_ls.code):
+        existing_ls.code = own.merge_languagesystems(existing_ls.code, language_systems)
 
     written_classes = []
     for cls in doc.classes:
@@ -175,32 +205,34 @@ def write_features(font, doc, language_systems, raw_snippets=(),
         written_classes.append(cls.name)
 
     for feature in doc.features:
-        body = text.emit_feature_body(feature)
+        body = text.emit_feature_body(feature, tags)
         if not body:
             continue
-        if feature.tag in user_tags:
+        clashing = [f for f in font.features
+                    if f.name == feature.tag and own.collides(f.code, script)]
+        if clashing:
             action = "replace" if feature.tag in replace_tags else "keep"
             summary["collisions"][feature.tag] = action
             if action != "replace":
                 continue
             for i in reversed(range(len(font.features))):
-                if font.features[i].name == feature.tag:
+                if any(font.features[i] is f for f in clashing):
                     del font.features[i]
         f = GSFeature()
         f.name = feature.tag
-        f.code = MARKER + "\n" + body
+        f.code = own.header(script, scoped) + "\n" + body
         font.features.append(f)
         summary["written_features"] += 1
 
     if raw_snippets:
         p = GSFeaturePrefix()
-        p.name = INJECTED_PREFIX
-        p.code = MARKER + "\n" + "\n\n".join(raw_snippets)
+        p.name = "%s-%s" % (INJECTED_PREFIX, script) if scoped else INJECTED_PREFIX
+        p.code = own.header(script, scoped) + "\n" + "\n\n".join(raw_snippets)
         font.featurePrefixes.append(p)
 
     m = GSFeaturePrefix()
     m.name = MANIFEST_PREFIX
-    m.code = MARKER + "\n# classes: " + " ".join(written_classes)
+    m.code = own.manifest_code(manifest_old, script, scoped, written_classes, class_code)
     font.featurePrefixes.append(m)
     summary["written_classes"] = len(written_classes)
     return summary
@@ -277,9 +309,10 @@ class LankaFeatures(GeneralPlugin):
                 ("s_tamil", "Script: Tamil", "setScript:")):
             add(key, title, action).setRepresentedObject_(key[2:])
         menu.addItem_(NSMenuItem.separatorItem())
-        for lvl in range(4):
-            add("l%d" % lvl, "Sinhala Level %d" % lvl,
-                "setLevel:").setRepresentedObject_(lvl)
+        for lvl, title in ((0, "Level 0 — Kernel"), (1, "Level 1 — Core"),
+                           (2, "Level 2 — Sinhala Plus / Tamil Pro"),
+                           (3, "Level 3 — Sinhala Pro / all of Tamil")):
+            add("l%d" % lvl, title, "setLevel:").setRepresentedObject_(lvl)
 
         root = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_(
             self.name, None, "")
@@ -531,7 +564,8 @@ class LankaFeatures(GeneralPlugin):
                 font, result.doc, result.profile.language_systems,
                 raw_snippets=result.raw_snippets,
                 replace_tags={t.strip() for t in
-                              self._config(font)["replace"].split(",") if t.strip()})
+                              self._config(font)["replace"].split(",") if t.strip()},
+                script=script)
         finally:
             font.enableUpdateInterface()
         # Signature of the glyph set we built for. If glyphs changed while the

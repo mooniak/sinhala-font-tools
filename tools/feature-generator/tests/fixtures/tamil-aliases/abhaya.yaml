@@ -1,0 +1,6 @@
+# Abhaya Libre draws a dedicated glyph for every consonant + ி/ீ (its isign.altN glyphs
+# are used as components inside them, not selected by a feature), so no shape group is
+# needed to match its shaping. Only the two numbers confirmed from its glyph components
+# are listed; alt3-alt7 are unverified and deliberately left out.
+isign-taml.pa: isign.alt1-taml
+isign-taml.ma: isign.alt2-taml

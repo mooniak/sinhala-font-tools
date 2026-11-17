@@ -55,30 +55,46 @@ class TextBackend:
                 lines.append("")
         return "\n".join(lines).rstrip() + "\n"
 
-    def emit_feature(self, feature: Feature) -> str:
+    def emit_feature(self, feature: Feature, scripts: list[str] | None = None) -> str:
+        """The feature block. ``scripts`` (OpenType tags, e.g. ``["taml", "tml2"]``)
+        scopes it to those scripts: the lookups are defined under the first and
+        referenced under the rest. Without it the feature applies to every
+        ``languagesystem`` declared, which is right while a source holds one script."""
         if not any(lk.rules for lk in feature.lookups):
             return ""
         lines = [f"feature {feature.tag} {{"]
-        # 'aalt' may not contain named lookup blocks — emit its rules inline.
+        # 'aalt' may not contain named lookup blocks — emit its rules inline (and it
+        # cannot carry script statements either).
         inline = feature.tag == "aalt"
-        for lookup in feature.lookups:
-            if not lookup.rules:
-                continue
-            if inline:
-                for rule in lookup.rules:
-                    lines.append(f"    {self._emit_rule(rule)}")
-            else:
-                lines.extend(self._emit_lookup(lookup, indent="    "))
+        if scripts and not inline and feature.tag not in _NO_SCRIPT_FEATURES:
+            for i, script in enumerate(scripts):
+                lines.append(f"    script {script};")
+                for lookup in feature.lookups:
+                    if not lookup.rules:
+                        continue
+                    if i == 0:
+                        lines.extend(self._emit_lookup(lookup, indent="    "))
+                    else:
+                        lines.append(f"    lookup {lookup.name};")
+        else:
+            for lookup in feature.lookups:
+                if not lookup.rules:
+                    continue
+                if inline:
+                    for rule in lookup.rules:
+                        lines.append(f"    {self._emit_rule(rule)}")
+                else:
+                    lines.extend(self._emit_lookup(lookup, indent="    "))
         lines.append(f"}} {feature.tag};")
         return "\n".join(lines)
 
-    def emit_feature_body(self, feature: Feature) -> str:
+    def emit_feature_body(self, feature: Feature, scripts: list[str] | None = None) -> str:
         """The inner feature code (no ``feature tag { ... } tag;`` wrapper).
 
         Used when writing into a Glyphs source, where GSFeature.code holds only the
         body and Glyphs supplies the wrapper.
         """
-        block = self.emit_feature(feature)
+        block = self.emit_feature(feature, scripts)
         if not block:
             return ""
         inner = block.split("\n")[1:-1]  # drop first/last wrapper lines

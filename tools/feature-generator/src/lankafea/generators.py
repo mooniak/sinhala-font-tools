@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from .model import FeatureDoc, Feature, Lookup, Rule
 from .names import (
-    base_a, cap, drop_a, with_ns, glyph_for_codepoint, componentize,
+    base_a, cap, drop_a, with_ns, glyph_for_codepoint, componentize, split_ns,
 )
 from .scripts import ScriptProfile, ZWJ
 from .yamlloader import ScriptSpecs, GlyphSpec
@@ -536,27 +536,52 @@ def _alt_base_and_index(name: str) -> tuple[str, int] | None:
     return None
 
 
+def _variant_index(variant: str) -> int | None:
+    """The alternate index in a variant suffix: ``alt`` -> 1, ``alt3`` -> 3.
+
+    Anything else (``001``, ``stylalt1``, ``_c`` …) is not a numbered alternate."""
+    if variant == "alt":
+        return 1
+    if variant.startswith("alt") and variant[3:].isdigit():
+        return int(variant[3:])
+    return None
+
+
 def alt_groups(specs: ScriptSpecs, names: set[str] | None = None) -> dict[str, dict[int, str]]:
-    """base -> {alt index: alt glyph name (namespace stripped)}.
+    """base -> {alt index: the alternate's full glyph name}.
 
     Alternate glyphs are discovered from the YAML specs by default, or from ``names``
     (the font's own glyph inventory) when given — the latter is used in the YAML-free
-    path so alternates come straight from the font. Names are matched with the
-    namespace stripped so ``isign.alt1-sinh`` -> base ``isign``.
+    path so alternates come straight from the font. Both positions of the dot-suffix
+    are recognised: ``isign.alt1-sinh`` and ``isign-sinh.alt1`` are both an alternate
+    of ``isign``.
+
+    Tamil has none: its ``.alt`` glyphs are shape-group alternates and ``ra.alt``,
+    not numbered alternates, and the Tamil model (tamil.py) places them itself.
     """
-    suffix = f"-{specs.profile.namespace}"
+    profile = specs.profile
+    if profile.model == "tamil":
+        return {}
+    ns = profile.namespace
+
+    found: list[tuple[str, str, str]] = []          # (base, variant, full name)
     if names is not None:
-        candidate_names = [n[:-len(suffix)] if n.endswith(suffix) else n for n in names]
+        for n in names:
+            parts = split_ns(n, ns)
+            if parts and parts[1]:
+                found.append((parts[0], parts[1], n))
     else:
-        candidate_names = [g.name for g in specs.glyphs]
+        for g in specs.glyphs:
+            base, _, variant = g.name.partition(".")
+            if variant:
+                found.append((base, variant, with_ns(g.name, ns, profile.dot_suffix_after)))
 
     groups: dict[str, dict[int, str]] = {}
-    for gname in candidate_names:
-        parsed = _alt_base_and_index(gname)
-        if not parsed:
+    for base, variant, full in found:
+        idx = _variant_index(variant)
+        if idx is None:
             continue
-        base, idx = parsed
-        groups.setdefault(base, {})[idx] = gname
+        groups.setdefault(base, {})[idx] = full
     return groups
 
 
@@ -589,7 +614,7 @@ def build_alternates(specs: ScriptSpecs, names: set[str] | None = None,
     aalt = Feature("aalt")
     aalt_lk = Lookup("AllAlternates")
     for base, alts in sorted(groups.items()):
-        members = [with_ns(base, ns)] + [with_ns(alts[i], ns) for i in sorted(alts)]
+        members = [with_ns(base, ns)] + [alts[i] for i in sorted(alts)]
         aalt_lk.rules.append(Rule(
             kind="alternate", inputs=[with_ns(base, ns)], output=members,
             comment=f"alternates of {base}",
@@ -606,9 +631,10 @@ def build_alternates(specs: ScriptSpecs, names: set[str] | None = None,
             name = (f"StylisticSet{idx:02d}" if tag == f"ss{idx:02d}"
                     else f"Alternates{idx:02d}_{tag}")
             lk = per_index.setdefault(idx, Lookup(name))
+            short = altname[:-len(f"-{ns}")] if altname.endswith(f"-{ns}") else altname
             lk.rules.append(Rule(
                 kind="single", inputs=[with_ns(base, ns)],
-                output=with_ns(altname, ns), comment=f"{base} -> {altname}",
+                output=altname, comment=f"{base} -> {short}",
             ))
 
     by_tag: dict[str, Feature] = {}

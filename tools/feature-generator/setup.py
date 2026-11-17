@@ -35,6 +35,12 @@ def _sync_glyphsets(dest_root: Path) -> None:
         # bundle): leave whatever is present in place.
         return
     dest.mkdir(parents=True, exist_ok=True)
+    # Drop files the standard no longer has (tamil.yaml became tamil-{0,1,2}-*.yaml),
+    # or a stale copy would be bundled into the wheel next to the current ones.
+    current = {y.name for y in _CANONICAL.glob("*.yaml")}
+    for stale in dest.glob("*.yaml"):
+        if stale.name not in current:
+            stale.unlink()
     for yaml in sorted(_CANONICAL.glob("*.yaml")):
         shutil.copy2(yaml, dest / yaml.name)
 

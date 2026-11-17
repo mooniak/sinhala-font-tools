@@ -3,7 +3,7 @@
 Status of the LankaGlyphset feature toolkit (`lankafea validate|generate`)
 and the path forward, grounded in real-font evaluation.
 
-PyPI `mnik-lankafea` v0.2.0 · import `lankafea` · 37/37 tests green · CLI
+PyPI `mnik-lankafea` v0.2.0 · import `lankafea` · 127 tests green · CLI
 `lankafea`. The [lanka-glyphsets](https://github.com/mooniak/lanka-glyphsets)
 repo remains the home of the naming standard; this is the font-side toolkit.
 
@@ -42,32 +42,39 @@ driven by glyph *presence*, never a mode switch.
 | fontmaster sweep (35) | all validate ~426 rules; universal top blocker = missing ZWJ |
 | Abhaya Libre (descriptive pole) | 6/6 shaping parity vs hand-written; 90.6% output-glyph coverage; Tamil ss auto-built from dead `.alt` inventory |
 
+## Shipped with the Tamil work
+
+- **Tamil model** (`tamil.py`): forms met by a ligature OR a shape-group alternate,
+  `ss09` traditional forms, requirement levels 0–2, a resolver so the route a font did
+  not take is never reported. Acceptance against Ralex, Yaldevi and Abhaya Libre: see
+  the README (Abhaya identical; the others differ only by glyphs now reachable).
+- **R1 — multi-script sources.** Script-tagged ownership, per-script class manifest and
+  `Languagesystems`, collisions keyed on (tag, script), `script taml;`-scoped bodies.
+  `--glyphs-out` is now safe on Abhaya-style sources (generate one script, then the other).
+  The Glyphs plugin shares the rules.
+- **R2 — variants.** Both positions of a dot-suffix and numbered `.NNN` variants are
+  recognised; `--aliases` / `--adopt-legacy-names` for fonts not yet migrated.
+
 ## In progress / next
 
-### R1 — Multi-script sources (HIGH — blocks Abhaya writeback) · ~1 day
-Abhaya carries Sinhala **and** Tamil in one source with **duplicate feature tags**
-(`akhn` ×2, scoped `script sinh;` / `script taml;`). Today:
-- the `# lankafea:generated` marker is not script-aware → sequential
-  `--glyphs-out --script sinhala` then `--script tamil` would clobber each other;
-- collision logic assumes unique tags → `--replace-tags akhn` would delete both.
-
-Fix: script-tagged ownership marker; emit script-scoped generated bodies
-(`script sinh; …`); duplicate-tag-aware collision resolution keyed on (tag,
-script). **Until shipped: do not run `--glyphs-out` on multi-script sources.**
-
-### R2 — Numbered & misplaced variants (MED) · ~0.5 day
-`.001–.009` numbered variants (Abhaya reph) are invisible to both `.altN`
-detection and orphan detection — any suffix after `-sinh` escapes the namespace
-`endswith` check. Misplaced Tamil suffix `aisign-taml.alt` matches no pattern.
-Fix: variant parser handles `.NNN` and suffix-before/after-namespace; orphan
-namespace matching tolerates trailing `.suffix`.
+### Tamil: what is left
+- **Glyph-info check for Tamil.** The Mark/Spacing check covers Sinhala only; the Tamil
+  equivalent is ீ ஂ ் nonspacing (Mn) and the other signs spacing (Mc), and ஃ a letter.
+- **Group-number aliases are per font.** `--adopt-legacy-names` finds the deterministic
+  renames; which numbered `isign.altN` is which shape group still needs a table per font
+  (Ralex, Yaldevi done; Abhaya's alt3–alt7 are unverified and unused by its features).
+- **Vineetha** (a copy of Ralex's Tamil) and **Lankaverse Sans** (old-style names) have
+  not been run through the acceptance check.
+- **Plugin in Glyphs.** The plugin's writeback is tested against a stand-in Glyphs API, not
+  inside Glyphs. It generates one script at a time (the Script menu); a "both scripts"
+  action would call it twice.
 
 ### R3 — Remaining generators (LOW) · ~0.5 day
 From Abhaya's real orphans: da-shape yansaya `._c` forms (`dya._c`), third-order
 yasign chains (`yasign_repha_usign`), `.rasign` sign-variant selection
 (`usign.rasign`). Small, presence-gated additions.
 
-### R4 — Full multi-script writeback dry-run (after R1–R3)
+### R4 — Full multi-script writeback dry-run (R1 done; after R3)
 `--glyphs-out` onto a copy of Abhaya; verify in Glyphs that all 27 hand-written
 features + both prefixes survive intact alongside generated Sinhala + Tamil code.
 

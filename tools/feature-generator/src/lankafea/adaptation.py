@@ -15,8 +15,11 @@ actionable finding rather than guessing.
 
 from __future__ import annotations
 
-from .generators import _alt_base_and_index
+import re
+
+from .generators import _variant_index
 from .inventory import FontInventory
+from .names import split_ns
 from .model import FeatureDoc, GlyphClass, Lookup, Rule
 from .scripts import ScriptProfile
 
@@ -39,16 +42,15 @@ _STEM_ALIASES = {
 
 def _sign_variants(inventory: FontInventory, namespace: str) -> list[tuple[str, str, int]]:
     """(sign_stem, variant_glyph, index) for every ``<sign>-<ns>.altN`` glyph."""
-    suffix = f"-{namespace}"
     out = []
     for name in sorted(inventory.glyphs):
-        parsed = _alt_base_and_index(name)
-        if not parsed:
+        parts = split_ns(name, namespace)          # either position of the dot-suffix
+        if not parts:
             continue
-        base, idx = parsed
-        if not base.endswith(suffix):
+        stem, variant = parts
+        idx = _variant_index(variant) if variant else None
+        if idx is None:
             continue
-        stem = base[: -len(suffix)]
         if stem.endswith("sign") or stem in ("repha", "virama", "touch"):
             out.append((stem, name, idx))
     return out
@@ -125,10 +127,106 @@ _MARK_ANCHOR_OF_SIGN = {
 }
 
 
+# Tamil anchors (docs/naming-standard.md, Anchor naming): a base consonant carries an
+# anchor named after the sign, the sign carries the same name with a leading
+# underscore. Fonts older than the standard used other names; these patterns are the
+# ones seen in Abhaya Libre (tm_halant), Yaldevi (MatraI.altN, MatraIi, MatraU) and
+# Ralex (Anchor-N, which is resolved from the mark glyph itself, see below).
+# sign -> (standard anchor name, pattern of the legacy base-anchor names)
+TAMIL_ANCHORS = {
+    "virama": ("virama", re.compile(r"virama|tm_halant")),
+    "isign": ("isign", re.compile(r"isign|MatraI(\.alt\d*)?")),
+    "iisign": ("iisign", re.compile(r"iisign|MatraIi(\.alt\d*)?")),
+    "usign": ("usign", re.compile(r"usign|MatraU(\.alt\d*)?")),
+    "uusign": ("uusign", re.compile(r"uusign|MatraUu(\.alt\d*)?")),
+}
+
+
+def tamil_anchor_findings(inventory: FontInventory, profile: ScriptProfile,
+                          specs=None) -> list[str]:
+    """Anchor coverage for the five Tamil signs.
+
+    * The anchor a sign uses is read from the sign glyph's own ``_name`` mark
+      anchor, so any naming works (``_Anchor-3`` pairs with ``Anchor-3``); the
+      standard names and the legacy families above are also accepted.
+    * Only a consonant with NO dedicated glyph for the sign needs the base anchor:
+      a ligature (kI) carries its own mark position.
+    * A sign that attaches by an anchor with a non-standard name gets one naming note.
+    """
+    from .tamil import build_units
+    if not inventory.anchors:
+        return []
+    ns = profile.namespace
+    present = inventory.glyphs
+    specs_units = build_units(specs) if specs is not None else {}
+    findings: list[str] = []
+    consonants = [(stem + "a", f"{stem}a-{ns}") for stem in profile.tables.consonants.values()]
+    consonants = [(bare, full) for bare, full in consonants if full in present]
+
+    for sign, (standard, legacy) in TAMIL_ANCHORS.items():
+        sign_glyph = f"{sign}-{ns}"
+        if sign_glyph not in present:
+            continue
+        # The sign and its shape-group alternates all attach through the same anchor.
+        carriers_of_mark = [sign_glyph] + sorted(
+            n for n in present if n.startswith(f"{sign_glyph}."))
+        mark_names = sorted({a[1:] for n in carriers_of_mark
+                             for a in inventory.anchors.get(n, set())
+                             if a.startswith("_") and len(a) > 1})
+        family = {standard, *mark_names}
+
+        def has_anchor(glyph: str) -> bool:
+            return any(a in family or legacy.fullmatch(a)
+                       for a in inventory.anchors.get(glyph, set()))
+
+        def has_own_glyph(bare: str) -> bool:
+            u = specs_units.get(bare[:-1] + _abbr(profile, sign))
+            return u is not None and u.glyph in present
+
+        own = [c for c in consonants if has_own_glyph(c[0])]
+        needing = [c for c in consonants if c not in own]
+        if not own and not mark_names:
+            findings.append(
+                f"anchor: {sign_glyph} has no dedicated glyph for any consonant AND no "
+                f"'_' mark anchor — it cannot attach; add '_{standard}' to the sign and "
+                f"'{standard}' to the consonants, or draw the dedicated glyphs")
+            continue
+        if mark_names and needing:
+            lacking = [c[1] for c in needing if not has_anchor(c[1])]
+            if lacking:
+                findings.append(
+                    f"anchor: {sign_glyph} attaches via '_{mark_names[0]}' but "
+                    f"{len(lacking)}/{len(needing)} consonants with no dedicated glyph for "
+                    f"it lack the '{mark_names[0]}' anchor ({', '.join(lacking[:4])}"
+                    f"{' …' if len(lacking) > 4 else ''})")
+        for alt in carriers_of_mark[1:]:
+            if not any(a.startswith("_") for a in inventory.anchors.get(alt, set())):
+                findings.append(f"anchor: {alt} has no '_' mark anchor — it cannot attach")
+        if mark_names and standard not in mark_names:
+            findings.append(
+                f"anchor naming: {sign_glyph} uses '_{mark_names[0]}'; the standard "
+                f"names this anchor '{standard}' / '_{standard}' (naming-standard.md, "
+                f"Anchor naming)")
+    return findings
+
+
+def _abbr(profile: ScriptProfile, sign: str) -> str:
+    t = profile.tables
+    for cp, suffix in t.vsign_lig.items():
+        if t.sign_alone.get(cp) == sign:
+            return suffix
+    for cp, (_low, capv) in t.vsign_below.items():
+        if t.sign_alone.get(cp) == sign:
+            return capv
+    return ""
+
+
 def anchor_findings(inventory: FontInventory, satisfied_sign_counts: dict[str, int],
-                    profile: ScriptProfile) -> list[str]:
+                    profile: ScriptProfile, specs=None) -> list[str]:
     """For signs the font does NOT cover with precomposed ligatures, check the
     anchor pairing that GPOS mark attachment would need."""
+    if profile.model == "tamil":
+        return tamil_anchor_findings(inventory, profile, specs)
     if not inventory.anchors:
         return []          # compiled font or anchor-less source: nothing to say
     ns = profile.namespace

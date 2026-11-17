@@ -25,6 +25,42 @@ class BuildResult:
     assign_warnings: list[str] = field(default_factory=list)
 
 
+# ---- the two candidate models ----------------------------------------------- #
+# Sinhala uses the Indic model (generators.py); Tamil has its own (tamil.py), whose
+# forms are met by a ligature OR a shape-group alternate.
+
+def _generate(profile: ScriptProfile, specs, inventory: FontInventory, asg):
+    if profile.model == "tamil":
+        from .tamil import generate_tamil
+        return generate_tamil(specs)
+    from . import assign as assign_mod
+    return generators.generate(specs, alt_names=inventory.glyphs,
+                               alt_targets=assign_mod.alt_targets(asg))
+
+
+def _adapt(doc, profile: ScriptProfile, inventory: FontInventory) -> list[str]:
+    if profile.model == "tamil":
+        # A designer's own class of the same name narrows a shape group.
+        from .tamil import adopt_source_classes
+        adopt_source_classes(doc, inventory.source_classes)
+        return []
+    from .adaptation import add_variant_selection
+    return add_variant_selection(doc, profile, inventory)
+
+
+def _resolve(doc, profile: ScriptProfile, inventory: FontInventory) -> list[dict]:
+    if profile.model != "tamil":
+        return []
+    from .tamil import resolve_requirements
+    return resolve_requirements(doc, inventory.glyphs, profile.level)
+
+
+def _attach_forms(report: ValidationReport, profile: ScriptProfile, forms: list[dict]) -> None:
+    if forms:
+        report.forms = forms
+        report.forms_level = profile.level
+
+
 def build_fea(
     script: str,
     inventory: FontInventory,
@@ -34,9 +70,15 @@ def build_fea(
     validate: bool = True,
     use_yaml: bool = True,
     assign=None,
+    aliases: dict[str, str] | None = None,
+    adopt_legacy_names: bool = False,
 ) -> BuildResult:
     """``assign`` — optional feature assignments (see ``lankafea.assign``): a plain
-    dict ``{"groups": [...], "alts": {...}}`` or an ``Assign``."""
+    dict ``{"groups": [...], "alts": {...}}`` or an ``Assign``.
+
+    ``aliases`` maps a standard glyph name to the font's own name for it, and
+    ``adopt_legacy_names`` adds the deterministic pre-standard Tamil renames
+    (see ``lankafea.aliases``)."""
     from . import assign as assign_mod
     asg = assign if isinstance(assign, assign_mod.Assign) else assign_mod.parse_assign(assign)
     profile = get_profile(script, level=level)
@@ -44,8 +86,7 @@ def build_fea(
     # and alternates from the font inventory, with no glyphset YAML at all.
     specs = load_specs(profile) if use_yaml else synth_specs(profile)
 
-    doc = generators.generate(specs, alt_names=inventory.glyphs,
-                              alt_targets=assign_mod.alt_targets(asg))
+    doc = _generate(profile, specs, inventory, asg)
 
     raw_snips: list[str] = []
     if inject_paths:
@@ -54,8 +95,8 @@ def build_fea(
         raw_snips = [s.text for s in injection.raw]
 
     # Noto-model adaptation: shape-group variant selection from harvested classes.
-    from .adaptation import add_variant_selection
-    variant_findings = add_variant_selection(doc, profile, inventory)
+    # (Tamil's shape groups come from the standard; see tamil.py.)
+    variant_findings = _adapt(doc, profile, inventory)
 
     # User routing of rule groups into dlig / ssNN / ... (after every generator
     # and injection has contributed, so any group can be addressed).
@@ -64,9 +105,12 @@ def build_fea(
     # Adopt the font's own names for control glyphs (e.g. U+200D encoded as
     # 'zwj') before gating, so a nonstandard name doesn't kill the rules.
     from .aliases import apply_aliases, compute_aliases
-    apply_aliases(doc, compute_aliases(inventory))
+    apply_aliases(doc, compute_aliases(inventory, aliases, adopt_legacy_names,
+                                       profile.namespace))
 
+    forms = _resolve(doc, profile, inventory)
     doc, report = gate(doc, inventory.glyphs)
+    _attach_forms(report, profile, forms)
     flag_non_exporting(report, inventory.non_exporting)
     report.anchor_findings.extend(variant_findings)
     assign_warnings = (list(asg.warnings) + group_warnings
@@ -91,6 +135,8 @@ def validate_font(
     inject_paths: list[Path] | None = None,
     use_yaml: bool = True,
     assign=None,
+    aliases: dict[str, str] | None = None,
+    adopt_legacy_names: bool = False,
 ) -> ValidationReport:
     """Dependency validation only: generate candidates, analyze, report.
 
@@ -102,25 +148,26 @@ def validate_font(
 
     from . import assign as assign_mod
     asg = assign if isinstance(assign, assign_mod.Assign) else assign_mod.parse_assign(assign)
-    doc = generators.generate(specs, alt_names=inventory.glyphs,
-                              alt_targets=assign_mod.alt_targets(asg))
+    doc = _generate(profile, specs, inventory, asg)
     if inject_paths:
         injection = inj_mod.load_injection(inject_paths, profile)
         inj_mod.merge(doc, injection)
 
-    from .adaptation import (add_variant_selection, anchor_findings,
-                             satisfied_sign_counts)
-    variant_findings = add_variant_selection(doc, profile, inventory)
+    from .adaptation import anchor_findings, satisfied_sign_counts
+    variant_findings = _adapt(doc, profile, inventory)
     assign_mod.apply_groups(doc, asg)
 
     from .aliases import apply_aliases, compute_aliases
-    apply_aliases(doc, compute_aliases(inventory))
+    apply_aliases(doc, compute_aliases(inventory, aliases, adopt_legacy_names,
+                                       profile.namespace))
 
+    forms = _resolve(doc, profile, inventory)
     checks, live_class_members = analyze(doc, inventory.glyphs)
     report = summarize(checks, live_class_members)
+    _attach_forms(report, profile, forms)
     flag_non_exporting(report, inventory.non_exporting)
     report.anchor_findings = variant_findings + anchor_findings(
-        inventory, satisfied_sign_counts(checks, profile), profile)
+        inventory, satisfied_sign_counts(checks, profile), profile, specs)
 
     from .orphans import find_orphans
     report.orphans = find_orphans(inventory, checks, profile,
@@ -168,8 +215,8 @@ def describe_assignables(
 
     profile = get_profile(script, level=level)
     specs = load_specs(profile) if use_yaml else synth_specs(profile)
-    doc = generators.generate(specs, alt_names=inventory.glyphs)
-    add_variant_selection(doc, profile, inventory)
+    doc = _generate(profile, specs, inventory, None)
+    _adapt(doc, profile, inventory)
     apply_aliases(doc, compute_aliases(inventory))
 
     groups = assign_mod.list_groups(doc)
