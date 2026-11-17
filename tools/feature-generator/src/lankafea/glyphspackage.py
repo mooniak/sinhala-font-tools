@@ -35,6 +35,10 @@ _STEM_TO_DOT_NAME = {v: k for k, v in RESERVED_DOT_NAMES.items()}
 def escape_glyph_filename(name: str) -> str:
     if name in RESERVED_DOT_NAMES:
         return RESERVED_DOT_NAMES[name]
+    if name.startswith("."):
+        # Glyphs stores a leading dot as an underscore (.part.al_comp -> _part.al_comp.glyph),
+        # not only for .notdef/.null. Writing the dot would rename the file on every save.
+        return escape_glyph_filename("_" + name[1:])
     out = []
     for ch in name:
         out.append(ch)

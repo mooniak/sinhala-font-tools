@@ -68,6 +68,11 @@ CASES = {
 }
 
 
+def source_is_migrated(case: FontCase) -> bool:
+    """True once the font's source has been renamed to the standard (isign-taml.ka exists)."""
+    return "isign-taml.ka" in inventory_from_glyphs(case.source).glyphs
+
+
 def available(case: FontCase) -> bool:
     return case.source.exists() and case.built.exists() and case.aliases.exists()
 

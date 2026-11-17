@@ -17,6 +17,10 @@ def test_generated_features_shape_like_the_hand_written(key, tmp_path):
     case = A.CASES[key]
     if not A.available(case):
         pytest.skip(f"{key}: source, build or alias table not found")
+    if A.source_is_migrated(case):
+        pytest.skip(f"{key}: source already uses the standard's names, so the committed "
+                    "build (old names) can no longer be mapped; rebuild and compare, or "
+                    "use `python -m lankafea.migrate` parity")
     r = A.run(key, tmp_path)
 
     # Every difference must be explained: only glyphs the hand-written features never
