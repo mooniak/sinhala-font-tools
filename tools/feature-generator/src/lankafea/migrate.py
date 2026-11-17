@@ -42,7 +42,9 @@ SIGN_ANCHOR = {
     "uusign-taml": ("uusign",),
 }
 # A sign alternate (isign-taml.ka, usign-taml.pa, iisign-taml.stylalt1 ...) reuses its sign.
-ALT_RE = re.compile(r"^(isign|iisign|usign|uusign)-taml\.")
+ALT_RE = re.compile(r"^(isign|iisign|usign|uusign)-taml\.(?:ka|ca|na|pa|ma|la|ssa)$")
+# (the standard's shape-group alternates only: a font's own extras, such as iisign-taml.alt2 or
+#  isign-taml.alt8, keep whatever anchors they have)
 
 NAME_CHARS = r"[A-Za-z0-9_.\-]"
 
@@ -58,8 +60,16 @@ def _token_regex(names) -> re.Pattern:
     return re.compile(rf"(?:(?<!{NAME_CHARS})|(?<=\\012))({alt})(?!{NAME_CHARS})")
 
 
-def plan_glyph_renames(inv, aliases: dict[str, str]) -> tuple[dict[str, str], list[str]]:
-    """font name -> standard name, plus the problems found."""
+_SUFFIX_BEFORE_NS = re.compile(r"^(?P<stem>.+)\.(?P<suf>\w+)-taml$")
+
+
+def plan_glyph_renames(inv, aliases: dict[str, str],
+                       move_suffixes: bool = False) -> tuple[dict[str, str], list[str]]:
+    """font name -> standard name, plus the problems found.
+
+    move_suffixes also moves any remaining ``stem.suffix-taml`` to ``stem-taml.suffix`` (the
+    standard puts the suffix after the namespace) for glyphs the alias table did not name:
+    a font's own extras such as ``iisign.alt2-taml`` or ``rI.alt-taml``."""
     renames: dict[str, str] = {}
     problems: list[str] = []
     for std, actual in aliases.items():
@@ -74,6 +84,16 @@ def plan_glyph_renames(inv, aliases: dict[str, str]) -> tuple[dict[str, str], li
             problems.append(f"{actual} maps to both {renames[actual]} and {std}")
             continue
         renames[actual] = std
+    if move_suffixes:
+        for name in sorted(inv.glyphs):
+            m = _SUFFIX_BEFORE_NS.match(name)
+            if not m or name in renames:
+                continue
+            new = f"{m['stem']}-taml.{m['suf']}"
+            if new in inv.glyphs or new in renames.values():
+                problems.append(f"clash: {name} -> {new}, but {new} already exists")
+                continue
+            renames[name] = new
     targets = list(renames.values())
     for t in set(targets):
         if targets.count(t) > 1:
@@ -203,7 +223,7 @@ def _migrate_file(path: Path, aliases_file, adopt_legacy, apply, anchors=True) -
     inv = inventory_from_glyphs(str(path))
     extra = load_alias_file(aliases_file) if aliases_file else None
     aliases = compute_aliases(inv, extra=extra, legacy_tamil=adopt_legacy)
-    renames, problems = plan_glyph_renames(inv, aliases)
+    renames, problems = plan_glyph_renames(inv, aliases, move_suffixes=adopt_legacy)
 
     text = path.read_text(encoding="utf8")
     starts = [(m.start(), m.group(1)) for m in GLYPH_START.finditer(text)]
@@ -264,7 +284,7 @@ def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: 
     inv = inventory_from_glyphs(str(package))
     extra = load_alias_file(aliases_file) if aliases_file else None
     aliases = compute_aliases(inv, extra=extra, legacy_tamil=adopt_legacy)
-    renames, problems = plan_glyph_renames(inv, aliases)
+    renames, problems = plan_glyph_renames(inv, aliases, move_suffixes=adopt_legacy)
 
     # every glyph name must map to a file we can find, or the rename could miss one
     files = {p.name for p in glyph_dir.glob("*.glyph")}

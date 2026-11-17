@@ -63,3 +63,11 @@ def test_uusign_keeps_its_own_name_when_it_shares_an_anchor_with_usign():
     mapping = {"Anchor-2": ["usign", "uusign"]}
     assert 'name = "_uusign";' in rewrite_anchors(text, mapping, True, [], "uusign-taml", "uusign")
     assert 'name = "_usign";' in rewrite_anchors(text, mapping, True, [], "usign-taml", "usign")
+
+
+def test_explicit_master_name_survives_a_rewrite():
+    from lankafea.glyphspackage import restore_master_names
+    before = 'id = "AAA";\nname = ExtraLight;\nuserData = {\n};'
+    after = 'id = "AAA";\nuserData = {\n};'
+    assert restore_master_names(before, after) == before
+    assert restore_master_names(before, before) == before        # nothing to restore

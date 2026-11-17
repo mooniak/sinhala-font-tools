@@ -17,6 +17,11 @@ Conventional Commits — see [../../docs/versioning.md](../../docs/versioning.md
   the same name, as in Yaldevi) are reported as problems instead of written; a stylistic
   alternate keeps its own anchor. **Fix:** `uusign` took `_usign` when it shared a legacy
   anchor with `usign`; unquoted anchor names (`name = _MatraI.alt3;`) were not seen.
+- **`migrate --adopt-legacy-names`** also moves every remaining `stem.suffix-taml` to
+  `stem-taml.suffix` (Yaldevi's own extras: `iisign.alt2-taml`, `rI.alt-taml`), and renames anchors
+  only on the standard's own shape-group alternates.
+- **Fix:** writing features back into a package dropped an explicit master `name`
+  (Yaldevi's `ExtraLight` master came back as "Light Extra" and renamed its UFO); it is now kept.
 - **Fix:** writing features back into a package renamed every glyph whose name starts with a
   dot (`.part.al_comp` was saved as `.part.al_comp.glyph` instead of Glyphs' `_part.al_comp.glyph`),
   leaving a duplicate file in the source.

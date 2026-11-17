@@ -26,6 +26,7 @@ read/write round-trip, same symptom that surfaced ``.null`` here).
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 RESERVED_DOT_NAMES = {".notdef": "_notdef", ".null": "_null"}
@@ -148,6 +149,24 @@ def _dumps(obj, format_version: int) -> str:
     return buf.getvalue()
 
 
+_MASTER_NAME = re.compile(r'^id = "(?P<id>[^"\n]+)";\nname = (?P<name>[^;\n]+);$', re.M)
+
+
+def restore_master_names(before: str, after: str) -> str:
+    """Put back an explicit master ``name`` that the serializer dropped.
+
+    glyphsLib omits a master's name when it can derive one from weight/width/custom, and the
+    derived name can differ (Yaldevi's "ExtraLight" master, stored as weight Light + custom
+    Extra, comes back as "Light Extra" and renames the master UFO). A name the file had is
+    the designer's; keep it."""
+    names = {m["id"]: m["name"] for m in _MASTER_NAME.finditer(before)}
+    for mid, name in names.items():
+        line = f'id = "{mid}";'
+        if line in after and f'{line}\nname = ' not in after:
+            after = after.replace(line, f"{line}\nname = {name};", 1)
+    return after
+
+
 def write_glyphspackage(font, path: Path | str) -> None:
     """Write a GSFont as a .glyphspackage directory.
 
@@ -182,7 +201,10 @@ def write_glyphspackage(font, path: Path | str) -> None:
     (pkg / "order.plist").write_text(order_text, encoding="utf-8")
 
     fontinfo = _strip_glyphs_block(_dumps(font, fmt))
-    (pkg / "fontinfo.plist").write_text(fontinfo, encoding="utf-8")
+    old_info = pkg / "fontinfo.plist"
+    if old_info.exists():
+        fontinfo = restore_master_names(old_info.read_text(encoding="utf-8"), fontinfo)
+    old_info.write_text(fontinfo, encoding="utf-8")
     # UIState.plist, if present from Glyphs.app, is left untouched.
 
 
