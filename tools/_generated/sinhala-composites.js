@@ -478,7 +478,7 @@
         "fa-sinh",
         "virama-sinh"
       ],
-      "f-sinh.hist": [
+      "fp-sinh": [
         "fa-sinh",
         "virama-sinh"
       ],
@@ -486,7 +486,7 @@
         "fa-sinh",
         "isign-sinh.alt1"
       ],
-      "fI-sinh.hist": [
+      "fpI-sinh": [
         "fa-sinh",
         "isign-sinh.alt1"
       ],
@@ -494,7 +494,7 @@
         "fa-sinh",
         "iisign-sinh.alt1"
       ],
-      "fIi-sinh.hist": [
+      "fpIi-sinh": [
         "fa-sinh",
         "iisign-sinh.alt1"
       ],
@@ -502,7 +502,7 @@
         "fRa-sinh",
         "isign-sinh"
       ],
-      "fRI-sinh.hist": [
+      "fpRI-sinh": [
         "fRa-sinh",
         "isign-sinh"
       ],
@@ -510,7 +510,7 @@
         "fRa-sinh",
         "iisign-sinh"
       ],
-      "fRIi-sinh.hist": [
+      "fpRIi-sinh": [
         "fRa-sinh",
         "iisign-sinh"
       ],
@@ -518,7 +518,7 @@
         "fa-sinh",
         "rasign-sinh.pa"
       ],
-      "fRa-sinh.hist": [
+      "fpRa-sinh": [
         "fa-sinh",
         "rasign-sinh.pa"
       ],
@@ -526,7 +526,7 @@
         "fa-sinh",
         "usign-sinh"
       ],
-      "fU-sinh.hist": [
+      "fpU-sinh": [
         "fa-sinh",
         "usign-sinh"
       ],
@@ -534,7 +534,7 @@
         "fa-sinh",
         "uusign-sinh"
       ],
-      "fUu-sinh.hist": [
+      "fpUu-sinh": [
         "fa-sinh",
         "uusign-sinh"
       ],
@@ -542,7 +542,7 @@
         "fa-sinh",
         "repha-sinh"
       ],
-      "fa_repha-sinh.hist": [
+      "fpa_repha-sinh": [
         "fa-sinh",
         "repha-sinh"
       ],

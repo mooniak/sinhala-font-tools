@@ -15,7 +15,7 @@ sinhala:
       - {group: DaShape, to: dlig, mode: copy}
       - {group: AnusvaraSha, to: ss03}
   dist: -113
-  numerals: {lith: ss07, lithTens: rlig, archaic: ss08}
+  numerals: {lith: ss07, archaic: ss08}
   featureNames:
     ss01: Sinhala Da forms
 tamil:
@@ -66,7 +66,9 @@ these sets are generated only when a font says where they go:
 | `lithTens` | Lith digit + Lith zero → the ten-ligature | `෧෦ → lithone_lithzero` |
 | `archaic` | ASCII digits → archaic numbers: units, tens, 100, 1000 | `90 → archaicninety` |
 
-Each takes a tag or a list of tags. Sets on ASCII digits are registered for `DFLT` and
+Each takes a tag or a list of tags. `lith` already includes the ten-ligatures, so ASCII
+`10` becomes one glyph under that set; `lithTens: rlig` would also join Lith digits typed as
+such in default text (Abhaya Libre leaves it off). Sets on ASCII digits are registered for `DFLT` and
 `latn` as well as `sinh`, because HarfBuzz shapes a run of digits as `DFLT`.
 
 ## `featureNames`

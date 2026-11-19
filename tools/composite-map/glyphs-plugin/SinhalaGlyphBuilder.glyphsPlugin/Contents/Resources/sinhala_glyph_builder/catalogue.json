@@ -9503,7 +9503,7 @@
    "note": "conjunct ligature; features alone set it as the plain sequence"
   },
   {
-   "name": "f-sinh.hist",
+   "name": "fp-sinh",
    "text": null,
    "groups": [
     "other",
@@ -9523,7 +9523,7 @@
    "note": "composite map: tier 2 (grammar-classify)"
   },
   {
-   "name": "fI-sinh.hist",
+   "name": "fpI-sinh",
    "text": null,
    "groups": [
     "other",
@@ -9547,7 +9547,7 @@
    "note": "composite map: tier 3 (noto-ispilla)"
   },
   {
-   "name": "fIi-sinh.hist",
+   "name": "fpIi-sinh",
    "text": null,
    "groups": [
     "other",
@@ -9571,7 +9571,7 @@
    "note": "composite map: tier 3 (noto-ispilla)"
   },
   {
-   "name": "fU-sinh.hist",
+   "name": "fpU-sinh",
    "text": null,
    "groups": [
     "other",
@@ -9591,7 +9591,7 @@
    "note": "composite map: tier 2 (grammar-classify)"
   },
   {
-   "name": "fUu-sinh.hist",
+   "name": "fpUu-sinh",
    "text": null,
    "groups": [
     "other",
@@ -14477,7 +14477,7 @@
    "note": "the sign sits beside the base: shaping places it, no precomposed glyph needed"
   },
   {
-   "name": "fa_repha-sinh.hist",
+   "name": "fpa_repha-sinh",
    "text": null,
    "groups": [
     "signs",
@@ -28191,7 +28191,7 @@
    "note": "conjunct ligature; features alone set it as the plain sequence"
   },
   {
-   "name": "fR-sinh.hist",
+   "name": "fpR-sinh",
    "text": null,
    "groups": [
     "other",
@@ -28211,7 +28211,7 @@
    "note": "composite map: review — the composite is a guess, confirm it"
   },
   {
-   "name": "fRI-sinh.hist",
+   "name": "fpRI-sinh",
    "text": null,
    "groups": [
     "other",
@@ -28231,7 +28231,7 @@
    "note": "composite map: tier 3 (noto-ispilla)"
   },
   {
-   "name": "fRIi-sinh.hist",
+   "name": "fpRIi-sinh",
    "text": null,
    "groups": [
     "other",
@@ -28251,7 +28251,7 @@
    "note": "composite map: tier 3 (noto-ispilla)"
   },
   {
-   "name": "fRa-sinh.hist",
+   "name": "fpRa-sinh",
    "text": null,
    "groups": [
     "other",
@@ -28995,7 +28995,7 @@
    "note": "composite map: keep drawn — irreducible"
   },
   {
-   "name": "fa-sinh.hist",
+   "name": "fpa-sinh",
    "text": null,
    "groups": [
     "other",

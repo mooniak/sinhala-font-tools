@@ -401,6 +401,11 @@ KNOWN = [
            "the candrabindu lookup, so fpa kept the tall one)",
      lambda d: d.feature == "ss02" and "fpa-sinh" in d.hand
      and "candrabindu-sinh.001" in d.generated and "candrabindu-sinh" in d.hand),
+    ("Q1", "Lith ten-ligatures are off by default, only in ss07 (hand: always on, rlig; "
+           "also showed ෯෦ as eighty)",
+     lambda d: d.feature == "default"
+     and _has(d.hand, lambda g: g.endswith("_lithzero-sinh"))
+     and not _has(d.generated, lambda g: g.endswith("_lithzero-sinh"))),
     ("A5", "Lith ninety: hand shows ෯෦ as eighty",
      lambda d: "litheight_lithzero-sinh" in d.hand and "lithnine_lithzero-sinh" in d.generated),
     # Fixed by the refactor, so no longer known (a difference there is a regression):

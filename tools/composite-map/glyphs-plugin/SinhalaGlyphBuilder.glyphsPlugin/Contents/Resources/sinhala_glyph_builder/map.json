@@ -555,7 +555,7 @@
    ],
    "tier": 1
   },
-  "f-sinh.hist": {
+  "fp-sinh": {
    "components": [
     "fa-sinh",
     "virama-sinh"
@@ -569,7 +569,7 @@
    ],
    "tier": 3
   },
-  "fI-sinh.hist": {
+  "fpI-sinh": {
    "components": [
     "fa-sinh",
     "isign-sinh.alt1"
@@ -583,7 +583,7 @@
    ],
    "tier": 3
   },
-  "fIi-sinh.hist": {
+  "fpIi-sinh": {
    "components": [
     "fa-sinh",
     "iisign-sinh.alt1"
@@ -597,7 +597,7 @@
    ],
    "tier": 3
   },
-  "fRI-sinh.hist": {
+  "fpRI-sinh": {
    "components": [
     "fRa-sinh",
     "isign-sinh"
@@ -611,7 +611,7 @@
    ],
    "tier": 3
   },
-  "fRIi-sinh.hist": {
+  "fpRIi-sinh": {
    "components": [
     "fRa-sinh",
     "iisign-sinh"
@@ -625,7 +625,7 @@
    ],
    "tier": 1
   },
-  "fRa-sinh.hist": {
+  "fpRa-sinh": {
    "components": [
     "fa-sinh",
     "rasign-sinh.pa"
@@ -639,7 +639,7 @@
    ],
    "tier": 1
   },
-  "fU-sinh.hist": {
+  "fpU-sinh": {
    "components": [
     "fa-sinh",
     "usign-sinh"
@@ -653,7 +653,7 @@
    ],
    "tier": 1
   },
-  "fUu-sinh.hist": {
+  "fpUu-sinh": {
    "components": [
     "fa-sinh",
     "uusign-sinh"
@@ -667,7 +667,7 @@
    ],
    "tier": 2
   },
-  "fa_repha-sinh.hist": {
+  "fpa_repha-sinh": {
    "components": [
     "fa-sinh",
     "repha-sinh"
@@ -2269,7 +2269,7 @@
   "dyUu._c-sinh": "irreducible",
   "dya._c-sinh": "irreducible",
   "dyaa._c-sinh": "irreducible",
-  "fa-sinh.hist": "irreducible",
+  "fpa-sinh": "irreducible",
   "gDhI-sinh": "ispilla-fused",
   "gDhIi-sinh": "ispilla-fused",
   "gDha-sinh": "irreducible",
@@ -2474,7 +2474,7 @@
    "fRa-sinh",
    "virama-sinh"
   ],
-  "fR-sinh.hist": [
+  "fpR-sinh": [
    "fRa-sinh",
    "virama-sinh"
   ],

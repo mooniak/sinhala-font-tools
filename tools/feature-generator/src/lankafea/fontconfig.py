@@ -11,7 +11,7 @@ file::
           - {group: DaShape, to: dlig, mode: copy}
           - {group: AnusvaraSha, to: ss03}
       dist: -113                    # touching-cluster shift (GPOS dist)
-      numerals: {lith: ss07, lithTens: rlig, archaic: ss08}
+      numerals: {lith: ss07, archaic: ss08}
       featureNames: {ss01: Sinhala Da forms}
 
 Everything is optional. ``inject`` and ``assign`` are the existing mechanisms

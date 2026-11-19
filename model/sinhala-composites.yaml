@@ -575,7 +575,7 @@ composites:
     - virama-sinh
     tier: 1
     source: grammar
-  f-sinh.hist:
+  fp-sinh:
     components:
     - fa-sinh
     - virama-sinh
@@ -587,7 +587,7 @@ composites:
     - isign-sinh.alt1
     tier: 3
     source: noto-ispilla
-  fI-sinh.hist:
+  fpI-sinh:
     components:
     - fa-sinh
     - isign-sinh.alt1
@@ -599,7 +599,7 @@ composites:
     - iisign-sinh.alt1
     tier: 3
     source: noto-ispilla
-  fIi-sinh.hist:
+  fpIi-sinh:
     components:
     - fa-sinh
     - iisign-sinh.alt1
@@ -611,7 +611,7 @@ composites:
     - isign-sinh
     tier: 3
     source: noto-ispilla
-  fRI-sinh.hist:
+  fpRI-sinh:
     components:
     - fRa-sinh
     - isign-sinh
@@ -623,7 +623,7 @@ composites:
     - iisign-sinh
     tier: 3
     source: noto-ispilla
-  fRIi-sinh.hist:
+  fpRIi-sinh:
     components:
     - fRa-sinh
     - iisign-sinh
@@ -635,7 +635,7 @@ composites:
     - rasign-sinh.pa
     tier: 1
     source: noto-signvariant
-  fRa-sinh.hist:
+  fpRa-sinh:
     components:
     - fa-sinh
     - rasign-sinh.pa
@@ -647,7 +647,7 @@ composites:
     - usign-sinh
     tier: 1
     source: grammar
-  fU-sinh.hist:
+  fpU-sinh:
     components:
     - fa-sinh
     - usign-sinh
@@ -659,7 +659,7 @@ composites:
     - uusign-sinh
     tier: 1
     source: grammar
-  fUu-sinh.hist:
+  fpUu-sinh:
     components:
     - fa-sinh
     - uusign-sinh
@@ -671,7 +671,7 @@ composites:
     - repha-sinh
     tier: 2
     source: grammar
-  fa_repha-sinh.hist:
+  fpa_repha-sinh:
     components:
     - fa-sinh
     - repha-sinh
@@ -2130,7 +2130,7 @@ review:
     - fRa-sinh
     - virama-sinh
     note: sign form on a conjunct base the family model does not cover — confirm before applying
-  fR-sinh.hist:
+  fpR-sinh:
     class: atomic
     guess:
     - fRa-sinh
@@ -2587,7 +2587,7 @@ keep_drawn:
   dyUu._c-sinh: irreducible
   dya._c-sinh: irreducible
   dyaa._c-sinh: irreducible
-  fa-sinh.hist: irreducible
+  fpa-sinh: irreducible
   gDhI-sinh: ispilla-fused
   gDhIi-sinh: ispilla-fused
   gDha-sinh: irreducible
