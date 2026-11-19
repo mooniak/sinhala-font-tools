@@ -1,0 +1,1253 @@
+@FIGURES = [ zero one two three four five six seven eight nine
+];
+
+@FIGURES_OSF = [ zero.osf one.osf two.osf three.osf four.osf five.osf six.osf seven.osf eight.osf nine.osf
+];
+
+# Prefix: Languagesystems
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+languagesystem sinh dflt;
+languagesystem taml dflt;
+languagesystem tml2 dflt;
+
+
+# Prefix: Prefix
+
+#----------- Yansaya and Rakar --------------
+#-------------------------------
+
+lookup sin_vatu {
+  sub virama-sinh zerowidthjoiner ya-sinh by yasign-sinh;
+  sub virama-sinh zerowidthjoiner ra-sinh by rasign-sinh;
+} sin_vatu;
+
+
+#---- --AKHN ------------
+lookup sinakhands {
+  sub ka-sinh virama-sinh zerowidthjoiner ssa-sinh by kSsa-sinh;
+  sub ka-sinh virama-sinh zerowidthjoiner va-sinh by kVa-sinh;
+  sub ta-sinh virama-sinh zerowidthjoiner va-sinh by tVa-sinh;
+  sub ta-sinh virama-sinh zerowidthjoiner tha-sinh by tTha-sinh;
+  sub na-sinh virama-sinh zerowidthjoiner da-sinh by nDa-sinh;
+  sub na-sinh virama-sinh zerowidthjoiner va-sinh by nVa-sinh;
+  sub na-sinh virama-sinh zerowidthjoiner dha-sinh by nDha-sinh;
+  sub na-sinh virama-sinh zerowidthjoiner tha-sinh by nTha-sinh;
+  sub da-sinh virama-sinh zerowidthjoiner va-sinh by dVa-sinh;
+  sub da-sinh virama-sinh zerowidthjoiner dha-sinh by dDha-sinh;
+  sub tta-sinh virama-sinh zerowidthjoiner ttha-sinh by ttTtha-sinh;
+  sub ga-sinh virama-sinh zerowidthjoiner dha-sinh by gDha-sinh;
+  sub nna-sinh virama-sinh zerowidthjoiner dda-sinh by nndda-sinh;
+  sub nya-sinh virama-sinh zerowidthjoiner ja-sinh by nyja-sinh;
+  sub ma-sinh virama-sinh zerowidthjoiner ba-sinh by mba-sinh;
+  sub nga-sinh virama-sinh zerowidthjoiner ga-sinh by nnga-sinh;
+  sub nya-sinh virama-sinh zerowidthjoiner ca-sinh by nyCa-sinh;
+  sub nya-sinh virama-sinh zerowidthjoiner cha-sinh by nyCha-sinh;
+  sub ca-sinh virama-sinh zerowidthjoiner ca-sinh by cCa-sinh;
+  sub ba-sinh virama-sinh zerowidthjoiner ba-sinh by bBa-sinh;
+} sinakhands;
+
+#---- REPH ----
+
+lookup sinreph {
+  sub ra-sinh virama-sinh zerowidthjoiner by repha-sinh;
+} sinreph;
+
+#---- HALN ----
+
+lookup sin_virama {
+  sub aasign-sinh virama-sinh by aasign_virama-sinh;
+  sub ka-sinh virama-sinh by k-sinh;
+  sub kha-sinh virama-sinh by kh-sinh;
+  sub ga-sinh virama-sinh by g-sinh;
+  sub gha-sinh virama-sinh by gh-sinh;
+  sub nga-sinh virama-sinh by ng-sinh;
+  sub nnga-sinh virama-sinh by nng-sinh;
+  sub ca-sinh virama-sinh by c-sinh;
+  sub cha-sinh virama-sinh by ch-sinh;
+  sub ja-sinh virama-sinh by j-sinh;
+  sub jha-sinh virama-sinh by jh-sinh;
+  sub nya-sinh virama-sinh by ny-sinh;
+  sub jnya-sinh virama-sinh by jny-sinh;
+  sub nyja-sinh virama-sinh by nyj-sinh;
+  sub tta-sinh virama-sinh by tt-sinh;
+  sub ttha-sinh virama-sinh by tth-sinh;
+  sub dda-sinh virama-sinh by dd-sinh;
+  sub ddha-sinh virama-sinh by ddh-sinh;
+  sub nna-sinh virama-sinh by nn-sinh;
+  sub nndda-sinh virama-sinh by nndd-sinh;
+  sub ta-sinh virama-sinh by t-sinh;
+  sub tha-sinh virama-sinh by th-sinh;
+  sub da-sinh virama-sinh by d-sinh;
+  sub dha-sinh virama-sinh by dh-sinh;
+  sub na-sinh virama-sinh by n-sinh;
+  sub nda-sinh virama-sinh by nd-sinh;
+  sub pa-sinh virama-sinh by p-sinh;
+  sub pha-sinh virama-sinh by ph-sinh;
+  sub ba-sinh virama-sinh by b-sinh;
+  sub bha-sinh virama-sinh by bh-sinh;
+  sub ma-sinh virama-sinh by m-sinh;
+  sub mba-sinh virama-sinh by mb-sinh;
+  sub ya-sinh virama-sinh by y-sinh;
+  sub ra-sinh virama-sinh by r-sinh;
+  sub la-sinh virama-sinh by l-sinh;
+  sub va-sinh virama-sinh by v-sinh;
+  sub sha-sinh virama-sinh by sh-sinh;
+  sub ssa-sinh virama-sinh by ss-sinh;
+  sub sa-sinh virama-sinh by s-sinh;
+  sub ha-sinh virama-sinh by h-sinh;
+  sub lla-sinh virama-sinh by ll-sinh;
+  sub fa-sinh virama-sinh by f-sinh;
+
+  sub dVa-sinh virama-sinh by dV-sinh;
+  sub kVa-sinh virama-sinh by kV-sinh;
+  sub kSsa-sinh virama-sinh by kSs-sinh;
+  sub nVa-sinh virama-sinh by nV-sinh;
+  sub nDa-sinh  virama-sinh by nD-sinh;
+  sub ttTtha-sinh virama-sinh by ttTth-sinh;
+  sub dDha-sinh virama-sinh by dDh-sinh;
+  sub tVa-sinh virama-sinh by tV-sinh;
+  sub tTha-sinh virama-sinh by tTh-sinh;
+  sub nDha-sinh virama-sinh by nDh-sinh;
+  sub nTha-sinh virama-sinh by nTh-sinh;
+  sub gDha-sinh virama-sinh by gDh-sinh;
+  sub nyCa-sinh virama-sinh by nyC-sinh;
+  sub nyCha-sinh virama-sinh by nyCh-sinh;
+  sub cCa-sinh virama-sinh by cC-sinh;
+  sub bBa-sinh virama-sinh by bB-sinh;
+  sub yasign-sinh virama-sinh by yasign-sinh;
+
+  sub kRa-sinh virama-sinh by kR-sinh;
+  sub khRa-sinh virama-sinh by khR-sinh;
+  sub gRa-sinh virama-sinh by gR-sinh;
+  sub ghRa-sinh virama-sinh by ghR-sinh;
+  sub cRa-sinh virama-sinh by cR-sinh;
+  sub jRa-sinh virama-sinh by jR-sinh;
+  sub jhRa-sinh virama-sinh by jhR-sinh;
+  sub nyRa-sinh virama-sinh by nyR-sinh;
+  sub ttRa-sinh virama-sinh by ttR-sinh;
+  sub jnyRa-sinh virama-sinh by jnyR-sinh;
+  sub nyjRa-sinh virama-sinh by nyjR-sinh;
+  sub ddRa-sinh virama-sinh by ddR-sinh;
+  sub tRa-sinh virama-sinh by tR-sinh;
+  sub dRa-sinh virama-sinh by dR-sinh;
+  sub dhRa-sinh virama-sinh by dhR-sinh;
+  sub pRa-sinh virama-sinh by pR-sinh;
+  sub bhRa-sinh virama-sinh by bhR-sinh;
+  sub mRa-sinh virama-sinh by mR-sinh;
+  sub vRa-sinh virama-sinh by vR-sinh;
+  sub shRa-sinh virama-sinh by shR-sinh;
+  sub ssRa-sinh virama-sinh by ssR-sinh;
+  sub sRa-sinh virama-sinh by sR-sinh;
+  sub hRa-sinh virama-sinh by hR-sinh;
+  sub fRa-sinh virama-sinh by fR-sinh;
+  sub bRa-sinh virama-sinh by bR-sinh;
+ } sin_virama;
+
+#---- ABVS ----
+
+lookup sinabvs_1 {
+  sub ka-sinh isign-sinh by kI-sinh;
+  sub kha-sinh isign-sinh by khI-sinh;
+  sub ga-sinh isign-sinh by gI-sinh;
+  sub gha-sinh isign-sinh by ghI-sinh;
+  sub nga-sinh isign-sinh by ngI-sinh;
+  sub nnga-sinh isign-sinh by nngI-sinh;
+  sub ca-sinh isign-sinh by cI-sinh;
+  sub cha-sinh isign-sinh by chI-sinh;
+  sub ja-sinh isign-sinh by jI-sinh;
+  sub jha-sinh isign-sinh by jhI-sinh;
+  sub nya-sinh isign-sinh by nyI-sinh;
+  sub jnya-sinh isign-sinh by jnyI-sinh;
+  sub nyja-sinh isign-sinh by nyjI-sinh;
+  sub tta-sinh isign-sinh by ttI-sinh;
+  sub ttha-sinh isign-sinh by tthI-sinh;
+  sub dda-sinh isign-sinh by ddI-sinh;
+  sub ddha-sinh isign-sinh by ddhI-sinh;
+  sub nna-sinh isign-sinh by nnI-sinh;
+  sub nndda-sinh isign-sinh by nnddI-sinh;
+  sub ta-sinh isign-sinh by tI-sinh;
+  sub tha-sinh isign-sinh by thI-sinh;
+  sub da-sinh isign-sinh by dI-sinh;
+  sub dha-sinh isign-sinh by dhI-sinh;
+  sub na-sinh isign-sinh by nI-sinh;
+  sub nda-sinh isign-sinh by ndI-sinh;
+  sub pa-sinh isign-sinh by pI-sinh;
+  sub pha-sinh isign-sinh by phI-sinh;
+  sub ba-sinh isign-sinh by bI-sinh;
+  sub bha-sinh isign-sinh by bhI-sinh;
+  sub ma-sinh isign-sinh by mI-sinh;
+  sub mba-sinh isign-sinh by mbI-sinh;
+  sub ya-sinh isign-sinh by yI-sinh;
+  sub ra-sinh isign-sinh by rI-sinh;
+  sub la-sinh isign-sinh by lI-sinh;
+  sub va-sinh isign-sinh by vI-sinh;
+  sub sha-sinh isign-sinh by shI-sinh;
+  sub ssa-sinh isign-sinh by ssI-sinh;
+  sub sa-sinh isign-sinh by sI-sinh;
+  sub ha-sinh isign-sinh by hI-sinh;
+  sub lla-sinh isign-sinh by llI-sinh;
+  sub fa-sinh isign-sinh by fI-sinh;
+
+  sub	kSsa-sinh	isign-sinh	by	kSsI-sinh;
+  sub	kVa-sinh	isign-sinh	by	kVI-sinh;
+  sub	tVa-sinh	isign-sinh	by	tVI-sinh;
+  sub	tTha-sinh	isign-sinh	by	tThI-sinh;
+  sub	nDa-sinh	isign-sinh	by	nDI-sinh;
+  sub	nVa-sinh	isign-sinh	by	nVI-sinh;
+  sub	nDha-sinh	isign-sinh	by	nDhI-sinh;
+  sub	nTha-sinh	isign-sinh	by	nThI-sinh;
+  sub	dVa-sinh	isign-sinh	by	dVI-sinh;
+  sub	dDha-sinh	isign-sinh	by	dDhI-sinh;
+  sub	ttTtha-sinh	isign-sinh	by	ttTthI-sinh;
+  sub 	gDha-sinh	isign-sinh by gDhI-sinh;
+  sub	nyCa-sinh isign-sinh by nyCI-sinh;
+  sub	nyCha-sinh isign-sinh by nyChI-sinh;
+  sub 	cCa-sinh isign-sinh by cCI-sinh;
+  sub	bBa-sinh isign-sinh by bBI-sinh;
+  sub 	yasign-sinh	isign-sinh by yasign_isign-sinh;
+
+  sub kRa-sinh isign-sinh by kRI-sinh;
+  sub khRa-sinh isign-sinh by khRI-sinh;
+  sub gRa-sinh isign-sinh by gRI-sinh;
+  sub ghRa-sinh isign-sinh by ghRI-sinh;
+  sub cRa-sinh isign-sinh by cRI-sinh;
+  sub jRa-sinh isign-sinh by jRI-sinh;
+  sub jhRa-sinh isign-sinh by jhRI-sinh;
+  sub nyRa-sinh isign-sinh by nyRI-sinh;
+  sub jnyRa-sinh isign-sinh by jnyRI-sinh;
+  sub ttRa-sinh isign-sinh by ttRI-sinh;
+  sub ddRa-sinh isign-sinh by ddRI-sinh;
+  sub tRa-sinh isign-sinh by tRI-sinh;
+  sub dRa-sinh isign-sinh by dRI-sinh;
+  sub dhRa-sinh isign-sinh by dhRI-sinh;
+  sub pRa-sinh isign-sinh by pRI-sinh;
+  sub bRa-sinh isign-sinh by bRI-sinh;
+  sub bhRa-sinh isign-sinh by bhRI-sinh;
+  sub mRa-sinh isign-sinh by mRI-sinh;
+  sub vRa-sinh isign-sinh by vRI-sinh;
+  sub shRa-sinh isign-sinh by shRI-sinh;
+  sub ssRa-sinh isign-sinh by ssRI-sinh;
+  sub sRa-sinh isign-sinh by sRI-sinh;
+  sub hRa-sinh isign-sinh by hRI-sinh;
+  sub fRa-sinh isign-sinh by fRI-sinh;
+
+} sinabvs_1;
+
+lookup sinabvs_2 {
+  sub ka-sinh iisign-sinh by kIi-sinh;
+  sub kha-sinh iisign-sinh by khIi-sinh;
+  sub ga-sinh iisign-sinh by gIi-sinh;
+  sub gha-sinh iisign-sinh by ghIi-sinh;
+  sub nga-sinh iisign-sinh by ngIi-sinh;
+  sub nnga-sinh iisign-sinh by nngIi-sinh;
+  sub ca-sinh iisign-sinh by cIi-sinh;
+  sub cha-sinh iisign-sinh by chIi-sinh;
+  sub ja-sinh iisign-sinh by jIi-sinh;
+  sub jha-sinh iisign-sinh by jhIi-sinh;
+  sub nya-sinh iisign-sinh by nyIi-sinh;
+  sub jnya-sinh iisign-sinh by jnyIi-sinh;
+  sub nyja-sinh iisign-sinh by nyjIi-sinh;
+  sub tta-sinh iisign-sinh by ttIi-sinh;
+  sub ttha-sinh iisign-sinh by tthIi-sinh;
+  sub dda-sinh iisign-sinh by ddIi-sinh;
+  sub ddha-sinh iisign-sinh by ddhIi-sinh;
+  sub nna-sinh iisign-sinh by nnIi-sinh;
+  sub nndda-sinh iisign-sinh by nnddIi-sinh;
+  sub ta-sinh iisign-sinh by tIi-sinh;
+  sub tha-sinh iisign-sinh by thIi-sinh;
+  sub da-sinh iisign-sinh by dIi-sinh;
+  sub dha-sinh iisign-sinh by dhIi-sinh;
+  sub na-sinh iisign-sinh by nIi-sinh;
+  sub nda-sinh iisign-sinh by ndIi-sinh;
+  sub pa-sinh iisign-sinh by pIi-sinh;
+  sub pha-sinh iisign-sinh by phIi-sinh;
+  sub ba-sinh iisign-sinh by bIi-sinh;
+  sub bha-sinh iisign-sinh by bhIi-sinh;
+  sub ma-sinh iisign-sinh by mIi-sinh;
+  sub mba-sinh iisign-sinh by mbIi-sinh;
+  sub ya-sinh iisign-sinh by yIi-sinh;
+  sub ra-sinh iisign-sinh by rIi-sinh;
+  sub la-sinh iisign-sinh by lIi-sinh;
+  sub va-sinh iisign-sinh by vIi-sinh;
+  sub sha-sinh iisign-sinh by shIi-sinh;
+  sub ssa-sinh iisign-sinh by ssIi-sinh;
+  sub sa-sinh iisign-sinh by sIi-sinh;
+  sub ha-sinh iisign-sinh by hIi-sinh;
+  sub lla-sinh iisign-sinh by llIi-sinh;
+  sub fa-sinh iisign-sinh by fIi-sinh;
+
+  sub	kSsa-sinh	iisign-sinh	by	kSsIi-sinh;
+  sub	kVa-sinh	iisign-sinh	by	kVIi-sinh;
+  sub	tVa-sinh	iisign-sinh	by	tVIi-sinh;
+  sub	tTha-sinh	iisign-sinh	by	tThIi-sinh;
+  sub	nDa-sinh	iisign-sinh	by	nDIi-sinh;
+  sub	nVa-sinh	iisign-sinh	by	nVIi-sinh;
+  sub	nDha-sinh	iisign-sinh	by	nDhIi-sinh;
+  sub	nTha-sinh	iisign-sinh	by	nThIi-sinh;
+  sub	dVa-sinh	iisign-sinh	by	dVIi-sinh;
+  sub	dDha-sinh	iisign-sinh	by	dDhIi-sinh;
+  sub	ttTtha-sinh	iisign-sinh	by	ttTthIi-sinh;
+  sub	gDha-sinh	iisign-sinh	by gDhIi-sinh;
+  sub	nyCa-sinh iisign-sinh by nyCIi-sinh;
+  sub	nyCha-sinh iisign-sinh by nyChIi-sinh;
+  sub 	cCa-sinh iisign-sinh by cCIi-sinh;
+  sub	bBa-sinh iisign-sinh by bBIi-sinh;
+  sub 	yasign-sinh iisign-sinh by yasign_iisign-sinh;
+
+  sub kRa-sinh iisign-sinh by kRIi-sinh;
+  sub khRa-sinh iisign-sinh by khRIi-sinh;
+  sub gRa-sinh iisign-sinh by gRIi-sinh;
+  sub ghRa-sinh iisign-sinh by ghRIi-sinh;
+  sub cRa-sinh iisign-sinh by cRIi-sinh;
+  sub jRa-sinh iisign-sinh by jRIi-sinh;
+  sub jhRa-sinh iisign-sinh by jhRIi-sinh;
+  sub nyRa-sinh iisign-sinh by nyRIi-sinh;
+  sub jnyRa-sinh iisign-sinh by jnyRIi-sinh;
+  sub ttRa-sinh iisign-sinh by ttRIi-sinh;
+  sub ddRa-sinh iisign-sinh by ddRIi-sinh;
+  sub tRa-sinh iisign-sinh by tRIi-sinh;
+  sub dRa-sinh iisign-sinh by dRIi-sinh;
+  sub dhRa-sinh iisign-sinh by dhRIi-sinh;
+  sub pRa-sinh iisign-sinh by pRIi-sinh;
+  sub bRa-sinh iisign-sinh by bRIi-sinh;
+  sub bhRa-sinh iisign-sinh by bhRIi-sinh;
+  sub mRa-sinh iisign-sinh by mRIi-sinh;
+  sub vRa-sinh iisign-sinh by vRIi-sinh;
+  sub shRa-sinh iisign-sinh by shRIi-sinh;
+  sub ssRa-sinh iisign-sinh by ssRIi-sinh;
+  sub sRa-sinh iisign-sinh by sRIi-sinh;
+  sub hRa-sinh iisign-sinh by hRIi-sinh;
+  sub fRa-sinh iisign-sinh by fRIi-sinh;
+} sinabvs_2;
+
+
+
+lookup sinabvs_3 {
+  sub yasign-sinh repha-sinh by yasign_repha-sinh;
+  sub yasign-sinh aasign-sinh repha-sinh  by yasign_repha_aasign-sinh;
+  sub yasign-sinh usign-sinh repha-sinh  by yasign_repha_usign-sinh;
+  sub yasign-sinh uusign-sinh repha-sinh  by yasign_repha_uusign-sinh;
+  sub	ka-sinh	repha-sinh by ka_repha-sinh	;
+  sub	kha-sinh	repha-sinh by kha_repha-sinh	;
+  sub	ga-sinh	repha-sinh by ga_repha-sinh	;
+  sub	gha-sinh	repha-sinh by gha_repha-sinh	;
+  sub	nga-sinh	repha-sinh by nga_repha-sinh	;
+  sub	nnga-sinh	repha-sinh by nnga_repha-sinh	;
+  sub	ca-sinh	repha-sinh by ca_repha-sinh	;
+  sub	cha-sinh	repha-sinh by cha_repha-sinh	;
+  sub	ja-sinh	repha-sinh by ja_repha-sinh	;
+  sub	jha-sinh	repha-sinh by jha_repha-sinh	;
+  sub	nya-sinh	repha-sinh by nya_repha-sinh	;
+  sub	jnya-sinh	repha-sinh by jnya_repha-sinh	;
+  sub	nyja-sinh	repha-sinh by nyja_repha-sinh	;
+  sub	tta-sinh	repha-sinh by tta_repha-sinh	;
+  sub	ttha-sinh	repha-sinh by ttha_repha-sinh	;
+  sub	dda-sinh	repha-sinh by dda_repha-sinh	;
+  sub	ddha-sinh	repha-sinh by ddha_repha-sinh	;
+  sub	nna-sinh	repha-sinh by nna_repha-sinh	;
+  sub	nndda-sinh	repha-sinh by nndda_repha-sinh	;
+  sub	ta-sinh	repha-sinh by ta_repha-sinh	;
+  sub	tha-sinh	repha-sinh by tha_repha-sinh	;
+  sub	da-sinh	repha-sinh by da_repha-sinh	;
+  sub	dha-sinh	repha-sinh by dha_repha-sinh	;
+  sub	na-sinh	repha-sinh by na_repha-sinh	;
+  sub	nda-sinh	repha-sinh by nda_repha-sinh	;
+  sub	pa-sinh	repha-sinh by pa_repha-sinh	;
+  sub	pha-sinh	repha-sinh by pha_repha-sinh	;
+  sub	ba-sinh	repha-sinh by ba_repha-sinh	;
+  sub	bha-sinh	repha-sinh by bha_repha-sinh	;
+  sub	ma-sinh	repha-sinh by ma_repha-sinh	;
+  sub	mba-sinh	repha-sinh by mba_repha-sinh	;
+  sub	ya-sinh	repha-sinh by ya_repha-sinh	;
+  sub	ra-sinh	repha-sinh by ra_repha-sinh	;
+  sub	la-sinh	repha-sinh by la_repha-sinh	;
+  sub	va-sinh	repha-sinh by va_repha-sinh	;
+  sub	sha-sinh	repha-sinh by sha_repha-sinh	;
+  sub	ssa-sinh	repha-sinh by ssa_repha-sinh	;
+  sub	sa-sinh	repha-sinh by sa_repha-sinh	;
+  sub	ha-sinh	repha-sinh by ha_repha-sinh	;
+  sub	lla-sinh	repha-sinh by lla_repha-sinh	;
+  sub	fa-sinh	repha-sinh by fa_repha-sinh	;
+  
+  sub	kSsa-sinh	repha-sinh by kSsa_repha-sinh	;
+  sub	kVa-sinh	repha-sinh by kVa_repha-sinh	;
+  sub	tVa-sinh	repha-sinh by tVa_repha-sinh	;
+  sub	tTha-sinh	repha-sinh by tTha_repha-sinh	;
+  sub	nDa-sinh	repha-sinh by nDa_repha-sinh	;
+  sub	nDha-sinh	repha-sinh by nDha_repha-sinh	;
+  sub	nVa-sinh	repha-sinh by nVa_repha-sinh	;
+  sub	nTha-sinh	repha-sinh by nTha_repha-sinh	;
+  sub	gDha-sinh	repha-sinh by gDha_repha-sinh	;
+  sub	dVa-sinh	repha-sinh by dVa_repha-sinh	;
+  sub	dDha-sinh	repha-sinh by dDha_repha-sinh	;
+  sub	ttTtha-sinh	repha-sinh by ttTtha_repha-sinh;
+  sub	nyCa-sinh	repha-sinh by nyCa_repha-sinh	;
+  sub	nyCha-sinh	repha-sinh by nyCha_repha-sinh;
+  sub	cCa-sinh	repha-sinh by cCa_repha-sinh;
+  sub	bBa-sinh	repha-sinh by bBa_repha-sinh	;
+} sinabvs_3;
+
+
+lookup sinakhands_reph {
+  sub kSsa-sinh repha-sinh by kSsa_repha-sinh;
+  sub ka-sinh repha-sinh virama-sinh zerowidthjoiner ssa-sinh by kSsa_repha-sinh;
+  sub kVa-sinh repha-sinh by kVa_repha-sinh;
+  sub ka-sinh repha-sinh virama-sinh zerowidthjoiner va-sinh by kVa_repha-sinh;
+  sub tVa-sinh repha-sinh by tVa_repha-sinh;
+  sub ta-sinh repha-sinh virama-sinh zerowidthjoiner va-sinh by tVa_repha-sinh;
+  sub tTha-sinh repha-sinh by tTha_repha-sinh;
+  sub ta-sinh repha-sinh virama-sinh zerowidthjoiner tha-sinh by tTha_repha-sinh;
+  sub nDa-sinh repha-sinh by nDa_repha-sinh;
+  sub na-sinh repha-sinh virama-sinh zerowidthjoiner da-sinh by nDa_repha-sinh;
+  sub nVa-sinh repha-sinh by nVa_repha-sinh;
+  sub na-sinh repha-sinh virama-sinh zerowidthjoiner va-sinh by nVa_repha-sinh;
+  sub nDha-sinh repha-sinh by nDha_repha-sinh;
+  sub na-sinh repha-sinh virama-sinh zerowidthjoiner dha-sinh by nDha_repha-sinh;
+  sub nTha-sinh repha-sinh by nTha_repha-sinh;
+  sub na-sinh repha-sinh virama-sinh zerowidthjoiner tha-sinh by nTha_repha-sinh;
+  sub dVa-sinh repha-sinh by dVa_repha-sinh;
+  sub da-sinh repha-sinh virama-sinh zerowidthjoiner va-sinh by dVa_repha-sinh;
+  sub dDha-sinh repha-sinh by dDha_repha-sinh;
+  sub da-sinh repha-sinh virama-sinh zerowidthjoiner dha-sinh by dDha_repha-sinh;
+  sub ttTtha-sinh repha-sinh by ttTtha_repha-sinh;
+  sub tta-sinh repha-sinh virama-sinh zerowidthjoiner ttha-sinh by ttTtha_repha-sinh;
+  sub gDha-sinh repha-sinh by gDha_repha-sinh;
+  sub ga-sinh repha-sinh virama-sinh zerowidthjoiner dha-sinh by gDha_repha-sinh;
+} sinakhands_reph;
+
+#----------- BLWS --------------
+#-------------------------------
+
+lookup sinblws_1 {
+  sub ka-sinh usign-sinh by kU-sinh;
+  sub kha-sinh usign-sinh by khU-sinh;
+  sub ga-sinh usign-sinh by gU-sinh;
+  sub gha-sinh usign-sinh by ghU-sinh;
+  sub nnga-sinh usign-sinh by nngU-sinh;
+  sub ca-sinh usign-sinh by cU-sinh;
+  sub cha-sinh usign-sinh by chU-sinh;
+  sub ja-sinh usign-sinh by jU-sinh;
+  sub jha-sinh usign-sinh by jhU-sinh;
+  sub nya-sinh usign-sinh by nyU-sinh;
+  sub jnya-sinh usign-sinh by jnyU-sinh;
+  sub nyja-sinh usign-sinh by nyjU-sinh;
+  sub tta-sinh usign-sinh by ttU-sinh;
+  sub ttha-sinh usign-sinh by tthU-sinh;
+  sub dda-sinh usign-sinh by ddU-sinh;
+  sub ddha-sinh usign-sinh by ddhU-sinh;
+  sub nna-sinh usign-sinh by nnU-sinh;
+  sub nndda-sinh usign-sinh by nnddU-sinh;
+  sub ta-sinh usign-sinh by tU-sinh;
+  sub tha-sinh usign-sinh by thU-sinh;
+  sub da-sinh usign-sinh by dU-sinh;
+  sub dha-sinh usign-sinh by dhU-sinh;
+  sub na-sinh usign-sinh by nU-sinh;
+  sub nda-sinh usign-sinh by ndU-sinh;
+  sub pa-sinh usign-sinh by pU-sinh;
+  sub pha-sinh usign-sinh by phU-sinh;
+  sub ba-sinh usign-sinh by bU-sinh;
+  sub bha-sinh usign-sinh by bhU-sinh;
+  sub ma-sinh usign-sinh by mU-sinh;
+  sub mba-sinh usign-sinh by mbU-sinh;
+  sub ya-sinh usign-sinh by yU-sinh;
+  sub ra-sinh usign-sinh by rU-sinh;
+  sub la-sinh usign-sinh by lU-sinh;
+  sub va-sinh usign-sinh by vU-sinh;
+  sub sha-sinh usign-sinh by shU-sinh;
+  sub ssa-sinh usign-sinh by ssU-sinh;
+  sub sa-sinh usign-sinh by sU-sinh;
+  sub ha-sinh usign-sinh by hU-sinh;
+  sub lla-sinh usign-sinh by llU-sinh;
+  sub fa-sinh usign-sinh by fU-sinh;
+  sub fpa-sinh usign-sinh by fpU-sinh;
+
+  sub	kSsa-sinh usign-sinh	by	kSsU-sinh;
+  sub	kVa-sinh usign-sinh	by	kVU-sinh;
+  sub	tVa-sinh usign-sinh	by	tVU-sinh;
+  sub	tTha-sinh usign-sinh	by	tThU-sinh;
+  sub	nDa-sinh usign-sinh	by	nDU-sinh;
+  sub	nVa-sinh usign-sinh	by	nVU-sinh;
+  sub	nDha-sinh usign-sinh	by	nDhU-sinh;
+  sub	nTha-sinh usign-sinh	by	nThU-sinh;
+  sub	dVa-sinh usign-sinh	by	dVU-sinh;
+  sub	dDha-sinh usign-sinh	by	dDhU-sinh;
+  sub	ttTtha-sinh	usign-sinh	by	ttTthU-sinh;
+  sub	nyCa-sinh usign-sinh by nyCU-sinh;
+  sub	nyCha-sinh usign-sinh by nyChU-sinh;
+  sub	cCa-sinh usign-sinh by cU-sinh;
+  sub	bBa-sinh usign-sinh by bBU-sinh;
+  sub yasign-sinh usign-sinh by yasign_usign-sinh;
+} sinblws_1;
+
+lookup sinblws_2 {
+  sub ka-sinh uusign-sinh by kUu-sinh;
+  sub kha-sinh uusign-sinh by khUu-sinh;
+  sub ga-sinh uusign-sinh by gUu-sinh;
+  sub gha-sinh uusign-sinh by ghUu-sinh;
+  sub nnga-sinh uusign-sinh by nngUu-sinh;
+  sub ca-sinh uusign-sinh by cUu-sinh;
+  sub cha-sinh uusign-sinh by chUu-sinh;
+  sub ja-sinh uusign-sinh by jUu-sinh;
+  sub jha-sinh uusign-sinh by jhUu-sinh;
+  sub nya-sinh uusign-sinh by nyUu-sinh;
+  sub jnya-sinh uusign-sinh by jnyUu-sinh;
+  sub nyja-sinh uusign-sinh by nyjUu-sinh;
+  sub tta-sinh uusign-sinh by ttUu-sinh;
+  sub ttha-sinh uusign-sinh by tthUu-sinh;
+  sub dda-sinh uusign-sinh by ddUu-sinh;
+  sub ddha-sinh uusign-sinh by ddhUu-sinh;
+  sub nna-sinh uusign-sinh by nnUu-sinh;
+  sub nndda-sinh uusign-sinh by nnddUu-sinh;
+  sub ta-sinh uusign-sinh by tUu-sinh;
+  sub tha-sinh uusign-sinh by thUu-sinh;
+  sub da-sinh uusign-sinh by dUu-sinh;
+  sub dha-sinh uusign-sinh by dhUu-sinh;
+  sub na-sinh uusign-sinh by nUu-sinh;
+  sub nda-sinh uusign-sinh by ndUu-sinh;
+  sub pa-sinh uusign-sinh by pUu-sinh;
+  sub pha-sinh uusign-sinh by phUu-sinh;
+  sub ba-sinh uusign-sinh by bUu-sinh;
+  sub bha-sinh uusign-sinh by bhUu-sinh;
+  sub ma-sinh uusign-sinh by mUu-sinh;
+  sub mba-sinh uusign-sinh by mbUu-sinh;
+  sub ya-sinh uusign-sinh by yUu-sinh;
+  sub ra-sinh uusign-sinh by rUu-sinh;
+  sub la-sinh uusign-sinh by lUu-sinh;
+  sub va-sinh uusign-sinh by vUu-sinh;
+  sub sha-sinh uusign-sinh by shUu-sinh;
+  sub ssa-sinh uusign-sinh by ssUu-sinh;
+  sub sa-sinh uusign-sinh by sUu-sinh;
+  sub ha-sinh uusign-sinh by hUu-sinh;
+  sub lla-sinh uusign-sinh by llUu-sinh;
+  sub fa-sinh uusign-sinh by fUu-sinh;
+  sub fpa-sinh uusign-sinh by fpUu-sinh;
+
+  sub	kSsa-sinh	uusign-sinh	by	kSsUu-sinh;
+  sub	kVa-sinh	uusign-sinh	by	kVUu-sinh;
+  sub	tVa-sinh	uusign-sinh	by	tVUu-sinh;
+  sub	tTha-sinh	uusign-sinh	by	tThUu-sinh;
+  sub	nDa-sinh	uusign-sinh	by	nDUu-sinh;
+  sub	nVa-sinh	uusign-sinh	by	nVUu-sinh;
+  sub	nDha-sinh	uusign-sinh	by	nDhUu-sinh;
+  sub	nTha-sinh	uusign-sinh	by	nThUu-sinh;
+  sub	dVa-sinh	uusign-sinh	by	dVUu-sinh;
+  sub	dDha-sinh	uusign-sinh	by	dDhUu-sinh;
+  sub	ttTtha-sinh	uusign-sinh	by	ttTthUu-sinh;
+  sub	nyCa-sinh uusign-sinh by nyCUu-sinh;
+  sub	nyCha-sinh uusign-sinh by nyChUu-sinh;
+  sub 	cCa-sinh	uusign-sinh by cCUu-sinh;
+  sub	bBa-sinh uusign-sinh by bBUu-sinh;
+  sub yasign-sinh uusign-sinh by yasign_uusign-sinh;
+} sinblws_2;
+
+
+
+lookup sinblws_3 {
+  sub [kRa-sinh khRa-sinh gRa-sinh ghRa-sinh cRa-sinh jRa-sinh jhRa-sinh nyRa-sinh ttRa-sinh jnyRa-sinh nyjRa-sinh ddRa-sinh tRa-sinh dRa-sinh dhRa-sinh pRa-sinh bhRa-sinh mRa-sinh vRa-sinh shRa-sinh ssRa-sinh sRa-sinh hRa-sinh fRa-sinh nDRa-sinh bRa-sinh kRa-sinh khRa-sinh gRa-sinh ghRa-sinh cRa-sinh jRa-sinh jhRa-sinh nyRa-sinh ttRa-sinh jnyRa-sinh nyjRa-sinh ddRa-sinh tRa-sinh dRa-sinh dhRa-sinh pRa-sinh bhRa-sinh mRa-sinh vRa-sinh shRa-sinh ssRa-sinh sRa-sinh hRa-sinh fRa-sinh nDRa-sinh bRa-sinh ] usign-sinh' by usign.rasign-sinh;
+  sub [kRa-sinh khRa-sinh gRa-sinh ghRa-sinh cRa-sinh jRa-sinh jhRa-sinh nyRa-sinh ttRa-sinh jnyRa-sinh nyjRa-sinh ddRa-sinh tRa-sinh dRa-sinh dhRa-sinh pRa-sinh bhRa-sinh mRa-sinh vRa-sinh shRa-sinh ssRa-sinh sRa-sinh hRa-sinh fRa-sinh nDRa-sinh bRa-sinh kRa-sinh khRa-sinh gRa-sinh ghRa-sinh cRa-sinh jRa-sinh jhRa-sinh nyRa-sinh ttRa-sinh jnyRa-sinh nyjRa-sinh ddRa-sinh tRa-sinh dRa-sinh dhRa-sinh pRa-sinh bhRa-sinh mRa-sinh vRa-sinh shRa-sinh ssRa-sinh sRa-sinh hRa-sinh fRa-sinh nDRa-sinh bRa-sinh ] uusign-sinh' by uusign.rasign-sinh;
+} sinblws_3;
+
+#----------- Rae, Raae --------------
+#-------------------------------
+
+lookup sin_psts {
+  sub ra-sinh aesign-sinh by rAe-sinh;
+  sub ra-sinh aaesign-sinh by rAae-sinh;
+}  sin_psts;
+
+lookup si_split_matra {
+  sub eesign-sinh by virama-sinh;
+  sub osign-sinh by aasign-sinh;
+  sub oosign-sinh by aasign_virama-sinh;
+  sub ausign-sinh by vocaliclsign-sinh;
+} si_split_matra;
+
+#----------- Rakaar ------------
+#-------------------------------
+
+lookup sinrakaar {
+  sub ka-sinh rasign-sinh by kRa-sinh;
+  sub kha-sinh rasign-sinh by khRa-sinh;
+  sub ga-sinh rasign-sinh by gRa-sinh;
+  sub gha-sinh rasign-sinh by ghRa-sinh;
+  sub ca-sinh rasign-sinh by cRa-sinh;
+  sub ja-sinh rasign-sinh by jRa-sinh;
+  sub jha-sinh rasign-sinh by jhRa-sinh;
+  sub nya-sinh rasign-sinh by nyRa-sinh;
+  sub tta-sinh rasign-sinh by ttRa-sinh;
+  sub jnya-sinh rasign-sinh by jnyRa-sinh;
+  sub nyja-sinh rasign-sinh by nyjRa-sinh;
+  sub dda-sinh rasign-sinh by ddRa-sinh;
+  sub ta-sinh rasign-sinh by tRa-sinh;
+  sub da-sinh rasign-sinh by dRa-sinh;
+  sub dha-sinh rasign-sinh by dhRa-sinh;
+  sub pa-sinh rasign-sinh by pRa-sinh;
+  sub bha-sinh rasign-sinh by bhRa-sinh;
+  sub ma-sinh rasign-sinh by mRa-sinh;
+  sub va-sinh rasign-sinh by vRa-sinh;
+  sub sha-sinh rasign-sinh by shRa-sinh;
+  sub ssa-sinh rasign-sinh by ssRa-sinh;
+  sub sa-sinh rasign-sinh by sRa-sinh;
+  sub ha-sinh rasign-sinh by hRa-sinh;
+  sub fa-sinh rasign-sinh by fRa-sinh;
+  sub fpa-sinh rasign-sinh by fpRa-sinh;
+  sub nDa-sinh rasign-sinh by nDRa-sinh;
+  sub ba-sinh rasign-sinh by bRa-sinh;
+} sinrakaar;
+
+#----------- SS01 Da forms ------------
+#---------------------------------
+
+lookup sin_da_subscripts {
+  sub da-sinh aasign-sinh by daa._c-sinh;
+  sub da-sinh aasign-sinh by daa._c-sinh;
+  sub da-sinh aaesign-sinh by daae._c-sinh;
+  sub da-sinh aesign-sinh by dae._c-sinh;
+  sub da-sinh esign-sinh yasign-sinh aasign-sinh by da_yansa_oosign-sinh;
+  sub da-sinh yasign_uusign-sinh by dyUu._c-sinh;
+  sub da-sinh yasign-sinh by dya._c-sinh;
+  sub da-sinh yasign-sinh aasign-sinh by dyaa._c-sinh;
+  sub da-sinh yasign_usign-sinh by dyU._c-sinh;
+  sub nda-sinh aasign-sinh by ndaa._c-sinh;
+  sub nda-sinh aasign-sinh by ndaa._c-sinh;
+  sub nda-sinh aaesign-sinh by ndaae._c-sinh;
+  sub nda-sinh aesign-sinh by ndae._c-sinh;
+  sub jnya-sinh aasign-sinh by jnyaa._c-sinh;
+  sub jnya-sinh aasign-sinh by jnyaa._c-sinh;
+  sub jnya-sinh aaesign-sinh by jnyaae._c-sinh;
+  sub jnya-sinh aesign-sinh by jnyae._c-sinh;
+  sub nDa-sinh aasign-sinh by nDaa._c-sinh;
+  sub nDa-sinh aasign-sinh by nDaa._c-sinh;
+  sub nDa-sinh aaesign-sinh by nDaae._c-sinh;
+  sub nDa-sinh aesign-sinh by nDae._c-sinh;
+  sub nya-sinh aasign-sinh by nyaa._c-sinh;
+  sub nya-sinh aasign-sinh by nyaa._c-sinh;
+  sub nya-sinh aaesign-sinh by nyaae._c-sinh;
+  sub nya-sinh aesign-sinh by nyae._c-sinh;
+  sub da-sinh vocalicrsign-sinh by dvocalicr._c-sinh;
+  sub da-sinh vocalicrrsign-sinh by dvocalicrr._c-sinh;
+  sub dRa-sinh aasign-sinh by dRaa._c-sinh;
+  sub ndRa-sinh aasign-sinh by ndRaa._c-sinh;
+
+} sin_da_subscripts;
+
+#----------- Anusvara_Sha Ligature------------
+#---------------------------------
+
+lookup ss03_anusvara_sha {
+  sub anusvaraya-sinh sha-sinh by anusvarayaSha-sinh;
+  sub anusvaraya-sinh sh-sinh by anusvarayaSh-sinh;
+  sub anusvaraya-sinh shI-sinh by anusvarayaShI-sinh;
+  sub anusvaraya-sinh shIi-sinh by anusvarayaShIi-sinh;
+  sub anusvaraya-sinh shU-sinh by anusvarayaShU-sinh;
+  sub anusvaraya-sinh shUu-sinh by anusvarayaShUu-sinh;
+} ss03_anusvara_sha;
+
+lookup ss03_anusvara_sha_02 {
+
+  sub anusvaraya-sinh sha-sinh iisign-sinh by anusvarayaShIi-sinh;
+  sub anusvaraya-sinh sha-sinh usign-sinh by anusvarayaShU-sinh;
+  sub anusvaraya-sinh sha-sinh uusign-sinh by anusvarayaShUu-sinh;
+} ss03_anusvara_sha_02;
+
+#----------- Sinhala Numerals------------
+#---------------------------------
+
+lookup sin_lithnum_zero {
+  sub lithone-sinh lithzero-sinh by lithone_lithzero-sinh;
+  sub lithtwo-sinh lithzero-sinh by lithtwo_lithzero-sinh;
+  sub liththree-sinh lithzero-sinh by liththree_lithzero-sinh;
+  sub lithfour-sinh lithzero-sinh by lithfour_lithzero-sinh;
+  sub lithfive-sinh lithzero-sinh by lithfive_lithzero-sinh;
+  sub lithsix-sinh lithzero-sinh by lithsix_lithzero-sinh;
+  sub lithseven-sinh lithzero-sinh by lithseven_lithzero-sinh;
+  sub litheight-sinh lithzero-sinh by litheight_lithzero-sinh;
+  sub lithnine-sinh lithzero-sinh by litheight_lithzero-sinh;
+} sin_lithnum_zero;
+
+
+lookup ss07_num_to_sinlithnum_1 {
+  sub zero by lithzero-sinh;
+  sub one by lithone-sinh;
+  sub two by lithtwo-sinh;
+  sub three by liththree-sinh;
+  sub four by lithfour-sinh;
+  sub five by lithfive-sinh;
+  sub six by lithsix-sinh;
+  sub seven by lithseven-sinh;
+  sub eight by litheight-sinh;
+  sub nine by lithnine-sinh;
+} ss07_num_to_sinlithnum_1;
+
+lookup ss07_num_to_sinlithnum_2 {
+  sub lithone-sinh lithzero-sinh by lithone_lithzero-sinh;
+  sub lithtwo-sinh lithzero-sinh by lithtwo_lithzero-sinh;
+  sub liththree-sinh lithzero-sinh by liththree_lithzero-sinh;
+  sub lithfour-sinh lithzero-sinh by lithfour_lithzero-sinh;
+  sub lithfive-sinh lithzero-sinh by lithfive_lithzero-sinh;
+  sub lithsix-sinh lithzero-sinh by lithsix_lithzero-sinh;
+  sub lithseven-sinh lithzero-sinh by lithseven_lithzero-sinh;
+  sub litheight-sinh lithzero-sinh by litheight_lithzero-sinh;
+  sub lithnine-sinh lithzero-sinh by lithnine_lithzero-sinh;
+} ss07_num_to_sinlithnum_2;
+
+
+lookup ss08_num_to_sinArchiac_1 {
+  sub one by archaicone-sinh;
+  sub two by archaictwo-sinh;
+  sub three by archaicthree-sinh;
+  sub four by archaicfour-sinh;
+  sub five by archaicfive-sinh;
+  sub six by archaicsix-sinh;
+  sub seven by archaicseven-sinh;
+  sub eight by archaiceight-sinh;
+  sub nine by archaicnine-sinh;
+} ss08_num_to_sinArchiac_1;
+
+lookup ss08_num_to_sinArchiac_2 {
+  sub archaicone-sinh zero by archaicten-sinh;
+  sub archaictwo-sinh zero by archaictwenty-sinh;
+  sub archaicthree-sinh zero by archaicthirty-sinh;
+  sub archaicfour-sinh zero by archaicforty-sinh;
+  sub archaicfive-sinh zero by archaicfifty-sinh;
+  sub archaicsix-sinh zero by archaicsixty-sinh;
+  sub archaicseven-sinh zero by archaicseventy-sinh;
+  sub archaiceight-sinh zero by archaiceighty-sinh;
+  sub archaicnine-sinh zero by archaicninety-sinh;
+} ss08_num_to_sinArchiac_2;
+
+lookup ss08_num_to_sinArchiac_3 {
+  sub archaicten-sinh zero by archaiconehundred-sinh;
+} ss08_num_to_sinArchiac_3;
+
+lookup ss08_num_to_sinArchiac_4 {
+  sub archaiconehundred-sinh zero by archaiconethousand-sinh;
+} ss08_num_to_sinArchiac_4;
+
+#----------- Sinhala fPa------------
+#---------------------------------
+
+
+lookup sin_fPa {
+  sub fa-sinh by fpa-sinh;
+  sub f-sinh by fp-sinh;
+  sub fI-sinh by fpI-sinh;
+  sub fIi-sinh by fpIi-sinh;
+  sub fU-sinh by fpU-sinh;
+  sub fUu-sinh by fpUu-sinh;
+  sub fRa-sinh by fpRa-sinh;
+  sub fR-sinh by fpR-sinh;
+  sub fRI-sinh by fpRI-sinh;
+  sub fRIi-sinh by fpRIi-sinh;
+  sub fa_repha-sinh by fpa_repha-sinh;
+} sin_fPa;
+
+#----------- Sinhala touching  ------------
+#---------------------------------
+
+
+feature akhn {
+	lookup sin_touch {
+  		sub zerowidthjoiner virama-sinh' by touch-sinh;
+	} sin_touch;
+} akhn;
+
+
+#----------- Sinhala touching reph combinations  ------------
+# Push the Reph the middle when touching two consonants with Reph
+
+
+@REPH_REPLACEMENT_1 = [ ka_repha-sinh ga_repha-sinh nna_repha-sinh ta_repha-sinh bha_repha-sinh ya_repha-sinh da_repha-sinh ];
+@REPH_REPLACEMENT_2 = [ kha_repha-sinh gha_repha-sinh ca_repha-sinh  tta_repha-sinh dda_repha-sinh dha_repha-sinh ma_repha-sinh va_repha-sinh pa_repha-sinh sa_repha-sinh ba_repha-sinh la_repha-sinh da_repha-sinh jha_repha-sinh ];
+
+
+lookup touch_reph_decompose {
+	sub ka_repha-sinh by ka-sinh  repha-sinh.001;
+	sub jha_repha-sinh by jha-sinh repha-sinh.001;
+	sub gha_repha-sinh by gha-sinh repha-sinh.001;
+	sub ta_repha-sinh by ta-sinh repha-sinh.001;
+	sub bha_repha-sinh by bha-sinh repha-sinh.001;
+	sub ga_repha-sinh by ga-sinh repha-sinh.002;
+	sub kha_repha-sinh by kha-sinh repha-sinh.002;
+	sub ca_repha-sinh by ca-sinh repha-sinh.002;
+	sub tta_repha-sinh by tta-sinh repha-sinh.002;
+	sub dda_repha-sinh by dda-sinh repha-sinh.002;
+	sub ma_repha-sinh by ma-sinh repha-sinh.002;
+	sub va_repha-sinh by va-sinh repha-sinh.002;
+	sub dha_repha-sinh by dha-sinh repha-sinh.002;
+	sub ba_repha-sinh by ba-sinh repha-sinh.002;
+	sub pa_repha-sinh by pa-sinh repha-sinh.005;
+	sub la_repha-sinh by la-sinh repha-sinh.005;
+	sub ya_repha-sinh by ya-sinh repha-sinh.005;
+	sub da_repha-sinh by da-sinh repha-sinh.009;
+	sub nna_repha-sinh by nna-sinh repha-sinh.010;
+}touch_reph_decompose;
+ 
+lookup touch_reph{
+	sub touch-sinh @REPH_REPLACEMENT_1' lookup touch_reph_decompose;
+	sub touch-sinh @REPH_REPLACEMENT_2' lookup touch_reph_decompose;
+}touch_reph;
+
+
+#----------- Sinhala touching reph with MatraI /Ii  ------------
+# Push the Reph to on top of the first consonant in a touching ligature when the second consonat is combined with -i and -ii
+
+@BASE_ASCENDING = [ kha-sinh nga-sinh nnga-sinh ca-sinh jha-sinh tta-sinh ttha-sinh dda-sinh ddha-sinh nndda-sinh tha-sinh dha-sinh pha-sinh ba-sinh ma-sinh mba-sinh va-sinh];
+@BASE_BODY_HEIGHT = [ ka-sinh ga-sinh gha-sinh cha-sinh ja-sinh nya-sinh jnya-sinh nyja-sinh nna-sinh ta-sinh na-sinh pa-sinh bha-sinh ya-sinh la-sinh sha-sinh ssa-sinh sa-sinh ha-sinh lla-sinh fa-sinh];
+@BASE_NARROW = [da-sinh nda-sinh];
+
+
+@REPH_REPLACEMENT_MATRAI_1 = [ kI-sinh khI-sinh gI-sinh ghI-sinh ngI-sinh nngI-sinh cI-sinh chI-sinh jI-sinh jhI-sinh nyI-sinh jnyI-sinh nyjI-sinh ttI-sinh tthI-sinh ddI-sinh ddhI-sinh nnI-sinh nnddI-sinh tI-sinh thI-sinh dI-sinh dhI-sinh nI-sinh ndI-sinh pI-sinh phI-sinh bI-sinh bhI-sinh mI-sinh mbI-sinh yI-sinh rI-sinh lI-sinh vI-sinh shI-sinh ssI-sinh sI-sinh hI-sinh llI-sinh fI-sinh fpI-sinh kSsI-sinh kVI-sinh tVI-sinh tThI-sinh nDI-sinh nDhI-sinh nVI-sinh nThI-sinh gDhI-sinh dVI-sinh dDhI-sinh ttTthI-sinh nyCI-sinh nyChI-sinh cCI-sinh bBI-sinh];
+
+@REPH_REPLACEMENT_MATRAIi_1 = [ kIi-sinh khIi-sinh gIi-sinh ghIi-sinh ngIi-sinh nngIi-sinh cIi-sinh chIi-sinh jIi-sinh jhIi-sinh nyIi-sinh jnyIi-sinh nyjIi-sinh ttIi-sinh tthIi-sinh ddIi-sinh ddhIi-sinh nnIi-sinh nnddIi-sinh tIi-sinh thIi-sinh dIi-sinh dhIi-sinh nIi-sinh ndIi-sinh pIi-sinh phIi-sinh bIi-sinh bhIi-sinh mIi-sinh mbIi-sinh yIi-sinh rIi-sinh lIi-sinh vIi-sinh shIi-sinh ssIi-sinh sIi-sinh hIi-sinh llIi-sinh fIi-sinh fpIi-sinh kSsIi-sinh kVIi-sinh tVIi-sinh tThIi-sinh nDIi-sinh nDhIi-sinh nVIi-sinh nThIi-sinh gDhIi-sinh dVIi-sinh dDhIi-sinh ttTthIi-sinh nyCIi-sinh nyChIi-sinh cCIi-sinh bBIi-sinh];
+
+
+lookup touch_reph_matraI {
+	sub @BASE_ASCENDING touch-sinh @REPH_REPLACEMENT_MATRAI_1 repha-sinh' by repha-sinh.003;
+	sub @BASE_ASCENDING touch-sinh @REPH_REPLACEMENT_MATRAIi_1 repha-sinh' by repha-sinh.003;
+	sub @BASE_NARROW touch-sinh @REPH_REPLACEMENT_MATRAI_1 repha-sinh' by repha-sinh.005;
+	sub @BASE_NARROW touch-sinh @REPH_REPLACEMENT_MATRAIi_1 repha-sinh' by repha-sinh.005;
+
+	sub @BASE_BODY_HEIGHT touch-sinh @REPH_REPLACEMENT_MATRAI_1 repha-sinh' by repha-sinh.004;
+	sub @BASE_BODY_HEIGHT touch-sinh @REPH_REPLACEMENT_MATRAIi_1 repha-sinh' by repha-sinh.004;
+	sub @BASE_NARROW touch-sinh @REPH_REPLACEMENT_MATRAI_1 repha-sinh' by repha-sinh.005;
+}touch_reph_matraI;
+
+#----------- Sinhala MatraI and MatraII Reph combinations  ------------
+# Place the Reph inside the MatraI and MatraII
+
+
+@MATRAI_1 = [ kI-sinh khI-sinh gI-sinh ghI-sinh ngI-sinh nngI-sinh cI-sinh chI-sinh jI-sinh jhI-sinh nyI-sinh jnyI-sinh nyjI-sinh ttI-sinh ddI-sinh nnddI-sinh tI-sinh dI-sinh dhI-sinh nI-sinh ndI-sinh pI-sinh bI-sinh bhI-sinh mI-sinh mbI-sinh yI-sinh rI-sinh lI-sinh vI-sinh shI-sinh ssI-sinh sI-sinh hI-sinh llI-sinh fI-sinh fpI-sinh kSsI-sinh kVI-sinh tVI-sinh nDI-sinh nDhI-sinh nVI-sinh gDhI-sinh dVI-sinh dDhI-sinh ttTthI-sinh nyCI-sinh nyChI-sinh cCI-sinh bBI-sinh kIi-sinh khIi-sinh gIi-sinh ghIi-sinh ngIi-sinh nngIi-sinh cIi-sinh chIi-sinh jIi-sinh jhIi-sinh nyIi-sinh jnyIi-sinh nyjIi-sinh ttIi-sinh ddIi-sinh nnIi-sinh nnddIi-sinh tIi-sinh dIi-sinh dhIi-sinh nIi-sinh ndIi-sinh pIi-sinh bIi-sinh bhIi-sinh mIi-sinh mbIi-sinh yIi-sinh rIi-sinh lIi-sinh vIi-sinh shIi-sinh ssIi-sinh sIi-sinh hIi-sinh llIi-sinh fIi-sinh fpIi-sinh kSsIi-sinh kVIi-sinh tVIi-sinh nDIi-sinh nDhIi-sinh nVIi-sinh gDhIi-sinh dVIi-sinh dDhIi-sinh nyCIi-sinh nyChIi-sinh cCIi-sinh bBIi-sinh ];
+
+@MATRAI_2 = [ tthI-sinh ddhI-sinh  thI-sinh phI-sinh tThI-sinh nThI-sinh tthIi-sinh ddhIi-sinh thIi-sinh phIi-sinh tThIi-sinh nThIi-sinh  ];
+
+@MATRAI_3 = [nnI-sinh nnIi-sinh];
+
+lookup matraI_matraII_reph {
+	sub @MATRAI_1 repha-sinh' by repha-sinh.006;
+	sub @MATRAI_2 repha-sinh' by repha-sinh.007;
+	sub @MATRAI_3 repha-sinh' by repha-sinh.008;
+}matraI_matraII_reph;
+
+
+#----------- Sinhala Candrabindu placement  ------------
+# Place the Reph inside the MatraI and MatraII
+
+
+lookup candrabindu-sinh {
+	sub @BASE_BODY_HEIGHT candrabindu-sinh' by candrabindu-sinh.001;
+} candrabindu-sinh;
+
+
+
+
+
+
+# Prefix: Prefix
+@TA_MATRA_U_1 = [ nga-taml pa-taml ya-taml va-taml ];
+
+#---- AKHN ----
+
+lookup akhands {
+    sub ka-taml virama-taml ssa-taml by kSsa-taml;
+    sub sha-taml virama-taml ra-taml iisign-taml by shree-taml;
+    sub sa-taml virama-taml ra-taml iisign-taml by shree-taml;
+    
+} akhands;
+
+
+
+#---- ABVS ----
+
+lookup above_base_sub_1 {
+sub ka-taml	isign-taml	by	kI-taml	;
+sub nga-taml	isign-taml	by	ngI-taml	;
+sub ca-taml	isign-taml	by	cI-taml	;
+sub nya-taml	isign-taml	by	nyI-taml	;
+sub tta-taml	isign-taml	by	ttI-taml	;
+sub nna-taml	isign-taml	by	nnI-taml	;
+sub ta-taml	isign-taml	by	tI-taml	;
+sub na-taml	isign-taml	by	nI-taml	;
+sub pa-taml	isign-taml	by	pI-taml	;
+sub ma-taml	isign-taml	by	mI-taml	;
+sub ya-taml	isign-taml	by	yI-taml	;
+sub ra-taml	isign-taml	by	rI-taml	;
+sub la-taml	isign-taml	by	lI-taml	;
+sub va-taml	isign-taml	by	vI-taml	;
+sub zha-taml	isign-taml	by	zhI-taml	;
+sub lla-taml	isign-taml	by	llI-taml	;
+sub rra-taml	isign-taml	by	rrI-taml	;
+sub nna2-taml	isign-taml	by	nna2-i-taml	;
+sub ja-taml	isign-taml	by	jI-taml	;
+sub ssa-taml	isign-taml	by	ssI-taml	;
+sub sa-taml	isign-taml	by	sI-taml	;
+sub ha-taml	isign-taml	by	hI-taml	;
+sub kSsa-taml	isign-taml	by	kSsI-taml	;
+sub sha-taml	isign-taml	by	shI-taml	;
+} above_base_sub_1;
+
+lookup above_base_sub_2 {
+sub ka-taml	iisign-taml	by	kIi-taml	;
+sub nga-taml	iisign-taml	by	ngIi-taml	;
+sub ca-taml	iisign-taml	by	cIi-taml	;
+sub nya-taml	iisign-taml	by	nyIi-taml	;
+sub tta-taml	iisign-taml	by	ttIi-taml	;
+sub nna-taml	iisign-taml	by	nnIi-taml	;
+sub ta-taml	iisign-taml	by	tIi-taml	;
+sub na-taml	iisign-taml	by	nIi-taml	;
+sub pa-taml	iisign-taml	by	pIi-taml	;
+sub ma-taml	iisign-taml	by	mIi-taml	;
+sub ya-taml	iisign-taml	by	yIi-taml	;
+sub ra-taml	iisign-taml	by	rIi-taml	;
+sub la-taml	iisign-taml	by	lIi-taml	;
+sub va-taml	iisign-taml	by	vIi-taml	;
+sub zha-taml	iisign-taml	by	zhIi-taml	;
+sub lla-taml	iisign-taml	by	llIi-taml	;
+sub rra-taml	iisign-taml	by	rrIi-taml	;
+sub nna2-taml	iisign-taml	by	nna2-ii-taml	;
+sub ja-taml	iisign-taml	by	jIi-taml	;
+sub ssa-taml	iisign-taml	by	ssIi-taml	;
+sub sa-taml	iisign-taml	by	sIi-taml	;
+sub ha-taml	iisign-taml	by	hIi-taml	;
+sub kSsa-taml	iisign-taml	by	kSsIi-taml	;
+sub sha-taml	iisign-taml	by	shIi-taml	;
+
+ } above_base_sub_2;
+
+#---- PSTS ----
+
+lookup post_base_sub_1 {
+    sub ka-taml usign-taml by kU-taml;
+    sub ca-taml usign-taml by cU-taml;
+    sub nya-taml usign-taml by nyU-taml;
+    sub tta-taml usign-taml by ttU-taml;
+    sub nna-taml usign-taml by nnU-taml;
+    sub ta-taml usign-taml by tU-taml;
+    sub na-taml usign-taml by nU-taml;
+    sub nna2-taml usign-taml by nna2-u-taml;
+    sub pa-taml usign-taml by pU-taml;
+	sub ma-taml usign-taml by mU-taml;
+    sub ra-taml usign-taml by rU-taml;
+    sub rra-taml usign-taml by rrU-taml;
+    sub la-taml usign-taml by lU-taml;
+    sub lla-taml usign-taml by llU-taml;
+    sub zha-taml usign-taml by zhU-taml;
+    sub ja-taml usign-taml by jU-taml;
+    sub sa-taml usign-taml by sU-taml;
+    sub ssa-taml usign-taml by ssU-taml;
+    sub kSsa-taml usign-taml by kSsU-taml;
+    sub ha-taml usign-taml by hU-taml;
+
+
+
+} post_base_sub_1;
+
+lookup post_base_sub_2 {
+    sub ka-taml uusign-taml by kUu-taml;
+    sub nga-taml uusign-taml by ngUu-taml;
+    sub ca-taml uusign-taml by cUu-taml;
+    sub nya-taml uusign-taml by nyUu-taml;
+    sub tta-taml uusign-taml by ttUu-taml;
+    sub nna-taml uusign-taml by nnUu-taml;
+    sub ta-taml uusign-taml by tUu-taml;
+    sub na-taml uusign-taml by nUu-taml;
+    sub nna2-taml uusign-taml by nna2-uu-taml;
+    sub pa-taml uusign-taml by pUu-taml;
+    sub ya-taml uusign-taml by yUu-taml;
+    sub ma-taml uusign-taml by mUu-taml;
+    sub ra-taml uusign-taml by rUu-taml;
+    sub rra-taml uusign-taml by rrUu-taml;
+    sub la-taml uusign-taml by lUu-taml;
+    sub lla-taml uusign-taml by llUu-taml;
+    sub zha-taml uusign-taml by zhUu-taml;
+    sub va-taml uusign-taml by vUu-taml;
+    sub ja-taml uusign-taml by jUu-taml;
+    sub ssa-taml uusign-taml by ssUu-taml;
+    sub kSsa-taml uusign-taml by kSsUu-taml;
+    sub ha-taml uusign-taml by hUu-taml;
+
+ } post_base_sub_2;
+
+
+lookup post_base_sub_3{
+    sub @TA_MATRA_U_1 usign-taml' by usign.alt1-taml;
+ } post_base_sub_3;
+
+
+
+
+
+
+
+
+
+
+feature ccmp {
+# i and j lose their dot when a top mark follows (soft-dotted letters)
+lookup ccmp_latn_dotless {
+  sub i' [gravecomb acutecomb circumflexcomb tildecomb macroncomb brevecomb dotaccentcomb dieresiscomb ringcomb hungarumlautcomb caroncomb] by dotlessi;
+  sub j' [gravecomb acutecomb circumflexcomb tildecomb macroncomb brevecomb dotaccentcomb dieresiscomb ringcomb hungarumlautcomb caroncomb] by dotlessj;
+} ccmp_latn_dotless;
+} ccmp;
+
+feature aalt {
+# automatic
+feature sups;
+feature numr;
+feature frac;
+feature ordn;
+feature onum;
+feature lnum;
+feature abvs;
+feature psts;
+feature ss01;
+
+} aalt;
+
+feature sups {
+# automatic
+sub one by onesuperior;
+sub two by twosuperior;
+sub three by threesuperior;
+
+} sups;
+
+feature numr {
+# automatic
+sub zero by zero.numr;
+sub one by one.numr;
+sub two by two.numr;
+sub three by three.numr;
+sub four by four.numr;
+sub five by five.numr;
+sub six by six.numr;
+sub seven by seven.numr;
+sub eight by eight.numr;
+sub nine by nine.numr;
+
+} numr;
+
+feature frac {
+# automatic
+sub one slash four by onequarter;
+sub one slash two by onehalf;
+sub three slash four by threequarters;
+
+} frac;
+
+feature ordn {
+# automatic
+sub [zero one two three four five six seven eight nine] [A a]' by ordfeminine;
+sub [zero one two three four five six seven eight nine] [O o]' by ordmasculine;
+
+} ordn;
+
+feature onum {
+# automatic
+sub zero by zero.osf;
+sub one by one.osf;
+sub two by two.osf;
+sub three by three.osf;
+sub four by four.osf;
+sub five by five.osf;
+sub six by six.osf;
+sub seven by seven.osf;
+sub eight by eight.osf;
+sub nine by nine.osf;
+
+} onum;
+
+feature lnum {
+sub zero.osf by zero;
+sub one.osf by one;
+sub two.osf by two;
+sub three.osf by three;
+sub four.osf by four;
+sub five.osf by five;
+sub six.osf by six;
+sub seven.osf by seven;
+sub eight.osf by eight;
+sub nine.osf by nine;
+
+} lnum;
+
+feature liga {
+# automatic
+lookupflag IgnoreMarks;
+sub f f i by f_f_i;
+sub f f l by f_f_l;
+sub f f by f_f;
+sub f i by fi;
+sub f l by fl;
+
+} liga;
+
+feature akhn {
+    script taml;
+        lookup akhands;
+    script tml2;
+        lookup akhands;
+} akhn;
+
+feature vatu {
+  script sinh;
+      lookup sin_vatu;
+	  lookup sinrakaar;
+
+} vatu;
+
+feature abvs {
+    script taml;
+        lookup above_base_sub_1;
+        lookup above_base_sub_2;
+    script tml2;
+        lookup above_base_sub_1;
+        lookup above_base_sub_2;
+} abvs;
+
+feature psts {
+    script taml;
+        lookup post_base_sub_1;
+        lookup post_base_sub_2;
+		lookup post_base_sub_3;
+		
+    script tml2;
+        lookup post_base_sub_1;
+        lookup post_base_sub_2;
+		lookup post_base_sub_3;
+} psts;
+
+feature akhn {
+  script sinh;
+      lookup sinakhands;
+	  lookup sinakhands_reph;
+      lookup sin_touch;
+} akhn;
+
+feature rphf {
+  script sinh;
+      lookup sinreph;
+
+} rphf;
+
+feature pstf {
+  script sinh;
+      lookup si_split_matra;
+
+} pstf;
+
+feature rlig {
+script sinh;
+ 	lookup touch_reph;
+    lookup touch_reph_matraI;
+    lookup matraI_matraII_reph;
+    lookup candrabindu-sinh;
+	lookup sin_lithnum_zero;
+
+} rlig;
+
+feature abvs {
+  script sinh;
+      lookup sin_virama;
+      lookup sinabvs_1;
+      lookup sinabvs_2;
+      lookup sinabvs_3;
+      lookup sinakhands_reph;
+
+} abvs;
+
+feature blws {
+  script sinh;
+      lookup sinblws_1;
+      lookup sinblws_2;
+      lookup sinblws_3;
+
+} blws;
+
+feature psts {
+  script sinh;
+      lookup sin_psts;
+} psts;
+
+feature dlig {
+script sinh;
+    lookup sin_da_subscripts;
+} dlig;
+
+feature dist {
+pos touch-sinh <0 0 -113 0>;
+
+} dist;
+
+feature ss01 {
+featureNames {
+  name "Name:";
+};
+  featureNames {
+    name "Sinhala Da-form subs";
+	};
+    lookup sin_da_subscripts;
+} ss01;
+
+feature ss02 {
+featureNames {
+  name "Name:";
+};
+  featureNames {
+  	name "Sinhala fPa";
+	};
+    lookup sin_fPa;
+
+} ss02;
+
+feature ss03 {
+featureNames {
+  name "Name:";
+};
+  featureNames {
+  	name "Sinhala archiac ligatures";
+	};
+    lookup ss03_anusvara_sha;
+    lookup ss03_anusvara_sha_02;
+} ss03;
+
+feature ss07 {
+featureNames {
+  name "Name:";
+};
+  featureNames {
+  	name "Sinhala Lith Numerals";
+	};
+	lookup ss07_num_to_sinlithnum_1;
+	lookup ss07_num_to_sinlithnum_2; 
+
+} ss07;
+
+feature ss08 {
+featureNames {
+  name "Name:";
+};
+  featureNames {
+  	name "Sinhala Archaic Numerals";
+	};
+	lookup ss08_num_to_sinArchiac_1;
+	lookup ss08_num_to_sinArchiac_2; 
+	lookup ss08_num_to_sinArchiac_3; 
+	lookup ss08_num_to_sinArchiac_4; 
+
+} ss08;
+
+feature ss09 {
+featureNames {
+  name "Tamil old orthography ligatures";
+};
+sub nna-taml aasign-taml by nnAa-taml;
+sub nna2-taml aasign-taml by nna2-aa-taml;
+sub rra-taml aasign-taml by rrAa-taml;
+
+sub aisign-taml nna-taml by nnAi-taml;
+sub aisign-taml nna2-taml by nna2-ai-taml;
+sub aisign-taml la-taml by lAi-taml;
+sub aisign-taml lla-taml by llAi-taml;
+} ss09;

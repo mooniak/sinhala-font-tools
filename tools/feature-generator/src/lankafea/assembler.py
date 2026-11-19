@@ -8,7 +8,7 @@ from .feacomposer_adapter import get_backend, TextBackend
 # Canonical OpenType feature order (registration order matters for the shaper).
 FEATURE_ORDER = [
     "ccmp", "locl", "akhn", "rphf", "blwf", "half", "pstf", "vatu", "cjct",
-    "pres", "abvs", "blws", "psts", "haln", "calt", "dist",
+    "pres", "abvs", "blws", "psts", "haln", "rlig", "calt", "dist",
     "aalt", "liga", "clig", "dlig", "hlig",
     *[f"ss{n:02d}" for n in range(1, 21)],
 ]

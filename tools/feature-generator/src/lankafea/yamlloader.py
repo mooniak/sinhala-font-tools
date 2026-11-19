@@ -53,10 +53,14 @@ class ScriptSpecs:
         return [g for g in self.glyphs if g.category == category]
 
     def style_sets(self) -> dict[str, list[GlyphSpec]]:
+        """"ssNN Name" -> its glyphs. A set may be nested under "Stylistic alternates"
+        ("ss01 Da Forms") or be a category of its own ("ss02 Fa", "ss03 Historical
+        forms" in sinhala-3-pro.yaml); both are read."""
         out: dict[str, list[GlyphSpec]] = {}
         for g in self.glyphs:
-            if g.style_set:
-                out.setdefault(g.style_set, []).append(g)
+            key = g.style_set or (g.category if _SS_KEY.match(g.category or "") else None)
+            if key:
+                out.setdefault(key, []).append(g)
         return out
 
 
@@ -102,6 +106,9 @@ def _walk_category(category: str, node, use_ns: bool, namespace: str,
         ))
     return out
 
+
+import re as _re
+_SS_KEY = _re.compile(r"ss\d\d\b")
 
 _METADATA_KEYS = {"unicode", "decompose", "signs", "conjunct", "touch"}
 

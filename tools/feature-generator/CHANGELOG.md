@@ -6,6 +6,62 @@ Conventional Commits — see [../../docs/versioning.md](../../docs/versioning.md
 
 ## Unreleased
 
+- **Per-font settings file** (`sources/lankafea.yaml`, found beside the source; `--config`,
+  `--no-config`): one section per script with `inject`, `assign`, `dist`, `numerals` and
+  `featureNames`. See `docs/font-config.md`. First used by Abhaya Libre.
+- **New generators** (presence-gated, so a font without the glyphs gets nothing):
+  - `RakarSignVariants` (`blws`): ු/ූ take `usign.rasign` / `uusign.rasign` after a rakar
+    ligature with no drawn u/uu form (`kRa usign → kRa usign.rasign`).
+  - Yansaya Da forms in `DaShape` (ss01): `dya._c`, `dy._c`, `dyaa._c`, `dyaa_virama._c`,
+    `dyU._c`, `dyUu._c`, matched whether the yansaya already carries its vowel or not.
+  - `AnusvaraSha` (`dlig` by default): ං + ශ and its forms → `anusvarayaSha` ….
+  - `FaAlternates`: every ෆ form → its ප + f alternate (`fa → fpa`, `fU → fpU` …) in the
+    stylistic set the standard lists them under (ss02 Fa).
+  - Numeral sets, only when a font routes them (`numerals:`): ASCII digits → Lith digits,
+    the Lith ten-ligatures, ASCII digits → archaic numbers. Registered for DFLT and latn as
+    well as sinh, because a run of ASCII digits is shaped as DFLT.
+- **`dist` amount** comes from the font settings (default −90).
+- **Stylistic set names**: `featureNames` from the font settings, else the standard's name
+  for the set ("ss01 Da Forms" → "Da Forms"); a set made by routing is named too.
+- **`rlig`** has a place in the canonical feature order (after `psts`).
+- **Writing back into the source itself only changes its layout code**: `--glyphs-out` with
+  the source's own path replaces the `classes`, `featurePrefixes` and `features` blocks of
+  the existing file and leaves every other byte alone (a glyphsLib round trip re-quotes
+  names, rewrites master metrics and `order.plist`). Writing to another path is as before.
+- The standard's stylistic sets are read whether they are nested under "Stylistic
+  alternates" (ss01) or a category of their own (ss02 Fa, ss03 in `sinhala-3-pro.yaml`).
+- The new candidate rules, and the existing `_virama` Da-form spellings, are optional:
+  they no longer show up as blockers in `validate`.
+- **Sinhala acceptance** reads the font's settings file, and its synthetic font now has the
+  source's advances and glyphsLib's GDEF classes, so mark filtering and zero-width glyphs
+  (`touch-sinh`) behave as in the real build. Its numbers match a HarfBuzz comparison of two
+  real Abhaya builds exactly.
+- **Da forms are optional now** (breaking for fonts that relied on the old default): the
+  below-base `._c` forms on da-shaped bases (`daa._c`, `nyaa._c`, `nDaa._c` …) used to be
+  generated into default `blws`/`psts`, so දා always became `daa._c`. The standard lists them
+  under **ss01 Da Forms**, and they now go in one `DaShape` lookup in that stylistic set (the
+  tag is read from the standard). A font that wants them under `dlig` too copies the group
+  with `assign`. The virama tail of ෝ is matched both as `aasign_virama` (formed by `psts`
+  before a stylistic set runs) and as `aasign` + `virama`, so දෝ gives `daa_virama._c` under
+  the set. Abhaya Libre refactor plan item G6.
+- **Sinhala acceptance** (`tests/acceptance_sinhala.py`, `test_sinhala_acceptance.py`): compiles
+  a font's hand-written features and the generated ones into one synthetic font and compares
+  their shaping over a corpus built from the standard, plus the test texts, for the default
+  features and each stylistic feature. Differences are sorted into the known items of the
+  Abhaya Libre refactor plan; any that fit no item fail the test. `--freeze` keeps a copy of the
+  hand-written features as the baseline, for when the source no longer has them.
+- **`migrate` renames Sinhala glyphs too**: `--aliases` may target any name in the standard's
+  `-sinh` or `-taml` namespace (anchors are still renamed on Tamil glyphs only). First used for
+  Abhaya Libre's Lith digits (`sinZerolith` → `lithzero-sinh`, alias table in
+  `tests/fixtures/sinhala-aliases/abhaya.yaml`).
+- **Fix:** an inject rule with context and several outputs (`sub: [touch, "ka_repha'"], by: [ka,
+  repha-sinh.001]`) was taken for a ligature and written as invalid `.fea`. It is now a
+  contextual multiple substitution, and a contextual single or ligature rule is classed by its
+  marked inputs. First used for Abhaya Libre's touching-cluster repaya
+  (`sources/lankafea/touch-reph.yaml` in that repo); the Sinhala acceptance test reads a
+  font's inject directory.
+- **Fix:** `migrate` left a renamed glyph unquoted when its new name needs quotes in a plist
+  (`glyphname = lithzero-sinh;`). It now writes `"lithzero-sinh"`, the way Glyphs does.
 - **`python -m lankafea.migrate`** renames a Tamil `.glyphspackage` to the standard's glyph
   and anchor names (dry run by default, `--apply` to write; undo with git). Glyph renames come
   from `--aliases` / `--adopt-legacy-names` and are applied by whole name across glyphs,

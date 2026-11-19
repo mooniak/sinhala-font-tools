@@ -16,6 +16,8 @@ Rule shape follows the Noto reference embedded in
 
 from __future__ import annotations
 
+import re
+
 from .model import FeatureDoc, Feature, Lookup, Rule
 from .names import (
     base_a, cap, drop_a, with_ns, glyph_for_codepoint, componentize, split_ns,
@@ -256,16 +258,6 @@ def build_vowel_ligatures(specs: ScriptSpecs) -> dict[str, Feature]:
         if cp in t.sign_alone:
             sign_candidates.append((cp, capv, t.sign_alone[cp]))
 
-    # Below/spacing signs that take the lowercase ._c form on da-shaped bases.
-    low_of = {t.sign_alone[cp]: low for cp, (low, _capv) in t.vsign_below.items()
-              if cp in t.sign_alone}
-    # Da-shape applies when the FIRST consonant of the cluster is da-shaped
-    # (mirrors names._is_da_shape), so conjuncts like dRa/dVa qualify too.
-    da_shape_names = {base_a(t, cp) for cp in t.da_shape_first} | {"nDa"}
-    for cp1 in t.da_shape_first:
-        for cp2 in t.consonants:
-            da_shape_names.add(drop_a(base_a(t, cp1)) + cap(base_a(t, cp2)))
-
     for base in _base_names(specs):
         base_glyph = with_ns(base, ns)
         for cp, suffix, sign_alone in sign_candidates:
@@ -282,35 +274,97 @@ def build_vowel_ligatures(specs: ScriptSpecs) -> dict[str, Feature]:
                 kind="ligature", inputs=[base_glyph, sign_glyph],
                 output=with_ns(lig, ns), comment=f"{base} + {sign_alone}",
             ))
-            # Da-shaped bases also get the below-base ._c candidate (daa._c);
-            # presence-gating keeps whichever variant the font drew.
-            if base in da_shape_names and sign_alone in low_of:
-                lk.rules.append(Rule(
-                    kind="ligature", inputs=[base_glyph, sign_glyph],
-                    output=with_ns(drop_a(base) + low_of[sign_alone] + "._c", ns),
-                    comment=f"{base} + {sign_alone} (below-base ._c)",
-                ))
-
-    # Chained: a formed ._c ligature takes a trailing virama (the oo-sign
-    # decomposition tail: da + aasign + virama -> daa._c -> daa_virama._c).
-    virama_glyph = with_ns(t.sign_alone[t.virama], ns)
-    chained = Lookup("DaShapeViramaChained",
-                     comment="below-base ._c ligature + virama")
-    for base in _base_names(specs):
-        if base not in da_shape_names:
-            continue
-        for low in set(low_of.values()):
-            stem = drop_a(base) + low
-            chained.rules.append(Rule(
-                kind="ligature",
-                inputs=[with_ns(stem + "._c", ns), virama_glyph],
-                output=with_ns(stem + "_virama._c", ns),
-                comment=f"{stem}._c + virama",
-            ))
-    if chained.rules:
-        f = feat("psts")
-        f.lookups.append(chained)
     return features
+
+
+# --------------------------------------------------------------------------- #
+# Da forms: below-base vowel signs on da-shaped bases (daa._c)
+#
+# Optional, not default shaping: the standard lists them under "ss01 Da Forms"
+# (a stylistic set), so they go in that feature, not blws/psts. A font that also
+# wants them under dlig routes the DaShape group there with `assign`.
+# --------------------------------------------------------------------------- #
+
+DA_SHAPE_DEFAULT_TAG = "ss01"
+
+
+def _da_shape_bases(specs: ScriptSpecs) -> list[str]:
+    """Base stems that take the ._c form. Da-shape applies when the FIRST
+    consonant of the cluster is da-shaped (mirrors names._is_da_shape), so
+    conjuncts like dRa/dVa and nDa qualify too."""
+    t = specs.profile.tables
+    shaped = {base_a(t, cp) for cp in t.da_shape_first} | {"nDa"}
+    for cp1 in t.da_shape_first:
+        for cp2 in t.consonants:
+            shaped.add(drop_a(base_a(t, cp1)) + cap(base_a(t, cp2)))
+    return [b for b in _base_names(specs) if b in shaped]
+
+
+def da_shape_feature(specs: ScriptSpecs) -> str:
+    """The stylistic set the standard puts the ._c forms in ("ss01 Da Forms")."""
+    for key, members in specs.style_sets().items():
+        tag = key.split()[0]
+        if re.fullmatch(r"ss\d\d", tag) and any(g.name.endswith("._c") for g in members):
+            return tag
+    return DA_SHAPE_DEFAULT_TAG
+
+
+def build_da_shape(specs: ScriptSpecs) -> Lookup | None:
+    """da + aasign -> daa._c, and with a trailing virama (the tail of a decomposed
+    oo sign) -> daa_virama._c.
+
+    Stylistic sets run after psts, so by then the virama may already be part of
+    aasign_virama: both spellings are generated and presence-gating keeps the ones
+    the font can use."""
+    t = specs.profile.tables
+    if not t.da_shape_first:
+        return None
+    ns = specs.profile.namespace
+    virama = with_ns(t.sign_alone[t.virama], ns)
+    low_of = {t.sign_alone[cp]: low for cp, (low, _capv) in t.vsign_below.items()
+              if cp in t.sign_alone}
+    lk = Lookup("DaShape", comment="Da forms: below-base signs on da-shaped bases")
+    yasign = with_ns("yasign", ns)
+    aasign = with_ns("aasign", ns)
+    for base in _da_shape_bases(specs):
+        base_glyph = with_ns(base, ns)
+        # Yansaya on a da-shaped base (ද්‍ය -> dya._c, ද්‍යා -> dyaa._c, ද්‍යු -> dyU._c).
+        # A yansaya sign may already carry its vowel (yasign_usign) or not: by the time
+        # a stylistic set runs both spellings can occur, so both are generated.
+        ystem = drop_a(base) + "y"
+        for spellings, out in (
+            ([[yasign]], "a"),
+            ([[with_ns("yasign_virama", ns)], [yasign, virama]], ""),
+            ([[with_ns("yasign_aasign", ns)], [yasign, aasign]], "aa"),
+            ([[with_ns("yasign_aasign_virama", ns)], [with_ns("yasign_aasign", ns), virama],
+              [yasign, with_ns("aasign_virama", ns)], [yasign, aasign, virama]],
+             "aa_virama"),
+            ([[with_ns("yasign_usign", ns)], [yasign, with_ns("usign", ns)]], "U"),
+            ([[with_ns("yasign_uusign", ns)], [yasign, with_ns("uusign", ns)]], "Uu"),
+        ):
+            for seq in spellings:
+                lk.rules.append(Rule(
+                    kind="ligature", inputs=[base_glyph, *seq],
+                    output=with_ns(f"{ystem}{out}._c", ns),
+                    comment=f"{base} + {' + '.join(g[:-5] for g in seq)} (below-base ._c)",
+                    optional=True,          # alternative spellings: not every one applies
+                ))
+        for sign, low in low_of.items():
+            stem = drop_a(base) + low
+            lk.rules.append(Rule(
+                kind="ligature", inputs=[base_glyph, with_ns(sign, ns)],
+                output=with_ns(stem + "._c", ns),
+                comment=f"{base} + {sign} (below-base ._c)",
+            ))
+            for inputs in ([base_glyph, with_ns(f"{sign}_virama", ns)],
+                           [base_glyph, with_ns(sign, ns), virama]):
+                lk.rules.append(Rule(
+                    kind="ligature", inputs=inputs,
+                    output=with_ns(stem + "_virama._c", ns),
+                    comment=f"{base} + {sign} + virama (below-base ._c)",
+                    optional=True,          # two spellings of one form: not both apply
+                ))
+    return lk if lk.rules else None
 
 
 def _abvs_mark_set(t, ns: str) -> list[str]:
@@ -507,14 +561,20 @@ def build_touch_ligatures(specs: ScriptSpecs) -> Lookup | None:
 # dist — touching-cluster spacing (GPOS)
 # --------------------------------------------------------------------------- #
 
-def build_dist(specs: ScriptSpecs) -> Feature | None:
+DIST_DEFAULT = -90
+
+
+def build_dist(specs: ScriptSpecs, amount: int | None = None) -> Feature | None:
+    """Pull the second consonant of a touching cluster towards the first. The amount
+    is per font (font config dist); the default suits a 1000-unit em."""
     profile = specs.profile
     if profile.touch_strategy != "gpos" or not profile.form_touch:
         return None
     touch_glyph = with_ns("touch", profile.namespace)
+    amount = DIST_DEFAULT if amount is None else int(amount)
     feat = Feature("dist")
     feat.lookups = [Lookup("TouchSpacing", rules=[Rule(
-        kind="pos", inputs=[touch_glyph], value="<0 0 -90 0>",
+        kind="pos", inputs=[touch_glyph], value=f"<0 0 {amount} 0>",
         comment="tighten touching consonant clusters",
     )])]
     return feat
@@ -649,11 +709,161 @@ def build_alternates(specs: ScriptSpecs, names: set[str] | None = None,
 
 
 # --------------------------------------------------------------------------- #
+# Sign variants after rakar (usign.rasign)
+# --------------------------------------------------------------------------- #
+
+def build_rakar_sign_variants(specs: ScriptSpecs) -> Lookup | None:
+    """blws: ු/ූ take their ``.rasign`` variant after a rakar ligature that has no
+    precomposed u/uu form (kRa usign -> kRa usign.rasign).
+
+    Runs after the vowel ligatures, so a font that draws kRU keeps it."""
+    profile = specs.profile
+    if not profile.form_rakar:
+        return None
+    ns = profile.namespace
+    lk = Lookup("RakarSignVariants", comment="u/uu sign variants after rakar ligatures")
+    for sign in ("usign", "uusign"):
+        variant = with_ns(f"{sign}.rasign", ns)
+        for base in _base_names(specs):
+            lk.rules.append(Rule(
+                kind="single",
+                inputs=[with_ns(drop_a(base) + "Ra", ns), with_ns(sign, ns) + "'"],
+                output=variant, comment=f"{drop_a(base)}Ra + {sign}", optional=True,
+            ))
+    return lk
+
+
+# --------------------------------------------------------------------------- #
+# ං + ශ: the archaic anusvaraya + sha ligatures (anusvarayaSha)
+# --------------------------------------------------------------------------- #
+
+ANUSVARA_SHA_DEFAULT_TAG = "dlig"
+
+
+def build_anusvara_sha(specs: ScriptSpecs) -> Lookup | None:
+    """anusvaraya + sha (and its halant and vowel forms) -> anusvarayaSh…
+
+    An optional historical ligature, so it is generated into ``dlig``; a font routes
+    the ``AnusvaraSha`` group elsewhere with ``assign`` (Abhaya: ss03). Both
+    spellings of a vowel form are generated (``shU`` already formed, or ``sha usign``
+    when the font has no shU), and gating keeps those the font can use."""
+    t = specs.profile.tables
+    ns = specs.profile.namespace
+    sha_cp = next((cp for cp, stem in t.consonants.items() if stem == "sh"), None)
+    anusvara = t.sign_alone.get(0x0D82)
+    if sha_cp is None or not anusvara:
+        return None
+    lead = with_ns(anusvara, ns)
+    lk = Lookup("AnusvaraSha", comment="ං + ශ archaic ligatures")
+    forms = [("sha", None), ("sh", "virama")]
+    forms += [("sh" + suffix, t.sign_alone[cp]) for cp, suffix in t.vsign_lig.items()]
+    for form, sign in forms:
+        out = with_ns(f"{anusvara}S{form[1:]}", ns)
+        lk.rules.append(Rule(kind="ligature", inputs=[lead, with_ns(form, ns)], output=out,
+                             comment=f"{anusvara} + {form}", optional=True))
+        if sign:
+            lk.rules.append(Rule(kind="ligature",
+                                 inputs=[lead, with_ns("sha", ns), with_ns(sign, ns)],
+                                 output=out, comment=f"{anusvara} + sha + {sign}",
+                                 optional=True))
+    return lk
+
+
+# --------------------------------------------------------------------------- #
+# ss02 Fa: every ෆ form -> its ප + f alternate (fa -> fpa, fU -> fpU, …)
+# --------------------------------------------------------------------------- #
+
+def fa_alternate_feature(specs: ScriptSpecs) -> str | None:
+    """The stylistic set the standard lists the fpa forms under ("ss02 Fa")."""
+    for key, members in specs.style_sets().items():
+        tag = key.split()[0]
+        if re.fullmatch(r"ss\d\d", tag) and any(g.name.startswith("fp") for g in members):
+            return tag
+    return None
+
+
+def build_fa_alternates(specs: ScriptSpecs) -> Lookup | None:
+    """fa-derived glyph -> its fp counterpart, for every form the generator can make
+    from ෆ (base, halant, vowel ligatures, rakar and its forms, repha forms)."""
+    t = specs.profile.tables
+    ns = specs.profile.namespace
+    if not any(stem == "f" for stem in t.consonants.values()):
+        return None
+    suffixes = list(t.vsign_lig.values())
+    stems = ["fa", "f", "fRa", "fR", "fa_repha", "f_repha"]
+    stems += ["f" + s for s in suffixes] + ["fR" + s for s in suffixes]
+    stems += [f"f{s}_repha" for s in suffixes]
+    lk = Lookup("FaAlternates", comment="ෆ forms -> the ප + f alternate")
+    for stem in dict.fromkeys(stems):
+        lk.rules.append(Rule(kind="single", inputs=[with_ns(stem, ns)],
+                             output=with_ns("fp" + stem[1:], ns),
+                             comment=f"{stem} -> fp{stem[1:]}", optional=True))
+    return lk
+
+
+# --------------------------------------------------------------------------- #
+# Numeral sets: ASCII digits -> Lith digits / archaic numbers
+#
+# The standard names the glyphs (Sinhala numerals) but no feature, so these are
+# generated only when a font routes them (font config `numerals:`).
+# --------------------------------------------------------------------------- #
+
+# ASCII digits are shaped as DFLT (a run of digits) or latn, so the numeral sets are
+# registered there as well as under the script itself.
+NUMERAL_SCRIPTS = ["DFLT", "latn", "sinh"]
+
+DIGIT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+TENS_WORDS = {1: "ten", 2: "twenty", 3: "thirty", 4: "forty", 5: "fifty", 6: "sixty",
+              7: "seventy", 8: "eighty", 9: "ninety"}
+
+
+def build_lith_digits(specs: ScriptSpecs) -> Lookup:
+    ns = specs.profile.namespace
+    return Lookup("LithDigits", comment="ASCII digits -> Lith digits", rules=[
+        Rule(kind="single", inputs=[w], output=with_ns(f"lith{w}", ns), comment=f"{w}")
+        for w in DIGIT_WORDS])
+
+
+def build_lith_tens(specs: ScriptSpecs) -> Lookup:
+    """Lith digit + Lith zero -> the ten-ligature (෧෦ -> lithone_lithzero)."""
+    ns = specs.profile.namespace
+    zero = with_ns("lithzero", ns)
+    return Lookup("LithTens", comment="Lith ten-ligatures", rules=[
+        Rule(kind="ligature", inputs=[with_ns(f"lith{w}", ns), zero],
+             output=with_ns(f"lith{w}_lithzero", ns), comment=f"lith{w} + lithzero")
+        for w in DIGIT_WORDS[1:]])
+
+
+def build_archaic_numbers(specs: ScriptSpecs) -> list[Lookup]:
+    """ASCII digits -> archaic numbers: units, then tens (archaicone zero -> archaicten),
+    then 100 and 1000. Archaic numbers have no zero, so a zero only ever builds a
+    larger unit. One lookup per step, so each sees the previous one's output."""
+    ns = specs.profile.namespace
+    a = lambda w: with_ns(f"archaic{w}", ns)
+    return [
+        Lookup("ArchaicUnits", comment="ASCII digits -> archaic units", rules=[
+            Rule(kind="single", inputs=[w], output=a(w)) for w in DIGIT_WORDS[1:]]),
+        Lookup("ArchaicTens", comment="archaic unit + zero -> archaic ten", rules=[
+            Rule(kind="ligature", inputs=[a(DIGIT_WORDS[d]), "zero"], output=a(TENS_WORDS[d]))
+            for d in range(1, 10)]),
+        Lookup("ArchaicHundred", rules=[
+            Rule(kind="ligature", inputs=[a("ten"), "zero"], output=a("onehundred"))]),
+        Lookup("ArchaicThousand", rules=[
+            Rule(kind="ligature", inputs=[a("onehundred"), "zero"], output=a("onethousand"))]),
+    ]
+
+
+# --------------------------------------------------------------------------- #
 # Top-level assembly of all generated features
 # --------------------------------------------------------------------------- #
 
 def generate(specs: ScriptSpecs, alt_names: set[str] | None = None,
-             alt_targets: dict[int, str] | None = None) -> FeatureDoc:
+             alt_targets: dict[int, str] | None = None,
+             options: dict | None = None) -> FeatureDoc:
+    """``options`` carries the per-font settings (see :mod:`lankafea.fontconfig`):
+    ``dist`` (the touching-cluster shift), ``numerals`` (which features get the
+    Lith / archaic numeral sets) and ``featureNames`` (ssNN names)."""
+    options = options or {}
     doc = FeatureDoc()
     akhn_feat, halant_lookups = build_akhn(specs)
     doc.features.append(akhn_feat)
@@ -683,11 +893,76 @@ def generate(specs: ScriptSpecs, alt_names: set[str] | None = None,
     if repha_lk:
         doc.feature("psts").lookups.append(repha_lk)
 
-    dist = build_dist(specs)
+    # .rasign u/uu variants: after the blws vowel ligatures, so a drawn kRU wins.
+    rakar_var_lk = build_rakar_sign_variants(specs)
+    if rakar_var_lk:
+        doc.feature("blws").lookups.append(rakar_var_lk)
+
+    dist = build_dist(specs, options.get("dist"))
     if dist:
         doc.features.append(dist)
     doc.features.extend(build_alternates(specs, names=alt_names,
                                          alt_targets=alt_targets))
+    da_lk = build_da_shape(specs)
+    if da_lk:
+        # First in its feature, so a base alternate (da.alt) in the same set
+        # doesn't stop the ligature from matching.
+        doc.feature(da_shape_feature(specs)).lookups.insert(0, da_lk)
+    fa_tag = fa_alternate_feature(specs)
+    fa_lk = build_fa_alternates(specs) if fa_tag else None
+    if fa_lk:
+        doc.feature(fa_tag).lookups.append(fa_lk)
+    anusvara_lk = build_anusvara_sha(specs)
+    if anusvara_lk:
+        doc.feature(ANUSVARA_SHA_DEFAULT_TAG).lookups.append(anusvara_lk)
+    _add_numerals(doc, specs, options.get("numerals") or {})
+
     # Drop any feature that ended up with no lookups/rules.
     doc.features = [f for f in doc.features if any(lk.rules for lk in f.lookups)]
+    _name_features(doc, specs, options.get("featureNames") or {})
     return doc
+
+
+def _as_tags(value) -> list[str]:
+    if not value:
+        return []
+    return [value] if isinstance(value, str) else list(value)
+
+
+def _add_numerals(doc: FeatureDoc, specs: ScriptSpecs, numerals: dict) -> None:
+    """``numerals: {lith: ss07, lithTens: rlig, archaic: ss08}``. The ten-ligatures
+    also run in the Lith set, right after the digits it makes."""
+    if specs.profile.model == "tamil":
+        return
+    tens_tags = _as_tags(numerals.get("lithTens"))
+    for tag in tens_tags:
+        lk = build_lith_tens(specs)
+        lk.name = f"LithTens_{tag}" if tag != tens_tags[0] else "LithTens"
+        doc.feature(tag).lookups.append(lk)
+    for tag in _as_tags(numerals.get("lith")):
+        tens = build_lith_tens(specs)
+        tens.name = f"LithTens_{tag}"
+        feature = doc.feature(tag)
+        feature.lookups.extend([build_lith_digits(specs), tens])
+        feature.scripts = NUMERAL_SCRIPTS
+    for tag in _as_tags(numerals.get("archaic")):
+        lookups = build_archaic_numbers(specs)
+        if tag != _as_tags(numerals.get("archaic"))[0]:
+            for lk in lookups:
+                lk.name = f"{lk.name}_{tag}"
+        feature = doc.feature(tag)
+        feature.lookups.extend(lookups)
+        feature.scripts = NUMERAL_SCRIPTS
+
+
+def _name_features(doc: FeatureDoc, specs: ScriptSpecs, names: dict) -> None:
+    """ssNN display names: the font's own (``featureNames``), else the name the
+    standard gives the set ("ss01 Da Forms" -> "Da Forms")."""
+    standard = {}
+    for key in specs.style_sets():
+        tag, _, label = key.partition(" ")
+        if re.fullmatch(r"ss\d\d", tag) and label:
+            standard[tag] = label.strip()
+    for f in doc.features:
+        if re.fullmatch(r"ss\d\d", f.tag):
+            f.names = names.get(f.tag) or standard.get(f.tag)

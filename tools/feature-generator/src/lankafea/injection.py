@@ -62,12 +62,14 @@ def _rule_from_spec(spec: dict, namespace: str) -> Rule:
     sub = spec["sub"]
     inputs = [_apply_ns(t, namespace) for t in (sub if isinstance(sub, list) else [sub])]
     by = spec.get("by")
+    # The glyphs being replaced: the marked ones in a contextual rule, else all of them.
+    replaced = [t for t in inputs if t.endswith("'")] or inputs
     if isinstance(by, list):
         out = [_apply_ns(t, namespace) for t in by]
-        kind = "multiple" if len(inputs) == 1 else "ligature"
+        kind = "multiple" if len(replaced) == 1 else "ligature"
     else:
         out = _apply_ns(by, namespace) if by else None
-        kind = "single" if len(inputs) == 1 else "ligature"
+        kind = "single" if len(replaced) == 1 else "ligature"
     return Rule(kind=kind, inputs=inputs, output=out, comment=spec.get("comment"))
 
 

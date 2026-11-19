@@ -89,7 +89,8 @@ def _cmd_generate(args) -> int:
         else:
             print("# fix-zwj: control glyphs already present", file=sys.stderr)
     inventory, source_is_glyphs = _load_inventory(args.font)
-    inject_paths = collect_paths(args.inject, args.inject_file)
+    cfg = _load_config(args)
+    inject_paths = cfg.inject_paths + collect_paths(args.inject, args.inject_file)
 
     try:
         result = build_fea(
@@ -100,9 +101,10 @@ def _cmd_generate(args) -> int:
             prefer_feacomposer=args.feacomposer,
             validate=not args.no_validate,
             use_yaml=not args.no_yaml,
-            assign=_load_assign(args.assign),
+            assign=_load_assign(args.assign) or cfg.assign,
             aliases=_load_aliases(args),
             adopt_legacy_names=args.adopt_legacy_names,
+            options=cfg.options,
         )
     except Exception as exc:  # feaLib syntax error, missing YAML, etc.
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
@@ -165,7 +167,9 @@ def _cmd_generate(args) -> int:
               f"(replaced {summary['stripped_features']} own features; preserved "
               f"{summary['preserved_features']} user features/"
               f"{summary['preserved_prefixes']} prefixes; wrote {summary['written_features']} "
-              f"features/{summary['written_classes']} classes)", file=sys.stderr)
+              f"features/{summary['written_classes']} classes"
+              + ("; layout code only, the rest of the source untouched" if summary.get("in_place") else "")
+              + ")", file=sys.stderr)
         for tag, action in summary["collisions"].items():
             print(f"# collision {tag}: {action}", file=sys.stderr)
     return 0
@@ -270,6 +274,20 @@ def _load_aliases(args):
     return load_alias_file(path)
 
 
+def _load_config(args):
+    """--config FILE (or sources/lankafea.yaml beside the source, unless --no-config)."""
+    from .fontconfig import find_config, load_font_config
+    path = getattr(args, "config", None)
+    if path is None and not getattr(args, "no_config", False):
+        path = find_config(args.font)
+    cfg = load_font_config(path, args.script)
+    if cfg.path:
+        print(f"# config: {cfg.path}", file=sys.stderr)
+    for w in cfg.warnings:
+        print(f"# warning: {w}", file=sys.stderr)
+    return cfg
+
+
 def _load_assign(path):
     """--assign FILE.json: {"groups": [...], "alts": {...}} (see lankafea.assign)."""
     if not path:
@@ -283,7 +301,8 @@ def _cmd_validate(args) -> int:
         print(f"error: font not found: {args.font}", file=sys.stderr)
         return 1
     inventory, _ = _load_inventory(args.font)
-    inject_paths = collect_paths(args.inject, args.inject_file)
+    cfg = _load_config(args)
+    inject_paths = cfg.inject_paths + collect_paths(args.inject, args.inject_file)
 
     try:
         report = validate_font(
@@ -292,9 +311,10 @@ def _cmd_validate(args) -> int:
             level=args.level,
             inject_paths=inject_paths or None,
             use_yaml=not args.no_yaml,
-            assign=_load_assign(args.assign),
+            assign=_load_assign(args.assign) or cfg.assign,
             aliases=_load_aliases(args),
             adopt_legacy_names=args.adopt_legacy_names,
+            options=cfg.options,
         )
     except Exception as exc:
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
@@ -335,6 +355,10 @@ def _add_common_args(p) -> None:
                    help="directory of *.yaml/*.fea custom rules to merge")
     p.add_argument("--inject-file", type=Path, action="append", metavar="FILE",
                    help="individual inject file (repeatable)")
+    p.add_argument("--config", type=Path, metavar="FILE",
+                   help="per-font settings (default: lankafea.yaml beside the source)")
+    p.add_argument("--no-config", action="store_true",
+                   help="ignore lankafea.yaml beside the source")
     p.add_argument("--no-yaml", action="store_true",
                    help="run standalone: derive everything from the built-in codepoint "
                         "tables + the font's glyphs, using no glyphset YAML")
@@ -387,6 +411,10 @@ def main(argv: list[str] | None = None) -> int:
                      help="author rules via tptq-feacomposer (default: built-in text backend)")
     gen.add_argument("--no-validate", action="store_true",
                      help="skip the feaLib syntax check")
+    gen.add_argument("--config", type=Path, metavar="FILE",
+                   help="per-font settings (default: lankafea.yaml beside the source)")
+    gen.add_argument("--no-config", action="store_true",
+                   help="ignore lankafea.yaml beside the source")
     gen.add_argument("--no-yaml", action="store_true",
                      help="run standalone: derive everything from the built-in codepoint "
                           "tables + the font's glyphs, using no glyphset YAML")

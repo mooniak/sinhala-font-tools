@@ -14,7 +14,8 @@ from lankafea.yamlloader import load_specs
 @pytest.fixture(scope="module")
 def inv():
     specs = load_specs(get_profile("sinhala", 3))
-    names = {g.full_name for g in specs.glyphs}
+    # Without the ං + ශ ligature, so dlig starts empty (test_new_generators covers it).
+    names = {g.full_name for g in specs.glyphs if not g.name.startswith("anusvarayaSh")}
     names |= {"zerowidthjoiner", "touch-sinh", "rasign-sinh", "repha-sinh",
               "yasign-sinh", "isign.alt-sinh", "isign.alt2-sinh",
               "isign.alt3-sinh", "kasign.alt2-sinh"}
@@ -27,7 +28,10 @@ def layout(result):
 
 def test_default_unchanged(inv):
     lay = layout(build_fea("sinhala", inv))
-    assert lay["ss01"] == ["StylisticSet01"] and lay["ss02"] == ["StylisticSet02"]
+    # ss01 also carries the Da forms (the standard's "ss01 Da Forms"), first; ss02 the
+    # standard's "ss02 Fa" set.
+    assert lay["ss01"] == ["DaShape", "StylisticSet01"]
+    assert lay["ss02"] == ["StylisticSet02", "FaAlternates"]
     assert "dlig" not in lay
 
 
@@ -36,14 +40,15 @@ def test_move_group_to_dlig(inv):
         "groups": [{"group": "VowelLig_blws", "to": "dlig"}]})
     lay = layout(r)
     assert lay["dlig"] == ["VowelLig_blws"]
-    assert "blws" not in lay                       # emptied feature disappears
+    assert lay["blws"] == ["RakarSignVariants"]    # what is not moved stays
     assert "feature dlig" in r.fea
 
 
 def test_consumer_warning(inv):
     r = build_fea("sinhala", inv, assign={
         "groups": [{"group": "RakarLigatures", "to": "dlig"}]})
-    assert any("RakarLigatures" in w and "VowelLig_psts" in w
+    # dRa feeds the Da forms (dRa + aasign -> dRaa._c).
+    assert any("RakarLigatures" in w and "DaShape" in w
                for w in r.assign_warnings)
 
 
@@ -58,7 +63,8 @@ def test_alt_index_to_dlig_and_none(inv):
     r = build_fea("sinhala", inv, assign={"alts": {"2": "dlig", "3": "none"}})
     lay = layout(r)
     assert lay["dlig"] == ["Alternates02_dlig"]
-    assert "ss02" not in lay and "ss03" not in lay and "ss01" in lay
+    # ss02 keeps the standard's Fa set; only the .alt2 alternates moved.
+    assert lay["ss02"] == ["FaAlternates"] and "ss03" not in lay and "ss01" in lay
     assert "AllAlternates" in lay["aalt"]          # aalt still sees every alternate
 
 

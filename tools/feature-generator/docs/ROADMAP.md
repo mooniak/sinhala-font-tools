@@ -25,7 +25,7 @@ driven by glyph *presence*, never a mode switch.
 - **Generators**: akhn (conjuncts incl. full C×C cartesian + halant forms in
   abvs), rphf, vatu (+ rakar ligatures), abvs/blws/psts vowel ligatures, repha
   ligatures (post-reorder, in psts), yansaya-sign chains, touch clusters,
-  da-shape `._c`, dist, aalt/ssNN from `.altN` glyphs.
+  da-shape `._c` (in ss01, optional), dist, aalt/ssNN from `.altN` glyphs.
 - **ZWJ handling**: `--fix-zwj` inserts bundled authored ZWJ/ZWNJ control glyphs;
   nonstandard ZWJ names auto-aliased before gating.
 - **Glyphs sources**: native `.glyphspackage` read/write; `--glyphs-out`
@@ -69,10 +69,10 @@ driven by glyph *presence*, never a mode switch.
   inside Glyphs. It generates one script at a time (the Script menu); a "both scripts"
   action would call it twice.
 
-### R3 — Remaining generators (LOW) · ~0.5 day
-From Abhaya's real orphans: da-shape yansaya `._c` forms (`dya._c`), third-order
-yasign chains (`yasign_repha_usign`), `.rasign` sign-variant selection
-(`usign.rasign`). Small, presence-gated additions.
+### ~~R3 — Remaining generators~~ (done 2026-11-19, Abhaya refactor Phase 1)
+Yansaya Da forms (`dya._c` …), `.rasign` u/uu variants, ං + ශ, the ss02 Fa set and the
+numeral sets. Third-order yasign chains (`yasign_repha_usign`) turned out never to apply
+under HarfBuzz, so they are not generated.
 
 ### R4 — Full multi-script writeback dry-run (R1 done; after R3)
 `--glyphs-out` onto a copy of Abhaya; verify in Glyphs that all 27 hand-written
@@ -82,9 +82,9 @@ features + both prefixes survive intact alongside generated Sinhala + Tamil code
 
 - **GPOS mark generation** — currently out of scope (Glyphs auto-builds
   mark/mkmk from anchors); revisit only if a target needs `.fea`-level marks.
-- **rlig / contextual reph-variant selection** — Abhaya's `.001–.010` positional
-  reph logic is contextual and font-specific; stays hand-written and preserved.
-  Consider a template/inject helper rather than generation.
+- **Positional reph / candrabindu variants** — Abhaya's `.001–.010` variants are per-font
+  inject data (`sources/lankafea/` in that repo, decision D2 of the Abhaya plan); moving
+  them to GPOS anchors is abhaya-libre-font#106.
 - **Batch driver** — one command to validate/fix-zwj/generate across a whole
   collection (the 35 fontmaster repos) with a summary table.
 - **Coverage delta reporting** — before/after glyph-reachability diff as a first-

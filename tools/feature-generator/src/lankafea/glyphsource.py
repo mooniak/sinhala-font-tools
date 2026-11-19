@@ -250,7 +250,71 @@ def write_features_to_glyphs(
         MANIFEST_PREFIX,
         manifest_code(manifest_old, script, scoped, written_classes, class_code)))
 
-    save_source(font, out_path)
+    summary["in_place"] = _save(font, src_path, out_path)
     summary["written_features"] = written
     summary["written_classes"] = len(written_classes)
     return summary
+
+
+# --------------------------------------------------------------------------- #
+# Writing back in place: only the layout code changes
+#
+# A glyphsLib round trip is not byte-faithful: it re-quotes glyph names, rounds
+# component scales, rewrites master metrics and order.plist. Writing the features
+# back into the SAME source must not touch any of that, so the font is serialised
+# to a scratch copy and only its three top-level layout blocks (classes,
+# featurePrefixes, features) are spliced into the existing file, byte for byte.
+# --------------------------------------------------------------------------- #
+
+LAYOUT_KEYS = ("classes", "featurePrefixes", "features")
+
+
+def _layout_blocks(text: str) -> dict:
+    import re
+    out = {}
+    for key in LAYOUT_KEYS:
+        m = re.search(r"^%s = \(\n.*?^\);\n" % key, text, re.S | re.M)
+        if m:
+            out[key] = m
+    return out
+
+
+def splice_layout(new_text: str, old_text: str) -> str | None:
+    """``old_text`` with its layout blocks replaced by ``new_text``'s; ``None`` when a
+    block ``new_text`` has is missing from ``old_text`` (nowhere safe to put it)."""
+    new, old = _layout_blocks(new_text), _layout_blocks(old_text)
+    if set(new) - set(old):
+        return None
+    out = old_text
+    for key in sorted(old, key=lambda k: old[k].start(), reverse=True):
+        m = old[key]
+        out = out[:m.start()] + (new[key].group(0) if key in new else "") + out[m.end():]
+    return out
+
+
+def _layout_file(path: Path) -> Path:
+    from .glyphspackage import is_glyphspackage
+    return path / "fontinfo.plist" if is_glyphspackage(path) else path
+
+
+def _save(font, src_path, out_path) -> bool:
+    """Save; in place when writing back into the source itself. Returns True when only
+    the layout blocks of the existing file were replaced."""
+    import tempfile
+    from .glyphspackage import save_source
+
+    src, out = Path(src_path).resolve(), Path(out_path).resolve()
+    if src != out:
+        save_source(font, out_path)
+        return False
+    with tempfile.TemporaryDirectory() as tmp:
+        scratch = Path(tmp) / src.name
+        save_source(font, scratch)
+        new_text = _layout_file(scratch).read_text(encoding="utf-8")
+    target = _layout_file(src)
+    spliced = splice_layout(new_text, target.read_text(encoding="utf-8"))
+    if spliced is None:                    # e.g. the source had no classes block yet
+        save_source(font, out_path)
+        return False
+    target.write_text(spliced, encoding="utf-8")
+    return True

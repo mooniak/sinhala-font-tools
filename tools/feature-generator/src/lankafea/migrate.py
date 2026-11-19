@@ -1,4 +1,4 @@
-"""Rename a Tamil Glyphs source (.glyphspackage or .glyphs) to the standard's glyph and anchor names.
+"""Rename a Glyphs source (.glyphspackage or .glyphs) to the standard's glyph and anchor names.
 
     python -m lankafea.migrate SOURCE.glyphspackage | SOURCE.glyphs [--aliases FILE]
                                [--adopt-legacy-names] [--apply]
@@ -9,7 +9,8 @@ mapped). With --apply the package is rewritten in place (use git to undo).
 
 What it does
   * glyph renames: ``standard name: this font's name`` pairs from --aliases and/or
-    --adopt-legacy-names (only Tamil names, those in the ``taml`` namespace). The glyph file,
+    --adopt-legacy-names. Only names in the standard's namespaces are renamed to (``-taml``,
+    ``-sinh``); --adopt-legacy-names covers Tamil only. The glyph file,
     its ``glyphname``, every component ``ref``, metric key, class, feature and order entry that
     names it are rewritten together, by whole name (``isign-taml.alt1`` never matches
     ``isign-taml.alt12``).
@@ -18,7 +19,7 @@ What it does
     sign glyph, per the standard's "Anchor naming". Which legacy anchor is which sign is read
     from the sign glyphs themselves (the glyph that carries ``_Anchor-2`` is the sign), so no
     per-font table is needed. A legacy anchor shared by ``usign`` and ``uusign`` is split into
-    two on each base.
+    two on each base. Anchors are renamed on Tamil glyphs only.
 """
 
 from __future__ import annotations
@@ -60,7 +61,30 @@ def _token_regex(names) -> re.Pattern:
     return re.compile(rf"(?:(?<!{NAME_CHARS})|(?<=\\012))({alt})(?!{NAME_CHARS})")
 
 
+# Namespaces a rename may target. Anchor renaming stays Tamil-only (is_tamil).
+STANDARD_NAMESPACES = ("taml", "sinh")
+
+
+def in_standard_namespace(name: str) -> bool:
+    return any(name.endswith(f"-{ns}") or f"-{ns}." in name for ns in STANDARD_NAMESPACES)
+
+
 _SUFFIX_BEFORE_NS = re.compile(r"^(?P<stem>.+)\.(?P<suf>\w+)-taml$")
+
+
+# A plist value Glyphs writes without quotes. A rename can turn a bare value (sinZerolith) into
+# one that needs them (lithzero-sinh); left bare, Glyphs and glyphsLib read it differently.
+_BARE_OK = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*")
+
+
+def quote_bare_names(text: str, names) -> str:
+    """Quote every bare plist value (``key = NAME;`` or a list line ``NAME,``) among names."""
+    need = [n for n in names if not _BARE_OK.fullmatch(n)]
+    if not need:
+        return text
+    alt = "|".join(re.escape(n) for n in sorted(need, key=len, reverse=True))
+    rx = re.compile(rf'(?m)(^|= )({alt})(?=[;,]?$)')
+    return rx.sub(lambda m: f'{m.group(1)}"{m.group(2)}"', text)
 
 
 def plan_glyph_renames(inv, aliases: dict[str, str],
@@ -73,7 +97,7 @@ def plan_glyph_renames(inv, aliases: dict[str, str],
     renames: dict[str, str] = {}
     problems: list[str] = []
     for std, actual in aliases.items():
-        if std == actual or "-taml" not in std:
+        if std == actual or not in_standard_namespace(std):
             continue
         if actual not in inv.glyphs:
             continue
@@ -266,6 +290,7 @@ def _migrate_file(path: Path, aliases_file, adopt_legacy, apply, anchors=True) -
     n_sub = 0
     if renames:
         out, n_sub = _token_regex(renames).subn(lambda m: renames[m.group(1)], out)
+        out = quote_bare_names(out, renames.values())
     path.write_text(out, encoding="utf8")
     print(f"  applied: {n_sub} name replacements, {len(renames)} glyphs renamed")
     return 0
@@ -342,7 +367,7 @@ def migrate(package: Path, aliases_file: str | None, adopt_legacy: bool, apply: 
             return text
         out, n = rx.subn(lambda m: renames[m.group(1)], text)
         n_sub += n
-        return out
+        return quote_bare_names(out, renames.values())
 
     for fname in list(texts):
         t = sub(texts[fname])

@@ -29,13 +29,15 @@ class BuildResult:
 # Sinhala uses the Indic model (generators.py); Tamil has its own (tamil.py), whose
 # forms are met by a ligature OR a shape-group alternate.
 
-def _generate(profile: ScriptProfile, specs, inventory: FontInventory, asg):
+def _generate(profile: ScriptProfile, specs, inventory: FontInventory, asg,
+              options: dict | None = None):
     if profile.model == "tamil":
         from .tamil import generate_tamil
         return generate_tamil(specs)
     from . import assign as assign_mod
     return generators.generate(specs, alt_names=inventory.glyphs,
-                               alt_targets=assign_mod.alt_targets(asg))
+                               alt_targets=assign_mod.alt_targets(asg),
+                               options=options)
 
 
 def _adapt(doc, profile: ScriptProfile, inventory: FontInventory) -> list[str]:
@@ -72,6 +74,7 @@ def build_fea(
     assign=None,
     aliases: dict[str, str] | None = None,
     adopt_legacy_names: bool = False,
+    options: dict | None = None,
 ) -> BuildResult:
     """``assign`` — optional feature assignments (see ``lankafea.assign``): a plain
     dict ``{"groups": [...], "alts": {...}}`` or an ``Assign``.
@@ -86,7 +89,7 @@ def build_fea(
     # and alternates from the font inventory, with no glyphset YAML at all.
     specs = load_specs(profile) if use_yaml else synth_specs(profile)
 
-    doc = _generate(profile, specs, inventory, asg)
+    doc = _generate(profile, specs, inventory, asg, options)
 
     raw_snips: list[str] = []
     if inject_paths:
@@ -101,6 +104,10 @@ def build_fea(
     # User routing of rule groups into dlig / ssNN / ... (after every generator
     # and injection has contributed, so any group can be addressed).
     group_warnings, moved = assign_mod.apply_groups(doc, asg)
+    if profile.model != "tamil":
+        # A group routed into a stylistic set (AnusvaraSha -> ss03) makes the feature
+        # after generation named the others: name them all now.
+        generators._name_features(doc, specs, (options or {}).get("featureNames") or {})
 
     # Adopt the font's own names for control glyphs (e.g. U+200D encoded as
     # 'zwj') before gating, so a nonstandard name doesn't kill the rules.
@@ -137,6 +144,7 @@ def validate_font(
     assign=None,
     aliases: dict[str, str] | None = None,
     adopt_legacy_names: bool = False,
+    options: dict | None = None,
 ) -> ValidationReport:
     """Dependency validation only: generate candidates, analyze, report.
 
@@ -148,7 +156,7 @@ def validate_font(
 
     from . import assign as assign_mod
     asg = assign if isinstance(assign, assign_mod.Assign) else assign_mod.parse_assign(assign)
-    doc = _generate(profile, specs, inventory, asg)
+    doc = _generate(profile, specs, inventory, asg, options)
     if inject_paths:
         injection = inj_mod.load_injection(inject_paths, profile)
         inj_mod.merge(doc, injection)

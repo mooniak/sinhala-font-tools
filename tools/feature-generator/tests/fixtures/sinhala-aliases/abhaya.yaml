@@ -1,0 +1,35 @@
+# Abhaya Libre: standard Sinhala name: Abhaya's name.
+# Lith digits (U+0DE6-U+0DEF) and Abhaya's Lith ten-ligatures (1 0 -> 10 ...).
+# The ligature names follow the naming rule for ligatures of encoded glyphs (_ joins).
+lithzero-sinh: sinZerolith
+lithone-sinh: sinOnelith
+lithtwo-sinh: sinTwolith
+liththree-sinh: sinThreelith
+lithfour-sinh: sinFourlith
+lithfive-sinh: sinFivelith
+lithsix-sinh: sinSixlith
+lithseven-sinh: sinSevenlith
+litheight-sinh: sinEightlith
+lithnine-sinh: sinNinelith
+lithone_lithzero-sinh: sinOne_Zerolith
+lithtwo_lithzero-sinh: sinTwo_Zerolith
+liththree_lithzero-sinh: sinThree_Zerolith
+lithfour_lithzero-sinh: sinFour_Zerolith
+lithfive_lithzero-sinh: sinFive_Zerolith
+lithsix_lithzero-sinh: sinSix_Zerolith
+lithseven_lithzero-sinh: sinSeven_Zerolith
+litheight_lithzero-sinh: sinEight_Zerolith
+lithnine_lithzero-sinh: sinNine_Zerolith
+# The ෆ alternate written as ප + f (ss02). The standard names it fpa; Abhaya's
+# fa-sinh.hist family becomes fpa and its ligatures (fp = fpa + virama, fpI, fpU, fpRa …).
+fpa-sinh: fa-sinh.hist
+fp-sinh: f-sinh.hist
+fpI-sinh: fI-sinh.hist
+fpIi-sinh: fIi-sinh.hist
+fpU-sinh: fU-sinh.hist
+fpUu-sinh: fUu-sinh.hist
+fpR-sinh: fR-sinh.hist
+fpRa-sinh: fRa-sinh.hist
+fpRI-sinh: fRI-sinh.hist
+fpRIi-sinh: fRIi-sinh.hist
+fpa_repha-sinh: fa_repha-sinh.hist

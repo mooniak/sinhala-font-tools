@@ -124,6 +124,9 @@ Where a form has a second route the unmet line says so: `unmet: kI-taml (or isig
 
 A designer narrows a shape group by defining a class of the same name in the source
 (`@isign_ma = [ma-taml sha-taml ha-taml]`): a font that draws ஜி றி ழி as ligatures says so.
+A font keeps its own settings in `sources/lankafea.yaml` beside the source (inject files,
+feature routing, the `dist` amount, numeral sets, stylistic set names); `generate` and
+`validate` read it automatically. See [docs/font-config.md](docs/font-config.md).
 `--inject DIR` merges hand-authored YAML/fea rules (gated like generated ones;
 raw `.fea` passes through ungated).
 
@@ -139,9 +142,14 @@ Feature coverage per the [Sinhala shaping spec](https://github.com/n8willis/open
 | `rphf` | `ra ් zwj → repha` |
 | `vatu` | `් zwj ya → yasign`, `් zwj ra → rasign`, rakar ligatures (`da + rasign → dRa`) |
 | `abvs` | halant forms (`ka ් → k` — deliberately NOT in akhn, they would eat the reph/yansa triggers), i/ii vowel ligatures, yansaya+virama |
-| `blws` | u/uu ligatures, da-shape `._c` below forms, yansaya+u-signs, shape-group variant selection |
+| `blws` | u/uu ligatures, yansaya+u-signs, shape-group variant selection |
 | `psts` | spacing-sign ligatures, `sign+virama` (split-matra tails), **repha ligatures** (`ma + repha → ma_repha` — after the shaper repositions the reph), yansaya chains (`yasign_aasign + ් → yasign_aasign_virama`) |
 | `dist` | touching-cluster advance shift |
+| `blws` (after the ligatures) | `.rasign` u/uu variants after a rakar ligature with no u/uu form (`kRa usign → kRa usign.rasign`) |
+| `ss02` | **Fa** (`FaAlternates`): every ෆ form → its ප + f alternate (`fa → fpa`, `fU → fpU`), the standard's "ss02 Fa" |
+| `dlig` | ං + ශ archaic ligatures (`AnusvaraSha`); a font routes the group elsewhere with `assign` |
+| per font | numeral sets (`numerals:` in the font settings): ASCII → Lith digits, Lith ten-ligatures, ASCII → archaic numbers |
+| `ss01` | **Da forms** (`DaShape`): below-base signs on da-shaped bases (`da ා → daa._c`, `da ෝ → daa_virama._c`). Optional, as in the standard's "ss01 Da Forms"; the tag is read from there. To have them under `dlig` too, copy the group: `{"groups": [{"group": "DaShape", "to": "dlig", "mode": "copy"}]}` |
 | `aalt`/`ssNN` | from `.altN` glyphs present in the font |
 
 ### Tamil
@@ -269,3 +277,16 @@ be explained:
 Abhaya Libre matches exactly (default features and `ss09`). Ralex and Yaldevi differ only
 where a glyph the font already has is now reachable (a ligature its own features never form,
 or Yaldevi's `kSsa`/`shree` in its stale build); see the report for the glyphs.
+
+**Sinhala acceptance** (Abhaya Libre so far): the hand-written features (from the source, or
+a frozen copy in `tests/fixtures/sinhala-baselines/`) and the generated ones are compiled
+into the same synthetic font and shaped over ~15,500 strings: every consonant × every sign;
+yansaya, rakar and repaya on every consonant with signs; every conjunct and touching pair in
+the standard, with signs and under a repaya; numerals; and the Sinhala test texts. This is done
+with the default features and with each stylistic feature the font registers. Each difference
+goes into a category tracked in the Abhaya plan (`lanka-glyphsets/docs/abhaya-feature-plan.md`),
+and the test fails on any difference no category explains:
+
+```sh
+.venv/bin/python tests/acceptance_sinhala.py [abhaya] [--all] [--json FILE] [--freeze]
+```

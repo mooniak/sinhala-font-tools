@@ -25,7 +25,8 @@ class Rule:
     kind:
       - "ligature": sub <inputs> by <output>            (GSUB type 4)
       - "single":   sub <inputs[0]> by <output>         (GSUB type 1)
-      - "multiple": sub <inputs[0]> by <outputs>        (GSUB type 2, output is a list)
+      - "multiple": sub <inputs> by <outputs>           (GSUB type 2, output is a list;
+                    in a contextual rule exactly one input is marked with ')
       - "alternate":sub <inputs[0]> from <alt_class>    (GSUB type 3, aalt)
       - "pos":      pos <inputs[0]> <value>             (GPOS single)
     ``inputs`` and members may reference classes as "@name".
@@ -81,6 +82,10 @@ class Lookup:
 class Feature:
     tag: str
     lookups: list[Lookup] = field(default_factory=list)
+    names: str | None = None        # ssNN display name (featureNames)
+    # Register under these scripts instead of the generated script's own: the numeral
+    # sets act on ASCII digits, which HarfBuzz shapes as DFLT / latn, not sinh.
+    scripts: list[str] | None = None
 
 
 @dataclass

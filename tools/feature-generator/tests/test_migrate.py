@@ -71,3 +71,39 @@ def test_explicit_master_name_survives_a_rewrite():
     after = 'id = "AAA";\nuserData = {\n};'
     assert restore_master_names(before, after) == before
     assert restore_master_names(before, before) == before        # nothing to restore
+
+
+def test_sinhala_names_are_renamed_too():
+    # Abhaya Libre's Lith digits: sinZerolith is the standard's lithzero-sinh.
+    from types import SimpleNamespace
+    from lankafea.migrate import plan_glyph_renames
+    inv = SimpleNamespace(glyphs={"sinZerolith", "sinOne_Zerolith", "zwj", "ka-sinh"})
+    renames, problems = plan_glyph_renames(inv, {
+        "lithzero-sinh": "sinZerolith",
+        "lithone_lithzero-sinh": "sinOne_Zerolith",
+        "zerowidthjoiner": "zwj",           # not a namespaced standard name: left alone
+    })
+    assert not problems
+    assert renames == {"sinZerolith": "lithzero-sinh", "sinOne_Zerolith": "lithone_lithzero-sinh"}
+
+
+def test_sinhala_rename_clash_is_reported():
+    from types import SimpleNamespace
+    from lankafea.migrate import plan_glyph_renames
+    inv = SimpleNamespace(glyphs={"sinZerolith", "lithzero-sinh"})
+    renames, problems = plan_glyph_renames(inv, {"lithzero-sinh": "sinZerolith"})
+    assert not renames and problems and "clash" in problems[0]
+
+
+def test_a_rename_that_needs_quotes_gets_them():
+    # sinZerolith is written bare; its standard name has a hyphen, which Glyphs quotes.
+    from lankafea.migrate import quote_bare_names
+    names = ["lithzero-sinh", "lithone_lithzero-sinh"]
+    glyph = "{\nglyphname = lithzero-sinh;\nlayers = (\n{\ncomponents = (\n{\nname = lithzero-sinh;\n}\n);"
+    out = quote_bare_names(glyph, names)
+    assert 'glyphname = "lithzero-sinh";' in out and 'name = "lithzero-sinh";' in out
+    order = "(\nlithone_lithzero-sinh,\nlithzero-sinh\n)"
+    assert quote_bare_names(order, names) == '(\n"lithone_lithzero-sinh",\n"lithzero-sinh"\n)'
+    # already quoted, and names inside feature code, are left alone
+    code = 'glyphname = "lithzero-sinh";\ncode = "sub one by lithone-sinh;\\012sub lithzero-sinh;";'
+    assert quote_bare_names(code, names) == code
